@@ -22,14 +22,14 @@ export default function Home() {
         "@type": "ManufacturingBusiness",
         "@id": "https://uookaymechindustries.com/#business",
         "name": "UOO KAY MECH INDUSTRIES",
-        "description": "Precision Machined Components & Industrial Fabrication since 2004 in Thane, Maharashtra.",
+        "description": "Precision Machined Components & Industrial Fabrication since 2004 in Maharashtra, India.",
         "image": "https://uookaymechindustries.com/images/products/machines and fabricated components 1.jpg",
         "telephone": "9987849605",
         "email": "uookaymechindustries@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "W-184, MIDC Phase II, Kalyan-Shilphata Road, Dombivli East",
-          "addressLocality": "Thane",
+          "addressLocality": "Dombivli East",
           "addressRegion": "Maharashtra",
           "postalCode": "421204",
           "addressCountry": "IN"
@@ -143,7 +143,7 @@ export default function Home() {
           
           {/* Tagline */}
           <span className="text-[10px] font-mono font-bold text-[#666666] tracking-[0.25em] uppercase block hero-reveal">
-            [ EST. 2004 — THANE, MAHARASHTRA ]
+            [ EST. 2004 — MAHARASHTRA, INDIA ]
           </span>
 
           {/* Simple, Bold, Industrial H1 */}
@@ -181,11 +181,11 @@ export default function Home() {
           <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.2em]">
             [ APPROVED SUPPLIER REGISTRY ]
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 opacity-75">
-            <span className="font-heading font-bold text-xs tracking-widest text-[#151515]">LARSEN & TOUBRO</span>
-            <span className="font-heading font-bold text-xs tracking-widest text-[#151515]">EMERSON INDIA</span>
-            <span className="font-heading font-bold text-xs tracking-widest text-[#151515]">GODFREY PHILLIPS</span>
-            <span className="font-heading font-bold text-xs tracking-widest text-[#151515]">PARLE ELIZABETH</span>
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-items-center md:justify-end gap-x-8 md:gap-x-12 gap-y-4 opacity-75 w-full md:w-auto text-center font-heading font-bold text-xs tracking-widest text-[#151515]">
+            <span className="flex items-center justify-center min-h-[32px]">LARSEN & TOUBRO</span>
+            <span className="flex items-center justify-center min-h-[32px]">EMERSON INDIA</span>
+            <span className="flex items-center justify-center min-h-[32px]">GODFREY PHILLIPS</span>
+            <span className="flex items-center justify-center min-h-[32px]">PARLE ELIZABETH</span>
           </div>
         </div>
       </section>

@@ -217,7 +217,7 @@
   transition: color 0.3s;
   display: inline-block;
   text-decoration: none;
-  padding-right: 1.5em;
+  padding-right: 0;
   will-change: transform;
 }
 
@@ -238,16 +238,19 @@
 .sm-panel-list[data-numbering] .sm-panel-item::after {
   counter-increment: smItem;
   content: counter(smItem, decimal-leading-zero);
-  position: absolute;
-  top: 0.15em;
-  right: 0;
+  position: relative;
+  display: inline-block;
+  vertical-align: super;
   font-family: var(--font-sans), sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--sm-accent, #C46A2D);
   opacity: var(--sm-num-opacity, 0);
   transition: opacity 0.5s;
   letter-spacing: 0.1em;
+  margin-left: 0.5rem;
+  top: auto;
+  right: auto;
 }
 
 .sm-socials {
@@ -305,5 +308,17 @@
     width: 100%;
     left: 0;
     right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .sm-panel-item {
+    font-size: 1.75rem;
+  }
+  .staggered-menu-panel {
+    padding: 7rem 2rem 2rem 2rem;
+  }
+  .sm-panel-list {
+    gap: 1.25rem;
   }
 }

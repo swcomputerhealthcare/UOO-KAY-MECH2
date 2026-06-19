@@ -388,19 +388,19 @@ export const StaggeredMenu = ({
       
       <header className="staggered-menu-header" aria-label="Main navigation header">
         {/* Custom Uoo Kay Mech SVG logo */}
-        <Link href="/" className="sm-logo gap-2 items-center flex" aria-label="Logo" onClick={closeMenu}>
+        <Link href="/" className="sm-logo gap-3.5 items-center flex" aria-label="Logo" onClick={closeMenu}>
           <Image
             src="/images/products/LOGO.png"
             alt="UOO KAY MECH INDUSTRIES Logo"
-            width={32}
-            height={32}
+            width={64}
+            height={64}
             className="object-contain"
           />
           <div className="flex flex-col text-left">
-            <span className="font-heading text-slate-900 font-extrabold text-sm tracking-wider leading-none transition-colors duration-300 group-data-[open]:text-white lg:group-data-[open]:text-slate-900">
+            <span className="font-heading text-slate-900 font-extrabold text-lg sm:text-xl tracking-wider leading-none transition-colors duration-300 group-data-[open]:text-white lg:group-data-[open]:text-slate-900">
               UOO KAY MECH
             </span>
-            <span className="text-[9px] text-[#C46A2D] font-semibold tracking-widest uppercase mt-0.5 transition-colors duration-300 group-data-[open]:text-[#C46A2D] lg:group-data-[open]:text-[#C46A2D]">
+            <span className="text-xs sm:text-sm text-[#C46A2D] font-semibold tracking-widest uppercase mt-1 transition-colors duration-300 group-data-[open]:text-[#C46A2D] lg:group-data-[open]:text-[#C46A2D]">
               Industries
             </span>
           </div>

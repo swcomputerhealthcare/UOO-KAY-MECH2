@@ -27,9 +27,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "Precision Engineering & Fabrication in Thane | UOO KAY MECH INDUSTRIES",
+  title: "Precision Engineering & Fabrication in Maharashtra, India | UOO KAY MECH INDUSTRIES",
   description: "Manufacturer of Machine Safety Guards, Precision Machined Components, Industrial Ladders, and Structural Fabrication solutions. Serving Tier-1 clients since 2004.",
-  keywords: "precision machining, industrial fabrication, machine safety guards, crane shafts, pinion shafts, gears, ladders, Thane, Maharashtra",
+  keywords: "precision machining, industrial fabrication, machine safety guards, crane shafts, pinion shafts, gears, ladders, Maharashtra, India",
   metadataBase: new URL("https://uookaymechindustries.com"),
   alternates: {
     canonical: "/",
@@ -46,7 +46,7 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Precision Engineering & Fabrication in Thane | UOO KAY MECH INDUSTRIES",
+    title: "Precision Engineering & Fabrication in Maharashtra, India | UOO KAY MECH INDUSTRIES",
     description: "Manufacturer of Machine Safety Guards, Precision Machined Components, Industrial Ladders, and Structural Fabrication solutions. Serving Tier-1 clients since 2004.",
     url: "https://uookaymechindustries.com",
     siteName: "UOO KAY MECH INDUSTRIES",
@@ -63,7 +63,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Precision Engineering & Fabrication in Thane | UOO KAY MECH INDUSTRIES",
+    title: "Precision Engineering & Fabrication in Maharashtra, India | UOO KAY MECH INDUSTRIES",
     description: "Manufacturer of Machine Safety Guards, Precision Machined Components, Industrial Ladders, and Structural Fabrication solutions. Serving Tier-1 clients since 2004.",
     images: ["/images/products/machines and fabricated components 1.jpg"],
   },

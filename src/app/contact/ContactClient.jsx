@@ -89,7 +89,7 @@ export default function ContactClient() {
                 <div className="space-y-1">
                   <h4 className="font-heading font-bold text-sm uppercase text-[#151515]">Office & Workshop</h4>
                   <p className="text-[#666666] text-xs leading-relaxed font-medium">
-                    W-184, MIDC Phase II, Kalyan-Shilphata Road, Dombivli East, Thane, Maharashtra - 421204, India.
+                    W-184, MIDC Phase II, Kalyan-Shilphata Road, Dombivli East, Maharashtra - 421204, India.
                   </p>
                 </div>
               </div>

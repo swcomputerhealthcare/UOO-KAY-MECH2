@@ -12,19 +12,19 @@ export default function Footer() {
           
           {/* Column 1: Logo & Certifications */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3.5">
               <Image
                 src="/images/products/LOGO.png"
                 alt="UOO KAY MECH INDUSTRIES Logo"
-                width={36}
-                height={36}
+                width={64}
+                height={64}
                 className="object-contain"
               />
               <div className="flex flex-col">
-                <span className="font-heading text-[#151515] font-extrabold text-md tracking-wider leading-none">
+                <span className="font-heading text-[#151515] font-extrabold text-lg sm:text-xl tracking-wider leading-none">
                   UOO KAY MECH
                 </span>
-                <span className="text-[9px] text-[#C46A2D] font-semibold tracking-widest uppercase mt-0.5">
+                <span className="text-xs sm:text-sm text-[#C46A2D] font-semibold tracking-widest uppercase mt-1">
                   Industries
                 </span>
               </div>
@@ -81,7 +81,7 @@ export default function Footer() {
               <li className="flex gap-3.5 items-start">
                 <MapPin className="h-5 w-5 text-[#C46A2D] shrink-0 mt-0.5" strokeWidth={1.5} />
                 <span className="text-[#666666] leading-relaxed font-medium text-xs">
-                  W-184, MIDC Phase II, Kalyan-Shilphata Road, Dombivli East, Thane, Maharashtra - 421204, India.
+                  W-184, MIDC Phase II, Kalyan-Shilphata Road, Dombivli East, Maharashtra - 421204, India.
                 </span>
               </li>
               <li className="flex gap-3.5 items-center">

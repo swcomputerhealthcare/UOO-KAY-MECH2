@@ -18,7 +18,7 @@ export default function AboutClient() {
     {
       year: "2004",
       title: "Company Founded",
-      desc: "Uoo Kay Mech Industries established by Sandeepkumar K. Singh in Thane, Maharashtra, commencing manufacturing of conventional precision components.",
+      desc: "Uoo Kay Mech Industries established by Sandeepkumar K. Singh in Maharashtra, India, commencing manufacturing of conventional precision components.",
     },
     {
       year: "2010",
@@ -141,7 +141,7 @@ export default function AboutClient() {
                 UOO KAY MECH INDUSTRIES has been delivering precision engineering and fabrication solutions since 2004. With extensive expertise in machining and manufacturing, we serve various reputed organizations across India by providing high-quality industrial components tailored to customer requirements.
               </p>
               <p className="text-[#666666] text-sm leading-relaxed font-sans">
-                Headquartered in Thane, Maharashtra, our facility is equipped with a robust infrastructure of CNC machining centres, lathe machines, grinders, and precise testing instruments. Over the last two decades, our absolute focus on reliability and quality has earned us vendor-approved status with enterprise leaders including Larsen & Toubro, Emerson India, and Parle Elizabeth Tools.
+                Headquartered in Maharashtra, India, our facility is equipped with a robust infrastructure of CNC machining centres, lathe machines, grinders, and precise testing instruments. Over the last two decades, our absolute focus on reliability and quality has earned us vendor-approved status with enterprise leaders including Larsen & Toubro, Emerson India, and Parle Elizabeth Tools.
               </p>
               
               {/* Monospace registry badges */}
