@@ -1,0 +1,213 @@
+"use client";
+
+import { useRef } from "react";
+import { Users } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
+
+function LTLogo() {
+  return (
+    <svg className="h-10 w-auto" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="24" fill="#151515" />
+      <circle cx="30" cy="30" r="22" stroke="#C46A2D" strokeWidth="1.5" />
+      <path d="M22 18h4v16.5c0 1.9 1.1 3 3 3h4v4h-5.5c-4 0-5.5-2-5.5-5.5V18z" fill="#C46A2D" />
+      <path d="M30 18h16v4H38v20h-4V22h-4v-4z" fill="#C46A2D" />
+      <text x="70" y="32" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900" fill="#151515" letterSpacing="1">LARSEN & TOUBRO</text>
+      <text x="70" y="46" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#C46A2D" letterSpacing="1.5">ENGINEERING SOLUTIONS</text>
+    </svg>
+  );
+}
+
+function EmersonLogo() {
+  return (
+    <svg className="h-10 w-auto" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="24" stroke="#151515" strokeWidth="3" fill="none" />
+      <ellipse cx="30" cy="30" rx="14" ry="24" stroke="#151515" strokeWidth="1.5" fill="none" />
+      <ellipse cx="30" cy="30" rx="6" ry="24" stroke="#151515" strokeWidth="1" fill="none" />
+      <line x1="6" y1="30" x2="54" y2="30" stroke="#151515" strokeWidth="2" />
+      <text x="72" y="36" fontFamily="var(--font-heading)" fontSize="22" fontWeight="900" fill="#151515" letterSpacing="2.5">EMERSON</text>
+      <text x="72" y="48" fontFamily="sans-serif" fontSize="9" fontWeight="800" fill="#666666" letterSpacing="2">CONSIDER IT SOLVED.</text>
+    </svg>
+  );
+}
+
+function GodfreyLogo() {
+  return (
+    <svg className="h-10 w-auto" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(10, 2)">
+        <path d="M12,4 L16,10 L25,5 L34,10 L38,4 L34,14 L16,14 Z" fill="#C46A2D" stroke="#151515" strokeWidth="1" />
+        <circle cx="12" cy="4" r="1.5" fill="#151515" />
+        <circle cx="25" cy="5" r="1.5" fill="#151515" />
+        <circle cx="38" cy="4" r="1.5" fill="#151515" />
+        <path d="M14,16 L36,16 C36,16 36,28 25,36 C14,28 14,16 14,16 Z" fill="#151515" stroke="#C46A2D" strokeWidth="2" />
+      </g>
+      <text x="65" y="32" fontFamily="var(--font-heading)" fontSize="17" fontWeight="900" fill="#151515" letterSpacing="1">GODFREY PHILLIPS</text>
+      <text x="65" y="46" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#666666" letterSpacing="2">INDIA LIMITED</text>
+    </svg>
+  );
+}
+
+function ParleLogo() {
+  return (
+    <svg className="h-10 w-auto" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(10, 6)" fill="#C46A2D">
+        <circle cx="18" cy="26" r="15" stroke="#C46A2D" strokeWidth="3" fill="none" />
+        <path d="M14,19 H21 C23.5,19 25,20.5 25,22.5 C25,24.5 23.5,26 21,26 H17 V32 H14 V19 Z M17,21 V24 H21 C22,24 22.5,23.5 22.5,22.5 C22.5,21.5 22,21 21,21 Z" fill="#C46A2D" />
+      </g>
+      <text x="65" y="31" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900" fill="#151515" letterSpacing="0.5">PARLE ELIZABETH</text>
+      <text x="65" y="45" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#666666" letterSpacing="1.5">TOOLS PVT. LTD.</text>
+    </svg>
+  );
+}
+
+export default function ClientsClient() {
+  const containerRef = useRef(null);
+
+  const clients = [
+    {
+      name: "Larsen & Toubro Ltd.",
+      sector: "Engineering & Construction (Conglomerate)",
+      status: "Vendor Approved Supplier",
+      logo: <LTLogo />,
+    },
+    {
+      name: "Emerson India Pvt. Ltd.",
+      sector: "Industrial Automation & Technology",
+      status: "Vendor Approved Supplier",
+      logo: <EmersonLogo />,
+    },
+    {
+      name: "Godfrey Phillips India Ltd.",
+      sector: "FMCG / Manufacturing",
+      status: "Vendor Approved Supplier",
+      logo: <GodfreyLogo />,
+    },
+    {
+      name: "Parle Elizabeth Tools Pvt. Ltd.",
+      sector: "Tools & Industrial Manufacturing",
+      status: "Vendor Approved Supplier",
+      logo: <ParleLogo />,
+    },
+  ];
+
+  useGSAP(() => {
+    // Symmetrical subtle reveals
+    gsap.from(".cli-header-item", {
+      opacity: 0,
+      y: 15,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+    gsap.from(".cli-trust-banner", {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".cli-trust-banner",
+        start: "top 90%"
+      }
+    });
+
+    gsap.from(".cli-logo-row", {
+      opacity: 0,
+      y: 15,
+      duration: 0.5,
+      stagger: 0.06,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".cli-logos-grid",
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    });
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className="bg-brand-bg py-24 sm:py-32 relative overflow-hidden">
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Page Header */}
+        <div className="border-l-2 border-[#C46A2D] pl-6 mb-16">
+          <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
+            [ SUPPLIER AUDIT ]
+          </span>
+          <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#151515] uppercase tracking-wide cli-header-item">
+            Industrial Clients
+          </h1>
+        </div>
+
+        {/* 1. Client Trust Banner (Flat Solid Color, No gradients) */}
+        <div className="bg-white text-[#151515] border-t-2 border-[#151515] p-8 sm:p-12 mb-20 cli-trust-banner">
+          <div className="max-w-3xl space-y-6">
+            <div className="text-[#C46A2D]">
+              <Users className="h-6 w-6" strokeWidth={1.5} />
+            </div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-wide uppercase">
+              Partnerships Built on <span className="text-[#C46A2D]">Engineering Trust</span>
+            </h2>
+            <p className="text-[#666666] text-sm leading-relaxed font-sans font-medium">
+              UOO KAY MECH INDUSTRIES is an approved vendor supplier to India&apos;s leading industrial organizations. Our consistent delivery of drawing-compliant, precision-machined parts has established us as a reliable partner in strategic supply chains.
+            </p>
+          </div>
+        </div>
+
+        {/* 2. Client Logo Grid (Flat Outline layout) */}
+        <div className="mb-24">
+          <h3 className="font-heading text-xl font-bold text-[#151515] uppercase tracking-wide mb-10 border-b border-[#D9D9D9] pb-3">
+            Trusted by Industrial Enterprises
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 cli-logos-grid">
+            {clients.map((c, idx) => (
+              <div
+                key={idx}
+                className="cli-logo-row border border-[#D9D9D9] p-8 flex items-center justify-center bg-white min-h-[120px]"
+              >
+                {c.logo}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 3. Detailed Client Directory (Flat Directory List) */}
+        <div className="space-y-8">
+          <h3 className="font-heading text-xl font-bold text-[#151515] uppercase tracking-wide border-b border-[#D9D9D9] pb-3">
+            Client Directory
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans">
+            {clients.map((c, idx) => (
+              <div
+                key={idx}
+                className="border-t border-[#D9D9D9] pt-6 flex flex-col justify-between"
+              >
+                <div>
+                  <h4 className="font-heading font-bold text-[#151515] text-lg uppercase tracking-wide mb-2">
+                    {c.name}
+                  </h4>
+                  <p className="text-[#666666] text-xs font-semibold mb-4">
+                    Sector: {c.sector}
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <span className="text-[10px] font-mono font-bold text-[#C46A2D] uppercase tracking-widest">
+                    STATUS: {c.status.toUpperCase()}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}

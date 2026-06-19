@@ -1,0 +1,249 @@
+"use client";
+
+import { useRef, useState, useEffect } from "react";
+import { FileText, Award, BadgeCheck, ShieldCheck } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
+
+export default function QualityClient() {
+  const containerRef = useRef(null);
+  const pinRef = useRef(null);
+  const scrollTrackRef = useRef(null);
+  const [canScroll, setCanScroll] = useState(false);
+
+  const certifications = [
+    {
+      title: "GST Registered",
+      desc: "Tax compliant with active GST registration, facilitating transparent billing and corporate commercial audits.",
+      id: "GSTIN Registered",
+      icon: <FileText className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+    },
+    {
+      title: "MSME Registered",
+      desc: "Registered Micro, Small & Medium Enterprise, supporting industrial supplier eligibility criteria.",
+      id: "MSME Certified",
+      icon: <Award className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+    },
+    {
+      title: "Udyam Registration",
+      desc: "Official Government of India Udyam certificate registration holding vendor compliance standards.",
+      id: "Udyam Registered",
+      icon: <BadgeCheck className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+    },
+    {
+      title: "Approved Vendor",
+      desc: "Verified and listed in the supplier registers of conglomerates including L&T, Emerson, and Parle Tools.",
+      id: "L&T & Emerson Verified",
+      icon: <ShieldCheck className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+    },
+  ];
+
+  const processes = [
+    {
+      step: "01",
+      title: "Material Inspection",
+      desc: "Raw material is verified against specifications and chemical grades before machining begins. Visual inspects and initial dimensional checks are performed to prevent source defects.",
+    },
+    {
+      step: "02",
+      title: "Precision Machining",
+      desc: "Components are machined on CNC and conventional machines strictly in accordance with customer drawings, tolerance standards, and process charts.",
+    },
+    {
+      step: "03",
+      title: "Dimensional Testing",
+      desc: "All components are measured in-process and post-machining with calibrated instruments, including Mitutoyo height gauges, bore dials, micrometers, and vernier calipers.",
+    },
+    {
+      step: "04",
+      title: "Final Inspection & Dispatch",
+      desc: "Complete final quality assurance check. Components are carefully packed per industrial packaging standards and dispatched with formal delivery challans and test reports.",
+    },
+  ];
+
+  // 1. Detect track width vs viewport to toggle pinning layout
+  useEffect(() => {
+    const checkScroll = () => {
+      const track = scrollTrackRef.current;
+      if (track) {
+        setCanScroll(track.scrollWidth > window.innerWidth);
+      }
+    };
+
+    const timer = setTimeout(checkScroll, 150); // allow styles to fully hydrate
+    window.addEventListener("resize", checkScroll);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, []);
+
+  // 2. Load animations (Run once)
+  useGSAP(() => {
+    gsap.from(".qual-header-item", {
+      opacity: 0,
+      y: 15,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+    gsap.from(".cert-row", {
+      opacity: 0,
+      y: 15,
+      duration: 0.5,
+      stagger: 0.08,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".certs-list",
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    });
+  }, { scope: containerRef });
+
+  // 3. ScrollTrigger Horizontal scroll (Depends on canScroll)
+  useGSAP(() => {
+    const track = scrollTrackRef.current;
+    const container = pinRef.current;
+
+    if (!canScroll || !track || !container) return;
+
+    const scrollWidth = track.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const amount = scrollWidth - viewportWidth;
+
+    const st = ScrollTrigger.create({
+      trigger: container,
+      pin: true,
+      scrub: 1,
+      start: "top top",
+      end: () => `+=${amount + 150}`,
+      invalidateOnRefresh: true,
+      animation: gsap.to(track, {
+        x: -amount - 64, // translate distance with safe padding margin
+        ease: "none"
+      })
+    });
+
+    return () => st.kill(true);
+  }, { scope: containerRef, dependencies: [canScroll] });
+
+  return (
+    <div ref={containerRef} className="bg-brand-bg min-h-screen">
+      
+      {/* 1. Header & Certifications (whitespace and thin line borders) */}
+      <div className="py-24 sm:py-32 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Page Header */}
+          <div className="border-l-2 border-[#C46A2D] pl-6 mb-24 qual-header-item">
+            <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
+              [ TECHNICAL STANDARDS ]
+            </span>
+            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#151515] uppercase tracking-wide">
+              Quality Assurance
+            </h1>
+          </div>
+
+          {/* Certifications Block */}
+          <div className="mb-12">
+            <span className="text-[10px] font-mono font-bold text-[#666666] tracking-[0.2em] uppercase block mb-2">
+              [ COMPLIANCE REGISTRY ]
+            </span>
+            <h2 className="font-heading text-3xl font-bold text-[#151515] uppercase tracking-wide border-b border-[#D9D9D9] pb-4 mb-8">
+              Registration & Certifications
+            </h2>
+            
+            {/* Simple list lines instead of cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 certs-list font-sans">
+              {certifications.map((cert, idx) => (
+                <div
+                  key={idx}
+                  className="cert-row border-t border-[#D9D9D9] pt-6 flex flex-col justify-between h-full"
+                >
+                  <div className="space-y-4">
+                    <div className="text-slate-700">
+                      {cert.icon}
+                    </div>
+                    <h3 className="font-heading font-bold text-[#151515] text-lg uppercase tracking-wide">
+                      {cert.title}
+                    </h3>
+                    <p className="text-[#666666] text-xs leading-relaxed font-medium">
+                      {cert.desc}
+                    </p>
+                  </div>
+                  <div className="pt-6 mt-4">
+                    <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-wider block">
+                      ID: {cert.id}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 2. Process Timeline (Horizontal Scroll on white background canvas) */}
+      <div 
+        ref={pinRef} 
+        className="min-h-screen flex flex-col justify-center bg-white relative overflow-hidden border-y border-[#D9D9D9] py-16"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full shrink-0 mb-16">
+          <div className="border-l-2 border-[#C46A2D] pl-6">
+            <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
+              [ OPERATIONAL PROCESS ]
+            </span>
+            <h2 className="font-heading text-4xl font-bold text-[#151515] uppercase tracking-wide">
+              Our 4-Stage Quality Process
+            </h2>
+          </div>
+        </div>
+
+        {/* Horizontal track container */}
+        <div className="w-full overflow-hidden">
+          <div 
+            ref={scrollTrackRef} 
+            className={`flex gap-16 px-8 sm:px-16 ${canScroll ? "" : "justify-center"}`}
+          >
+            {processes.map((p, idx) => (
+              <div
+                key={idx}
+                className="proc-block w-[300px] sm:w-[400px] shrink-0 border-l-2 border-[#C46A2D] pl-8 py-4 font-sans"
+              >
+                <div className="space-y-6">
+                  {/* Step Marker */}
+                  <div className="flex justify-between items-center border-b border-[#D9D9D9] pb-3">
+                    <span className="font-heading text-4xl font-black text-[#C46A2D] tracking-tight leading-none">
+                      STAGE {p.step}
+                    </span>
+                    <span className="font-mono text-[9px] text-[#666666] uppercase tracking-wider">
+                      SPEC_AUDIT
+                    </span>
+                  </div>
+                  
+                  <h3 className="font-heading text-xl font-bold text-[#151515] uppercase tracking-wide">
+                    {p.title}
+                  </h3>
+                  
+                  <p className="text-[#666666] text-xs sm:text-sm leading-relaxed font-medium">
+                    {p.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+}
