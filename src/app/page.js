@@ -372,7 +372,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-4 space-y-6 step-text-reveal">
               <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block">01 / CNC MACHINING</span>
-              <h2 className="font-heading text-4xl font-bold uppercase text-[#17375E] leading-none tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#17375E] leading-tight tracking-tight">
                 High-Tolerance Component Fabrication
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -397,7 +397,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-5 space-y-6 step-text-reveal">
               <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block">02 / CAD DRAFTING</span>
-              <h2 className="font-heading text-4xl font-bold uppercase text-[#17375E] leading-none tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#17375E] leading-tight tracking-tight">
                 Engineering Feasibility Analysis
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -446,7 +446,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-4 space-y-6 step-text-reveal">
               <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block">03 / METROLOGY</span>
-              <h2 className="font-heading text-4xl font-bold uppercase text-[#17375E] leading-none tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#17375E] leading-tight tracking-tight">
                 Calibrated Quality Inspections
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -472,7 +472,7 @@ export default function Home() {
             <div className="lg:col-span-6 space-y-8 step-text-reveal">
               <div>
                 <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block mb-2">04 / CAPABILITIES</span>
-                <h2 className="font-heading text-4xl font-bold uppercase text-[#17375E] leading-none tracking-tight">
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#17375E] leading-tight tracking-tight">
                   Component & Custom Fabrication Range
                 </h2>
               </div>
@@ -535,7 +535,7 @@ export default function Home() {
             <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block mb-2">
               / PARTNER COMPLIANCE FEEDBACK
             </span>
-            <h2 className="font-heading text-4xl font-bold text-[#17375E] uppercase tracking-wide">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#17375E] uppercase tracking-wide leading-tight">
               Procurement & Engineering Reviews
             </h2>
           </div>

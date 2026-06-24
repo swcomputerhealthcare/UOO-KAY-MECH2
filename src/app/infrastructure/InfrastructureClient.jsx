@@ -491,7 +491,7 @@ export default function InfrastructureClient() {
                     </span>
                   )}
                 </div>
-                <h2 className="font-heading text-3xl font-bold uppercase text-[#161616] leading-tight">
+                <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold uppercase text-[#161616] leading-tight">
                   {activeAsset.name}
                 </h2>
               </div>

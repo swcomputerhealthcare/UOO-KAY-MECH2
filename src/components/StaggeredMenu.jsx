@@ -438,10 +438,10 @@ export const StaggeredMenu = ({
             <path d="M35 66 L65 66" stroke="#D9893A" strokeWidth="3" strokeLinecap="round" />
           </svg>
           <div className="flex flex-col text-left">
-            <span className="font-heading text-[#17375E] font-bold text-lg sm:text-xl tracking-wider leading-none transition-colors duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#17375E]">
+            <span className="font-heading text-[#17375E] font-bold text-[14px] min-[400px]:text-base sm:text-xl tracking-wider leading-none transition-colors duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#17375E]">
               UOO KAY MECH
             </span>
-            <span className="text-xs sm:text-sm text-[#D9893A] font-semibold tracking-widest uppercase mt-1 transition-colors duration-300 group-data-[open]:text-[#D9893A] lg:group-data-[open]:text-[#D9893A]">
+            <span className="text-[9px] min-[400px]:text-xs sm:text-sm text-[#D9893A] font-semibold tracking-widest uppercase mt-1 transition-colors duration-300 group-data-[open]:text-[#D9893A] lg:group-data-[open]:text-[#D9893A]">
               Industries
             </span>
           </div>

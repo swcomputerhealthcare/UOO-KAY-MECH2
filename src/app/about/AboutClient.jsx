@@ -171,7 +171,7 @@ export default function AboutClient() {
               <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block">
                 [ ESTABLISHED 2004 ]
               </span>
-              <h2 className="font-heading text-4xl font-bold uppercase text-[#161616] leading-none tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#161616] leading-tight tracking-tight">
                 Delivering Industrial Excellence for Over Two Decades
               </h2>
               <p className="text-[#161616] text-base leading-relaxed font-sans font-semibold">
@@ -231,7 +231,7 @@ export default function AboutClient() {
                 <span className="font-mono text-xs text-[#D9893A] uppercase tracking-widest block">
                   [ LEADERSHIP REGISTER ]
                 </span>
-                <h3 className="font-heading text-3xl font-bold text-[#161616] uppercase">
+                <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase leading-tight">
                   Sandeepkumar K. Singh
                 </h3>
                 <p className="font-mono text-xs text-[#5E6673] uppercase tracking-wider">
@@ -274,7 +274,7 @@ export default function AboutClient() {
                 <Eye className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_VISION ]</span>
               </div>
-              <h3 className="font-heading text-3xl font-bold text-[#161616] uppercase tracking-wide">
+              <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
                 Our Vision
               </h3>
               <p className="text-[#5E6673] text-sm leading-relaxed font-medium">
@@ -288,7 +288,7 @@ export default function AboutClient() {
                 <Compass className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_MISSION ]</span>
               </div>
-              <h3 className="font-heading text-3xl font-bold text-[#161616] uppercase tracking-wide">
+              <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
                 Our Mission
               </h3>
               <p className="text-[#5E6673] text-sm leading-relaxed font-medium">
@@ -308,7 +308,7 @@ export default function AboutClient() {
             <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block mb-2">
               / MILESTONES & HISTORY
             </span>
-            <h2 className="font-heading text-4xl font-bold text-[#161616] uppercase tracking-wide">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
               Two Decades of Engineering Development
             </h2>
           </div>

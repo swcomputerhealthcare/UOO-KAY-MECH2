@@ -170,106 +170,157 @@ export default function ProductsClient() {
   useGSAP(() => {
     if (!horizontalRef.current || !triggerRef.current) return;
 
-    const scrollWidth = horizontalRef.current.scrollWidth;
-    const totalScroll = scrollWidth - window.innerWidth;
+    let mm = gsap.matchMedia();
 
-    // 1. Pinned Horizontal Scrolling Timeline
-    const pinTween = gsap.to(horizontalRef.current, {
-      x: -totalScroll,
-      ease: "none",
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        pin: true,
-        scrub: 0.5,
-        start: "top top",
-        end: () => `+=${totalScroll}`,
-        invalidateOnRefresh: true,
-      }
-    });
+    // Desktop: Pinned horizontal scrolling
+    mm.add("(min-width: 768px)", () => {
+      const scrollWidth = horizontalRef.current.scrollWidth;
+      const totalScroll = scrollWidth - window.innerWidth;
 
-    // 2. Controlled Scroll-Triggered Transitions inside each slide
-    const sections = gsap.utils.toArray(".capability-slide");
-    sections.forEach((sec) => {
-      if (!shouldAnimate()) {
-        gsap.set(sec.querySelectorAll(".reveal-label, .reveal-heading, .reveal-desc, .reveal-cta, .reveal-image-item"), {
-          opacity: 1,
-          y: 0,
-          scale: 1
-        });
-        return;
-      }
-
-      const label = sec.querySelector(".reveal-label");
-      const heading = sec.querySelector(".reveal-heading");
-      const desc = sec.querySelector(".reveal-desc");
-      const cta = sec.querySelector(".reveal-cta");
-      const images = sec.querySelectorAll(".reveal-image-item");
-
-      const tl = gsap.timeline({
+      // 1. Pinned Horizontal Scrolling Timeline
+      const pinTween = gsap.to(horizontalRef.current, {
+        x: -totalScroll,
+        ease: "none",
         scrollTrigger: {
-          trigger: sec,
-          containerAnimation: pinTween,
-          start: "left 45%",
-          toggleActions: "play none none reverse",
+          trigger: triggerRef.current,
+          pin: true,
+          scrub: 0.5,
+          start: "top top",
+          end: () => `+=${totalScroll}`,
+          invalidateOnRefresh: true,
         }
       });
 
-      // Label reveals first
-      if (label) tl.fromTo(label, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0);
-      // Heading reveals second
-      if (heading) tl.fromTo(heading, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.06);
-      // Description reveals third
-      if (desc) tl.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 0.12);
-      // CTA reveals fourth
-      if (cta) tl.fromTo(cta, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0.18);
-      // Image elements reveal in staggered sequence (scale 1.04 -> 1)
-      if (images.length) {
-        tl.fromTo(images,
-          { opacity: 0, scale: 1.04, y: 20 },
-          {
+      // 2. Controlled Scroll-Triggered Transitions inside each slide
+      const sections = gsap.utils.toArray(".capability-slide");
+      sections.forEach((sec) => {
+        if (!shouldAnimate()) {
+          gsap.set(sec.querySelectorAll(".reveal-label, .reveal-heading, .reveal-desc, .reveal-cta, .reveal-image-item"), {
             opacity: 1,
-            scale: 1,
             y: 0,
-            stagger: 0.08,
-            duration: 0.6,
-            ease: "power2.out"
-          },
-          0.24
+            scale: 1
+          });
+          return;
+        }
+
+        const label = sec.querySelector(".reveal-label");
+        const heading = sec.querySelector(".reveal-heading");
+        const desc = sec.querySelector(".reveal-desc");
+        const cta = sec.querySelector(".reveal-cta");
+        const images = sec.querySelectorAll(".reveal-image-item");
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sec,
+            containerAnimation: pinTween,
+            start: "left 45%",
+            toggleActions: "play none none reverse",
+          }
+        });
+
+        if (label) tl.fromTo(label, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0);
+        if (heading) tl.fromTo(heading, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.06);
+        if (desc) tl.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 0.12);
+        if (cta) tl.fromTo(cta, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0.18);
+        if (images.length) {
+          tl.fromTo(images,
+            { opacity: 0, scale: 1.04, y: 20 },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              stagger: 0.08,
+              duration: 0.6,
+              ease: "power2.out"
+            },
+            0.24
+          );
+        }
+      });
+
+      if (shouldAnimate()) {
+        gsap.fromTo(".brass-hero-image",
+          { scale: 1.12 },
+          {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#capability-2",
+              containerAnimation: pinTween,
+              start: "left right",
+              end: "left left",
+              scrub: true,
+            }
+          }
         );
       }
     });
 
-    // Custom Scroll zoom for brass hero image (remains scrubbed)
-    if (shouldAnimate()) {
-      gsap.fromTo(".brass-hero-image",
-        { scale: 1.12 },
-        {
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#capability-2",
-            containerAnimation: pinTween,
-            start: "left right",
-            end: "left left",
-            scrub: true,
-          }
+    // Mobile: Standard vertical scroll reveals
+    mm.add("(max-width: 767px)", () => {
+      const sections = gsap.utils.toArray(".capability-slide");
+      sections.forEach((sec) => {
+        const label = sec.querySelector(".reveal-label");
+        const heading = sec.querySelector(".reveal-heading");
+        const desc = sec.querySelector(".reveal-desc");
+        const cta = sec.querySelector(".reveal-cta");
+        const images = sec.querySelectorAll(".reveal-image-item");
+
+        if (!shouldAnimate()) {
+          gsap.set([label, heading, desc, cta, ...images], { opacity: 1, y: 0, scale: 1 });
+          return;
         }
-      );
-    }
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sec,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          }
+        });
+
+        if (label) tl.fromTo(label, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0);
+        if (heading) tl.fromTo(heading, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.06);
+        if (desc) tl.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 0.12);
+        if (cta) tl.fromTo(cta, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0.18);
+        if (images.length) {
+          tl.fromTo(images,
+            { opacity: 0, scale: 1.04, y: 20 },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              stagger: 0.08,
+              duration: 0.6,
+              ease: "power2.out"
+            },
+            0.24
+          );
+        }
+      });
+    });
 
   }, { scope: containerRef });
 
   const handleScrollToCapability = (index) => {
-    if (!containerRef.current || !horizontalRef.current) return;
-    const rect = triggerRef.current.getBoundingClientRect();
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const start = rect.top + scrollTop;
-    const totalDistance = horizontalRef.current.scrollWidth - window.innerWidth;
-    const targetScroll = start + (index / 6) * totalDistance + 3;
-    window.scrollTo({
-      top: targetScroll,
-      behavior: "smooth"
-    });
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      const el = document.getElementById(`capability-${index}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      if (!containerRef.current || !horizontalRef.current) return;
+      const rect = triggerRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const start = rect.top + scrollTop;
+      const totalDistance = horizontalRef.current.scrollWidth - window.innerWidth;
+      const targetScroll = start + (index / 6) * totalDistance + 3;
+      window.scrollTo({
+        top: targetScroll,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
@@ -324,12 +375,11 @@ export default function ProductsClient() {
         </div>
       </div>
 
-      {/* 2. STAGE TWO: Pinned Horizontal Showcase */}
+      {/* 2. STAGE TWO: Pinned Horizontal Showcase / Vertical Stack on Mobile */}
       <div ref={triggerRef} className="relative w-full overflow-hidden bg-[#F6F7F8]">
         <div 
           ref={horizontalRef} 
-          className="flex flex-row flex-nowrap"
-          style={{ width: "700vw" }}
+          className="flex flex-col md:flex-row md:flex-nowrap w-full products-horizontal-container"
         >
           {CAPABILITIES.map((cap, index) => {
             const isDark = index === 5;
@@ -338,11 +388,11 @@ export default function ProductsClient() {
               <section
                 id={`capability-${index}`}
                 key={index}
-                className={`w-screen h-[calc(100vh-64px)] md:h-[calc(100vh-104px)] flex-shrink-0 flex items-center justify-center border-r border-[#D7DDE5]/30 relative px-6 md:px-16 lg:px-24 py-8 capability-slide ${
+                className={`w-full md:w-screen h-auto md:h-[calc(100vh-104px)] flex-shrink-0 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#D7DDE5]/30 relative px-6 md:px-16 lg:px-24 py-16 md:py-8 capability-slide ${
                   isDark ? "bg-[#17375E]" : "bg-[#F6F7F8]"
                 }`}
               >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center w-full max-w-7xl mx-auto h-full overflow-y-auto md:overflow-hidden no-scrollbar">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center w-full max-w-7xl mx-auto md:h-full overflow-visible md:overflow-hidden no-scrollbar">
                   
                   {/* --- CAPABILITY 01: Precision Tooling & Dies --- */}
                   {index === 0 && (
@@ -453,7 +503,7 @@ export default function ProductsClient() {
                           </div>
 
                           {/* Right Column: 2x2 Supporting Sub-Grid */}
-                          <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-4 md:gap-5 h-full">
+                          <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-4 md:gap-5 h-auto md:h-full">
                             <div className="h-[150px] md:h-[180px] relative rounded-[24px] overflow-hidden border border-[#17375E]/12 bg-white shadow-sm reveal-image-item opacity-0 will-change-transform col-span-1">
                               <Image
                                 src={cap.images[1]}

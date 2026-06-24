@@ -115,3 +115,11 @@ body {
 .premium-btn-hover:hover .arrow-circle {
   transform: translateX(4px);
 }
+
+/* Responsive products page horizontal container */
+@media (min-width: 768px) {
+  .products-horizontal-container {
+    width: 700vw !important;
+  }
+}
+

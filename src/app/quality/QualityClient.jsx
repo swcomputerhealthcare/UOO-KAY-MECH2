@@ -164,7 +164,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.2em] uppercase block mb-2">
               [ COMPLIANCE REGISTRY ]
             </span>
-            <h2 className="font-heading text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8">
+            <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight">
               Registration & Certifications
             </h2>
             
@@ -211,7 +211,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
-            <h2 className="font-heading text-4xl font-bold text-[#161616] uppercase tracking-wide">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
               Our 4-Stage Quality Process
             </h2>
           </div>
@@ -231,7 +231,7 @@ export default function QualityClient() {
                 <div className="space-y-6">
                   {/* Step Marker */}
                   <div className="flex justify-between items-center border-b border-[#D7DDE5] pb-3">
-                    <span className="font-heading text-4xl font-black text-[#D9893A] tracking-tight leading-none">
+                    <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#D9893A] tracking-tight leading-none">
                       STAGE {p.step}
                     </span>
                     <span className="font-mono text-[9px] text-[#5E6673] uppercase tracking-wider">
