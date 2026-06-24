@@ -138,18 +138,18 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border-t-2 border-[#151515] pt-6 font-sans text-center">
-        <div className="bg-white p-8 sm:p-12 border border-[#D9D9D9] space-y-6">
-          <div className="text-[#C46A2D] p-3 border border-[#D9D9D9] w-max mx-auto">
-            <CheckCircle2 className="h-8 w-8 text-[#C46A2D]" strokeWidth={1.5} />
+      <div className="border-t-2 border-[#17375E] pt-6 font-sans text-center">
+        <div className="bg-white p-8 sm:p-12 border border-[#D7DDE5] space-y-6">
+          <div className="text-[#D9893A] p-3 border border-[#D7DDE5] w-max mx-auto">
+            <CheckCircle2 className="h-8 w-8 text-[#D9893A]" strokeWidth={1.5} />
           </div>
-          <h3 className="font-heading text-2xl font-bold text-[#151515] uppercase">Enquiry Sent</h3>
-          <p className="text-[#666666] text-xs sm:text-sm max-w-md mx-auto leading-relaxed font-medium">
+          <h3 className="font-heading text-2xl font-bold text-[#17375E] uppercase">Enquiry Sent</h3>
+          <p className="text-[#5E6673] text-xs sm:text-sm max-w-md mx-auto leading-relaxed font-medium">
             Thank you for reaching out to Uoo Kay Mech Industries. Our sales engineering team will review your specifications and contact you shortly.
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="inline-block bg-[#151515] hover:bg-[#333333] text-white font-heading font-bold px-8 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200"
+            className="inline-block bg-[#17375E] hover:bg-[#D9893A] text-white font-heading font-bold px-8 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 cursor-pointer"
           >
             Send Another Message
           </button>
@@ -159,7 +159,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="border-t-2 border-[#151515] pt-6 font-sans">
+    <div className="border-t-2 border-[#17375E] pt-6 font-sans">
       <form onSubmit={handleSubmit} className="space-y-6">
         {status === "error" && (
           <div className="border border-red-500/25 bg-red-500/5 text-[#C62828] p-4 flex items-center gap-3 text-xs font-semibold">
@@ -171,7 +171,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Full Name */}
           <div>
-            <label htmlFor="name" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#666666] mb-2">
+            <label htmlFor="name" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
               Full Name *
             </label>
             <input
@@ -181,8 +181,8 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               placeholder=""
-              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#C46A2D] transition-all duration-200 font-semibold text-[#151515] placeholder-[#666666] ${
-                errors.name ? "border-[#C62828]" : "border-[#D9D9D9]"
+              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#D9893A] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673] ${
+                errors.name ? "border-[#C62828]" : "border-[#D7DDE5]"
               }`}
             />
             {errors.name && <p className="text-[#C62828] text-xs mt-1.5 font-semibold">{errors.name}</p>}
@@ -190,7 +190,7 @@ export default function ContactForm() {
 
           {/* Company Name */}
           <div>
-            <label htmlFor="company" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#666666] mb-2">
+            <label htmlFor="company" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
               Company Name *
             </label>
             <input
@@ -200,8 +200,8 @@ export default function ContactForm() {
               value={formData.company}
               onChange={handleChange}
               placeholder=""
-              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#C46A2D] transition-all duration-200 font-semibold text-[#151515] placeholder-[#666666] ${
-                errors.company ? "border-[#C62828]" : "border-[#D9D9D9]"
+              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#D9893A] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673] ${
+                errors.company ? "border-[#C62828]" : "border-[#D7DDE5]"
               }`}
             />
             {errors.company && <p className="text-[#C62828] text-xs mt-1.5 font-semibold">{errors.company}</p>}
@@ -211,7 +211,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Phone Number */}
           <div>
-            <label htmlFor="phone" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#666666] mb-2">
+            <label htmlFor="phone" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
               Phone Number *
             </label>
             <input
@@ -221,8 +221,8 @@ export default function ContactForm() {
               value={formData.phone}
               onChange={handleChange}
               placeholder=""
-              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#C46A2D] transition-all duration-200 font-semibold text-[#151515] placeholder-[#666666] ${
-                errors.phone ? "border-[#C62828]" : "border-[#D9D9D9]"
+              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#D9893A] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673] ${
+                errors.phone ? "border-[#C62828]" : "border-[#D7DDE5]"
               }`}
             />
             {errors.phone && <p className="text-[#C62828] text-xs mt-1.5 font-semibold">{errors.phone}</p>}
@@ -230,7 +230,7 @@ export default function ContactForm() {
 
           {/* Email Address */}
           <div>
-            <label htmlFor="email" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#666666] mb-2">
+            <label htmlFor="email" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
               Email Address *
             </label>
             <input
@@ -240,8 +240,8 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder=""
-              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#C46A2D] transition-all duration-200 font-semibold text-[#151515] placeholder-[#666666] ${
-                errors.email ? "border-[#C62828]" : "border-[#D9D9D9]"
+              className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#D9893A] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673] ${
+                errors.email ? "border-[#C62828]" : "border-[#D7DDE5]"
               }`}
             />
             {errors.email && <p className="text-[#C62828] text-xs mt-1.5 font-semibold">{errors.email}</p>}
@@ -250,7 +250,7 @@ export default function ContactForm() {
 
         {/* Product Interest Dropdown */}
         <div>
-          <label htmlFor="interest" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#666666] mb-2">
+          <label htmlFor="interest" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
             Product / Service Interest *
           </label>
           <select
@@ -258,7 +258,7 @@ export default function ContactForm() {
             name="interest"
             value={formData.interest}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-[#D9D9D9] rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#C46A2D] transition-all duration-200 font-semibold text-[#151515] cursor-pointer"
+            className="w-full px-4 py-3 border border-[#D7DDE5] rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#D9893A] transition-all duration-200 font-semibold text-[#161616] cursor-pointer"
           >
             <option value="Machine Safety Guards">Machine Safety Guards</option>
             <option value="Precision Components">Precision Machined Components</option>
@@ -271,7 +271,7 @@ export default function ContactForm() {
 
         {/* Message Requirements */}
         <div>
-          <label htmlFor="message" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#666666] mb-2">
+          <label htmlFor="message" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
             Message / Engineering Requirements *
           </label>
           <textarea
@@ -281,8 +281,8 @@ export default function ContactForm() {
             onChange={handleChange}
             rows="5"
             placeholder=""
-            className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#C46A2D] transition-all duration-200 font-semibold text-[#151515] placeholder-[#666666] ${
-              errors.message ? "border-[#C62828]" : "border-[#D9D9D9]"
+            className={`w-full px-4 py-3 border rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#D9893A] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673] ${
+              errors.message ? "border-[#C62828]" : "border-[#D7DDE5]"
             }`}
           />
           {errors.message && <p className="text-[#C62828] text-xs mt-1.5 font-semibold">{errors.message}</p>}
@@ -292,7 +292,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-[#C46A2D] hover:bg-[#A0531E] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider transition-colors duration-200 text-center cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+          className="w-full bg-[#D9893A] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider transition-colors duration-200 text-center cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-3 premium-btn-hover"
         >
           <span>{status === "loading" ? "Sending Request..." : "Submit RFP Request"}</span>
           {status === "loading" ? (
@@ -303,10 +303,12 @@ export default function ContactForm() {
         </button>
 
         {/* Technical Registry Note */}
-        <p className="text-[9px] font-mono text-[#666666] text-center leading-relaxed">
+        <p className="text-[9px] font-mono text-[#5E6673] text-center leading-relaxed">
           SECURE CONNECTION ENCRYPTED · COMMERCIALLY SENSITIVE BLUEPRINTS RESTRICTED FROM PUBLIC DISSEMINATION
         </p>
       </form>
     </div>
   );
 }
+
+

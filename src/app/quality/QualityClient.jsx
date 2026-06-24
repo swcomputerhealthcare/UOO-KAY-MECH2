@@ -5,6 +5,7 @@ import { FileText, Award, BadgeCheck, ShieldCheck } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { shouldAnimate } from "@/lib/animations";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -21,25 +22,25 @@ export default function QualityClient() {
       title: "GST Registered",
       desc: "Tax compliant with active GST registration, facilitating transparent billing and corporate commercial audits.",
       id: "GSTIN Registered",
-      icon: <FileText className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+      icon: <FileText className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
     },
     {
       title: "MSME Registered",
       desc: "Registered Micro, Small & Medium Enterprise, supporting industrial supplier eligibility criteria.",
       id: "MSME Certified",
-      icon: <Award className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+      icon: <Award className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
     },
     {
       title: "Udyam Registration",
       desc: "Official Government of India Udyam certificate registration holding vendor compliance standards.",
       id: "Udyam Registered",
-      icon: <BadgeCheck className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+      icon: <BadgeCheck className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
     },
     {
       title: "Approved Vendor",
       desc: "Verified and listed in the supplier registers of conglomerates including L&T, Emerson, and Parle Tools.",
       id: "L&T & Emerson Verified",
-      icon: <ShieldCheck className="h-5 w-5 text-[#C46A2D]" strokeWidth={1.5} />,
+      icon: <ShieldCheck className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
     },
   ];
 
@@ -86,6 +87,8 @@ export default function QualityClient() {
 
   // 2. Load animations (Run once)
   useGSAP(() => {
+    if (!shouldAnimate()) return;
+
     gsap.from(".qual-header-item", {
       opacity: 0,
       y: 15,
@@ -110,6 +113,8 @@ export default function QualityClient() {
 
   // 3. ScrollTrigger Horizontal scroll (Depends on canScroll)
   useGSAP(() => {
+    if (!shouldAnimate()) return;
+
     const track = scrollTrackRef.current;
     const container = pinRef.current;
 
@@ -135,6 +140,8 @@ export default function QualityClient() {
     return () => st.kill(true);
   }, { scope: containerRef, dependencies: [canScroll] });
 
+  const animEnabled = typeof window !== "undefined" ? shouldAnimate() : true;
+
   return (
     <div ref={containerRef} className="bg-brand-bg min-h-screen">
       
@@ -143,21 +150,21 @@ export default function QualityClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Page Header */}
-          <div className="border-l-2 border-[#C46A2D] pl-6 mb-24 qual-header-item">
-            <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
+          <div className="border-l-2 border-[#D9893A] pl-6 mb-24 qual-header-item">
+            <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ TECHNICAL STANDARDS ]
             </span>
-            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#151515] uppercase tracking-wide">
+            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide">
               Quality Assurance
             </h1>
           </div>
 
           {/* Certifications Block */}
           <div className="mb-12">
-            <span className="text-[10px] font-mono font-bold text-[#666666] tracking-[0.2em] uppercase block mb-2">
+            <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.2em] uppercase block mb-2">
               [ COMPLIANCE REGISTRY ]
             </span>
-            <h2 className="font-heading text-3xl font-bold text-[#151515] uppercase tracking-wide border-b border-[#D9D9D9] pb-4 mb-8">
+            <h2 className="font-heading text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8">
               Registration & Certifications
             </h2>
             
@@ -166,21 +173,21 @@ export default function QualityClient() {
               {certifications.map((cert, idx) => (
                 <div
                   key={idx}
-                  className="cert-row border-t border-[#D9D9D9] pt-6 flex flex-col justify-between h-full"
+                  className="cert-row border-t border-[#D7DDE5] pt-6 flex flex-col justify-between h-full premium-card-hover"
                 >
                   <div className="space-y-4">
                     <div className="text-slate-700">
                       {cert.icon}
                     </div>
-                    <h3 className="font-heading font-bold text-[#151515] text-lg uppercase tracking-wide">
+                    <h3 className="font-heading font-bold text-[#161616] text-lg uppercase tracking-wide">
                       {cert.title}
                     </h3>
-                    <p className="text-[#666666] text-xs leading-relaxed font-medium">
+                    <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
                       {cert.desc}
                     </p>
                   </div>
                   <div className="pt-6 mt-4">
-                    <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-wider block">
                       ID: {cert.id}
                     </span>
                   </div>
@@ -195,46 +202,48 @@ export default function QualityClient() {
       {/* 2. Process Timeline (Horizontal Scroll on white background canvas) */}
       <div 
         ref={pinRef} 
-        className="min-h-screen flex flex-col justify-center bg-white relative overflow-hidden border-y border-[#D9D9D9] py-16"
+        className={`min-h-screen flex flex-col justify-center bg-white relative overflow-hidden border-y border-[#D7DDE5] py-16 ${
+          !animEnabled ? "h-auto min-h-0" : ""
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full shrink-0 mb-16">
-          <div className="border-l-2 border-[#C46A2D] pl-6">
-            <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
+          <div className="border-l-2 border-[#D9893A] pl-6">
+            <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
-            <h2 className="font-heading text-4xl font-bold text-[#151515] uppercase tracking-wide">
+            <h2 className="font-heading text-4xl font-bold text-[#161616] uppercase tracking-wide">
               Our 4-Stage Quality Process
             </h2>
           </div>
         </div>
 
         {/* Horizontal track container */}
-        <div className="w-full overflow-hidden">
+        <div className={`w-full ${animEnabled ? "overflow-hidden" : "overflow-x-auto scroll-smooth pb-6"}`}>
           <div 
             ref={scrollTrackRef} 
-            className={`flex gap-16 px-8 sm:px-16 ${canScroll ? "" : "justify-center"}`}
+            className={`flex gap-16 px-8 sm:px-16 ${canScroll && animEnabled ? "" : "md:justify-center"}`}
           >
             {processes.map((p, idx) => (
               <div
                 key={idx}
-                className="proc-block w-[300px] sm:w-[400px] shrink-0 border-l-2 border-[#C46A2D] pl-8 py-4 font-sans"
+                className="proc-block w-[300px] sm:w-[400px] shrink-0 border-l-2 border-[#D9893A] pl-8 py-4 font-sans"
               >
                 <div className="space-y-6">
                   {/* Step Marker */}
-                  <div className="flex justify-between items-center border-b border-[#D9D9D9] pb-3">
-                    <span className="font-heading text-4xl font-black text-[#C46A2D] tracking-tight leading-none">
+                  <div className="flex justify-between items-center border-b border-[#D7DDE5] pb-3">
+                    <span className="font-heading text-4xl font-black text-[#D9893A] tracking-tight leading-none">
                       STAGE {p.step}
                     </span>
-                    <span className="font-mono text-[9px] text-[#666666] uppercase tracking-wider">
+                    <span className="font-mono text-[9px] text-[#5E6673] uppercase tracking-wider">
                       SPEC_AUDIT
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl font-bold text-[#151515] uppercase tracking-wide">
+                  <h3 className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide">
                     {p.title}
                   </h3>
                   
-                  <p className="text-[#666666] text-xs sm:text-sm leading-relaxed font-medium">
+                  <p className="text-[#5E6673] text-xs sm:text-sm leading-relaxed font-medium">
                     {p.desc}
                   </p>
                 </div>
@@ -247,3 +256,5 @@ export default function QualityClient() {
     </div>
   );
 }
+
+

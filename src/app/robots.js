@@ -8,3 +8,5 @@ export default function robots() {
     sitemap: "https://uookaymechindustries.com/sitemap.xml",
   };
 }
+
+

@@ -1,12 +1,12 @@
 export default function manifest() {
   return {
-    name: "UOO KAY MECH INDUSTRIES",
-    short_name: "UooKayMech",
-    description: "Precision Machined Components, Machine Safety Guards, Industrial Ladders, and Structural Fabrication in Maharashtra, India.",
+    name: "UOO Kay Mech Industries",
+    short_name: "UOO Kay Mech",
+    description: "UOO Kay Mech Industries provides industrial fabrication, precision machining, stainless steel fabrication, tooling, dies, fixtures and custom engineering solutions.",
     start_url: "/",
     display: "standalone",
-    background_color: "#F9FAFB",
-    theme_color: "#1B3A6B",
+    background_color: "#F6F7F8",
+    theme_color: "#17375E",
     icons: [
       {
         src: "/favicon.ico",
@@ -16,3 +16,5 @@ export default function manifest() {
     ],
   };
 }
+
+

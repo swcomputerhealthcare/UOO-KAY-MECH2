@@ -1,649 +1,971 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Wrench, Settings, Layers, Cpu } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { shouldAnimate } from "@/lib/animations";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
+  gsap.registerPlugin(ScrollTrigger);
 }
 
+const CAPABILITIES = [
+  {
+    title: "Precision Tooling & Dies",
+    subtitle: "Custom dies, punches, and engineering solutions",
+    description: "Manufacturing custom dies, tooling assemblies, punch components and precision engineered solutions for industrial applications.",
+    heroImage: "/images/products/Flange Punch Dies.webp",
+    images: [
+      "/images/products/Flange Punch Dies.webp",
+      "/images/products/Weep Tube Cup Punch Set.webp",
+      "/images/products/Precision Punch & Die Components.webp",
+      "/images/products/Cup Forming Die Assembly.webp"
+    ],
+    specs: {
+      tolerances: "±0.01 mm (10 microns)",
+      materials: "D2, H13, O1 Tool Steels, Tungsten Carbide, Alloy Steel",
+      operations: "CNC Milling, Wire Cut EDM, Jig Grinding, Precision Lathe Turning",
+      hardness: "58 - 62 HRC (Vacuum Hardened & Double Tempered)",
+      applications: "Automotive press tools, sheet metal packaging, weep tube cup punch sets, forming tools."
+    }
+  },
+  {
+    title: "Precision Machined Components",
+    subtitle: "High-tolerance CNC machined industrial parts",
+    description: "Custom metal parts machined with high linear and dimensional accuracy on CNC machining centres, turning centres, and conventional mills.",
+    heroImage: "/images/products/Precision Machined Block.webp",
+    images: [
+      "/images/products/Precision Machined Block.webp",
+      "/images/products/Split Clamp.webp",
+      "/images/products/Threaded Roller Precision Roller.webp",
+      "/images/products/Machined Hinge Component.webp"
+    ],
+    specs: {
+      tolerances: "±0.005 mm (5 microns)",
+      materials: "AISI 4140 Alloy Steel, SS304/316, Al 6082-T6, Delrin/Nylon",
+      operations: "3-Axis CNC Machining, CNC Turning, Radial Hole Drilling, Thread Milling",
+      hardness: "Per client drawing (Case hardening, nitriding available)",
+      applications: "Crane pinion shafts, custom block clamps, actuator housings, slider carriages."
+    }
+  },
+  {
+    title: "Brass & Non-Ferrous Components",
+    subtitle: "High precision turned brass and copper parts",
+    description: "High precision brass and non-ferrous machined components manufactured to customer specifications.",
+    heroImage: "/images/products/Brass Machined Bushes.webp",
+    images: [
+      "/images/products/Brass Machined Bushes.webp",
+      "/images/products/Custom Brass Bushings.webp",
+      "/images/products/Brass Fabricated Bracket.webp"
+    ],
+    specs: {
+      tolerances: "±0.015 mm",
+      materials: "Free Cutting Brass (IS 319), CZ121, Bronze Alloys (PB1/PB2), Copper",
+      operations: "High-speed auto sliding-head turning, CNC turning & milling",
+      hardness: "Natural brass hardness, heat treatment as required",
+      applications: "Threaded bushings, contact terminals, custom brass pins, fabricated brass brackets."
+    }
+  },
+  {
+    title: "Industrial Fabrication",
+    subtitle: "Heavy duty steel fabrication and workshop equipment",
+    description: "Bespoke welding, structural framing, bending, cutting, and assembly of heavy industrial fixtures.",
+    heroImage: "/images/products/Industrial Machine Enclosure.webp",
+    images: [
+      "/images/products/Industrial Machine Enclosure.webp",
+      "/images/products/Stainless Steel Blind Flange.webp",
+      "/images/products/Fabricated Access Ladder.webp",
+      "/images/products/Material Handling Storage Trolley.webp",
+      "/images/products/Bench Grinder Workstation.webp"
+    ],
+    specs: {
+      tolerances: "±1.0 mm (General Fabrication)",
+      materials: "IS 2062 Mild Steel, High-gauge Sheet Metal, Structural steel channels",
+      operations: "AWS D1.1 Welding, Laser cutting, CNC Press brake bending, assembly",
+      hardness: "Not applicable (Coated/primed finishes)",
+      applications: "Heavy machine enclosures, warehouse access ladders, material storage trolleys, custom workstations."
+    }
+  },
+  {
+    title: "Stainless Steel Fabrication",
+    subtitle: "Food & pharma-grade corrosion resistant structures",
+    description: "Stainless steel fabrication including worktables, tank supports, and enclosures built for hygienic and industrial environments.",
+    heroImage: "/images/products/Stainless Steel Work Table.webp",
+    images: [
+      "/images/products/Stainless Steel Work Table.webp",
+      "/images/products/Tank Cladding.webp",
+      "/images/products/Fabricated Stainless Assembly.webp",
+      "/images/products/Display Stand Structure.webp"
+    ],
+    specs: {
+      tolerances: "±0.5 mm on sheet metal structures",
+      materials: "Grade 304, 304L, 316, 316L Stainless Steel",
+      operations: "GTAW (TIG) Welding with argon purging, sheet metal bending, polishing",
+      hardness: "Not applicable (Finishes: Brushed, 240-grit, mirror polish)",
+      applications: "Pharma-grade tables, tank supports, custom stainless steel enclosures, display stands."
+    }
+  },
+  {
+    title: "Custom Engineering Structures",
+    subtitle: "Heavy structural foundations and frames",
+    description: "Heavy structural frameworks, machine base frames, mounting assemblies, and custom support jigs designed for heavy equipment integration.",
+    heroImage: "/images/products/Machine Base Frame.webp",
+    images: [
+      "/images/products/Machine Base Frame.webp",
+      "/images/products/Fabricated Structures.webp",
+      "/images/products/Industrial Support Frames.webp",
+      "/images/products/Custom Engineering Assemblies.webp"
+    ],
+    specs: {
+      tolerances: "±0.5 mm on mounting points",
+      materials: "IS 2062 Structural Steel, Tubing, Heavy Plate profiles",
+      operations: "Heavy MIG/TIG welding, structural alignment checks, precision drilling",
+      hardness: "Epoxy primer + Polyurethane industrial paint",
+      applications: "Machine base frames, structural fabrication supports, mounting frames, locks."
+    }
+  },
+  {
+    title: "Fixtures & Special Purpose Components",
+    subtitle: "Precision jigs, welding fixtures, and anchor systems",
+    description: "Custom engineered fixtures, anchor bolts, machined rings, and special purpose mechanical assemblies.",
+    heroImage: "/images/products/Threaded Tooling Fixture.webp",
+    images: [
+      "/images/products/Threaded Tooling Fixture.webp",
+      "/images/products/Industrial Fixtures.webp",
+      "/images/products/Machined Rings.webp",
+      "/images/products/Special Purpose Components.webp"
+    ],
+    specs: {
+      tolerances: "±0.02 mm (alignment and spacing)",
+      materials: "En8, En24, AISI 1045, wear-resistant steel",
+      operations: "Jig boring, wire EDM, precision surface grinding, dimensional validation",
+      hardness: "Treated surface hardening or natural finishes",
+      applications: "Anchor bolts, guide rings, custom machinery forks, industrial holding fixtures."
+    }
+  }
+];
+
 export default function ProductsClient() {
+  const [activeDrawer, setActiveDrawer] = useState(null);
   const containerRef = useRef(null);
+  const triggerRef = useRef(null);
+  const horizontalRef = useRef(null);
+
+  // Stop page scroll when drawer is open
+  useEffect(() => {
+    if (activeDrawer !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeDrawer]);
 
   useGSAP(() => {
-    // Symmetrical subtle reveals
-    gsap.fromTo(".prod-header-item",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out"
-      }
-    );
+    if (!horizontalRef.current || !triggerRef.current) return;
 
-    gsap.fromTo(".prod-tabs-bar",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: 0.15
-      }
-    );
+    const scrollWidth = horizontalRef.current.scrollWidth;
+    const totalScroll = scrollWidth - window.innerWidth;
 
-    const sections = gsap.utils.toArray(".prod-section-card");
+    // 1. Pinned Horizontal Scrolling Timeline
+    const pinTween = gsap.to(horizontalRef.current, {
+      x: -totalScroll,
+      ease: "none",
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        pin: true,
+        scrub: 0.5,
+        start: "top top",
+        end: () => `+=${totalScroll}`,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    // 2. Controlled Scroll-Triggered Transitions inside each slide
+    const sections = gsap.utils.toArray(".capability-slide");
     sections.forEach((sec) => {
-      gsap.fromTo(sec,
-        { opacity: 0, y: 30 },
-        {
+      if (!shouldAnimate()) {
+        gsap.set(sec.querySelectorAll(".reveal-label, .reveal-heading, .reveal-desc, .reveal-cta, .reveal-image-item"), {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          ease: "power2.out",
+          scale: 1
+        });
+        return;
+      }
+
+      const label = sec.querySelector(".reveal-label");
+      const heading = sec.querySelector(".reveal-heading");
+      const desc = sec.querySelector(".reveal-desc");
+      const cta = sec.querySelector(".reveal-cta");
+      const images = sec.querySelectorAll(".reveal-image-item");
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sec,
+          containerAnimation: pinTween,
+          start: "left 45%",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      // Label reveals first
+      if (label) tl.fromTo(label, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0);
+      // Heading reveals second
+      if (heading) tl.fromTo(heading, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.06);
+      // Description reveals third
+      if (desc) tl.fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 0.12);
+      // CTA reveals fourth
+      if (cta) tl.fromTo(cta, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 }, 0.18);
+      // Image elements reveal in staggered sequence (scale 1.04 -> 1)
+      if (images.length) {
+        tl.fromTo(images,
+          { opacity: 0, scale: 1.04, y: 20 },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            stagger: 0.08,
+            duration: 0.6,
+            ease: "power2.out"
+          },
+          0.24
+        );
+      }
+    });
+
+    // Custom Scroll zoom for brass hero image (remains scrubbed)
+    if (shouldAnimate()) {
+      gsap.fromTo(".brass-hero-image",
+        { scale: 1.12 },
+        {
+          scale: 1,
+          ease: "none",
           scrollTrigger: {
-            trigger: sec,
-            start: "top 90%",
-            toggleActions: "play none none none"
+            trigger: "#capability-2",
+            containerAnimation: pinTween,
+            start: "left right",
+            end: "left left",
+            scrub: true,
           }
         }
       );
-    });
+    }
 
   }, { scope: containerRef });
 
+  const handleScrollToCapability = (index) => {
+    if (!containerRef.current || !horizontalRef.current) return;
+    const rect = triggerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const start = rect.top + scrollTop;
+    const totalDistance = horizontalRef.current.scrollWidth - window.innerWidth;
+    const targetScroll = start + (index / 6) * totalDistance + 3;
+    window.scrollTo({
+      top: targetScroll,
+      behavior: "smooth"
+    });
+  };
+
   return (
-    <div ref={containerRef} className="bg-brand-bg py-24 sm:py-32 relative overflow-hidden select-none">
+    <div ref={containerRef} className="bg-brand-bg relative overflow-x-hidden font-sans select-none">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Page Header */}
-        <div className="border-l-2 border-[#C46A2D] pl-6 mb-16">
-          <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
-            [ TECHNICAL DIRECTORY ]
+      {/* 1. STAGE ONE: Vertical Intro */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16 pb-24 border-b border-[#D7DDE5]/30">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em]">
+            [ UOO KAY MECH INDUSTRIES ]
           </span>
-          <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#151515] uppercase tracking-wide prod-header-item">
-            Products & Services
+          <span className="w-1.5 h-1.5 rounded-full bg-[#D9893A]" />
+          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-[0.25em]">
+            ENGINEERING SINCE 2004
+          </span>
+        </div>
+
+        <div className="border-l-4 border-[#17375E] pl-6 mb-16">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#161616] uppercase tracking-wide">
+            Capabilities & Catalog
           </h1>
+          <p className="text-[#5E6673] text-sm md:text-base leading-relaxed max-w-3xl mt-4 font-medium">
+            We manufacture premium precision tooling, machined components, and custom engineering structures. 
+            Scroll down to review each capability in our horizontal catalog or click direct index markers below.
+          </p>
         </div>
 
-        {/* 1. Category Quick Links (Sharp Rectangles) */}
-        <div className="border border-[#D9D9D9] p-2 bg-white mb-20 prod-tabs-bar">
-          <div className="flex flex-wrap gap-2.5">
-            {[
-              { id: "guards", title: "Machine Safety Guards" },
-              { id: "components", title: "Precision Machined Components" },
-              { id: "gears", title: "Gear Manufacturing" },
-              { id: "ladders", title: "Industrial Ladders" },
-              { id: "fabrication", title: "Structural Fabrication" }
-            ].map((cat) => (
-              <a
-                key={cat.id}
-                href={`#category-${cat.id}`}
-                className="bg-[#F6F5F3] hover:bg-[#EAE8E4] border border-[#D9D9D9] text-[#151515] font-heading font-bold text-xs px-6 py-3 transition-colors duration-200 uppercase tracking-wider"
-              >
-                {cat.title}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* 2. Detailed Categories Grid - Alternating Magazine Layout */}
-        <div className="space-y-32 mt-12 w-full font-sans">
-          
-          {/* CATEGORY 1: MACHINE SAFETY GUARDS */}
-          <section id="category-guards" className="prod-section-card scroll-mt-28 bg-white border-t-2 border-[#151515] py-16 px-6 sm:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-              
-              {/* Content Side */}
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-[10px] font-mono font-bold text-[#C46A2D] uppercase tracking-wider block">
-                  CATEGORY 01 / MACHINE SAFETY GUARDS
+        {/* Index Quick Links */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {CAPABILITIES.map((cap, i) => (
+            <button
+              key={i}
+              onClick={() => handleScrollToCapability(i)}
+              className="bg-white border border-[#D7DDE5] hover:border-[#17375E] p-6 text-left transition-all duration-300 group flex flex-col justify-between h-48 cursor-pointer premium-card-hover"
+            >
+              <div>
+                <span className="text-xs font-mono font-bold text-[#D9893A] block mb-2">
+                  [ 0{i + 1} ]
                 </span>
-                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#151515] uppercase tracking-tight">
-                  Operator Protection & Machine Safety
-                </h2>
-                <p className="text-[#666666] text-sm leading-relaxed max-w-xl font-medium">
-                  We engineer high-durability safety guards to shield machine operators from mechanical hazards and rotating parts. Manufactured strictly per custom machinery layouts using high-gauge sheet metal and heavy polycarbonate observation windows.
+                <div className="font-heading font-bold text-sm text-[#161616] uppercase tracking-wide group-hover:text-[#17375E] transition-colors">
+                  {cap.title}
+                </div>
+                <p className="text-[11px] text-[#5E6673] font-semibold mt-2 line-clamp-2 leading-relaxed">
+                  {cap.subtitle}
                 </p>
-
-                {/* Checklist (Simple Spec lines) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 pt-6 border-t border-[#D9D9D9]">
-                  <div className="flex gap-2">
-                    <span className="font-mono text-xs text-[#C46A2D] font-bold">[01]</span>
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">CNC Machine Guards</h4>
-                      <p className="text-[10px] text-[#666666] font-medium mt-0.5">Telescopic sliding guards with viewing ports</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="font-mono text-xs text-[#C46A2D] font-bold">[02]</span>
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">Safety Covers</h4>
-                      <p className="text-[10px] text-[#666666] font-medium mt-0.5">SS casing covers for flywheels & pulleys</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="font-mono text-xs text-[#C46A2D] font-bold">[03]</span>
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">Custom Guard Fab</h4>
-                      <p className="text-[10px] text-[#666666] font-medium mt-0.5">Bespoke enclosures per client drawings</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="font-mono text-xs text-[#C46A2D] font-bold">[04]</span>
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">Split Shield Assemblies</h4>
-                      <p className="text-[10px] text-[#666666] font-medium mt-0.5">Split acrylic shield guards with steel bushings</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-[#D9D9D9] flex items-center justify-between flex-wrap gap-4">
-                  <span className="text-[10px] text-[#666666] font-bold uppercase tracking-wider">
-                    RFQ: Custom size safety enclosures
-                  </span>
-                  <Link
-                    href="/contact?interest=Machine%20Safety%20Guards#contact-form"
-                    className="bg-[#C46A2D] hover:bg-[#A0531E] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 text-center"
-                  >
-                    Request Safety Guard Quote
-                  </Link>
-                </div>
               </div>
-
-              {/* Asymmetric Photo Stack (Editorial, no cards) */}
-              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <div className="border border-[#D9D9D9] p-1 bg-[#F6F5F3] relative h-48 overflow-hidden">
-                    <Image
-                      src="/images/products/Picture19.jpg"
-                      alt="SS safety guard cover"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-[#151515]/20" />
-                    <span className="absolute bottom-3 left-3 text-[9px] font-mono font-bold text-white bg-[#151515] px-2 py-0.5 uppercase tracking-wider">
-                      Safety Cover
-                    </span>
-                  </div>
-                  <div className="border border-[#D9D9D9] p-1 bg-[#F6F5F3] relative h-36 overflow-hidden">
-                    <Image
-                      src="/images/products/machines and fabricated components 1.jpg"
-                      alt="Split shield guard casing"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-[#151515]/20" />
-                    <span className="absolute bottom-3 left-3 text-[9px] font-mono font-bold text-white bg-[#151515] px-2 py-0.5 uppercase tracking-wider">
-                      Split Shield Casing
-                    </span>
-                  </div>
-                </div>
-                <div className="space-y-4 pt-8">
-                  <div className="border border-[#D9D9D9] p-1 bg-[#F6F5F3] relative h-44 overflow-hidden">
-                    <Image
-                      src="/images/products/Picture14.jpg"
-                      alt="CNC Machine operator cabin enclosure"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-[#151515]/20" />
-                    <span className="absolute bottom-3 left-3 text-[9px] font-mono font-bold text-white bg-[#151515] px-2 py-0.5 uppercase tracking-wider">
-                      CNC Cabin
-                    </span>
-                  </div>
-                  <div className="border border-[#D9D9D9] p-1 bg-[#F6F5F3] relative h-40 overflow-hidden">
-                    <Image
-                      src="/images/products/Picture12.jpg"
-                      alt="Double-wheel grinder safety shields"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-[#151515]/20" />
-                    <span className="absolute bottom-3 left-3 text-[9px] font-mono font-bold text-white bg-[#151515] px-2 py-0.5 uppercase tracking-wider">
-                      Grinder Shield
-                    </span>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2 text-[10px] font-mono font-bold text-[#17375E] uppercase tracking-wider group-hover:translate-x-1.5 transition-transform duration-300 mt-4">
+                JUMP TO SECTION <ArrowRight className="h-3 w-3 text-[#D9893A]" />
               </div>
-
-            </div>
-          </section>
-
-          {/* CATEGORY 2: PRECISION MACHINED COMPONENTS */}
-          <section id="category-components" className="prod-section-card scroll-mt-28 bg-white border-t-2 border-[#151515] py-16 px-6 sm:px-12">
-            <div className="space-y-8">
-              
-              {/* Section Header */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#D9D9D9] pb-8">
-                <div className="space-y-4">
-                  <span className="text-[10px] font-mono font-bold text-[#C46A2D] uppercase tracking-wider block">
-                    CATEGORY 02 / PRECISION MACHINED COMPONENTS
-                  </span>
-                  <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#151515] uppercase tracking-tight">
-                    High-Tolerance Machined Parts
-                  </h2>
-                  <p className="text-[#666666] text-sm max-w-2xl font-medium leading-relaxed">
-                    Custom metal parts machined with high linear and dimensional accuracy on CNC machining centres, turning centres, and conventional mills. Handled with absolute inspection tracking for Tier-1 buyers.
-                  </p>
-                </div>
-                <Link
-                  href="/contact?interest=Precision%20Machined%20Components#contact-form"
-                  className="bg-[#C46A2D] hover:bg-[#A0531E] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 text-center shrink-0"
-                >
-                  Submit CAD Drawings
-                </Link>
-              </div>
-
-              {/* Symmetrical Outline grid of components (No cards) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                {/* Part 1: Weep Cups */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-44 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/weep tubes cup.jpg"
-                        alt="Turned weep cups stack"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-sm text-[#151515] uppercase tracking-wide">Weep Tubes & Cups</h4>
-                    <p className="text-xs text-[#666666] font-semibold mt-1">Stack of highly polished turned stainless steel weep cups, precision drilled.</p>
-                  </div>
-                </div>
-
-                {/* Part 2: Crane Shafts */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-44 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/machine and fabricated component.jpg"
-                        alt="Precision machined weep shaft"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-sm text-[#151515] uppercase tracking-wide">Crane & Pinion Shafts</h4>
-                    <p className="text-xs text-[#666666] font-semibold mt-1">High-tensile steel shafts machined with custom radial weep holes and slots.</p>
-                  </div>
-                </div>
-
-                {/* Part 3: Expanders */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-44 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture26.jpg"
-                        alt="Machined metal expander"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-sm text-[#151515] uppercase tracking-wide">Bespoke Expanders</h4>
-                    <p className="text-xs text-[#666666] font-semibold mt-1">Solid high-tensile steel expander/coupling adapter with a beautiful turned finish.</p>
-                  </div>
-                </div>
-
-                {/* Part 4: Seal Plates */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-44 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture25.jpg"
-                        alt="Machined seal ring flange"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-sm text-[#151515] uppercase tracking-wide">Seal Plates & Flanges</h4>
-                    <p className="text-xs text-[#666666] font-semibold mt-1">Machined circular ring flange with mounting ears and guide slots.</p>
-                  </div>
-                </div>
-
-                {/* Part 5: Guideway Assembly */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-44 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture20.png"
-                        alt="Linear slide carriage block assembly"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-sm text-[#151515] uppercase tracking-wide">Custom Machined Assemblies</h4>
-                    <p className="text-xs text-[#666666] font-semibold mt-1">Aluminium block structure assembled with linear guide rails and carriage slider blocks.</p>
-                  </div>
-                </div>
-
-                {/* Part 6: Chain Mounting Bolts */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-44 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture22.jpg"
-                        alt="Forked threaded chain mounting bolts"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-sm text-[#151515] uppercase tracking-wide">Chain Mounting Bolts</h4>
-                    <p className="text-xs text-[#666666] font-semibold mt-1">High-tensile threaded fork mounting bolts finished with black oxide coating.</p>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </section>
-
-          {/* CATEGORY 3: GEAR MANUFACTURING */}
-          <section id="category-gears" className="prod-section-card scroll-mt-28 bg-white border-t-2 border-[#151515] py-16 px-6 sm:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-              
-              {/* Technical Drawing Blueprint (Softer drawing visual style) */}
-              <div className="lg:col-span-5 bg-[#151515] text-white p-8 border border-[#D9D9D9] h-[340px] flex flex-col justify-between select-none font-mono">
-                {/* Header */}
-                <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                  <div className="flex items-center gap-2">
-                    <Cpu className="h-4 w-4 text-[#C46A2D]" strokeWidth={1.5} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-white">Tooth Profile Schema</span>
-                  </div>
-                  <span className="text-[8px] text-[#666666]">DWG NO: UKM_G2026</span>
-                </div>
-
-                {/* Blueprint graphic */}
-                <div className="my-auto flex items-center justify-center relative py-6">
-                  {/* Outer circle gears sketch */}
-                  <div className="w-36 h-36 rounded-full border border-dashed border-[#C46A2D]/40 flex items-center justify-center relative animate-spin" style={{ animationDuration: "30s" }}>
-                    {[...Array(12)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-2 h-4 bg-[#C46A2D]/30 rounded-sm"
-                        style={{
-                          transform: `rotate(${i * 30}deg) translateY(-72px)`,
-                          transformOrigin: "center 8px"
-                        }}
-                      />
-                    ))}
-                    <div className="w-24 h-24 rounded-full border border-white/10 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full border border-dashed border-[#C46A2D]/40 flex items-center justify-center">
-                        <div className="w-4 h-4 rounded-full bg-[#C46A2D]/20 border border-[#C46A2D]/50" />
-                      </div>
-                    </div>
-                  </div>
-                  {/* Index markings */}
-                  <div className="absolute text-[8px] text-[#C46A2D] top-0 left-4">Module: M3.5</div>
-                  <div className="absolute text-[8px] text-[#C46A2D] bottom-0 right-4">Tooth Profile: 20° PA</div>
-                </div>
-
-                {/* Footer spec */}
-                <div className="border-t border-white/10 pt-4 flex justify-between text-[8px] text-[#666666]">
-                  <span>Tolerance: ±0.02 mm</span>
-                  <span>Calibrated Check</span>
-                </div>
-              </div>
-
-              {/* Content Side */}
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-[10px] font-mono font-bold text-[#C46A2D] uppercase tracking-wider block">
-                  CATEGORY 03 / GEAR MANUFACTURING
-                </span>
-                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#151515] uppercase tracking-tight">
-                  Precision Gear Hobbing & Cutting
-                </h2>
-                <p className="text-[#666666] text-sm leading-relaxed max-w-xl font-medium">
-                  We provide precision gear cutting, slotting, and hobbing services for quiet power transmission and long service life. Available in external spur gears, custom gearsets, pinions, and internal splines machined from alloy steel, brass, or industrial nylon.
-                </p>
-
-                {/* Item specs list */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-[#D9D9D9]">
-                  <div className="space-y-1">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C46A2D]" />
-                      Spur Gears
-                    </h4>
-                    <p className="text-[10px] text-[#666666] font-medium pl-3.5">Standard external and internal tooth profiles</p>
-                  </div>
-                  <div className="space-y-1">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C46A2D]" />
-                      Custom Gearsets
-                    </h4>
-                    <p className="text-[10px] text-[#666666] font-medium pl-3.5">Cut per module drawing specifications</p>
-                  </div>
-                  <div className="space-y-1">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C46A2D]" />
-                      Pinions & Splines
-                    </h4>
-                    <p className="text-[10px] text-[#666666] font-medium pl-3.5">Internal and external keyway splines</p>
-                  </div>
-                  <div className="space-y-1">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-[#C46A2D]" />
-                      Nylon Gears
-                    </h4>
-                    <p className="text-[10px] text-[#666666] font-medium pl-3.5">Quiet running light transmission gears</p>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-[#D9D9D9] flex items-center justify-between flex-wrap gap-4">
-                  <span className="text-[10px] text-[#666666] font-bold uppercase tracking-wider">
-                    RFQ: Spur gear hobbing solutions
-                  </span>
-                  <Link
-                    href="/contact?interest=Gear%20Manufacturing#contact-form"
-                    className="bg-[#C46A2D] hover:bg-[#A0531E] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 text-center"
-                  >
-                    Get Gear Pricing
-                  </Link>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          {/* CATEGORY 4: INDUSTRIAL LADDERS */}
-          <section id="category-ladders" className="prod-section-card scroll-mt-28 bg-white border-t-2 border-[#151515] py-16 px-6 sm:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-              
-              {/* Content Side */}
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-[10px] font-mono font-bold text-[#C46A2D] uppercase tracking-wider block">
-                  CATEGORY 04 / INDUSTRIAL LADDERS
-                </span>
-                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#151515] uppercase tracking-tight">
-                  Safety Ladders & Work Platforms
-                </h2>
-                <p className="text-[#666666] text-sm leading-relaxed max-w-xl font-medium">
-                  We design and fabricate robust, heavy-duty industrial safety ladders. Specially built for warehouses, machinery mounts, and chemical plants, using high-load structural steel and anti-slip stair rungs.
-                </p>
-
-                {/* Symmetrical Outline Boxes (No cards) */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[#D9D9D9]">
-                  <div className="space-y-2 border border-[#D9D9D9] p-4 bg-transparent">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase">Mild Steel</h4>
-                    <p className="text-[10px] text-[#666666] font-medium leading-relaxed">Heavy welded MS structural steel with anti-rust primers.</p>
-                  </div>
-                  <div className="space-y-2 border border-[#D9D9D9] p-4 bg-transparent">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase">Stainless Steel</h4>
-                    <p className="text-[10px] text-[#666666] font-medium leading-relaxed">Corrosion resistant SS304/316 ladders for chemical plants.</p>
-                  </div>
-                  <div className="space-y-2 border border-[#D9D9D9] p-4 bg-transparent">
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase">Aluminium</h4>
-                    <p className="text-[10px] text-[#666666] font-medium leading-relaxed">Lightweight mobile safety ladders with platform wheels.</p>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-[#D9D9D9] flex items-center justify-between flex-wrap gap-4">
-                  <span className="text-[10px] text-[#666666] font-bold uppercase tracking-wider">
-                    RFQ: Custom safety work platforms
-                  </span>
-                  <Link
-                    href="/contact?interest=Industrial%20Ladders#contact-form"
-                    className="bg-[#C46A2D] hover:bg-[#A0531E] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 text-center"
-                  >
-                    Request Ladder Quote
-                  </Link>
-                </div>
-              </div>
-
-              {/* Photo Column - Safety Platform Ladder (Symmetrical outline) */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="border border-[#D9D9D9] p-1 bg-[#F6F5F3] w-full max-w-[340px]">
-                  <div className="relative w-full h-[440px] overflow-hidden">
-                    <Image
-                      src="/images/products/Picture13.jpg"
-                      alt="Tall platform warehouse safety ladder"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 30vw"
-                    />
-                    <div className="absolute inset-0 bg-[#151515]/20" />
-                    <span className="absolute bottom-4 left-4 text-[9px] font-mono font-bold text-white bg-[#151515] px-3 py-1 uppercase tracking-wider border border-white/10">
-                      Mobile Platform Ladder
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          {/* CATEGORY 5: STRUCTURAL FABRICATION */}
-          <section id="category-fabrication" className="prod-section-card scroll-mt-28 bg-white border-t-2 border-[#151515] py-16 px-6 sm:px-12">
-            <div className="space-y-8">
-              
-              {/* Header */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#D9D9D9] pb-8">
-                <div className="space-y-4">
-                  <span className="text-[10px] font-mono font-bold text-[#C46A2D] uppercase tracking-wider block">
-                    CATEGORY 05 / STRUCTURAL FABRICATION
-                  </span>
-                  <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#151515] uppercase tracking-tight">
-                    Custom Steel & Sheet Metal Fabrication
-                  </h2>
-                  <p className="text-[#666666] text-sm max-w-2xl font-medium leading-relaxed">
-                    Bespoke welding, structural framing, bending, cutting, and assembly of heavy industrial fixtures. Built in full conformance with drawing tolerances and structural loading codes.
-                  </p>
-                </div>
-                <Link
-                  href="/contact?interest=Structural%20Fabrication#contact-form"
-                  className="bg-[#C46A2D] hover:bg-[#A0531E] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 text-center shrink-0"
-                >
-                  Inquire for Fabrication
-                </Link>
-              </div>
-
-              {/* Fabrication Items Grid (Symmetrical outlines) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                {/* Fab 1: SS Trolley */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-40 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture18.jpg"
-                        alt="SS Industrial Trolley"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">SS Industrial Trolleys</h4>
-                    <p className="text-[10px] text-[#666666] font-semibold mt-1">Stainless steel work floor trolleys with handles and heavy castor wheels.</p>
-                  </div>
-                </div>
-
-                {/* Fab 2: Industrial Workbench Table */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-40 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture16.png"
-                        alt="Industrial Workbench Table"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">Industrial Workbench Tables</h4>
-                    <p className="text-[10px] text-[#666666] font-semibold mt-1">Powder coated rigid steel worktables built with lower storage shelves.</p>
-                  </div>
-                </div>
-
-                {/* Fab 3: Protective Cage */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-40 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/Picture17.jpg"
-                        alt="Tank structural support cage"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">Structural Support Cages</h4>
-                    <p className="text-[10px] text-[#666666] font-semibold mt-1">Welded steel safety framing cages built to encase massive storage tanks.</p>
-                  </div>
-                </div>
-
-                {/* Fab 4: Perforated Cylinder */}
-                <div className="border border-[#D9D9D9] p-4 flex flex-col justify-between bg-transparent">
-                  <div className="relative w-full h-40 border border-[#D9D9D9] p-0.5 bg-[#F6F5F3] mb-4">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/products/machine and fabricated component4.jpg"
-                        alt="Perforated steel cylinder screen"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-bold text-xs text-[#151515] uppercase tracking-wide">Perforated Cylinders</h4>
-                    <p className="text-[10px] text-[#666666] font-semibold mt-1">Rolled perforated sheet metal screen filters with solid end collars.</p>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </section>
-
+            </button>
+          ))}
         </div>
       </div>
+
+      {/* 2. STAGE TWO: Pinned Horizontal Showcase */}
+      <div ref={triggerRef} className="relative w-full overflow-hidden bg-[#F6F7F8]">
+        <div 
+          ref={horizontalRef} 
+          className="flex flex-row flex-nowrap"
+          style={{ width: "700vw" }}
+        >
+          {CAPABILITIES.map((cap, index) => {
+            const isDark = index === 5;
+            
+            return (
+              <section
+                id={`capability-${index}`}
+                key={index}
+                className={`w-screen h-[calc(100vh-64px)] md:h-[calc(100vh-104px)] flex-shrink-0 flex items-center justify-center border-r border-[#D7DDE5]/30 relative px-6 md:px-16 lg:px-24 py-8 capability-slide ${
+                  isDark ? "bg-[#17375E]" : "bg-[#F6F7F8]"
+                }`}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center w-full max-w-7xl mx-auto h-full overflow-y-auto md:overflow-hidden no-scrollbar">
+                  
+                  {/* --- CAPABILITY 01: Precision Tooling & Dies --- */}
+                  {index === 0 && (
+                    <>
+                      {/* Left: Large Image */}
+                      <div className="col-span-1 md:col-span-6 h-[35vh] md:h-[65vh] relative rounded-[24px] overflow-hidden border border-[#D7DDE5] bg-white shadow-sm reveal-image-item opacity-0 will-change-transform">
+                        <Image
+                          src={cap.heroImage}
+                          alt="Custom dies and punch tooling component by UOO Kay Mech Industries"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 45vw"
+                          priority
+                        />
+                      </div>
+                      {/* Right: Content & Sequential Images */}
+                      <div className="col-span-1 md:col-span-6 flex flex-col justify-center space-y-6">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 01
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#5E6673] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        {/* Staggered sequential tooling images */}
+                        <div className="grid grid-cols-3 gap-3 pt-2">
+                          {cap.images.slice(1).map((img, tIdx) => (
+                            <div key={tIdx} className="relative aspect-square rounded-[16px] overflow-hidden border border-[#D7DDE5] bg-white reveal-image-item opacity-0 will-change-transform">
+                              <Image
+                                src={img}
+                                alt={`Precision tooling die set component detail ${tIdx + 1} manufactured by UOO Kay Mech Industries`}
+                                fill
+                                className="object-cover"
+                                sizes="15vw"
+                                loading="lazy"
+                              />
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-[#D9893A] hover:text-[#c57529] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-[#D9893A] group-hover:border-[#c57529] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* --- CAPABILITY 02: Precision Machined Components --- */}
+                  {index === 1 && (
+                    <>
+                      {/* Left: Content */}
+                      <div className="col-span-1 md:col-span-5 flex flex-col justify-center space-y-6">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 02
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#5E6673] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-[#D9893A] hover:text-[#c57529] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-[#D9893A] group-hover:border-[#c57529] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      {/* Right: Engineered 2x2 Industrial Grid */}
+                      <div className="col-span-1 md:col-span-7 flex items-center justify-center w-full">
+                        <div className="grid grid-cols-2 gap-4 md:gap-5 w-full max-w-[680px]">
+                          {/* Left Column: Main Large Image */}
+                          <div className="col-span-2 md:col-span-1 h-[220px] md:h-[380px] relative rounded-[24px] overflow-hidden border border-[#17375E]/12 bg-white shadow-sm reveal-image-item opacity-0 will-change-transform">
+                            <Image
+                              src={cap.images[0]}
+                              alt="Precision machined steel block component with tight linear tolerances by UOO Kay Mech Industries"
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, 30vw"
+                              loading="lazy"
+                            />
+                            <div className="absolute bottom-3 left-3 bg-[#161616]/80 text-white font-mono text-[9px] px-2 py-0.5 rounded uppercase tracking-wider">
+                              Main machined block
+                            </div>
+                          </div>
+
+                          {/* Right Column: 2x2 Supporting Sub-Grid */}
+                          <div className="col-span-2 md:col-span-1 grid grid-cols-2 gap-4 md:gap-5 h-full">
+                            <div className="h-[150px] md:h-[180px] relative rounded-[24px] overflow-hidden border border-[#17375E]/12 bg-white shadow-sm reveal-image-item opacity-0 will-change-transform col-span-1">
+                              <Image
+                                src={cap.images[1]}
+                                alt="Precision CNC machined split clamp component by UOO Kay Mech Industries"
+                                fill
+                                className="object-cover"
+                                sizes="15vw"
+                                loading="lazy"
+                              />
+                            </div>
+                            
+                            <div className="h-[150px] md:h-[180px] relative rounded-[24px] overflow-hidden border border-[#17375E]/12 bg-white shadow-sm reveal-image-item opacity-0 will-change-transform col-span-1">
+                              <Image
+                                src={cap.images[2]}
+                                alt="Heavy-duty threaded precision roller component by UOO Kay Mech Industries"
+                                fill
+                                className="object-cover"
+                                sizes="15vw"
+                                loading="lazy"
+                              />
+                            </div>
+
+                            <div className="h-[150px] md:h-[180px] relative rounded-[24px] overflow-hidden border border-[#17375E]/12 bg-white shadow-sm reveal-image-item opacity-0 will-change-transform col-span-1">
+                              <Image
+                                src={cap.images[3]}
+                                alt="CNC turned machined hinge component by UOO Kay Mech Industries"
+                                fill
+                                className="object-cover"
+                                sizes="15vw"
+                                loading="lazy"
+                              />
+                            </div>
+
+                            {/* Technical Specs Info Box */}
+                            <div className="h-[150px] md:h-[180px] rounded-[24px] border border-[#17375E]/12 bg-[#F6F7F8] p-4 flex flex-col justify-between reveal-image-item opacity-0 will-change-transform col-span-1 shadow-sm font-mono text-[10px]">
+                              <div>
+                                <span className="text-[#D9893A] font-bold block mb-1">
+                                  [ UKM-SPEC ]
+                                </span>
+                                <span className="text-[#5E6673] uppercase tracking-wider block text-[8px] font-semibold">
+                                  Tolerance Rating
+                                </span>
+                                <span className="text-[#161616] font-bold block text-xs">
+                                  ±0.005 mm
+                                </span>
+                              </div>
+                              <div className="border-t border-[#17375E]/10 pt-2">
+                                <span className="text-[#5E6673] uppercase tracking-wider block text-[8px] font-semibold">
+                                  Quality Check
+                                </span>
+                                <span className="text-[#17375E] font-bold block">
+                                  100% INSPECTED
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* --- CAPABILITY 03: Brass & Non-Ferrous Components --- */}
+                  {index === 2 && (
+                    <>
+                      {/* Left: Giant visual focus */}
+                      <div className="col-span-1 md:col-span-7 h-[35vh] md:h-[70vh] relative rounded-[24px] overflow-hidden border border-[#D7DDE5] bg-white shadow-sm reveal-image-item opacity-0 will-change-transform">
+                        <Image
+                          src={cap.heroImage}
+                          alt="Custom turned brass bushings and non-ferrous components by UOO Kay Mech Industries"
+                          fill
+                          className="object-cover brass-hero-image"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          loading="lazy"
+                        />
+                      </div>
+                      {/* Right: Content & details */}
+                      <div className="col-span-1 md:col-span-5 flex flex-col justify-center space-y-6">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 03
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#5E6673] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        <div className="grid grid-cols-2 gap-3 pt-2">
+                          {cap.images.slice(1).map((img, bIdx) => (
+                            <div key={bIdx} className="relative aspect-[4/3] rounded-[16px] overflow-hidden border border-[#D7DDE5] bg-white reveal-image-item opacity-0 will-change-transform">
+                              <Image
+                                src={img}
+                                alt={`High precision turned brass components detail ${bIdx + 1} by UOO Kay Mech Industries`}
+                                fill
+                                className="object-cover"
+                                sizes="15vw"
+                                loading="lazy"
+                              />
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-[#D9893A] hover:text-[#c57529] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-[#D9893A] group-hover:border-[#c57529] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* --- CAPABILITY 04: Industrial Fabrication --- */}
+                  {index === 3 && (
+                    <>
+                      {/* Left: Content */}
+                      <div className="col-span-1 md:col-span-5 flex flex-col justify-center space-y-6">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 04
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#5E6673] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-[#D9893A] hover:text-[#c57529] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-[#D9893A] group-hover:border-[#c57529] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      {/* Right: Bento Grid */}
+                      <div className="col-span-1 md:col-span-7 h-[38vh] md:h-[65vh] grid grid-cols-6 grid-rows-4 gap-3">
+                        <div className="col-span-4 row-span-4 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] hover:border-[#D9893A] hover:scale-[1.01] transition-all duration-300 reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[0]}
+                            alt="Heavy duty steel machine enclosure fabrication by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 30vw"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="col-span-2 row-span-2 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] hover:border-[#D9893A] hover:scale-[1.01] transition-all duration-300 reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[2]}
+                            alt="Fabricated access ladder and industrial safety platform by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="15vw"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="col-span-2 row-span-2 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] hover:border-[#D9893A] hover:scale-[1.01] transition-all duration-300 reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[3]}
+                            alt="Material handling storage trolley fabrication by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="15vw"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* --- CAPABILITY 05: Stainless Steel Fabrication --- */}
+                  {index === 4 && (
+                    <>
+                      {/* Left: Editorial Grid */}
+                      <div className="col-span-1 md:col-span-7 h-[38vh] md:h-[65vh] grid grid-cols-4 grid-rows-2 gap-3">
+                        <div className="col-span-2 row-span-2 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[0]}
+                            alt="Food grade stainless steel work table by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 30vw"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="col-span-2 row-span-1 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[1]}
+                            alt="Corrosion resistant stainless steel tank cladding and support structure by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="20vw"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="col-span-1 row-span-1 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[2]}
+                            alt="Argon purged TIG welded stainless steel assembly by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="12vw"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="col-span-1 row-span-1 relative rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                          <Image
+                            src={cap.images[3]}
+                            alt="Custom fabricated stainless steel display stand structure by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="12vw"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      {/* Right: Content */}
+                      <div className="col-span-1 md:col-span-5 flex flex-col justify-center space-y-6">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 05
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#5E6673] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-[#D9893A] hover:text-[#c57529] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-[#D9893A] group-hover:border-[#c57529] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* --- CAPABILITY 06: Custom Engineering Structures --- */}
+                  {index === 5 && (
+                    <>
+                      {/* Left: Content */}
+                      <div className="col-span-1 md:col-span-5 flex flex-col justify-center space-y-6 text-white">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 06
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#D7DDE5] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-white hover:text-[#D9893A] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-white group-hover:border-[#D9893A] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      {/* Right: Structural visuals */}
+                      <div className="col-span-1 md:col-span-7 h-[38vh] md:h-[65vh] grid grid-cols-2 gap-4">
+                        <div className="relative rounded-[24px] overflow-hidden border border-white/10 reveal-image-item opacity-0 will-change-transform bg-[#17375E]/30 shadow-md">
+                          <Image
+                            src={cap.images[0]}
+                            alt="Heavy welded steel machine base frame by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 25vw"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="relative rounded-[24px] overflow-hidden border border-white/10 reveal-image-item opacity-0 will-change-transform bg-[#17375E]/30 shadow-md">
+                          <Image
+                            src={cap.images[1]}
+                            alt="Welded structural engineering frames and assemblies by UOO Kay Mech Industries"
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 25vw"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* --- CAPABILITY 07: Fixtures & Special Purpose Components --- */}
+                  {index === 6 && (
+                    <>
+                      {/* Left: Masonry Grid */}
+                      <div className="col-span-1 md:col-span-7 h-[38vh] md:h-[70vh] grid grid-cols-2 gap-4">
+                        <div className="space-y-4">
+                          <div className="relative h-[18vh] md:h-[32vh] rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                            <Image
+                              src={cap.images[0]}
+                              alt="Custom threaded tooling fixture by UOO Kay Mech Industries"
+                              fill
+                              className="object-cover"
+                              sizes="20vw"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="relative h-[14vh] md:h-[28vh] rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                            <Image
+                              src={cap.images[2]}
+                              alt="CNC turned machined steel rings by UOO Kay Mech Industries"
+                              fill
+                              className="object-cover"
+                              sizes="20vw"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                        <div className="space-y-4 pt-8">
+                          <div className="relative h-[14vh] md:h-[28vh] rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                            <Image
+                              src={cap.images[1]}
+                              alt="Precision engineered industrial welding holding fixtures by UOO Kay Mech Industries"
+                              fill
+                              className="object-cover"
+                              sizes="20vw"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="relative h-[18vh] md:h-[32vh] rounded-[24px] overflow-hidden border border-[#D7DDE5] reveal-image-item opacity-0 will-change-transform bg-white shadow-sm">
+                            <Image
+                              src={cap.images[3]}
+                              alt="Special purpose mechanical components and assemblies by UOO Kay Mech Industries"
+                              fill
+                              className="object-cover"
+                              sizes="20vw"
+                              loading="lazy"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      {/* Right: Floating Content */}
+                      <div className="col-span-1 md:col-span-5 flex flex-col justify-center space-y-6">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block mb-1 reveal-label opacity-0">
+                            CAPABILITY 07
+                          </span>
+                          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-tight reveal-heading opacity-0">
+                            {cap.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-[#5E6673] text-xs sm:text-sm font-medium leading-relaxed max-w-xl reveal-desc opacity-0">
+                          {cap.description}
+                        </p>
+
+                        <div className="reveal-cta opacity-0">
+                          <button
+                            onClick={() => setActiveDrawer(index)}
+                            className="group inline-flex items-center gap-3 text-xs font-mono font-bold tracking-wider text-[#D9893A] hover:text-[#c57529] transition-colors duration-200 premium-btn-hover"
+                          >
+                            VIEW DETAILS
+                            <span className="w-8 h-8 rounded-full border border-[#D9893A] group-hover:border-[#c57529] flex items-center justify-center transition-colors duration-200 arrow-circle">
+                              <ArrowRight className="h-4 w-4 transform" />
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 4. PREMIUM SPECIFICATION SLIDE-OUT DRAWER */}
+      {activeDrawer !== null && (
+        <>
+          {/* Backdrop Overlay */}
+          <div
+            className="fixed inset-0 z-[100] bg-[#161616]/75 backdrop-blur-sm transition-opacity duration-300"
+            onClick={() => setActiveDrawer(null)}
+          />
+
+          {/* Drawer Panel */}
+          <div className="fixed top-0 right-0 h-full z-[110] w-full max-w-[520px] bg-[#1A1E24] text-[#F6F7F8] border-l border-white/10 shadow-2xl flex flex-col transition-all duration-300 ease-in-out transform font-sans">
+            
+            {/* Header */}
+            <div className="p-6 border-b border-white/10 flex items-center justify-between">
+              <div>
+                <span className="text-[9px] font-mono font-bold text-[#D9893A] uppercase tracking-wider block">
+                  TECHNICAL DATASHEET / CAPABILITY 0{activeDrawer + 1}
+                </span>
+                <h3 className="font-heading font-bold text-lg md:text-xl text-white uppercase tracking-wide mt-1">
+                  {CAPABILITIES[activeDrawer].title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setActiveDrawer(null)}
+                className="w-9 h-9 rounded-full border border-white/20 hover:border-[#D9893A] hover:text-[#D9893A] flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close datasheet"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Content Container */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-8 no-scrollbar">
+              
+              {/* Detailed Specs Table */}
+              <div className="space-y-4">
+                <h4 className="text-[10px] font-mono font-bold text-white uppercase tracking-wider border-b border-white/10 pb-2">
+                  [ SPECIFICATIONS ]
+                </h4>
+                <div className="space-y-3.5 text-xs">
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/5">
+                    <span className="text-[#5E6673] font-mono font-semibold">Tolerances</span>
+                    <span className="col-span-2 font-medium text-white">{CAPABILITIES[activeDrawer].specs.tolerances}</span>
+                  </div>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/5">
+                    <span className="text-[#5E6673] font-mono font-semibold">Materials</span>
+                    <span className="col-span-2 font-medium text-white">{CAPABILITIES[activeDrawer].specs.materials}</span>
+                  </div>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/5">
+                    <span className="text-[#5E6673] font-mono font-semibold">Processes</span>
+                    <span className="col-span-2 font-medium text-white">{CAPABILITIES[activeDrawer].specs.operations}</span>
+                  </div>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/5">
+                    <span className="text-[#5E6673] font-mono font-semibold">Treatment / Paint</span>
+                    <span className="col-span-2 font-medium text-white">{CAPABILITIES[activeDrawer].specs.hardness}</span>
+                  </div>
+                  <div className="grid grid-cols-3 py-1.5 border-b border-white/5">
+                    <span className="text-[#5E6673] font-mono font-semibold">Applications</span>
+                    <span className="col-span-2 font-medium text-white">{CAPABILITIES[activeDrawer].specs.applications}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Capability Catalog Gallery */}
+              <div className="space-y-4">
+                <h4 className="text-[10px] font-mono font-bold text-white uppercase tracking-wider border-b border-white/10 pb-2">
+                  [ CATALOGUE IMAGES ]
+                </h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {CAPABILITIES[activeDrawer].images.map((img, i) => (
+                    <div key={i} className="relative aspect-video rounded-[16px] overflow-hidden border border-white/10 bg-black/40">
+                      <Image
+                        src={img}
+                        alt={`${CAPABILITIES[activeDrawer].title} technical data sheet catalogue detail ${i + 1} by UOO Kay Mech Industries`}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        sizes="200px"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            {/* Footer Action */}
+            <div className="p-6 border-t border-white/10 bg-[#161a1f] flex flex-col gap-3">
+              <Link
+                href={`/contact?interest=${encodeURIComponent(CAPABILITIES[activeDrawer].title)}#contact-form`}
+                onClick={() => setActiveDrawer(null)}
+                className="w-full bg-[#D9893A] hover:bg-[#c57529] text-white font-heading font-bold text-xs uppercase tracking-wider py-3.5 text-center transition-colors duration-200"
+              >
+                Inquire About This Capability
+              </Link>
+              <button
+                onClick={() => setActiveDrawer(null)}
+                className="w-full bg-transparent hover:bg-white/5 text-white/70 hover:text-white font-heading font-bold text-xs uppercase tracking-wider py-3 text-center border border-white/10 transition-colors"
+              >
+                Close Datasheet
+              </button>
+            </div>
+
+          </div>
+        </>
+      )}
+
     </div>
   );
 }

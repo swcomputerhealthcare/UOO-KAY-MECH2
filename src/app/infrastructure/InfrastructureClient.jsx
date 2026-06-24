@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { FileText, ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { shouldAnimate } from "@/lib/animations";
 
 export default function InfrastructureClient() {
   const [activeTab, setActiveTab] = useState("machines");
@@ -309,8 +310,40 @@ export default function InfrastructureClient() {
   const activeCollection = activeTab === "machines" ? machines : instruments;
   const activeAsset = activeCollection[selectedAssetIdx] || activeCollection[0];
 
+  // GSAP page load animations
+  useGSAP(() => {
+    if (!shouldAnimate()) {
+      gsap.set(".infra-header-item, .infra-content-item", { opacity: 1, y: 0 });
+      return;
+    }
+
+    gsap.fromTo(".infra-header-item",
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }
+    );
+
+    gsap.fromTo(".infra-content-item",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        delay: 0.12
+      }
+    );
+  }, { scope: containerRef });
+
   // GSAP animation when switching tabs
   useGSAP(() => {
+    if (!shouldAnimate()) return;
+
     gsap.fromTo(".asset-card-item", 
       { opacity: 0, y: 10 },
       { 
@@ -335,6 +368,8 @@ export default function InfrastructureClient() {
 
   // GSAP animation when changing active asset
   useGSAP(() => {
+    if (!shouldAnimate()) return;
+
     gsap.fromTo(".console-table-row",
       { opacity: 0, y: 5 },
       {
@@ -348,13 +383,13 @@ export default function InfrastructureClient() {
   }, { dependencies: [selectedAssetIdx, activeTab], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-brand-bg text-[#151515] min-h-screen py-24 sm:py-32 relative overflow-hidden select-none">
+    <div ref={containerRef} className="bg-brand-bg text-[#161616] min-h-screen py-24 sm:py-32 relative overflow-hidden select-none">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#C46A2D] pl-6 mb-20">
-          <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-[0.25em] block mb-1">
+        <div className="border-l-2 border-[#D9893A] pl-6 mb-20 infra-header-item opacity-0">
+          <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ FACILITY INDEX ]
           </span>
           <h1 className="font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wide">
@@ -363,12 +398,12 @@ export default function InfrastructureClient() {
         </div>
 
         {/* Introduction */}
-        <p className="text-[#666666] text-sm sm:text-base max-w-3xl leading-relaxed mb-16 font-sans font-medium">
-          Our Dombivli manufacturing facility maintains conventional machining platforms and dedicated inspection instruments. Utilize the catalog register below to review the specifications of our operational assets.
+        <p className="text-[#5E6673] text-sm sm:text-base max-w-3xl leading-relaxed mb-16 font-sans font-medium infra-content-item opacity-0">
+          Our Thane manufacturing facility maintains conventional machining platforms and dedicated inspection instruments. Utilize the catalog register below to review the specifications of our operational assets.
         </p>
 
         {/* Tab Controls (Flat Sharp Rectangles) */}
-        <div className="border-b border-[#D9D9D9] pb-px w-full mb-16 flex gap-8">
+        <div className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex gap-8 infra-content-item opacity-0">
           <button
             onClick={() => {
               setActiveTab("machines");
@@ -376,8 +411,8 @@ export default function InfrastructureClient() {
             }}
             className={`pb-4 text-sm font-heading font-bold uppercase tracking-wider transition-all duration-200 border-b-2 ${
               activeTab === "machines"
-                ? "border-[#C46A2D] text-[#151515]"
-                : "border-transparent text-[#666666] hover:text-[#151515]"
+                ? "border-[#D9893A] text-[#161616]"
+                : "border-transparent text-[#5E6673] hover:text-[#161616]"
             }`}
           >
             Machinery & Equipment
@@ -389,8 +424,8 @@ export default function InfrastructureClient() {
             }}
             className={`pb-4 text-sm font-heading font-bold uppercase tracking-wider transition-all duration-200 border-b-2 ${
               activeTab === "instruments"
-                ? "border-[#C46A2D] text-[#151515]"
-                : "border-transparent text-[#666666] hover:text-[#151515]"
+                ? "border-[#D9893A] text-[#161616]"
+                : "border-transparent text-[#5E6673] hover:text-[#161616]"
             }`}
           >
             Metrology Instruments
@@ -398,40 +433,40 @@ export default function InfrastructureClient() {
         </div>
 
         {/* Main Content Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start infra-content-item opacity-0">
           
           {/* Left Panel: Scrollable Technical Row Listing */}
-          <div className="lg:col-span-5 space-y-2 max-h-[70vh] overflow-y-auto pr-4 no-scrollbar border-r border-[#D9D9D9] font-sans">
+          <div className="lg:col-span-5 space-y-2 max-h-[70vh] overflow-y-auto pr-4 no-scrollbar border-r border-[#D7DDE5] font-sans">
             {activeCollection.map((asset, idx) => (
               <div
                 key={idx}
                 onClick={() => setSelectedAssetIdx(idx)}
                 className={`asset-card-item p-4 cursor-pointer border transition-all duration-200 ${
                   selectedAssetIdx === idx
-                    ? "bg-[#151515] border-[#151515] text-[#F6F5F3]"
-                    : "bg-transparent border-[#D9D9D9] text-[#151515] hover:bg-[#EAE8E4] hover:border-[#666666]"
+                    ? "bg-[#161616] border-[#161616] text-[#F6F7F8]"
+                    : "bg-transparent border-[#D7DDE5] text-[#161616] hover:bg-[#EAE8E4] hover:border-[#5E6673]"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="space-y-1 truncate pr-4">
                     <div className="flex items-center gap-3">
-                      <span className={`font-mono text-[9px] ${selectedAssetIdx === idx ? "text-[#C46A2D]" : "text-[#666666]"}`}>
+                      <span className={`font-mono text-[9px] ${selectedAssetIdx === idx ? "text-[#D9893A]" : "text-[#5E6673]"}`}>
                         [{String(idx + 1).padStart(2, "0")}]
                       </span>
-                      <span className={`text-[9px] font-mono uppercase tracking-wide ${selectedAssetIdx === idx ? "text-[#C46A2D]" : "text-[#666666]"}`}>
+                      <span className={`text-[9px] font-mono uppercase tracking-wide ${selectedAssetIdx === idx ? "text-[#D9893A]" : "text-[#5E6673]"}`}>
                         {asset.category}
                       </span>
                     </div>
-                    <h3 className={`font-heading font-bold text-sm uppercase ${selectedAssetIdx === idx ? "text-white" : "text-[#151515]"}`}>
+                    <div className={`font-heading font-bold text-sm uppercase ${selectedAssetIdx === idx ? "text-white" : "text-[#161616]"}`}>
                       {asset.name}
-                    </h3>
-                    <p className={`text-[10px] font-mono ${selectedAssetIdx === idx ? "text-[#666666]" : "text-[#666666]"}`}>
+                    </div>
+                    <p className={`text-[10px] font-mono ${selectedAssetIdx === idx ? "text-[#5E6673]" : "text-[#5E6673]"}`}>
                       CAP: {asset.spec}
                     </p>
                   </div>
                   
                   <div className={`p-1 transition-transform duration-200 ${
-                    selectedAssetIdx === idx ? "text-[#C46A2D] translate-x-1" : "text-[#666666]"
+                    selectedAssetIdx === idx ? "text-[#D9893A] translate-x-1" : "text-[#5E6673]"
                   }`}>
                     <ChevronRight className="h-4 w-4" />
                   </div>
@@ -442,44 +477,44 @@ export default function InfrastructureClient() {
 
           {/* Right Panel: Clean Specification Sheet (No floating cards) */}
           <div className="lg:col-span-7 lg:sticky lg:top-28 console-detail-block">
-            <div className="border-t-2 border-[#151515] pt-6 font-sans">
+            <div className="border-t-2 border-[#161616] pt-6 font-sans">
               
               {/* Header Information */}
-              <div className="pb-6 mb-6 border-b border-[#D9D9D9]">
+              <div className="pb-6 mb-6 border-b border-[#D7DDE5]">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="border border-[#D9D9D9] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider text-[#666666]">
+                  <span className="border border-[#D7DDE5] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider text-[#5E6673]">
                     {activeAsset.category}
                   </span>
                   {activeAsset.featured && (
-                    <span className="border border-[#C46A2D] text-[#C46A2D] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider">
+                    <span className="border border-[#D9893A] text-[#D9893A] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider">
                       PRIMARY
                     </span>
                   )}
                 </div>
-                <h2 className="font-heading text-3xl font-bold uppercase text-[#151515] leading-tight">
+                <h2 className="font-heading text-3xl font-bold uppercase text-[#161616] leading-tight">
                   {activeAsset.name}
                 </h2>
               </div>
 
               {/* Technical Specifications Table */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 border-b border-[#D9D9D9] pb-2">
-                  <FileText className="h-4 w-4 text-[#666666]" />
-                  <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-widest">
+                <div className="flex items-center gap-2 border-b border-[#D7DDE5] pb-2">
+                  <FileText className="h-4 w-4 text-[#5E6673]" />
+                  <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-widest">
                     Specification Registry
                   </span>
                 </div>
                 
-                <div className="divide-y divide-[#D9D9D9]">
+                <div className="divide-y divide-[#D7DDE5]">
                   {activeAsset.details.map((detail, idx) => (
                     <div
                       key={idx}
                       className="console-table-row flex justify-between items-center py-3.5"
                     >
-                      <span className="text-[10px] font-mono font-bold text-[#666666] uppercase tracking-wider">
+                      <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-wider">
                         {detail.label}
                       </span>
-                      <span className="text-xs font-sans font-bold text-[#151515] text-right max-w-[65%] leading-relaxed">
+                      <span className="text-xs font-sans font-bold text-[#161616] text-right max-w-[65%] leading-relaxed">
                         {detail.value}
                       </span>
                     </div>
@@ -488,7 +523,7 @@ export default function InfrastructureClient() {
               </div>
 
               {/* Metrology Compliances */}
-              <div className="border-t border-[#D9D9D9] pt-6 mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[9px] font-mono font-bold text-[#666666] uppercase tracking-widest">
+              <div className="border-t border-[#D7DDE5] pt-6 mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[9px] font-mono font-bold text-[#5E6673] uppercase tracking-widest">
                 <span>Verification: Standard Compliance</span>
                 <span>Registry: UKM_{activeAsset.name.toUpperCase().replace(/\s/g, "_").slice(0, 10)}_2026</span>
               </div>
@@ -502,3 +537,5 @@ export default function InfrastructureClient() {
     </div>
   );
 }
+
+

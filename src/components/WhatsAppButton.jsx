@@ -9,9 +9,9 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center animate-whatsapp"
+      className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center premium-btn-hover hover:scale-110"
       title="Chat with us on WhatsApp"
-      aria-label="Chat with us on WhatsApp"
+      aria-label="Contact UOO Kay Mech Industries on WhatsApp"
     >
       {/* WhatsApp SVG Icon */}
       <svg
@@ -24,3 +24,5 @@ export default function WhatsAppButton() {
     </a>
   );
 }
+
+

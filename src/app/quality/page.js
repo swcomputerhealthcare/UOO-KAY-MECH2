@@ -17,3 +17,5 @@ export const metadata = {
 export default function QualityPage() {
   return <QualityClient />;
 }
+
+

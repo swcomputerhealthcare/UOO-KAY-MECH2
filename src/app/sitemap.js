@@ -9,3 +9,5 @@ export default function sitemap() {
     priority: route === "" ? 1.0 : 0.8,
   }));
 }
+
+

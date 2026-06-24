@@ -85,17 +85,17 @@ export default function PageTransition({ children }) {
       <div className="fixed inset-0 z-[99999] pointer-events-none">
         <div
           ref={(el) => (layersRef.current[0] = el)}
-          className="fixed inset-y-0 w-screen bg-[#121212] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
+          className="fixed inset-y-0 w-screen bg-[#17375E] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
           style={{ left: "-110vw", willChange: "transform" }}
         />
         <div
           ref={(el) => (layersRef.current[1] = el)}
-          className="fixed inset-y-0 w-screen bg-[#262626] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
+          className="fixed inset-y-0 w-screen bg-[#5E6673] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
           style={{ left: "-110vw", willChange: "transform" }}
         />
         <div
           ref={(el) => (layersRef.current[2] = el)}
-          className="fixed inset-y-0 w-screen bg-[#C46A2D] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
+          className="fixed inset-y-0 w-screen bg-[#D9893A] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
           style={{ left: "-110vw", willChange: "transform" }}
         />
       </div>
@@ -106,3 +106,5 @@ export default function PageTransition({ children }) {
     </div>
   );
 }
+
+
