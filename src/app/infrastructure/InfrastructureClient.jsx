@@ -392,7 +392,7 @@ export default function InfrastructureClient() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ FACILITY INDEX ]
           </span>
-          <h1 className="font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wide">
+          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wide">
             Infrastructure
           </h1>
         </div>
@@ -403,7 +403,7 @@ export default function InfrastructureClient() {
         </p>
 
         {/* Tab Controls (Flat Sharp Rectangles) */}
-        <div className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex gap-8 infra-content-item opacity-0">
+        <div className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex overflow-x-auto gap-8 infra-content-item opacity-0 no-scrollbar">
           <button
             onClick={() => {
               setActiveTab("machines");

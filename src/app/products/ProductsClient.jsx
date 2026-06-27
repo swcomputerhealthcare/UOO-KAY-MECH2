@@ -390,7 +390,7 @@ function ProductCard({ product, onViewDetails }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={() => onViewDetails(product)}
-      className="group relative bg-white rounded-[16px] border border-[#D7DDE5] hover:border-[#EC6713]/40 p-3.5 transition-all duration-500 ease-out shadow-sm hover:shadow-xl flex flex-col justify-between h-[400px] cursor-pointer overflow-hidden select-none"
+      className="group relative bg-white rounded-[16px] border border-[#D7DDE5] hover:border-[#EC6713]/40 p-3.5 transition-all duration-500 ease-out shadow-sm hover:shadow-xl flex flex-col justify-between md:h-[400px] h-auto cursor-pointer overflow-hidden select-none productCard"
       style={{
         transformStyle: "preserve-3d",
       }}
@@ -408,7 +408,7 @@ function ProductCard({ product, onViewDetails }) {
       
       <div>
         {/* Product Image */}
-        <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-3">
+        <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-3 productImageWrap">
           <Image
             src={product.image}
             alt={product.name}
@@ -420,23 +420,23 @@ function ProductCard({ product, onViewDetails }) {
         </div>
 
         {/* Category Badge */}
-        <span className="text-[9px] font-mono font-bold text-[#EC6713] tracking-wider uppercase block mb-1">
+        <span className="text-[9px] font-mono font-bold text-[#EC6713] tracking-wider uppercase block mb-1 productCategory">
           {product.category}
         </span>
 
         {/* Product Title */}
-        <h3 className="font-heading font-bold text-sm sm:text-base text-[#09285F] uppercase tracking-wide group-hover:text-[#EC6713] transition-colors duration-300 line-clamp-1 leading-snug">
+        <h3 className="font-heading font-bold text-sm sm:text-base text-[#09285F] uppercase tracking-wide group-hover:text-[#EC6713] transition-colors duration-300 md:line-clamp-1 line-clamp-none leading-snug productTitle">
           {product.name}
         </h3>
 
         {/* Product Short Description */}
-        <p className="text-[11px] text-[#5E6673] font-medium leading-relaxed mt-1.5 line-clamp-2">
+        <p className="text-[11px] text-[#5E6673] font-medium leading-relaxed mt-1.5 md:line-clamp-2 line-clamp-none productDescription">
           {product.desc}
         </p>
       </div>
 
       {/* Buttons */}
-      <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-[#D7DDE5]/30">
+      <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-[#D7DDE5]/30 productActions">
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -579,22 +579,7 @@ export default function ProductsClient() {
         });
       });
 
-      // Mobile slide reveal
-      mm.add("(max-width: 767px)", () => {
-        const slides = gsap.utils.toArray(".featured-slide");
-        slides.forEach((sec) => {
-          gsap.from(sec, {
-            opacity: 0,
-            y: 20,
-            duration: 0.6,
-            scrollTrigger: {
-              trigger: sec,
-              start: "top 80%",
-              toggleActions: "play none none reverse"
-            }
-          });
-        });
-      });
+      // Mobile slide reveal bypassed for instant visibility
     }
 
   }, { scope: containerRef });
@@ -623,7 +608,7 @@ export default function ProductsClient() {
           </span>
         </div>
 
-        <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-[#09285F] uppercase tracking-tight mb-4">
+        <h1 className="sectionTitle font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-[#09285F] uppercase tracking-tight mb-4">
           Our Products
         </h1>
         <div className="w-20 h-1 bg-[#EC6713] mb-6" />
@@ -657,12 +642,12 @@ export default function ProductsClient() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-[#D7DDE5] pb-6">
           
           {/* Category Chips scroll container */}
-          <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-3 lg:pb-0 scrollbar-thin scrollbar-thumb-gray-200 pr-4">
+          <div className="productFilters flex flex-nowrap items-center gap-2 overflow-x-auto pb-3 lg:pb-0 pr-4">
             {CATEGORIES.map((cat, idx) => (
               <button
                 key={idx}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 border rounded-full text-xs font-heading font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shrink-0 ${
+                className={`filterChip px-4 py-2 border rounded-full text-xs font-heading font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shrink-0 ${
                   selectedCategory === cat
                     ? "bg-[#09285F] border-[#09285F] text-white"
                     : "bg-white border-[#D7DDE5] text-[#5E6673] hover:border-[#09285F] hover:text-[#09285F]"
@@ -674,7 +659,7 @@ export default function ProductsClient() {
           </div>
 
           {/* Search Bar Input */}
-          <div className="relative w-full lg:w-72">
+          <div className="productSearch relative w-full lg:w-72">
             <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#5E6673]">
               <Search className="h-4 w-4" />
             </span>
@@ -692,7 +677,7 @@ export default function ProductsClient() {
       {/* 4. RESPONSIVE PRODUCT GRID */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 min-[390px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {filteredProducts.map((product) => (
               <div 
                 key={product.id}
@@ -715,12 +700,12 @@ export default function ProductsClient() {
       </div>
 
       {/* 5. GSAP FEATURED SHOWCASE (Cinematic Parallax) */}
-      <div ref={triggerRef} className="relative w-full overflow-hidden bg-[#1A1E24] text-white py-24 sm:py-0 mt-20 border-y border-white/5">
+      <div ref={triggerRef} className="premiumGallery relative w-full overflow-hidden bg-[#1A1E24] text-white py-24 sm:py-0 mt-20 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:hidden">
           <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-wider block">
             [ PREMIUM GALLERY ]
           </span>
-          <h2 className="font-heading text-2xl font-bold text-white uppercase tracking-wide mt-2">
+          <h2 className="premiumGalleryTitle font-heading text-2xl font-bold text-white uppercase tracking-wide mt-2">
             Featured Components
           </h2>
         </div>
@@ -742,27 +727,27 @@ export default function ProductsClient() {
                     <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.2em] block mb-1">
                       FEATURED COMPONENT 0{idx + 1}
                     </span>
-                    <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white uppercase tracking-tight leading-none">
+                    <h3 className="premiumGalleryTitle font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white uppercase tracking-tight leading-none">
                       {item.title}
                     </h3>
                   </div>
 
                   <div className="space-y-4 font-mono text-[10px] border-y border-white/10 py-6 max-w-sm">
                     <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="text-[#5E6673] uppercase font-semibold">Tolerances</span>
-                      <span className="text-white text-right font-bold">{item.specs.tolerance}</span>
+                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Tolerances</span>
+                      <span className="premiumGallerySpec text-white text-right font-bold">{item.specs.tolerance}</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="text-[#5E6673] uppercase font-semibold">Material</span>
-                      <span className="text-white text-right font-bold">{item.specs.material}</span>
+                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Material</span>
+                      <span className="premiumGallerySpec text-white text-right font-bold">{item.specs.material}</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="text-[#5E6673] uppercase font-semibold">Treatment</span>
-                      <span className="text-white text-right font-bold">{item.specs.treatment}</span>
+                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Treatment</span>
+                      <span className="premiumGallerySpec text-white text-right font-bold">{item.specs.treatment}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[#5E6673] uppercase font-semibold">Applications</span>
-                      <span className="text-white text-right font-bold max-w-[60%] truncate">{item.specs.application}</span>
+                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Applications</span>
+                      <span className="premiumGallerySpec text-white text-right font-bold max-w-[60%] truncate">{item.specs.application}</span>
                     </div>
                   </div>
 
@@ -777,7 +762,7 @@ export default function ProductsClient() {
                 </div>
 
                 {/* Right: Large Cinematic Image */}
-                <div className="col-span-1 md:col-span-7 h-[300px] sm:h-[400px] md:h-[65vh] relative rounded-[24px] overflow-hidden border border-white/10 bg-[#1F242D] shadow-2xl featured-image-block">
+                <div className="premiumGalleryImage col-span-1 md:col-span-7 h-[300px] sm:h-[400px] md:h-[65vh] relative rounded-[24px] overflow-hidden border border-white/10 bg-[#1F242D] shadow-2xl featured-image-block">
                   <Image
                     src={item.image}
                     alt={item.title}
