@@ -1,14 +1,11 @@
 "use client";
 
-import { useGSAPReveal } from "@/hooks/useGSAPReveal";
-
 /**
- * Reveal: Wrapper component to cleanly animate child components on scroll.
+ * Reveal: Wrapper component to cleanly render children without animations.
  */
-export default function Reveal({ children, className, ...options }) {
-  const ref = useGSAPReveal(options);
+export default function Reveal({ children, className }) {
   return (
-    <div ref={ref} className={className}>
+    <div className={className}>
       {children}
     </div>
   );

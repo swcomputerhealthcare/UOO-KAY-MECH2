@@ -1,84 +1,12 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import { Suspense } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import ContactForm from "./ContactForm";
-import { shouldAnimate } from "@/lib/animations";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
 
 export default function ContactClient() {
-  const containerRef = useRef(null);
-
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) {
-      gsap.set(".con-header-item, .con-info-row, .con-form-wrapper, .con-map-section", {
-        opacity: 1,
-        y: 0,
-        visibility: "visible"
-      });
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    // Symmetrical subtle reveals
-    gsap.fromTo(".con-header-item",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out"
-      }
-    );
-
-    gsap.fromTo(".con-info-row",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.08,
-        duration: 0.5,
-        ease: "power2.out",
-        delay: 0.1
-      }
-    );
-
-    gsap.fromTo(".con-form-wrapper",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: 0.2
-      }
-    );
-
-    gsap.fromTo(".con-map-section",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".con-map-section",
-          start: "top 90%"
-        }
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <div ref={containerRef} className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
+    <div className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -178,35 +106,35 @@ export default function ContactClient() {
 
             </div>
 
-             {/* Working hours */}
-             <div className="border-t border-[#D7DDE5] pt-6 text-xs text-[#5E6673] font-medium font-sans flex gap-3 con-info-row">
-               <Clock className="h-4 w-4 text-[#EC6713] shrink-0" strokeWidth={1.5} />
-               <div>
-                 <span className="font-heading font-bold text-[#09285F] uppercase text-[10px] block mb-1">Business Operations</span>
-                 Monday – Saturday: 9:00 AM – 6:00 PM (IST) <br />
-                 Sunday: Closed
-               </div>
-             </div>
- 
-           </div>
- 
-           {/* Column 2: Form */}
-           <div id="contact-form" className="lg:col-span-7 scroll-mt-24 con-form-wrapper">
-             <Suspense
-               fallback={
-                 <div className="border-t-2 border-[#09285F] pt-6 min-h-[300px] flex items-center justify-center font-sans">
-                   <span className="text-xs font-bold text-[#5E6673]">Loading Enquiry Form...</span>
-                 </div>
-               }
-             >
-               <ContactForm />
-             </Suspense>
-           </div>
- 
-         </div>
- 
-         {/* Full-width Map Section */}
-         <div className="mt-24 con-map-section">
+            {/* Working hours */}
+            <div className="border-t border-[#D7DDE5] pt-6 text-xs text-[#5E6673] font-medium font-sans flex gap-3 con-info-row">
+              <Clock className="h-4 w-4 text-[#EC6713] shrink-0" strokeWidth={1.5} />
+              <div>
+                <span className="font-heading font-bold text-[#09285F] uppercase text-[10px] block mb-1">Business Operations</span>
+                Monday – Saturday: 9:00 AM – 6:00 PM (IST) <br />
+                Sunday: Closed
+              </div>
+            </div>
+
+          </div>
+
+          {/* Column 2: Form */}
+          <div id="contact-form" className="lg:col-span-7 scroll-mt-24 con-form-wrapper">
+            <Suspense
+              fallback={
+                <div className="border-t-2 border-[#09285F] pt-6 min-h-[300px] flex items-center justify-center font-sans">
+                  <span className="text-xs font-bold text-[#5E6673]">Loading Enquiry Form...</span>
+                </div>
+              }
+            >
+              <ContactForm />
+            </Suspense>
+          </div>
+
+        </div>
+
+        {/* Full-width Map Section */}
+        <div className="mt-24 con-map-section">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#D7DDE5] pb-3 mb-6">
             <h2 className="font-heading text-xl font-bold text-[#09285F] uppercase tracking-wide">
               Workshop Location

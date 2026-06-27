@@ -1,22 +1,8 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
 import { FileText, Award, BadgeCheck, ShieldCheck } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { shouldAnimate } from "@/lib/animations";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
 
 export default function QualityClient() {
-  const containerRef = useRef(null);
-  const pinRef = useRef(null);
-  const scrollTrackRef = useRef(null);
-  const [canScroll, setCanScroll] = useState(false);
-
   const certifications = [
     {
       title: "GST Registered",
@@ -71,101 +57,10 @@ export default function QualityClient() {
     },
   ];
 
-  // 1. Detect track width vs viewport to toggle pinning layout
-  useEffect(() => {
-    const checkScroll = () => {
-      const track = scrollTrackRef.current;
-      if (track) {
-        setCanScroll(track.scrollWidth > window.innerWidth);
-      }
-    };
-
-    const timer = setTimeout(checkScroll, 150); // allow styles to fully hydrate
-    window.addEventListener("resize", checkScroll);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", checkScroll);
-    };
-  }, []);
-
-  // 2. Load animations (Run once)
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) {
-      gsap.set(".qual-header-item, .cert-row", {
-        opacity: 1,
-        y: 0,
-        visibility: "visible"
-      });
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    gsap.fromTo(".qual-header-item",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out"
-      }
-    );
-
-    gsap.fromTo(".cert-row",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.08,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".certs-list",
-          start: "top 90%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  }, { scope: containerRef });
-
-  // 3. ScrollTrigger Horizontal scroll (Depends on canScroll)
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) return;
-
-    const track = scrollTrackRef.current;
-    const container = pinRef.current;
-
-    if (!canScroll || !track || !container) return;
-
-    const scrollWidth = track.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const amount = scrollWidth - viewportWidth;
-
-    const st = ScrollTrigger.create({
-      trigger: container,
-      pin: true,
-      scrub: 1,
-      start: "top top",
-      end: () => `+=${amount + 150}`,
-      invalidateOnRefresh: true,
-      animation: gsap.to(track, {
-        x: -amount - 64, // translate distance with safe padding margin
-        ease: "none"
-      })
-    });
-
-    return () => st.kill(true);
-  }, { scope: containerRef, dependencies: [canScroll] });
-
-  const animEnabled = typeof window !== "undefined" ? (!window.matchMedia("(max-width: 768px)").matches && shouldAnimate()) : true;
-
   return (
-    <div ref={containerRef} className="bg-brand-bg min-h-screen">
+    <div className="bg-brand-bg min-h-screen">
 
-      {/* 1. Header & Certifications (whitespace and thin line borders) */}
+      {/* 1. Header & Certifications */}
       <div className="pt-24 pb-8 sm:pt-32 sm:pb-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -217,14 +112,11 @@ export default function QualityClient() {
         </div>
       </div>
 
-      {/* 2. Process Timeline (Horizontal Scroll on white background canvas) */}
-      <div
-        ref={pinRef}
-        className={`min-h-screen flex flex-col justify-center bg-white relative overflow-hidden border-y border-[#D7DDE5] py-16 ${!animEnabled ? "h-auto min-h-0" : ""
-          }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full shrink-0 mb-16">
-          <div className="border-l-2 border-[#EC6713] pl-6">
+      {/* 2. Process Timeline (Clean static responsive grid) */}
+      <div className="bg-white border-y border-[#D7DDE5] py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="border-l-2 border-[#EC6713] pl-6 mb-16">
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
@@ -232,23 +124,17 @@ export default function QualityClient() {
               Our 4-Stage Quality Process
             </h2>
           </div>
-        </div>
 
-        {/* Horizontal track container */}
-        <div className={`w-full proc-track-container ${animEnabled ? "overflow-hidden" : "overflow-x-auto scroll-smooth pb-6"}`}>
-          <div
-            ref={scrollTrackRef}
-            className={`flex gap-16 px-8 sm:px-16 ${canScroll && animEnabled ? "" : "md:justify-center"}`}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processes.map((p, idx) => (
               <div
                 key={idx}
-                className="proc-block w-[300px] sm:w-[400px] shrink-0 border-l-2 border-[#EC6713] pl-8 py-4 font-sans"
+                className="border-l-2 border-[#EC6713] pl-6 py-4 font-sans bg-[#F6F7F8] p-6 rounded-[16px] shadow-sm hover:border-[#09285F] transition-colors duration-300"
               >
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {/* Step Marker */}
-                  <div className="flex justify-between items-center border-b border-[#D7DDE5] pb-3">
-                    <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#EC6713] tracking-tight leading-none">
+                  <div className="flex justify-between items-center border-b border-[#D7DDE5] pb-2">
+                    <span className="font-heading text-xl sm:text-2xl font-black text-[#EC6713] tracking-tight leading-none">
                       STAGE {p.step}
                     </span>
                     <span className="font-mono text-[9px] text-[#5E6673] uppercase tracking-wider">
@@ -256,22 +142,20 @@ export default function QualityClient() {
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide">
+                  <h3 className="font-heading text-lg font-bold text-[#161616] uppercase tracking-wide">
                     {p.title}
                   </h3>
-
-                  <p className="text-[#5E6673] text-xs sm:text-sm leading-relaxed font-medium">
+                  <p className="text-xs text-[#5E6673] leading-relaxed font-medium">
                     {p.desc}
                   </p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </div>
 
     </div>
   );
 }
-
-

@@ -4,14 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, X, Search, Cpu, Layers, Settings, Wrench, Shield, Compass, Phone, FileText } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { shouldAnimate } from "@/lib/animations";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // 1. STATS DATA
 const STATS = [
@@ -356,66 +348,26 @@ const CAPABILITIES_GRID = [
   }
 ];
 
-// 6. CARD SUB-COMPONENT WITH 3D TILT & GLARE EFFECT
+// 6. CARD SUB-COMPONENT WITH STATIC CSS EFFECTS
 function ProductCard({ product, onViewDetails }) {
-  const cardRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left; 
-    const y = e.clientY - rect.top;  
-    
-    const xc = rect.width / 2;
-    const yc = rect.height / 2;
-    
-    const rotateX = -(y - yc) / 25; 
-    const rotateY = (x - xc) / 25;
-    
-    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-    card.style.setProperty("--x", `${x}px`);
-    card.style.setProperty("--y", `${y}px`);
-  };
-
-  const handleMouseLeave = () => {
-    const card = cardRef.current;
-    if (!card) return;
-    card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
-  };
-
   return (
     <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       onClick={() => onViewDetails(product)}
-      className="group relative bg-white rounded-[16px] border border-[#D7DDE5] hover:border-[#EC6713]/40 p-3.5 transition-all duration-500 ease-out shadow-sm hover:shadow-xl flex flex-col justify-between md:h-[400px] h-auto cursor-pointer overflow-hidden select-none productCard"
-      style={{
-        transformStyle: "preserve-3d",
-      }}
+      className="group relative bg-white rounded-[16px] border border-[#D7DDE5] hover:border-[#EC6713]/40 p-4 transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between md:h-[400px] h-auto cursor-pointer overflow-hidden select-none productCard"
     >
-      {/* Glare glint layout */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-        style={{
-          background: `radial-gradient(circle 120px at var(--x, 0px) var(--y, 0px), rgba(217, 137, 58, 0.07), transparent 80%)`
-        }}
-      />
-      
       {/* Orange Accent Top Line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-transparent group-hover:bg-[#EC6713] transition-colors duration-300" />
       
       <div>
         {/* Product Image */}
-        <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-3 productImageWrap">
+        <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap">
           <Image
             src={product.image}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             loading="lazy"
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover group-hover:scale-103 transition-transform duration-300"
           />
         </div>
 
@@ -436,7 +388,7 @@ function ProductCard({ product, onViewDetails }) {
       </div>
 
       {/* Buttons */}
-      <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-[#D7DDE5]/30 productActions">
+      <div className="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-[#D7DDE5]/30 productActions">
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -466,9 +418,6 @@ export default function ProductsClient() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeProduct, setActiveProduct] = useState(null);
 
-  const containerRef = useRef(null);
-  const triggerRef = useRef(null);
-  const horizontalRef = useRef(null);
 
   // Stop page scroll when modal is open
   useEffect(() => {
@@ -494,98 +443,6 @@ export default function ProductsClient() {
     }, 300);
   };
 
-  // GSAP animation for stats counter and featured horizontal scroll
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) {
-      gsap.set(".stat-number", { textContent: (i) => STATS[i].value });
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    // 1. Stats Counter Animation
-    gsap.fromTo(".stat-number", 
-      { textContent: 0 },
-      {
-        textContent: (i) => STATS[i].value,
-        duration: 1.5,
-        ease: "power2.out",
-        snap: { textContent: 1 },
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".stats-grid",
-          start: "top 85%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-
-    // 2. Cinematic Horizontal Parallax Scroll for Featured Showcase (Desktop only)
-    if (horizontalRef.current && triggerRef.current) {
-      let mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        const scrollWidth = horizontalRef.current.scrollWidth;
-        const totalScroll = scrollWidth - window.innerWidth;
-
-        const pinTween = gsap.to(horizontalRef.current, {
-          x: -totalScroll,
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            pin: true,
-            scrub: 0.5,
-            start: "top top",
-            end: () => `+=${totalScroll}`,
-            invalidateOnRefresh: true,
-          }
-        });
-
-        // Parallax and Spec details reveal for slides
-        const slides = gsap.utils.toArray(".featured-slide");
-        slides.forEach((sec) => {
-          const textBlock = sec.querySelector(".featured-text-block");
-          const imageBlock = sec.querySelector(".featured-image-block");
-          
-          if (textBlock && imageBlock) {
-            gsap.fromTo(textBlock, 
-              { x: 40, opacity: 0 },
-              { 
-                x: 0, 
-                opacity: 1, 
-                duration: 0.6,
-                scrollTrigger: {
-                  trigger: sec,
-                  containerAnimation: pinTween,
-                  start: "left 65%",
-                  toggleActions: "play none none reverse"
-                }
-              }
-            );
-
-            gsap.fromTo(imageBlock, 
-              { scale: 1.12 },
-              { 
-                scale: 1, 
-                ease: "power1.out",
-                scrollTrigger: {
-                  trigger: sec,
-                  containerAnimation: pinTween,
-                  start: "left right",
-                  end: "left left",
-                  scrub: true
-                }
-              }
-            );
-          }
-        });
-      });
-
-      // Mobile slide reveal bypassed for instant visibility
-    }
-
-  }, { scope: containerRef });
-
   // Filtering Logic
   const filteredProducts = PRODUCTS.filter((p) => {
     const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
@@ -596,7 +453,7 @@ export default function ProductsClient() {
   });
 
   return (
-    <div ref={containerRef} className="bg-brand-bg relative overflow-x-hidden font-sans select-none">
+    <div className="bg-brand-bg relative overflow-x-hidden font-sans select-none">
       
       {/* 1. SECTION HEADER */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 text-left">
@@ -628,7 +485,7 @@ export default function ProductsClient() {
               className="border border-[#D7DDE5] bg-white p-6 rounded-[16px] text-center shadow-sm flex flex-col justify-center h-28 sm:h-32 hover:border-[#09285F]/30 transition-all duration-300"
             >
               <div className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#09285F] uppercase tracking-tight">
-                <span className="stat-number">0</span>
+                <span className="stat-number">{stat.value}</span>
                 <span>{stat.suffix}</span>
               </div>
               <p className="text-[10px] sm:text-xs font-mono font-bold text-[#5E6673] uppercase tracking-wider mt-2">
@@ -701,85 +558,83 @@ export default function ProductsClient() {
         )}
       </div>
 
-      {/* 5. GSAP FEATURED SHOWCASE (Cinematic Parallax) */}
-      <div ref={triggerRef} className="premiumGallery relative w-full overflow-hidden bg-[#1A1E24] text-white py-24 sm:py-0 mt-20 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:hidden">
-          <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-wider block">
-            [ PREMIUM GALLERY ]
-          </span>
-          <h2 className="premiumGalleryTitle font-heading text-2xl font-bold text-white uppercase tracking-wide mt-2">
-            Featured Components
-          </h2>
-        </div>
+      {/* 5. STATIC FEATURED COMPONENTS SECTION */}
+      <section className="bg-white border-y border-[#D7DDE5] py-24 mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="mb-16 border-b border-[#D7DDE5] pb-6">
+            <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.25em] block mb-1">
+              [ COMPONENT HIGHLIGHTS ]
+            </span>
+            <h2 className="font-heading text-3xl font-bold text-[#09285F] uppercase tracking-wide">
+              Featured Components
+            </h2>
+          </div>
 
-        <div 
-          ref={horizontalRef} 
-          className="flex flex-col md:flex-row md:flex-nowrap w-full products-horizontal-container md:h-[calc(100vh-100px)] items-center"
-        >
-          {FEATURED_ITEMS.map((item, idx) => (
-            <div
-              key={idx}
-              className="featured-slide w-full md:w-screen h-auto md:h-full flex-shrink-0 flex items-center justify-center px-6 md:px-16 lg:px-24 py-16 md:py-0 border-b border-white/5 md:border-b-0 md:border-r"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center w-full max-w-7xl mx-auto">
-                
-                {/* Left: Technical specifications specs */}
-                <div className="col-span-1 md:col-span-5 space-y-6 md:space-y-8 featured-text-block text-left">
+          <div className="space-y-20">
+            {FEATURED_ITEMS.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300"
+              >
+                {/* Left: Product Image */}
+                <div className="lg:col-span-6 relative h-[300px] sm:h-[400px] rounded-[16px] overflow-hidden bg-[#FAF8F5] border border-[#D7DDE5] productImageWrap bg-[#1F242D]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-102"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Right: Specifications details */}
+                <div className="lg:col-span-6 space-y-6 text-left">
                   <div>
                     <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.2em] block mb-1">
                       FEATURED COMPONENT 0{idx + 1}
                     </span>
-                    <h3 className="premiumGalleryTitle font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white uppercase tracking-tight leading-none">
+                    <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#09285F] uppercase tracking-tight leading-none">
                       {item.title}
                     </h3>
                   </div>
 
-                  <div className="space-y-4 font-mono text-[10px] border-y border-white/10 py-6 max-w-sm">
-                    <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Tolerances</span>
-                      <span className="premiumGallerySpec text-white text-right font-bold">{item.specs.tolerance}</span>
+                  <div className="space-y-4 font-mono text-xs border-y border-[#D7DDE5] py-6 max-w-lg">
+                    <div className="flex justify-between border-b border-[#D7DDE5]/30 pb-2">
+                      <span className="text-[#5E6673] uppercase font-semibold">Tolerances</span>
+                      <span className="text-[#161616] text-right font-bold">{item.specs.tolerance}</span>
                     </div>
-                    <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Material</span>
-                      <span className="premiumGallerySpec text-white text-right font-bold">{item.specs.material}</span>
+                    <div className="flex justify-between border-b border-[#D7DDE5]/30 pb-2">
+                      <span className="text-[#5E6673] uppercase font-semibold">Material</span>
+                      <span className="text-[#161616] text-right font-bold">{item.specs.material}</span>
                     </div>
-                    <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Treatment</span>
-                      <span className="premiumGallerySpec text-white text-right font-bold">{item.specs.treatment}</span>
+                    <div className="flex justify-between border-b border-[#D7DDE5]/30 pb-2">
+                      <span className="text-[#5E6673] uppercase font-semibold">Treatment</span>
+                      <span className="text-[#161616] text-right font-bold">{item.specs.treatment}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="premiumGalleryMeta text-[#5E6673] uppercase font-semibold">Applications</span>
-                      <span className="premiumGallerySpec text-white text-right font-bold max-w-[60%] truncate">{item.specs.application}</span>
+                      <span className="text-[#5E6673] uppercase font-semibold">Applications</span>
+                      <span className="text-[#161616] text-right font-bold max-w-[65%] truncate sm:max-w-none sm:break-words">{item.specs.application}</span>
                     </div>
                   </div>
 
                   <div>
                     <Link
                       href={`/contact?interest=${encodeURIComponent(item.title)}#contact-form`}
-                      className="inline-flex items-center gap-2 border border-[#EC6713] text-[#EC6713] hover:bg-[#EC6713] hover:text-white font-heading font-bold text-xs uppercase tracking-wider py-3 px-6 transition-all duration-200"
+                      className="inline-flex items-center gap-2 bg-[#EC6713] hover:bg-[#09285F] text-white font-heading font-bold text-xs uppercase tracking-wider py-4 px-8 transition-colors duration-200"
                     >
-                      Inquire Component <ArrowRight className="h-3 w-3" />
+                      Inquire Component <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>
                 </div>
 
-                {/* Right: Large Cinematic Image */}
-                <div className="premiumGalleryImage col-span-1 md:col-span-7 h-[300px] sm:h-[400px] md:h-[65vh] relative rounded-[24px] overflow-hidden border border-white/10 bg-[#1F242D] shadow-2xl featured-image-block">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                    loading="lazy"
-                  />
-                </div>
-
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
-      </div>
+      </section>
 
       {/* 6. CAPABILITIES SECTION (4x2 Responsive Grid) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-left">

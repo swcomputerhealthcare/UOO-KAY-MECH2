@@ -1,20 +1,9 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import { Award, Compass, Eye, ShieldCheck } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { shouldAnimate } from "@/lib/animations";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function AboutClient() {
-  const containerRef = useRef(null);
-
   const milestones = [
     {
       year: "2004",
@@ -43,113 +32,8 @@ export default function AboutClient() {
     },
   ];
 
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) {
-      gsap.set(".about-header-item, .about-reveal-section, .timeline-node, .timeline-draw-line, .about-reveal-item, .about-reveal-image", {
-        opacity: 1,
-        y: 0,
-        scaleY: 1,
-        scale: 1,
-        visibility: "visible"
-      });
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    // 1. Header load reveal
-    gsap.fromTo(".about-header-item",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: "power3.out"
-      }
-    );
-
-    // 2. Section scroll reveals (triggers when 15-20% enters viewport)
-    const revealSections = gsap.utils.toArray(".about-reveal-section");
-    revealSections.forEach((sec) => {
-      // General elements fade up
-      const items = sec.querySelectorAll(".about-reveal-item");
-      if (items.length) {
-        gsap.fromTo(items,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sec,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      }
-
-      // Image fade and scale reveal
-      const img = sec.querySelector(".about-reveal-image");
-      if (img) {
-        gsap.fromTo(img,
-          { opacity: 0, scale: 1.06 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 1.0,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sec,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      }
-    });
-
-    // 3. Timeline section line drawing scaleY
-    gsap.fromTo(".timeline-draw-line",
-      { scaleY: 0 },
-      {
-        scaleY: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".timeline-section-container",
-          start: "top 75%",
-          end: "bottom 85%",
-          scrub: true
-        }
-      }
-    );
-
-    // 4. Timeline items reveal one by one
-    const nodes = gsap.utils.toArray(".timeline-node");
-    nodes.forEach((node) => {
-      gsap.fromTo(node,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: node,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-
-  }, { scope: containerRef });
-
   return (
-    <div ref={containerRef} className="bg-brand-bg min-h-screen select-none overflow-x-hidden">
+    <div className="bg-brand-bg min-h-screen select-none overflow-x-hidden">
       
       {/* Page Header */}
       <div className="pt-24 pb-8 sm:pt-32 sm:pb-12">
@@ -319,7 +203,7 @@ export default function AboutClient() {
 
           <div className="relative pl-8 md:pl-16 space-y-12 py-4">
             {/* Vertical drawing line */}
-            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[2px] bg-[#EC6713] origin-top timeline-draw-line will-change-transform" style={{ transform: "scaleY(0)" }} />
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[2px] bg-[#EC6713]" />
             
             {milestones.map((milestone, idx) => (
               <div key={idx} className="relative timeline-node pl-4 md:pl-8">

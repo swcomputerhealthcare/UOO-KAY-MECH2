@@ -116,12 +116,7 @@ body {
   transform: translateX(4px);
 }
 
-/* Responsive products page horizontal container */
-@media (min-width: 768px) {
-  .products-horizontal-container {
-    width: 300vw !important;
-  }
-}
+
 /* Quality Section Cards Grid & Alignment */
 .certGrid {
   display: grid;

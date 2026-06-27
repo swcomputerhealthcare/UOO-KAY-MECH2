@@ -1,14 +1,6 @@
 "use client";
 
-import { useRef } from "react";
 import { Users } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
 
 function LTLogo() {
   return (
@@ -87,8 +79,6 @@ function ParleLogo() {
 }
 
 export default function ClientsClient() {
-  const containerRef = useRef(null);
-
   const clients = [
     {
       name: "Larsen & Toubro Ltd.",
@@ -116,63 +106,8 @@ export default function ClientsClient() {
     },
   ];
 
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile) {
-      gsap.set(".cli-header-item, .cli-trust-banner, .cli-logo-row", {
-        opacity: 1,
-        y: 0,
-        visibility: "visible"
-      });
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    // Symmetrical subtle reveals
-    gsap.fromTo(".cli-header-item", 
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out"
-      }
-    );
-
-    gsap.fromTo(".cli-trust-banner",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".cli-trust-banner",
-          start: "top 90%"
-        }
-      }
-    );
-
-    gsap.fromTo(".cli-logo-row",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.06,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".cli-logos-grid",
-          start: "top 90%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <div ref={containerRef} className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden">
+    <div className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

@@ -1,15 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { FileText, ChevronRight } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { shouldAnimate } from "@/lib/animations";
 
 export default function InfrastructureClient() {
   const [activeTab, setActiveTab] = useState("machines");
   const [selectedAssetIdx, setSelectedAssetIdx] = useState(0);
-  const containerRef = useRef(null);
 
   const machines = [
     { 
@@ -254,7 +250,7 @@ export default function InfrastructureClient() {
         { label: "Metrology Type", value: "Mechanical Dial Caliper" },
         { label: "Measuring Range", value: "0 - 150 mm" },
         { label: "Min. Resolution", value: "0.02 mm rack and pinion pointer" },
-        { label: "Dial Face", value: "Adjustable bezel dial face with zero lock" }
+        { dialFace: "Adjustable bezel dial face with zero lock", label: "Dial Face" }
       ]
     },
     { 
@@ -310,88 +306,8 @@ export default function InfrastructureClient() {
   const activeCollection = activeTab === "machines" ? machines : instruments;
   const activeAsset = activeCollection[selectedAssetIdx] || activeCollection[0];
 
-  // GSAP page load animations
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) {
-      gsap.set(".infra-header-item, .infra-content-item, .asset-card-item, .console-detail-block, .console-table-row", {
-        opacity: 1,
-        y: 0,
-        visibility: "visible"
-      });
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    gsap.fromTo(".infra-header-item",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out"
-      }
-    );
-
-    gsap.fromTo(".infra-content-item",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-        delay: 0.12
-      }
-    );
-  }, { scope: containerRef });
-
-  // GSAP animation when switching tabs
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) return;
-
-    gsap.fromTo(".asset-card-item", 
-      { opacity: 0, y: 10 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.35, 
-        stagger: 0.03, 
-        ease: "power2.out" 
-      }
-    );
-
-    gsap.fromTo(".console-detail-block",
-      { opacity: 0, y: 10 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        ease: "power2.out"
-      }
-    );
-  }, { dependencies: [activeTab], scope: containerRef });
-
-  // GSAP animation when changing active asset
-  useGSAP(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) return;
-
-    gsap.fromTo(".console-table-row",
-      { opacity: 0, y: 5 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.25,
-        stagger: 0.02,
-        ease: "power2.out"
-      }
-    );
-  }, { dependencies: [selectedAssetIdx, activeTab], scope: containerRef });
-
   return (
-    <div ref={containerRef} className="bg-brand-bg text-[#161616] min-h-screen pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
+    <div className="bg-brand-bg text-[#161616] min-h-screen pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -545,5 +461,3 @@ export default function InfrastructureClient() {
     </div>
   );
 }
-
-

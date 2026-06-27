@@ -1,21 +1,10 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import LogoMarquee from "@/components/LogoMarquee";
-import { shouldAnimate } from "@/lib/animations";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function Home() {
-  const homeRef = useRef(null);
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -57,182 +46,8 @@ export default function Home() {
     ]
   };
 
-  useGSAP(() => {
-    // Check if mobile or prefers reduced motion
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile || !shouldAnimate()) {
-      // Set all animated elements to fully visible immediately
-      gsap.set(".hero-title-word, .counter-val, .hero-established, .hero-company-label, .hero-sub, .hero-desc, .hero-cta-btn, .hero-image-wrap, .step-image-wrap, .step-text-reveal > *, .testimonial-reveal-header, .testimonial-col", {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        scale: 1,
-        visibility: "visible"
-      });
-      const stats = document.querySelectorAll(".counter-val");
-      stats.forEach(el => el.textContent = el.dataset.target);
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      return;
-    }
-
-    // 1. Page Load Animation Timeline (Restrained & snappy, completes under 1.2s)
-    const loadTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    // Desktop top bar & header slide down
-    loadTl.fromTo(".top-utility-bar",
-      { y: -40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4 },
-      0
-    );
-    loadTl.fromTo(".staggered-menu-header",
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4 },
-      0.08
-    );
-
-    // Logo & company text fade-in
-    loadTl.fromTo(".sm-logo",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.3 },
-      0.15
-    );
-
-    // Hero title line-by-line stagger (using split words)
-    loadTl.fromTo(".hero-established",
-      { opacity: 0, x: -15 },
-      { opacity: 1, x: 0, duration: 0.4 },
-      0.2
-    );
-    loadTl.fromTo(".hero-company-label",
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, duration: 0.4 },
-      0.25
-    );
-    loadTl.fromTo(".hero-title-word",
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, stagger: 0.03, duration: 0.5 },
-      0.3
-    );
-    loadTl.fromTo(".hero-sub",
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, duration: 0.4 },
-      0.55
-    );
-    loadTl.fromTo(".hero-desc",
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.5 },
-      0.65
-    );
-
-    // Hero image scales down and settles into view (from 1.06 to 1)
-    loadTl.fromTo(".hero-image-wrap",
-      { scale: 1.06, opacity: 0 },
-      { scale: 1, opacity: 0.9, duration: 0.9 },
-      0.3
-    );
-
-    // CTA buttons fade up after text
-    loadTl.fromTo(".hero-cta-btn",
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, stagger: 0.08, duration: 0.4 },
-      0.75
-    );
-
-    // 2. Company Experience Strip: Count-up animation once
-    gsap.fromTo(".counter-val",
-      { textContent: 0 },
-      {
-        textContent: (i, target) => target.dataset.target,
-        duration: 1.6,
-        ease: "power2.out",
-        snap: { textContent: 1 },
-        scrollTrigger: {
-          trigger: ".stats-strip-container",
-          start: "top 85%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-
-    // 3. Step Sections: Unified scroll reveals (triggers when 15% of section enters viewport)
-    const stepSections = gsap.utils.toArray(".step-section");
-    stepSections.forEach((sec) => {
-      // Image reveal: scale 1.06 -> 1, opacity 0 -> 1, duration 1.0s, ease power3.out
-      const img = sec.querySelector(".step-image-wrap");
-      if (img) {
-        gsap.fromTo(img,
-          { opacity: 0, scale: 1.06 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 1.0,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sec,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      }
-
-      // Text elements reveal: y 40 -> 0, opacity 0 -> 1, duration 0.8s, ease power3.out, stagger 0.08
-      const txtItems = sec.querySelectorAll(".step-text-reveal > *");
-      if (txtItems.length) {
-        gsap.fromTo(txtItems,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sec,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      }
-    });
-
-    // 4. Testimonials Section Stagger Reveal
-    gsap.fromTo(".testimonial-reveal-header",
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".testimonials-section",
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
-      }
-    );
-
-    gsap.fromTo(".testimonial-col",
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".testimonials-section",
-          start: "top 80%",
-          toggleActions: "play none none reverse"
-        }
-      }
-    );
-
-  }, { scope: homeRef });
-
   return (
-    <div ref={homeRef} className="flex flex-col min-h-screen bg-brand-bg select-none overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-brand-bg select-none overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -254,13 +69,7 @@ export default function Home() {
                   UK MECH
                 </span>
                 <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#09285F]">
-                  {"Precision Machining & Industrial Engineering Solutions".split(" ").map((w, idx) => (
-                    <span key={idx} className="inline-block overflow-hidden mr-[0.25em] vertical-align-bottom">
-                      <span className="inline-block hero-title-word will-change-transform">
-                        {w}
-                      </span>
-                    </span>
-                  ))}
+                  Precision Machining & Industrial Engineering Solutions
                 </h1>
                 <p className="text-sm sm:text-base font-bold text-[#5E6673] uppercase tracking-wide hero-sub">
                   Serving Industrial Clients Since 2004
@@ -320,27 +129,27 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#D7DDE5]/20">
             <div className="space-y-1">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val" data-target="20">0</span>+
+                <span className="counter-val">12</span>+
+              </span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Products Manufactured</span>
+            </div>
+            <div className="space-y-1 pt-4 md:pt-0">
+              <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
+                <span className="counter-val">25</span>+
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Years Experience</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val" data-target="2013">0</span>
-              </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Registered Company</span>
-            </div>
-            <div className="space-y-1 pt-4 md:pt-0">
-              <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val" data-target="100">0</span>+
+                <span className="counter-val">500</span>+
               </span>
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Projects Delivered</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val" data-target="24">0</span>/7
+                <span className="counter-val">100</span>%
               </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Engineering Support</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Quality Inspected</span>
             </div>
           </div>
         </div>
