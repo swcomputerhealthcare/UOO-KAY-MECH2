@@ -128,17 +128,7 @@
   width: 50px;
 }
 
-.sm-toggle-textInner {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
 
-.sm-toggle-line {
-  display: block;
-  height: 1em;
-  line-height: 1;
-}
 
 .sm-icon {
   position: relative;
@@ -164,7 +154,6 @@
   background: currentColor;
   border-radius: 2px;
   transform: translate(-50%, -50%);
-  will-change: transform;
 }
 
 .sm-icon-line-v {
@@ -213,9 +202,7 @@
   transform: translateX(0) !important;
 }
 
-.sm-prelayers {
-  display: none !important;
-}
+
 
 .sm-panel-inner {
   flex: 1;
@@ -255,12 +242,10 @@
   text-decoration: none;
   padding: 0.4rem 0.8rem;
   border-radius: 8px;
-  will-change: transform;
 }
 
 .sm-panel-itemLabel {
   display: inline-block;
-  will-change: transform;
   transform-origin: 50% 100%;
 }
 
@@ -283,7 +268,7 @@
   font-size: 10px;
   font-weight: 700;
   color: #09285F; /* Contrasting primary blue for numbers */
-  opacity: var(--sm-num-opacity, 0);
+  opacity: var(--sm-num-opacity, 1);
   transition: opacity 0.5s;
   letter-spacing: 0.1em;
   margin-left: 0.4rem;
@@ -342,11 +327,6 @@
     right: 0;
     border-left: none;
   }
-  .sm-prelayers {
-    width: 100%;
-    left: 0;
-    right: 0;
-  }
 }
 
 @media (max-width: 640px) {
@@ -376,7 +356,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 260px; /* Mobile */
+  width: 190px;
   max-width: 58vw;
   height: auto;
   transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
@@ -405,16 +385,16 @@
 /* Tablet (min-width: 768px) */
 @media (min-width: 768px) {
   .logoWrap {
-    width: 290px;
+    width: 210px;
     max-width: 58vw;
     gap: 12px;
   }
   .logoImg {
-    width: 88px;
-    height: 88px;
+    width: 82px;
+    height: 82px;
   }
   .logoTextTop {
-    font-size: 20px;
+    font-size: 18px;
   }
   .logoTextBottom {
     font-size: 10px;
@@ -425,7 +405,7 @@
 /* Desktop (min-width: 1024px) */
 @media (min-width: 1024px) {
   .logoWrap {
-    width: 320px;
+    width: 230px;
     gap: 14px;
   }
   .logoImg {
@@ -443,7 +423,7 @@
 
 /* Scrolled Header Adjustments */
 .scrolled-header .logoWrap {
-  width: 190px; /* Mobile scrolled */
+  width: 160px;
 }
 .scrolled-header .logoImg {
   width: 56px;
@@ -459,7 +439,7 @@
 
 @media (min-width: 768px) {
   .scrolled-header .logoWrap {
-    width: 220px; /* Tablet scrolled */
+    width: 180px;
   }
   .scrolled-header .logoImg {
     width: 64px;
@@ -476,7 +456,7 @@
 
 @media (min-width: 1024px) {
   .scrolled-header .logoWrap {
-    width: 260px; /* Desktop scrolled */
+    width: 200px;
   }
   .scrolled-header .logoImg {
     width: 72px;

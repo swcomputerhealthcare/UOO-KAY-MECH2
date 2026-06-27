@@ -148,7 +148,7 @@ export const StaggeredMenu = ({
           <div className="logoImg">
             <Image
               src="/uk-mech-logo-v3.png"
-              alt="UOO KAY MECH Logo"
+              alt="UK MECH Industries Logo"
               fill
               className="object-contain"
               priority
@@ -156,7 +156,7 @@ export const StaggeredMenu = ({
           </div>
           <div className="flex flex-col text-left">
             <span className="font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#09285F] logoTextTop">
-              UOO KAY MECH
+              UK MECH
             </span>
             <span className="text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 group-data-[open]:text-white/85 lg:group-data-[open]:text-[#EC6713] logoTextBottom">
               INDUSTRIES

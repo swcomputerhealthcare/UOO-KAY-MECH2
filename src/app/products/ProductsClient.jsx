@@ -270,7 +270,7 @@ const PRODUCTS = [
   }
 ];
 
-// 4. FEATURED PRODUCTS FOR GSAP SHOWCASE
+// 4. FEATURED PRODUCTS
 const FEATURED_ITEMS = [
   {
     title: "Concentric Transmission Shaft",

@@ -2,50 +2,31 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 
 export default function NotFound() {
-  const containerRef = useRef(null);
-
-  useGSAP(() => {
-    // Stagger fade-in animations on mount
-    gsap.fromTo(".notfound-animate",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: "power3.out"
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <div ref={containerRef} className="min-h-[85vh] bg-brand-bg flex items-center justify-center py-20 relative overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
+    <div className="min-h-[85vh] bg-brand-bg flex items-center justify-center py-20 relative overflow-hidden px-4 sm:px-6 lg:px-8 select-none">
       {/* Decorative smooth ambient light gradients */}
       <div className="absolute top-10 left-10 w-[500px] h-[500px] bg-gradient-to-tr from-blue-500/5 to-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Cinematic Dark Wrapper Card */}
-      <div className="w-full max-w-5xl bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] rounded-[2.5rem] border border-white/10 p-8 sm:p-16 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 notfound-animate">
+      <div className="w-full max-w-5xl bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] rounded-[2.5rem] border border-white/10 p-8 sm:p-16 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
         
         {/* Left Side: Copy and Helper Links */}
         <div className="flex-1 space-y-8 text-left z-10">
           <div>
-            <span className="text-[10px] font-black text-[#5bdbf5] uppercase tracking-[0.25em] block mb-3 notfound-animate">/ Page Not Found</span>
-            <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-white uppercase tracking-wide notfound-animate mb-4">
+            <span className="text-[10px] font-black text-[#5bdbf5] uppercase tracking-[0.25em] block mb-3">/ Page Not Found</span>
+            <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-white uppercase tracking-wide mb-4">
               Lost in the Machine
             </h1>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-semibold max-w-md notfound-animate">
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-semibold max-w-md">
               Looks like you&apos;ve taken a wrong turn. The engineering spec or resource page you are looking for has been decommissioned, moved, or never existed.
             </p>
           </div>
 
           {/* Navigation Helper Grid */}
-          <div className="space-y-5 pt-8 border-t border-white/5 w-full notfound-animate">
+          <div className="space-y-5 pt-8 border-t border-white/5 w-full">
             <h3 className="text-[10px] font-black uppercase text-[#5bdbf5] tracking-[0.15em] mb-4">
               Maybe you were looking for:
             </h3>

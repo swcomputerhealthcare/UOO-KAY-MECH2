@@ -88,7 +88,6 @@ body {
   transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1), 
               border-color 400ms cubic-bezier(0.32, 0.72, 0, 1), 
               box-shadow 400ms cubic-bezier(0.32, 0.72, 0, 1);
-  will-change: transform, border-color, box-shadow;
 }
 
 .premium-card-hover:hover {
@@ -101,7 +100,6 @@ body {
   transition: transform 300ms cubic-bezier(0.32, 0.72, 0, 1), 
               background-color 300ms cubic-bezier(0.32, 0.72, 0, 1), 
               color 300ms cubic-bezier(0.32, 0.72, 0, 1);
-  will-change: transform, background-color;
 }
 
 .premium-btn-hover:hover {
@@ -273,29 +271,7 @@ section {
   }
 }
 
-/* About Us Styling Fixes */
-.aboutTitle {
-  color: #151515 !important;
-  opacity: 1 !important;
-}
-
-.aboutDescription {
-  color: #5F6673 !important;
-  opacity: 1 !important;
-}
-
-
-/* Clients Section Styling Fixes */
-.clientsIntro h2 {
-  color: #151515 !important;
-  opacity: 1 !important;
-}
-
-.clientsIntro p {
-  color: #5F6673 !important;
-  opacity: 1 !important;
-}
-
+/* Clients Section: Ensure logos are always visible */
 .clientLogo,
 .clientLogo img,
 .clientLogo svg {
@@ -304,36 +280,6 @@ section {
   filter: none !important;
   mix-blend-mode: normal !important;
   object-fit: contain;
-}
-
-@media (max-width: 768px) {
-  .clientsTrack {
-    transform: none !important;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .clientCard {
-    width: 100% !important;
-    min-height: 140px !important;
-    padding: 24px !important;
-  }
-
-  .clientLogoBox,
-  .logoBox {
-    min-height: 80px !important;
-  }
-
-  .clientLogoBox img,
-  .logoBox img,
-  .clientLogoImage {
-    max-width: 82% !important;
-    max-height: 72px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
-  }
 }
 
 /* Mobile Product Cards Adjustments */
@@ -383,57 +329,8 @@ section {
   }
 }
 
-/* Premium Gallery Mobile Overrides */
-@media (max-width: 768px) {
-  .premiumGallery {
-    background: #09285F !important;
-    color: #ffffff !important;
-    padding: 56px 20px !important;
-  }
 
-  .premiumGallery * {
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
 
-  .premiumGalleryTitle {
-    color: #ffffff !important;
-    font-size: clamp(30px, 8vw, 44px) !important;
-    line-height: 1.05 !important;
-  }
 
-  .premiumGalleryMeta,
-  .premiumGallerySpec {
-    color: rgba(255, 255, 255, 0.84) !important;
-  }
-
-  .premiumGalleryImage {
-    width: 100% !important;
-    aspect-ratio: 4 / 3 !important;
-    border-radius: 24px !important;
-    overflow: hidden !important;
-    opacity: 1 !important;
-    position: relative !important;
-    height: 250px !important;
-  }
-
-  .premiumGalleryImage img {
-    opacity: 1 !important;
-    filter: none !important;
-    object-fit: cover !important;
-  }
-}
-
-/* Header Logo Dimensions */
-.logoWrap {
-  width: 320px !important;
-}
-
-@media (max-width: 768px) {
-  .logoWrap {
-    width: 260px !important;
-    max-width: 58vw !important;
-  }
-}
 
 
