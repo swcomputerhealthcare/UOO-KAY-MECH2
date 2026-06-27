@@ -312,8 +312,14 @@ export default function InfrastructureClient() {
 
   // GSAP page load animations
   useGSAP(() => {
-    if (!shouldAnimate()) {
-      gsap.set(".infra-header-item, .infra-content-item", { opacity: 1, y: 0 });
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) {
+      gsap.set(".infra-header-item, .infra-content-item, .asset-card-item, .console-detail-block, .console-table-row", {
+        opacity: 1,
+        y: 0,
+        visibility: "visible"
+      });
+      ScrollTrigger.getAll().forEach(t => t.kill());
       return;
     }
 
@@ -342,7 +348,8 @@ export default function InfrastructureClient() {
 
   // GSAP animation when switching tabs
   useGSAP(() => {
-    if (!shouldAnimate()) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) return;
 
     gsap.fromTo(".asset-card-item", 
       { opacity: 0, y: 10 },
@@ -368,7 +375,8 @@ export default function InfrastructureClient() {
 
   // GSAP animation when changing active asset
   useGSAP(() => {
-    if (!shouldAnimate()) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) return;
 
     gsap.fromTo(".console-table-row",
       { opacity: 0, y: 5 },
@@ -383,12 +391,12 @@ export default function InfrastructureClient() {
   }, { dependencies: [selectedAssetIdx, activeTab], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-brand-bg text-[#161616] min-h-screen py-24 sm:py-32 relative overflow-hidden select-none">
+    <div ref={containerRef} className="bg-brand-bg text-[#161616] min-h-screen pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#EC6713] pl-6 mb-20 infra-header-item opacity-0">
+        <div className="border-l-2 border-[#EC6713] pl-6 mb-20 infra-header-item">
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ FACILITY INDEX ]
           </span>
@@ -398,12 +406,12 @@ export default function InfrastructureClient() {
         </div>
 
         {/* Introduction */}
-        <p className="text-[#5E6673] text-sm sm:text-base max-w-3xl leading-relaxed mb-16 font-sans font-medium infra-content-item opacity-0">
+        <p className="text-[#5E6673] text-sm sm:text-base max-w-3xl leading-relaxed mb-16 font-sans font-medium infra-content-item">
           Our Thane manufacturing facility maintains conventional machining platforms and dedicated inspection instruments. Utilize the catalog register below to review the specifications of our operational assets.
         </p>
 
         {/* Tab Controls (Flat Sharp Rectangles) */}
-        <div className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex overflow-x-auto gap-8 infra-content-item opacity-0 no-scrollbar">
+        <div className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex overflow-x-auto gap-8 infra-content-item no-scrollbar">
           <button
             onClick={() => {
               setActiveTab("machines");
@@ -433,7 +441,7 @@ export default function InfrastructureClient() {
         </div>
 
         {/* Main Content Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start infra-content-item opacity-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start infra-content-item">
           
           {/* Left Panel: Scrollable Technical Row Listing */}
           <div className="lg:col-span-5 space-y-2 max-h-[70vh] overflow-y-auto pr-4 no-scrollbar border-r border-[#D7DDE5] font-sans">

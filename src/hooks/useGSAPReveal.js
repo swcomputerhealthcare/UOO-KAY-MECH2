@@ -31,8 +31,9 @@ export function useGSAPReveal(options = {}) {
   } = options;
 
   useEffect(() => {
-    // If the user prefers reduced motion, do not run animations
-    if (!shouldAnimate() || !elementRef.current) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    // If the user prefers reduced motion or is on mobile, do not run animations
+    if (isMobile || !shouldAnimate() || !elementRef.current) return;
 
     const el = elementRef.current;
     

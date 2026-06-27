@@ -506,3 +506,15 @@ section {
   }
 }
 
+/* Sane Default Opacity / Animation Fallbacks */
+.reveal,
+.fadeIn,
+[data-reveal],
+[data-animate],
+.word-item {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  filter: none;
+}
+

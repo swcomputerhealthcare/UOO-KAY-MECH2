@@ -36,7 +36,8 @@ export function StaggerWords({ text, className, delay = 0 }) {
   const containerRef = useRef(null);
   
   useEffect(() => {
-    if (!shouldAnimate() || !containerRef.current) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate() || !containerRef.current) return;
     
     const words = containerRef.current.querySelectorAll(".word-item");
     const tween = gsap.fromTo(words,
@@ -69,7 +70,7 @@ export function StaggerWords({ text, className, delay = 0 }) {
     <span ref={containerRef} className={`inline-block ${className || ""}`}>
       {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden mr-[0.25em] vertical-align-bottom">
-          <span className="inline-block word-item opacity-0 will-change-transform">
+          <span className="inline-block word-item will-change-transform">
             {word}
           </span>
         </span>
@@ -85,7 +86,8 @@ export function SectionLabelReveal({ label, className, delay = 0 }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    if (!shouldAnimate() || !containerRef.current) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate() || !containerRef.current) return;
     
     const tween = gsap.fromTo(containerRef.current,
       { opacity: 0, x: -15 },
@@ -110,7 +112,7 @@ export function SectionLabelReveal({ label, className, delay = 0 }) {
   }, [label, delay]);
 
   return (
-    <div ref={containerRef} className={`inline-block opacity-0 will-change-transform ${className || ""}`}>
+    <div ref={containerRef} className={`inline-block will-change-transform ${className || ""}`}>
       {label}
     </div>
   );
