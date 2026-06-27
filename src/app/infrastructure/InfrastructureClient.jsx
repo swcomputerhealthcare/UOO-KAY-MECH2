@@ -132,7 +132,7 @@ export default function InfrastructureClient() {
         { label: "Current Capacity", value: "30 - 400 Amps variable output" },
         { label: "Duty Cycle", value: "60% at maximum load current" },
         { label: "Supported Welding", value: "MMA (Manual Metal Arc) & structural joints" },
-        { label: "Primary Operations", value: "Heavy bracket fabrication & structural guards" }
+        { label: "Primary Operations", value: "Heavy bracket welding & structural guards" }
       ]
     },
     { 
@@ -388,7 +388,7 @@ export default function InfrastructureClient() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#D9893A] pl-6 mb-20 infra-header-item opacity-0">
+        <div className="border-l-2 border-[#EC6713] pl-6 mb-20 infra-header-item opacity-0">
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ FACILITY INDEX ]
           </span>
@@ -411,7 +411,7 @@ export default function InfrastructureClient() {
             }}
             className={`pb-4 text-sm font-heading font-bold uppercase tracking-wider transition-all duration-200 border-b-2 ${
               activeTab === "machines"
-                ? "border-[#D9893A] text-[#161616]"
+                ? "border-[#EC6713] text-[#161616]"
                 : "border-transparent text-[#5E6673] hover:text-[#161616]"
             }`}
           >
@@ -424,7 +424,7 @@ export default function InfrastructureClient() {
             }}
             className={`pb-4 text-sm font-heading font-bold uppercase tracking-wider transition-all duration-200 border-b-2 ${
               activeTab === "instruments"
-                ? "border-[#D9893A] text-[#161616]"
+                ? "border-[#EC6713] text-[#161616]"
                 : "border-transparent text-[#5E6673] hover:text-[#161616]"
             }`}
           >
@@ -450,10 +450,10 @@ export default function InfrastructureClient() {
                 <div className="flex items-center justify-between">
                   <div className="space-y-1 truncate pr-4">
                     <div className="flex items-center gap-3">
-                      <span className={`font-mono text-[9px] ${selectedAssetIdx === idx ? "text-[#D9893A]" : "text-[#5E6673]"}`}>
+                      <span className={`font-mono text-[9px] ${selectedAssetIdx === idx ? "text-[#EC6713]" : "text-[#5E6673]"}`}>
                         [{String(idx + 1).padStart(2, "0")}]
                       </span>
-                      <span className={`text-[9px] font-mono uppercase tracking-wide ${selectedAssetIdx === idx ? "text-[#D9893A]" : "text-[#5E6673]"}`}>
+                      <span className={`text-[9px] font-mono uppercase tracking-wide ${selectedAssetIdx === idx ? "text-[#EC6713]" : "text-[#5E6673]"}`}>
                         {asset.category}
                       </span>
                     </div>
@@ -466,7 +466,7 @@ export default function InfrastructureClient() {
                   </div>
                   
                   <div className={`p-1 transition-transform duration-200 ${
-                    selectedAssetIdx === idx ? "text-[#D9893A] translate-x-1" : "text-[#5E6673]"
+                    selectedAssetIdx === idx ? "text-[#EC6713] translate-x-1" : "text-[#5E6673]"
                   }`}>
                     <ChevronRight className="h-4 w-4" />
                   </div>
@@ -486,7 +486,7 @@ export default function InfrastructureClient() {
                     {activeAsset.category}
                   </span>
                   {activeAsset.featured && (
-                    <span className="border border-[#D9893A] text-[#D9893A] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider">
+                    <span className="border border-[#EC6713] text-[#EC6713] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-wider">
                       PRIMARY
                     </span>
                   )}

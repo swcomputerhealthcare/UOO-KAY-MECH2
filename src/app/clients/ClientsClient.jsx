@@ -12,20 +12,20 @@ if (typeof window !== "undefined") {
 
 function LTLogo() {
   return (
-    <svg className="h-10 w-auto" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="clientLogoImage" viewBox="0 0 290 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="24" fill="#161616" />
-      <circle cx="30" cy="30" r="22" stroke="#D9893A" strokeWidth="1.5" />
-      <path d="M22 18h4v16.5c0 1.9 1.1 3 3 3h4v4h-5.5c-4 0-5.5-2-5.5-5.5V18z" fill="#D9893A" />
-      <path d="M30 18h16v4H38v20h-4V22h-4v-4z" fill="#D9893A" />
+      <circle cx="30" cy="30" r="22" stroke="#EC6713" strokeWidth="1.5" />
+      <path d="M22 18h4v16.5c0 1.9 1.1 3 3 3h4v4h-5.5c-4 0-5.5-2-5.5-5.5V18z" fill="#EC6713" />
+      <path d="M30 18h16v4H38v20h-4V22h-4v-4z" fill="#EC6713" />
       <text x="70" y="32" fontFamily="var(--font-heading)" fontSize="18" fontWeight="900" fill="#161616" letterSpacing="1">LARSEN & TOUBRO</text>
-      <text x="70" y="46" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#D9893A" letterSpacing="1.5">ENGINEERING SOLUTIONS</text>
+      <text x="70" y="46" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#EC6713" letterSpacing="1.5">ENGINEERING SOLUTIONS</text>
     </svg>
   );
 }
 
 function EmersonLogo() {
   return (
-    <svg className="h-10 w-auto" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="clientLogoImage" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="24" stroke="#161616" strokeWidth="3" fill="none" />
       <ellipse cx="30" cy="30" rx="14" ry="24" stroke="#161616" strokeWidth="1.5" fill="none" />
       <ellipse cx="30" cy="30" rx="6" ry="24" stroke="#161616" strokeWidth="1" fill="none" />
@@ -38,13 +38,13 @@ function EmersonLogo() {
 
 function GodfreyLogo() {
   return (
-    <svg className="h-10 w-auto" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="clientLogoImage" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(10, 2)">
-        <path d="M12,4 L16,10 L25,5 L34,10 L38,4 L34,14 L16,14 Z" fill="#D9893A" stroke="#161616" strokeWidth="1" />
+        <path d="M12,4 L16,10 L25,5 L34,10 L38,4 L34,14 L16,14 Z" fill="#EC6713" stroke="#161616" strokeWidth="1" />
         <circle cx="12" cy="4" r="1.5" fill="#161616" />
         <circle cx="25" cy="5" r="1.5" fill="#161616" />
         <circle cx="38" cy="4" r="1.5" fill="#161616" />
-        <path d="M14,16 L36,16 C36,16 36,28 25,36 C14,28 14,16 14,16 Z" fill="#161616" stroke="#D9893A" strokeWidth="2" />
+        <path d="M14,16 L36,16 C36,16 36,28 25,36 C14,28 14,16 14,16 Z" fill="#161616" stroke="#EC6713" strokeWidth="2" />
       </g>
       <text x="65" y="32" fontFamily="var(--font-heading)" fontSize="17" fontWeight="900" fill="#161616" letterSpacing="1">GODFREY PHILLIPS</text>
       <text x="65" y="46" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#5E6673" letterSpacing="2">INDIA LIMITED</text>
@@ -54,10 +54,10 @@ function GodfreyLogo() {
 
 function ParleLogo() {
   return (
-    <svg className="h-10 w-auto" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(10, 6)" fill="#D9893A">
-        <circle cx="18" cy="26" r="15" stroke="#D9893A" strokeWidth="3" fill="none" />
-        <path d="M14,19 H21 C23.5,19 25,20.5 25,22.5 C25,24.5 23.5,26 21,26 H17 V32 H14 V19 Z M17,21 V24 H21 C22,24 22.5,23.5 22.5,22.5 C22.5,21.5 22,21 21,21 Z" fill="#D9893A" />
+    <svg className="clientLogoImage" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(10, 6)" fill="#EC6713">
+        <circle cx="18" cy="26" r="15" stroke="#EC6713" strokeWidth="3" fill="none" />
+        <path d="M14,19 H21 C23.5,19 25,20.5 25,22.5 C25,24.5 23.5,26 21,26 H17 V32 H14 V19 Z M17,21 V24 H21 C22,24 22.5,23.5 22.5,22.5 C22.5,21.5 22,21 21,21 Z" fill="#EC6713" />
       </g>
       <text x="65" y="31" fontFamily="var(--font-heading)" fontSize="16" fontWeight="900" fill="#161616" letterSpacing="0.5">PARLE ELIZABETH</text>
       <text x="65" y="45" fontFamily="sans-serif" fontSize="10" fontWeight="700" fill="#5E6673" letterSpacing="1.5">TOOLS PVT. LTD.</text>
@@ -136,7 +136,7 @@ export default function ClientsClient() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#D9893A] pl-6 mb-16">
+        <div className="border-l-2 border-[#EC6713] pl-6 mb-16">
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ SUPPLIER AUDIT ]
           </span>
@@ -148,14 +148,14 @@ export default function ClientsClient() {
         {/* 1. Client Trust Banner (Flat Solid Color, No gradients) */}
         <div className="bg-white text-[#161616] border-t-2 border-[#161616] p-8 sm:p-12 mb-20 cli-trust-banner">
           <div className="max-w-3xl space-y-6">
-            <div className="text-[#D9893A]">
+            <div className="text-[#EC6713]">
               <Users className="h-6 w-6" strokeWidth={1.5} />
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-wide uppercase">
-              Partnerships Built on <span className="text-[#D9893A]">Engineering Trust</span>
+              Partnerships Built on <span className="text-[#EC6713]">Engineering Trust</span>
             </h2>
             <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
-              UOO KAY MECH INDUSTRIES is an approved vendor supplier to India&apos;s leading industrial organizations. Our consistent delivery of drawing-compliant, precision-machined parts has established us as a reliable partner in strategic supply chains.
+              UK MECH INDUSTRIES is an approved vendor supplier to India&apos;s leading industrial organizations. Our consistent delivery of drawing-compliant, precision-machined parts has established us as a reliable partner in strategic supply chains.
             </p>
           </div>
         </div>
@@ -169,9 +169,11 @@ export default function ClientsClient() {
             {clients.map((c, idx) => (
               <div
                 key={idx}
-                className="cli-logo-row border border-[#D7DDE5] p-8 flex items-center justify-center bg-white min-h-[120px]"
+                className="group clientCard clientLogoCard cli-logo-row transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
               >
-                {c.logo}
+                <div className="logoBox transition-transform duration-300 group-hover:scale-[1.02]">
+                  {c.logo}
+                </div>
               </div>
             ))}
           </div>
@@ -198,7 +200,7 @@ export default function ClientsClient() {
                   </p>
                 </div>
                 <div className="pt-2">
-                  <span className="text-[10px] font-mono font-bold text-[#D9893A] uppercase tracking-widest">
+                  <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-widest">
                     STATUS: {c.status.toUpperCase()}
                   </span>
                 </div>

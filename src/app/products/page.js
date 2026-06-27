@@ -1,14 +1,14 @@
 import ProductsClient from "./ProductsClient";
 
 export const metadata = {
-  title: "CNC Machining, Gears & Machine Safety Guards | Uoo Kay Mech Industries",
-  description: "Browse our precision engineering capabilities: custom machine safety guards, crane shafts, spur gears, MS/SS ladders, and structural fabrications.",
+  title: "Precision CNC Machining & Custom Tooling | UK Mech Industries",
+  description: "Browse our precision engineering capabilities: CNC components, custom shafts, spur gears, tooling, dies, and custom machining solutions.",
   alternates: {
     canonical: "/products",
   },
   openGraph: {
-    title: "CNC Machining, Gears & Machine Safety Guards | Uoo Kay Mech Industries",
-    description: "Browse our precision engineering capabilities: custom machine safety guards, crane shafts, spur gears, MS/SS ladders, and structural fabrications.",
+    title: "Precision CNC Machining & Custom Tooling | UK Mech Industries",
+    description: "Browse our precision engineering capabilities: CNC components, custom shafts, spur gears, tooling, dies, and custom machining solutions.",
     url: "https://uookaymechindustries.com/products",
     type: "website",
   }

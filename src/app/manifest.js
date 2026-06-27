@@ -1,17 +1,17 @@
 export default function manifest() {
   return {
-    name: "UOO Kay Mech Industries",
-    short_name: "UOO Kay Mech",
-    description: "UOO Kay Mech Industries provides industrial fabrication, precision machining, stainless steel fabrication, tooling, dies, fixtures and custom engineering solutions.",
+    name: "UK Mech Industries",
+    short_name: "UK Mech",
+    description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions.",
     start_url: "/",
     display: "standalone",
     background_color: "#F6F7F8",
-    theme_color: "#17375E",
+    theme_color: "#09285F",
     icons: [
       {
-        src: "/favicon.ico",
+        src: "/uk-mech-logo-v3.png",
         sizes: "any",
-        type: "image/x-icon",
+        type: "image/png",
       },
     ],
   };

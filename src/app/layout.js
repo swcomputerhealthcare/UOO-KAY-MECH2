@@ -1,20 +1,20 @@
-import { Montserrat, Roboto, IBM_Plex_Mono } from "next/font/google";
+import { Manrope, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import PageTransition from "@/components/PageTransition";
 
-const montserrat = Montserrat({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -27,9 +27,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "UOO Kay Mech Industries | Precision Fabrication & Machining in Thane",
-  description: "UOO Kay Mech Industries provides industrial fabrication, precision machining, stainless steel fabrication, tooling, dies, fixtures and custom engineering solutions in Thane, Maharashtra. Serving industry since 2004.",
-  keywords: "UOO Kay Mech Industries, fabrication company in Thane, precision machining Thane, industrial fabrication Thane, stainless steel fabrication, machined components, tool room components, punch dies, custom fixtures, machine frames, fabricated structures, Kolshet Road Thane, Pomal Industrial Estate",
+  title: "UK Mech Industries | Precision Machining & Industrial Engineering Solutions",
+  description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
+  keywords: "UK Mech Industries, precision machining Thane, industrial engineering Thane, CNC components, machined parts, tool room components, punch dies, custom fixtures, machine frames, Thane, Maharashtra",
   metadataBase: new URL("https://uookaymechindustries.com"),
   alternates: {
     canonical: "https://uookaymechindustries.com",
@@ -40,25 +40,25 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/uk-mech-logo-v3.png", sizes: "any" },
+      { url: "/uk-mech-logo-v3.png", sizes: "32x32", type: "image/png" },
+      { url: "/uk-mech-logo-v3.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/uk-mech-logo-v3.png", sizes: "180x180", type: "image/png" },
     ],
   },
   openGraph: {
-    title: "UOO Kay Mech Industries | Precision Fabrication & Machining in Thane",
-    description: "UOO Kay Mech Industries provides industrial fabrication, precision machining, stainless steel fabrication, tooling, dies, fixtures and custom engineering solutions in Thane, Maharashtra. Serving industry since 2004.",
+    title: "UK Mech Industries | Precision Machining & Industrial Engineering Solutions",
+    description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
     url: "https://uookaymechindustries.com",
-    siteName: "UOO Kay Mech Industries",
+    siteName: "UK Mech Industries",
     images: [
       {
-        url: "/images/products/machines and fabricated components 1.webp",
+        url: "/uk-mech-logo-v3.png",
         width: 1200,
         height: 630,
-        alt: "UOO Kay Mech Industries Precision Engineering Workshop",
+        alt: "UK Mech Industries Precision Machined Components",
       },
     ],
     locale: "en_US",
@@ -66,14 +66,14 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UOO Kay Mech Industries | Precision Fabrication & Machining in Thane",
-    description: "UOO Kay Mech Industries provides industrial fabrication, precision machining, stainless steel fabrication, tooling, dies, fixtures and custom engineering solutions in Thane, Maharashtra. Serving industry since 2004.",
-    images: ["/images/products/machines and fabricated components 1.webp"],
+    title: "UK Mech Industries | Precision Machining & Industrial Engineering Solutions",
+    description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
+    images: ["/uk-mech-logo-v3.png"],
   },
 };
 
 export const viewport = {
-  themeColor: "#17375E",
+  themeColor: "#09285F",
   width: "device-width",
   initialScale: 1,
 };
@@ -81,8 +81,8 @@ export const viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "UOO Kay Mech Industries",
-  "image": "https://uookaymechindustries.com/images/products/machines and fabricated components 1.webp",
+  "name": "UK Mech Industries",
+  "image": "https://uookaymechindustries.com/images/products/highly-precision-1.jpeg",
   "@id": "https://uookaymechindustries.com/#localbusiness",
   "url": "https://uookaymechindustries.com",
   "telephone": ["+91 99878 49605", "+91 98330 53809"],
@@ -96,8 +96,8 @@ const jsonLd = {
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 19.228591,
-    "longitude": 72.9854787
+    "latitude": 19.22867202758789,
+    "longitude": 72.98545837402344
   },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
@@ -119,15 +119,14 @@ const jsonLd = {
     { "@type": "AdministrativeArea", "name": "India" }
   ],
   "knowsAbout": [
-    "Industrial Fabrication",
     "Precision Machining",
-    "Stainless Steel Fabrication",
+    "CNC Components",
     "Tooling & Dies",
     "Custom Fixtures",
     "Machine Frames",
-    "Fabricated Structures",
     "Brass Components",
-    "Special Purpose Components"
+    "Special Purpose Components",
+    "Industrial Machining Solutions"
   ],
   "foundingDate": "2004"
 };
@@ -138,7 +137,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${montserrat.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${manrope.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-brand-bg text-text-primary">
         <script

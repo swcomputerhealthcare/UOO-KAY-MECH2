@@ -11,7 +11,7 @@ const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffec
 
 export const StaggeredMenu = ({
   position = 'right',
-  colors = ['#121212', '#262626', '#D9893A'],
+  colors = ['#121212', '#262626', '#EC6713'],
   items = [],
   socialItems = [],
   displaySocials = true,
@@ -19,7 +19,7 @@ export const StaggeredMenu = ({
   className,
   menuButtonColor = '#121212',
   openMenuButtonColor = '#fff',
-  accentColor = '#D9893A',
+  accentColor = '#EC6713',
   changeMenuColorOnOpen = true,
   isFixed = true,
   closeOnClickAway = true,
@@ -390,7 +390,7 @@ export const StaggeredMenu = ({
     >
       <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
         {(() => {
-          const raw = colors && colors.length ? colors.slice(0, 4) : ['#121212', '#262626', '#D9893A'];
+          const raw = colors && colors.length ? colors.slice(0, 4) : ['#121212', '#262626', '#EC6713'];
           let arr = [...raw];
           if (arr.length >= 3) {
             const mid = Math.floor(arr.length / 2);
@@ -401,48 +401,23 @@ export const StaggeredMenu = ({
       </div>
       
       <header className={`staggered-menu-header ${scrolled ? 'scrolled-header' : ''}`} aria-label="Main navigation header">
-        {/* Premium custom SVG logo with brushed steel, acrylic lettering, and orange underline accent */}
-        <Link href="/" className="sm-logo gap-3.5 items-center flex" aria-label="Logo" onClick={closeMenu}>
-          <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-            <defs>
-              <linearGradient id="brushedSteel" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#F1F5F9" />
-                <stop offset="25%" stopColor="#E2E8F0" />
-                <stop offset="50%" stopColor="#94A3B8" />
-                <stop offset="75%" stopColor="#CBD5E1" />
-                <stop offset="100%" stopColor="#64748B" />
-              </linearGradient>
-              <filter id="acrylicGlow" x="-10%" y="-10%" width="120%" height="120%">
-                <feDropShadow dx="1" dy="1.5" stdDeviation="1" floodColor="#000000" floodOpacity="0.25" />
-              </filter>
-            </defs>
-            
-            {/* Outer precision engineering ring */}
-            <circle cx="50" cy="50" r="48" stroke="#17375E" strokeWidth="2.5" strokeDasharray="4 2" opacity="0.6" />
-            
-            {/* Hexagonal plate with brushed steel gradient */}
-            <polygon points="50,12 83,31 83,69 50,88 17,69 17,31" fill="url(#brushedSteel)" stroke="#5E6673" strokeWidth="2.5" />
-            
-            {/* Horizontal brushed steel micro-lines */}
-            <line x1="25" y1="35" x2="75" y2="35" stroke="#ffffff" strokeWidth="0.5" opacity="0.3" />
-            <line x1="20" y1="50" x2="80" y2="50" stroke="#ffffff" strokeWidth="0.5" opacity="0.3" />
-            <line x1="25" y1="65" x2="75" y2="65" stroke="#ffffff" strokeWidth="0.5" opacity="0.3" />
-            
-            {/* Precise inner crosshairs */}
-            <circle cx="50" cy="50" r="30" stroke="#5E6673" strokeWidth="0.5" strokeDasharray="1 3" opacity="0.5" />
-            
-            {/* Dark blue acrylic lettering "U" */}
-            <text x="50" y="58" textAnchor="middle" fill="#17375E" fontSize="32" fontWeight="700" fontFamily="Montserrat, sans-serif" filter="url(#acrylicGlow)">U</text>
-            
-            {/* Orange underline accent */}
-            <path d="M35 66 L65 66" stroke="#D9893A" strokeWidth="3" strokeLinecap="round" />
-          </svg>
+        {/* Premium Image logo with tight text at the side */}
+        <Link href="/" className="sm-logo flex items-center gap-3 md:gap-4 shrink-0 select-none" aria-label="Logo" onClick={closeMenu}>
+          <div className={`relative shrink-0 transition-all duration-300 ${scrolled ? 'w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16' : 'w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24'}`}>
+            <Image
+              src="/uk-mech-logo-v3.png"
+              alt="UK MECH Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
           <div className="flex flex-col text-left">
-            <span className="font-heading text-[#17375E] font-bold text-[14px] min-[400px]:text-base sm:text-xl tracking-wider leading-none transition-colors duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#17375E]">
-              UOO KAY MECH
+            <span className={`font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#09285F] ${scrolled ? 'text-[14px] md:text-[17px] lg:text-[20px]' : 'text-[17px] md:text-[22px] lg:text-[26px]'}`}>
+              UK MECH
             </span>
-            <span className="text-[9px] min-[400px]:text-xs sm:text-sm text-[#D9893A] font-semibold tracking-widest uppercase mt-1 transition-colors duration-300 group-data-[open]:text-[#D9893A] lg:group-data-[open]:text-[#D9893A]">
-              Industries
+            <span className={`text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 group-data-[open]:text-white/85 lg:group-data-[open]:text-[#EC6713] ${scrolled ? 'text-[8px] md:text-[9px] lg:text-[10px] mt-0.5 md:mt-1' : 'text-[9px] md:text-[11px] lg:text-[13px] mt-1 md:mt-1.5'}`}>
+              INDUSTRIES
             </span>
           </div>
         </Link>
@@ -512,21 +487,21 @@ export const StaggeredMenu = ({
               </ul>
 
               {/* Mobile Address and Phone Contact details inside the menu drawer */}
-              <div className="sm-menu-contact border-t border-white/10 pt-6 mt-6 text-xs text-white/50 font-sans space-y-4">
-                <h4 className="font-heading font-bold text-[9px] uppercase tracking-widest text-[#D9893A]">
+              <div className="sm-menu-contact border-t border-white/20 pt-6 mt-6 text-xs text-white/80 font-sans space-y-4">
+                <h4 className="font-heading font-bold text-[9px] uppercase tracking-widest text-[#09285F]">
                   Office & Workshop
                 </h4>
-                <p className="leading-relaxed text-white/70">
+                <p className="leading-relaxed text-white">
                   08 Pomal Industrial Estate, Kolshet Road, Thane – 400607, Maharashtra, India.
                 </p>
-                <div className="flex flex-col gap-2 text-white/70">
-                  <a href="tel:+919987849605" className="hover:text-white transition-colors">
+                <div className="flex flex-col gap-2 text-white">
+                  <a href="tel:+919987849605" className="hover:text-[#09285F] transition-colors">
                     Mobile: +91 99878 49605 (Sandeepkumar)
                   </a>
-                  <a href="tel:+919833053809" className="hover:text-white transition-colors">
+                  <a href="tel:+919833053809" className="hover:text-[#09285F] transition-colors">
                     Office: +91 98330 53809
                   </a>
-                  <a href="mailto:uookaymechindustries@gmail.com" className="hover:text-white transition-colors break-all">
+                  <a href="mailto:uookaymechindustries@gmail.com" className="hover:text-[#09285F] transition-colors break-all">
                     Email: uookaymechindustries@gmail.com
                   </a>
                 </div>

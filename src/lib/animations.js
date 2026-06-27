@@ -1,5 +1,5 @@
 /**
- * Centralized motion configuration for Uoo Kay Mech Industries
+ * Centralized motion configuration for UK Mech Industries
  * Establishes premium, mechanical, and restrained animation systems.
  */
 

@@ -46,7 +46,7 @@ export default function ContactClient() {
     );
 
     gsap.fromTo(".con-form-wrapper",
-      { opacity: 0, y: 15 },
+      { opacity: 0, y: 20 },
       {
         opacity: 1,
         y: 0,
@@ -57,16 +57,15 @@ export default function ContactClient() {
     );
 
     gsap.fromTo(".con-map-section",
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 20 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power2.out",
         scrollTrigger: {
           trigger: ".con-map-section",
-          start: "top 90%",
-          toggleActions: "play none none reverse"
+          start: "top 90%"
         }
       }
     );
@@ -78,11 +77,11 @@ export default function ContactClient() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#D9893A] pl-6 mb-16">
+        <div className="border-l-2 border-[#EC6713] pl-6 mb-16">
           <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block mb-1">
             [ RFQ & ENQUIRIES ]
           </span>
-          <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#17375E] uppercase tracking-wide con-header-item">
+          <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#09285F] uppercase tracking-wide con-header-item">
             Contact Us
           </h1>
         </div>
@@ -92,7 +91,7 @@ export default function ContactClient() {
           {/* Column 1: Info Listing (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4 con-info-row opacity-0">
-              <h2 className="font-heading text-2xl font-bold text-[#17375E] uppercase tracking-wide">
+              <h2 className="font-heading text-2xl font-bold text-[#09285F] uppercase tracking-wide">
                 Get In Touch
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -105,24 +104,21 @@ export default function ContactClient() {
               
               {/* Column 1.1: India Contacts */}
               <div className="space-y-4">
-                <span className="text-[10px] font-mono font-bold text-[#D9893A] tracking-wider uppercase block">
+                <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-wider uppercase block">
                   {"// Domestic Operations"}
                 </span>
-                <h3 className="font-heading font-bold text-base text-[#17375E] uppercase">
+                <h3 className="font-heading font-bold text-base text-[#09285F] uppercase">
                   India Contact
                 </h3>
                 <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
                   08 Pomal Industrial Estate, Kolshet Road, Thane – 400607, Maharashtra, India.
                 </p>
                 <div className="flex flex-col gap-1 text-xs text-[#5E6673] font-semibold">
-                  <a href="tel:+919987849605" className="hover:text-[#D9893A] transition-colors">
+                  <a href="tel:+919987849605" className="hover:text-[#EC6713] transition-colors">
                     Mobile: +91 99878 49605 (Sandeepkumar)
                   </a>
-                  <a href="tel:+919833053809" className="hover:text-[#D9893A] transition-colors">
+                  <a href="tel:+919833053809" className="hover:text-[#EC6713] transition-colors">
                     Office: +91 98330 53809
-                  </a>
-                  <a href="tel:+919821876397" className="hover:text-[#D9893A] transition-colors">
-                    Sales: +91 98218 76397
                   </a>
                 </div>
                 
@@ -130,7 +126,7 @@ export default function ContactClient() {
                 <div className="flex flex-wrap gap-2 pt-2">
                   <a
                     href="tel:+919987849605"
-                    className="inline-flex items-center gap-1.5 bg-[#17375E] hover:bg-[#1f497d] text-white font-heading font-bold text-[10px] uppercase tracking-wider py-2 px-4 transition-colors duration-200 premium-btn-hover"
+                    className="inline-flex items-center gap-1.5 bg-[#09285F] hover:bg-[#0b3070] text-white font-heading font-bold text-[10px] uppercase tracking-wider py-2 px-4 transition-colors duration-200 premium-btn-hover"
                   >
                     <Phone className="h-3 w-3" />
                     Call Now
@@ -139,7 +135,7 @@ export default function ContactClient() {
                     href="https://wa.me/919987849605"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Contact UOO Kay Mech Industries on WhatsApp"
+                    aria-label="Contact UK Mech Industries on WhatsApp"
                     className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20ba56] text-white font-heading font-bold text-[10px] uppercase tracking-wider py-2 px-4 transition-colors duration-200 premium-btn-hover"
                   >
                     <svg className="h-3 w-3 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -152,22 +148,22 @@ export default function ContactClient() {
 
               {/* Column 1.2: International Enquiries */}
               <div className="space-y-4 border-t sm:border-t-0 lg:border-t sm:border-l lg:border-l-0 border-[#D7DDE5] pt-6 sm:pt-0 lg:pt-6 sm:pl-8 lg:pl-0">
-                <span className="text-[10px] font-mono font-bold text-[#D9893A] tracking-wider uppercase block">
+                <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-wider uppercase block">
                   {"// Overseas Desk"}
                 </span>
-                <h3 className="font-heading font-bold text-base text-[#17375E] uppercase">
+                <h3 className="font-heading font-bold text-base text-[#09285F] uppercase">
                   International Business
                 </h3>
                 <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
-                  Dedicated desk managing custom fabrication, linear compliance audits, export documentation, and logistics support for overseas clients.
+                  Dedicated desk managing custom machining solutions, linear compliance audits, export documentation, and logistics support for overseas clients.
                 </p>
                 <div className="space-y-1">
-                  <h4 className="font-heading font-bold text-[10px] uppercase text-[#17375E]">
+                  <h4 className="font-heading font-bold text-[10px] uppercase text-[#09285F]">
                     Global Enquiries:
                   </h4>
                   <a
                     href="mailto:uookaymechindustries@gmail.com"
-                    className="text-xs text-[#5E6673] hover:text-[#D9893A] font-bold transition-colors break-all block"
+                    className="text-xs text-[#5E6673] hover:text-[#EC6713] font-bold transition-colors break-all block"
                   >
                     uookaymechindustries@gmail.com
                   </a>
@@ -178,9 +174,9 @@ export default function ContactClient() {
 
             {/* Working hours */}
             <div className="border-t border-[#D7DDE5] pt-6 text-xs text-[#5E6673] font-medium font-sans flex gap-3 con-info-row opacity-0">
-              <Clock className="h-4 w-4 text-[#D9893A] shrink-0" strokeWidth={1.5} />
+              <Clock className="h-4 w-4 text-[#EC6713] shrink-0" strokeWidth={1.5} />
               <div>
-                <span className="font-heading font-bold text-[#17375E] uppercase text-[10px] block mb-1">Business Operations</span>
+                <span className="font-heading font-bold text-[#09285F] uppercase text-[10px] block mb-1">Business Operations</span>
                 Monday – Saturday: 9:00 AM – 6:00 PM (IST) <br />
                 Sunday: Closed
               </div>
@@ -192,7 +188,7 @@ export default function ContactClient() {
           <div id="contact-form" className="lg:col-span-7 scroll-mt-24 con-form-wrapper">
             <Suspense
               fallback={
-                <div className="border-t-2 border-[#17375E] pt-6 min-h-[300px] flex items-center justify-center font-sans">
+                <div className="border-t-2 border-[#09285F] pt-6 min-h-[300px] flex items-center justify-center font-sans">
                   <span className="text-xs font-bold text-[#5E6673]">Loading Enquiry Form...</span>
                 </div>
               }
@@ -206,23 +202,23 @@ export default function ContactClient() {
         {/* Full-width Map Section */}
         <div className="mt-24 con-map-section opacity-0">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#D7DDE5] pb-3 mb-6">
-            <h2 className="font-heading text-xl font-bold text-[#17375E] uppercase tracking-wide">
+            <h2 className="font-heading text-xl font-bold text-[#09285F] uppercase tracking-wide">
               Workshop Location
             </h2>
             <a
-              href="https://maps.app.goo.gl/cUsSenREZjZH7TKh7?g_st=awb"
+              href="https://maps.google.com/maps?q=19.22867202758789%2C72.98545837402344&z=17&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 border border-[#17375E] text-[#17375E] hover:bg-[#17375E] hover:text-white font-heading font-bold text-[10px] uppercase tracking-wider py-1.5 px-4 transition-all duration-200 premium-btn-hover"
+              className="inline-flex items-center gap-1.5 border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold text-[10px] uppercase tracking-wider py-1.5 px-4 transition-all duration-200 premium-btn-hover"
             >
-              Get Directions
+              Open in Google Maps
             </a>
           </div>
           <div className="border border-[#D7DDE5] p-1 bg-white">
             <div className="w-full h-96 relative">
               <iframe
-                title="UOO Kay Mech Industries Google Map"
-                src="https://maps.google.com/maps?q=08%20Pomal%20Industrial%20Estate,%20Kolshet%20Road,%20Thane%20-%20400607&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                title="UK Mech Industries Google Map"
+                src="https://maps.google.com/maps?q=19.22867202758789,72.98545837402344&z=17&hl=en&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -239,5 +235,3 @@ export default function ContactClient() {
     </div>
   );
 }
-
-

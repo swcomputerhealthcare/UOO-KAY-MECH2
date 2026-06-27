@@ -25,6 +25,9 @@ export default function PageTransition({ children }) {
       return () => cancelAnimationFrame(handle);
     }
 
+    // Clean up all existing scroll triggers from the old page immediately
+    ScrollTrigger.getAll().forEach(t => t.kill());
+
     const layers = layersRef.current;
     if (!layers || layers.length < 3) {
       setDisplayChildren(children);
@@ -57,10 +60,16 @@ export default function PageTransition({ children }) {
       stagger: 0.06
     });
 
-    // 2. Switch Route Content while fully covered by the sky blue layer
+    // 2. Switch Route Content while fully covered by the layers
     tl.call(() => {
       setDisplayChildren(children);
-      window.scrollTo(0, 0);
+      if (typeof window !== "undefined") {
+        if (window.lenis) {
+          window.lenis.scrollTo(0, { immediate: true });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }
     });
 
     // Brief hold to allow render settlement
@@ -85,7 +94,7 @@ export default function PageTransition({ children }) {
       <div className="fixed inset-0 z-[99999] pointer-events-none">
         <div
           ref={(el) => (layersRef.current[0] = el)}
-          className="fixed inset-y-0 w-screen bg-[#17375E] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
+          className="fixed inset-y-0 w-screen bg-[#09285F] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
           style={{ left: "-110vw", willChange: "transform" }}
         />
         <div
@@ -95,7 +104,7 @@ export default function PageTransition({ children }) {
         />
         <div
           ref={(el) => (layersRef.current[2] = el)}
-          className="fixed inset-y-0 w-screen bg-[#D9893A] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
+          className="fixed inset-y-0 w-screen bg-[#EC6713] pointer-events-none shadow-[20px_0_45px_rgba(0,0,0,0.6)]"
           style={{ left: "-110vw", willChange: "transform" }}
         />
       </div>

@@ -7,12 +7,12 @@
   --font-mono: var(--font-mono), monospace;
   
   /* Color Palette */
-  --color-primary: #17375E; /* Dark Industrial Blue */
-  --color-primary-hover: #1f497d; 
+  --color-primary: #09285F; /* Primary Blue */
+  --color-primary-hover: #0b3070; 
   --color-secondary: #5E6673; /* Steel Gray */
   --color-light-steel: #D7DDE5; /* Light Steel */
-  --color-accent: #D9893A; /* Light Industrial Orange */
-  --color-accent-hover: #c57529;
+  --color-accent: #EC6713; /* Light Industrial Orange */
+  --color-accent-hover: #d2530c;
   --color-brand-bg: #F6F7F8;
   --color-surface: #FFFFFF;
   --color-text-primary: #161616;
@@ -23,7 +23,7 @@
 }
 
 :root {
-  --background: #F6F7F8;
+  --background: #FAF8F5;
   --foreground: #161616;
 }
 
@@ -93,8 +93,8 @@ body {
 
 .premium-card-hover:hover {
   transform: translateY(-4px) scale(1.03);
-  border-color: rgba(23, 55, 94, 0.3) !important;
-  box-shadow: 0 12px 30px -10px rgba(23, 55, 94, 0.08);
+  border-color: rgba(9, 40, 95, 0.3) !important;
+  box-shadow: 0 12px 30px -10px rgba(9, 40, 95, 0.08);
 }
 
 .premium-btn-hover {
@@ -119,7 +119,96 @@ body {
 /* Responsive products page horizontal container */
 @media (min-width: 768px) {
   .products-horizontal-container {
-    width: 700vw !important;
+    width: 300vw !important;
+  }
+}
+/* Quality Section Cards Grid & Alignment */
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .certGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (max-width: 640px) {
+  .certGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.certCard {
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background: white;
+  border-top: 1px solid #D7DDE5;
+  transition: all 0.3s ease;
+}
+
+.certCard:hover {
+  transform: translateY(-4px);
+  border-top-color: #EC6713;
+  box-shadow: 0 10px 30px rgba(9, 40, 95, 0.05);
+}
+
+.certTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.certMeta {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(9, 40, 95, 0.12);
+}
+
+/* Client Logos Grid Layout & Contrast */
+.clientCard {
+  min-height: 150px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid rgba(9, 40, 95, 0.14);
+  box-shadow: 0 10px 30px rgba(9, 40, 95, 0.08);
+}
+
+.logoBox {
+  width: 100%;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid rgba(9, 40, 95, 0.08);
+}
+
+.clientLogoImage {
+  max-width: 85% !important;
+  max-height: 76px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Force 100% Opacity and No Filters for Client Logo & Certifications Cards */
+.certCard,
+.certCard *,
+.clientLogoCard,
+.clientLogoCard *,
+.clientLogoImage {
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}

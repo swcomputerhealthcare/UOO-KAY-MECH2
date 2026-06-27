@@ -21,26 +21,30 @@ export default function QualityClient() {
     {
       title: "GST Registered",
       desc: "Tax compliant with active GST registration, facilitating transparent billing and corporate commercial audits.",
-      id: "GSTIN Registered",
-      icon: <FileText className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
+      id: "27BIRPS2093H1ZN",
+      label: "GSTIN",
+      icon: <FileText className="h-5 w-5 text-[#EC6713]" strokeWidth={1.5} />,
     },
     {
       title: "MSME Registered",
       desc: "Registered Micro, Small & Medium Enterprise, supporting industrial supplier eligibility criteria.",
-      id: "MSME Certified",
-      icon: <Award className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
+      id: "UDYAM-MH-33-0322159",
+      label: "MSME Reg No",
+      icon: <Award className="h-5 w-5 text-[#EC6713]" strokeWidth={1.5} />,
     },
     {
       title: "Udyam Registration",
       desc: "Official Government of India Udyam certificate registration holding vendor compliance standards.",
-      id: "Udyam Registered",
-      icon: <BadgeCheck className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
+      id: "UDYAM-MH-33-0322159",
+      label: "Udyam No",
+      icon: <BadgeCheck className="h-5 w-5 text-[#EC6713]" strokeWidth={1.5} />,
     },
     {
       title: "Approved Vendor",
       desc: "Verified and listed in the supplier registers of conglomerates including L&T, Emerson, and Parle Tools.",
-      id: "L&T & Emerson Verified",
-      icon: <ShieldCheck className="h-5 w-5 text-[#D9893A]" strokeWidth={1.5} />,
+      id: "L&T & Emerson Approved Vendor",
+      label: "Status",
+      icon: <ShieldCheck className="h-5 w-5 text-[#EC6713]" strokeWidth={1.5} />,
     },
   ];
 
@@ -144,13 +148,13 @@ export default function QualityClient() {
 
   return (
     <div ref={containerRef} className="bg-brand-bg min-h-screen">
-      
+
       {/* 1. Header & Certifications (whitespace and thin line borders) */}
       <div className="py-24 sm:py-32 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Page Header */}
-          <div className="border-l-2 border-[#D9893A] pl-6 mb-24 qual-header-item">
+          <div className="border-l-2 border-[#EC6713] pl-6 mb-24 qual-header-item">
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ TECHNICAL STANDARDS ]
             </span>
@@ -167,15 +171,14 @@ export default function QualityClient() {
             <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight">
               Registration & Certifications
             </h2>
-            
-            {/* Simple list lines instead of cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 certs-list font-sans">
+
+            <div className="certGrid gap-8 certs-list font-sans">
               {certifications.map((cert, idx) => (
-                <div
+                <article
                   key={idx}
-                  className="cert-row border-t border-[#D7DDE5] pt-6 flex flex-col justify-between h-full premium-card-hover"
+                  className="certCard cert-row premium-card-hover"
                 >
-                  <div className="space-y-4">
+                  <div className="certTop space-y-4">
                     <div className="text-slate-700">
                       {cert.icon}
                     </div>
@@ -186,12 +189,13 @@ export default function QualityClient() {
                       {cert.desc}
                     </p>
                   </div>
-                  <div className="pt-6 mt-4">
-                    <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-wider block">
-                      ID: {cert.id}
-                    </span>
+                  <div className="certMeta">
+                    <div className="flex flex-col gap-1 text-[10px] font-mono">
+                      <span className="text-[#5E6673] uppercase font-bold tracking-wider">{cert.label}</span>
+                      <span className="text-[#09285F] font-extrabold tracking-wide uppercase break-all">{cert.id}</span>
+                    </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -200,14 +204,13 @@ export default function QualityClient() {
       </div>
 
       {/* 2. Process Timeline (Horizontal Scroll on white background canvas) */}
-      <div 
-        ref={pinRef} 
-        className={`min-h-screen flex flex-col justify-center bg-white relative overflow-hidden border-y border-[#D7DDE5] py-16 ${
-          !animEnabled ? "h-auto min-h-0" : ""
-        }`}
+      <div
+        ref={pinRef}
+        className={`min-h-screen flex flex-col justify-center bg-white relative overflow-hidden border-y border-[#D7DDE5] py-16 ${!animEnabled ? "h-auto min-h-0" : ""
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full shrink-0 mb-16">
-          <div className="border-l-2 border-[#D9893A] pl-6">
+          <div className="border-l-2 border-[#EC6713] pl-6">
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
@@ -219,30 +222,30 @@ export default function QualityClient() {
 
         {/* Horizontal track container */}
         <div className={`w-full ${animEnabled ? "overflow-hidden" : "overflow-x-auto scroll-smooth pb-6"}`}>
-          <div 
-            ref={scrollTrackRef} 
+          <div
+            ref={scrollTrackRef}
             className={`flex gap-16 px-8 sm:px-16 ${canScroll && animEnabled ? "" : "md:justify-center"}`}
           >
             {processes.map((p, idx) => (
               <div
                 key={idx}
-                className="proc-block w-[300px] sm:w-[400px] shrink-0 border-l-2 border-[#D9893A] pl-8 py-4 font-sans"
+                className="proc-block w-[300px] sm:w-[400px] shrink-0 border-l-2 border-[#EC6713] pl-8 py-4 font-sans"
               >
                 <div className="space-y-6">
                   {/* Step Marker */}
                   <div className="flex justify-between items-center border-b border-[#D7DDE5] pb-3">
-                    <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#D9893A] tracking-tight leading-none">
+                    <span className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-[#EC6713] tracking-tight leading-none">
                       STAGE {p.step}
                     </span>
                     <span className="font-mono text-[9px] text-[#5E6673] uppercase tracking-wider">
                       SPEC_AUDIT
                     </span>
                   </div>
-                  
+
                   <h3 className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide">
                     {p.title}
                   </h3>
-                  
+
                   <p className="text-[#5E6673] text-xs sm:text-sm leading-relaxed font-medium">
                     {p.desc}
                   </p>

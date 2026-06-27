@@ -28,6 +28,10 @@ export default function SmoothScroll({ children }) {
       infinite: false,
     });
 
+    if (typeof window !== "undefined") {
+      window.lenis = lenis;
+    }
+
     // Sync Lenis scroll updates with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 

@@ -19,7 +19,7 @@ export default function AboutClient() {
     {
       year: "2004",
       title: "Company Founded",
-      desc: "Uoo Kay Mech Industries established by Sandeepkumar K. Singh in Maharashtra, India, commencing manufacturing of conventional precision components.",
+      desc: "UK Mech Industries established by Sandeepkumar K. Singh in Maharashtra, India, commencing manufacturing of conventional precision components.",
     },
     {
       year: "2010",
@@ -29,7 +29,7 @@ export default function AboutClient() {
     {
       year: "2016",
       title: "Advanced CNC Integration",
-      desc: "Acquired ACE Micromatic CNC machining centres, digital height gauges, and conventional milling assets to deliver high-tolerance fabrication.",
+      desc: "Acquired ACE Micromatic CNC machining centres, digital height gauges, and conventional milling assets to deliver high-tolerance components.",
     },
     {
       year: "2020",
@@ -39,7 +39,7 @@ export default function AboutClient() {
     {
       year: "Present",
       title: "20 Years of Precision Engineering",
-      desc: "Successfully delivering zero-defect industrial components, safety guards, and fabrications to top-tier organizations nationwide.",
+      desc: "Successfully delivering zero-defect industrial components, safety guards, and machined parts to top-tier organizations nationwide.",
     },
   ];
 
@@ -150,7 +150,7 @@ export default function AboutClient() {
       {/* Page Header */}
       <div className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-l-2 border-[#D9893A] pl-6 about-header-item opacity-0">
+          <div className="border-l-2 border-[#EC6713] pl-6 about-header-item opacity-0">
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ COMPANY OVERVIEW ]
             </span>
@@ -168,14 +168,14 @@ export default function AboutClient() {
             
             {/* Text details */}
             <div className="lg:col-span-7 space-y-6 about-reveal-item opacity-0">
-              <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block">
+              <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">
                 [ ESTABLISHED 2004 ]
               </span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#161616] leading-tight tracking-tight">
                 Delivering Industrial Excellence for Over Two Decades
               </h2>
               <p className="text-[#161616] text-base leading-relaxed font-sans font-semibold">
-                UOO KAY MECH INDUSTRIES has been delivering precision engineering and fabrication solutions since 2004. With extensive expertise in machining and manufacturing, we serve various reputed organizations across India by providing high-quality industrial components tailored to customer requirements.
+                UK MECH INDUSTRIES has been delivering precision engineering and machining solutions since 2004. With extensive expertise in machining and manufacturing, we serve various reputed organizations across India by providing high-quality industrial components tailored to customer requirements.
               </p>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans">
                 Headquartered in Maharashtra, India, our facility is equipped with a robust infrastructure of CNC machining centres, lathe machines, grinders, and precise testing instruments. Over the last two decades, our absolute focus on reliability and quality has earned us vendor-approved status with enterprise leaders including Larsen & Toubro, Emerson India, and Parle Elizabeth Tools.
@@ -184,7 +184,7 @@ export default function AboutClient() {
               {/* Monospace registry badges */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-[#D7DDE5]">
                 <div className="border border-[#D7DDE5] p-4 flex items-center gap-3 bg-[#F6F7F8] premium-card-hover">
-                  <div className="text-[#D9893A]">
+                  <div className="text-[#EC6713]">
                     <Award className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <span className="text-[10px] font-mono font-bold text-[#161616] uppercase tracking-wider">
@@ -192,7 +192,7 @@ export default function AboutClient() {
                   </span>
                 </div>
                 <div className="border border-[#D7DDE5] p-4 flex items-center gap-3 bg-[#F6F7F8] premium-card-hover">
-                  <div className="text-[#D9893A]">
+                  <div className="text-[#EC6713]">
                     <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <span className="text-[10px] font-mono font-bold text-[#161616] uppercase tracking-wider">
@@ -207,7 +207,7 @@ export default function AboutClient() {
               <div className="relative h-96 w-full overflow-hidden">
                 <Image
                   src="/images/products/machines and fabricated components 1.webp"
-                  alt="UOO KAY MECH Workshop Facility"
+                  alt="UK MECH Workshop Facility"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -228,7 +228,7 @@ export default function AboutClient() {
               
               {/* Technical Profile ID */}
               <div className="md:col-span-4 space-y-4 about-reveal-item opacity-0">
-                <span className="font-mono text-xs text-[#D9893A] uppercase tracking-widest block">
+                <span className="font-mono text-xs text-[#EC6713] uppercase tracking-widest block">
                   [ LEADERSHIP REGISTER ]
                 </span>
                 <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase leading-tight">
@@ -254,7 +254,7 @@ export default function AboutClient() {
                   &ldquo;We take pride in delivering precision, reliability, and quality to every customer. Our commitment since 2004 has been to build long-term relationships through engineering excellence and customer satisfaction.&rdquo;
                 </blockquote>
                 <p className="text-[#5E6673] text-sm leading-relaxed font-sans">
-                  &ldquo;As manufacturing processes evolve, Uoo Kay Mech Industries continues to stay at the cutting edge of industrial standards. We guarantee that every flange, safety guard, gear, and machined component that leaves our facility has passed strict checks to ensure compliance with drawings and tolerances.&rdquo;
+                  &ldquo;As manufacturing processes evolve, UK Mech Industries continues to stay at the cutting edge of industrial standards. We guarantee that every flange, safety guard, gear, and machined component that leaves our facility has passed strict checks to ensure compliance with drawings and tolerances.&rdquo;
                 </p>
               </div>
               
@@ -270,7 +270,7 @@ export default function AboutClient() {
             
             {/* Vision Block */}
             <div className="space-y-6 md:pr-12 about-reveal-item opacity-0">
-              <div className="flex items-center gap-3 text-[#D9893A]">
+              <div className="flex items-center gap-3 text-[#EC6713]">
                 <Eye className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_VISION ]</span>
               </div>
@@ -278,13 +278,13 @@ export default function AboutClient() {
                 Our Vision
               </h3>
               <p className="text-[#5E6673] text-sm leading-relaxed font-medium">
-                To become a trusted leader in precision engineering and industrial fabrication solutions across India. We aim to continuously expand our machine capacities, foster innovation, and scale our service to set digital and physical benchmarks in the manufacturing sector.
+                To become a trusted leader in precision engineering and industrial machining solutions across India. We aim to continuously expand our machine capacities, foster innovation, and scale our service to set digital and physical benchmarks in the manufacturing sector.
               </p>
             </div>
 
             {/* Mission Block */}
             <div className="space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item opacity-0">
-              <div className="flex items-center gap-3 text-[#D9893A]">
+              <div className="flex items-center gap-3 text-[#EC6713]">
                 <Compass className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_MISSION ]</span>
               </div>
@@ -305,7 +305,7 @@ export default function AboutClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-20 border-b border-[#D7DDE5] pb-6">
-            <span className="font-mono text-xs font-bold text-[#D9893A] uppercase tracking-wider block mb-2">
+            <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">
               / MILESTONES & HISTORY
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
@@ -315,17 +315,17 @@ export default function AboutClient() {
 
           <div className="relative pl-8 md:pl-16 space-y-12 py-4">
             {/* Vertical drawing line */}
-            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[2px] bg-[#D9893A] origin-top timeline-draw-line will-change-transform" style={{ transform: "scaleY(0)" }} />
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[2px] bg-[#EC6713] origin-top timeline-draw-line will-change-transform" style={{ transform: "scaleY(0)" }} />
             
             {milestones.map((milestone, idx) => (
               <div key={idx} className="relative timeline-node pl-4 md:pl-8 opacity-0">
                 {/* Burnt copper node joint */}
-                <div className="absolute left-[12px] md:left-[27px] top-2.5 h-[9px] w-[9px] bg-[#D9893A] border border-[#F6F7F8]" />
+                <div className="absolute left-[12px] md:left-[27px] top-2.5 h-[9px] w-[9px] bg-[#EC6713] border border-[#F6F7F8]" />
                 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start font-sans">
                   {/* Monospace Year Label */}
                   <div className="md:col-span-2">
-                    <span className="font-mono text-sm font-bold text-[#D9893A] block">
+                    <span className="font-mono text-sm font-bold text-[#EC6713] block">
                       [{milestone.year}]
                     </span>
                   </div>

@@ -2,20 +2,20 @@ import { MessageSquare } from "lucide-react";
 
 export default function WhatsAppButton() {
   const whatsappUrl =
-    "https://wa.me/919987849605?text=Hello%20UOO%20KAY%20MECH%20INDUSTRIES%2C%20I%20would%20like%20to%20inquire%20about%20your%20engineering%20services.";
+    "https://wa.me/919987849605?text=Hello%20UK%20MECH%20INDUSTRIES%2C%20I%20would%20like%20to%20inquire%20about%20your%20engineering%20services.";
 
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center premium-btn-hover hover:scale-110"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#25D366] text-white p-3 sm:p-4 rounded-full shadow-2xl flex items-center justify-center premium-btn-hover hover:scale-110 transition-all duration-200"
       title="Chat with us on WhatsApp"
-      aria-label="Contact UOO Kay Mech Industries on WhatsApp"
+      aria-label="Contact UK Mech Industries on WhatsApp"
     >
       {/* WhatsApp SVG Icon */}
       <svg
-        className="h-7 w-7 fill-current"
+        className="h-6 w-6 sm:h-7 sm:w-7 fill-current"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
