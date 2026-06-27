@@ -117,42 +117,62 @@ export default function ClientsClient() {
   ];
 
   useGSAP(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) {
+      gsap.set(".cli-header-item, .cli-trust-banner, .cli-logo-row", {
+        opacity: 1,
+        y: 0,
+        visibility: "visible"
+      });
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      return;
+    }
+
     // Symmetrical subtle reveals
-    gsap.from(".cli-header-item", {
-      opacity: 0,
-      y: 15,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
-
-    gsap.from(".cli-trust-banner", {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".cli-trust-banner",
-        start: "top 90%"
+    gsap.fromTo(".cli-header-item", 
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out"
       }
-    });
+    );
 
-    gsap.from(".cli-logo-row", {
-      opacity: 0,
-      y: 15,
-      duration: 0.5,
-      stagger: 0.06,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".cli-logos-grid",
-        start: "top 90%",
-        toggleActions: "play none none none"
+    gsap.fromTo(".cli-trust-banner",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".cli-trust-banner",
+          start: "top 90%"
+        }
       }
-    });
+    );
+
+    gsap.fromTo(".cli-logo-row",
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".cli-logos-grid",
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-brand-bg py-24 sm:py-32 relative overflow-hidden">
+    <div ref={containerRef} className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -167,7 +187,7 @@ export default function ClientsClient() {
         </div>
 
         {/* 1. Client Trust Banner (Flat Solid Color, No gradients) */}
-        <div className="bg-white text-[#161616] border-t-2 border-[#161616] p-8 sm:p-12 mb-20 cli-trust-banner">
+        <div className="bg-white text-[#161616] border-t-2 border-[#161616] p-8 sm:p-12 mb-20 cli-trust-banner clientsIntro">
           <div className="max-w-3xl space-y-6">
             <div className="text-[#EC6713]">
               <Users className="h-6 w-6" strokeWidth={1.5} />
@@ -190,7 +210,7 @@ export default function ClientsClient() {
             {clients.map((c, idx) => (
               <div
                 key={idx}
-                className="group clientCard clientLogoCard cli-logo-row transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+                className="group clientCard clientLogoCard cli-logo-row transition-all duration-300 hover:-translate-y-1.5 cursor-pointer clientLogo"
               >
                 <div className="logoBox transition-transform duration-300 group-hover:scale-[1.02]">
                   {c.logo}

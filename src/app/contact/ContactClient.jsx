@@ -16,8 +16,14 @@ export default function ContactClient() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    if (!shouldAnimate()) {
-      gsap.set(".con-header-item, .con-info-row, .con-form-wrapper, .con-map-section", { opacity: 1, y: 0 });
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) {
+      gsap.set(".con-header-item, .con-info-row, .con-form-wrapper, .con-map-section", {
+        opacity: 1,
+        y: 0,
+        visibility: "visible"
+      });
+      ScrollTrigger.getAll().forEach(t => t.kill());
       return;
     }
 
@@ -72,7 +78,7 @@ export default function ContactClient() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="bg-brand-bg py-24 sm:py-32 relative overflow-hidden select-none">
+    <div ref={containerRef} className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -81,7 +87,7 @@ export default function ContactClient() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block mb-1">
             [ RFQ & ENQUIRIES ]
           </span>
-          <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#09285F] uppercase tracking-wide con-header-item">
+          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#09285F] uppercase tracking-wide con-header-item">
             Contact Us
           </h1>
         </div>
@@ -90,7 +96,7 @@ export default function ContactClient() {
           
           {/* Column 1: Info Listing (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-4 con-info-row opacity-0">
+            <div className="space-y-4 con-info-row">
               <h2 className="font-heading text-2xl font-bold text-[#09285F] uppercase tracking-wide">
                 Get In Touch
               </h2>
@@ -100,7 +106,7 @@ export default function ContactClient() {
             </div>
 
             {/* Two-Column Contact Layout (India vs International) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 pt-6 border-t border-[#D7DDE5] con-info-row opacity-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8 pt-6 border-t border-[#D7DDE5] con-info-row">
               
               {/* Column 1.1: India Contacts */}
               <div className="space-y-4">
@@ -172,35 +178,35 @@ export default function ContactClient() {
 
             </div>
 
-            {/* Working hours */}
-            <div className="border-t border-[#D7DDE5] pt-6 text-xs text-[#5E6673] font-medium font-sans flex gap-3 con-info-row opacity-0">
-              <Clock className="h-4 w-4 text-[#EC6713] shrink-0" strokeWidth={1.5} />
-              <div>
-                <span className="font-heading font-bold text-[#09285F] uppercase text-[10px] block mb-1">Business Operations</span>
-                Monday – Saturday: 9:00 AM – 6:00 PM (IST) <br />
-                Sunday: Closed
-              </div>
-            </div>
-
-          </div>
-
-          {/* Column 2: Form */}
-          <div id="contact-form" className="lg:col-span-7 scroll-mt-24 con-form-wrapper">
-            <Suspense
-              fallback={
-                <div className="border-t-2 border-[#09285F] pt-6 min-h-[300px] flex items-center justify-center font-sans">
-                  <span className="text-xs font-bold text-[#5E6673]">Loading Enquiry Form...</span>
-                </div>
-              }
-            >
-              <ContactForm />
-            </Suspense>
-          </div>
-
-        </div>
-
-        {/* Full-width Map Section */}
-        <div className="mt-24 con-map-section opacity-0">
+             {/* Working hours */}
+             <div className="border-t border-[#D7DDE5] pt-6 text-xs text-[#5E6673] font-medium font-sans flex gap-3 con-info-row">
+               <Clock className="h-4 w-4 text-[#EC6713] shrink-0" strokeWidth={1.5} />
+               <div>
+                 <span className="font-heading font-bold text-[#09285F] uppercase text-[10px] block mb-1">Business Operations</span>
+                 Monday – Saturday: 9:00 AM – 6:00 PM (IST) <br />
+                 Sunday: Closed
+               </div>
+             </div>
+ 
+           </div>
+ 
+           {/* Column 2: Form */}
+           <div id="contact-form" className="lg:col-span-7 scroll-mt-24 con-form-wrapper">
+             <Suspense
+               fallback={
+                 <div className="border-t-2 border-[#09285F] pt-6 min-h-[300px] flex items-center justify-center font-sans">
+                   <span className="text-xs font-bold text-[#5E6673]">Loading Enquiry Form...</span>
+                 </div>
+               }
+             >
+               <ContactForm />
+             </Suspense>
+           </div>
+ 
+         </div>
+ 
+         {/* Full-width Map Section */}
+         <div className="mt-24 con-map-section">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#D7DDE5] pb-3 mb-6">
             <h2 className="font-heading text-xl font-bold text-[#09285F] uppercase tracking-wide">
               Workshop Location

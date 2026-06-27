@@ -376,15 +376,16 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 150px; /* Mobile */
+  width: 260px; /* Mobile */
+  max-width: 58vw;
   height: auto;
   transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .logoImg {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 76px;
+  height: 76px;
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
@@ -404,12 +405,13 @@
 /* Tablet (min-width: 768px) */
 @media (min-width: 768px) {
   .logoWrap {
-    width: 190px;
+    width: 290px;
+    max-width: 58vw;
     gap: 12px;
   }
   .logoImg {
-    width: 52px;
-    height: 52px;
+    width: 88px;
+    height: 88px;
   }
   .logoTextTop {
     font-size: 20px;
@@ -423,12 +425,12 @@
 /* Desktop (min-width: 1024px) */
 @media (min-width: 1024px) {
   .logoWrap {
-    width: 250px;
+    width: 320px;
     gap: 14px;
   }
   .logoImg {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
   }
   .logoTextTop {
     font-size: 24px;
@@ -441,11 +443,11 @@
 
 /* Scrolled Header Adjustments */
 .scrolled-header .logoWrap {
-  width: 130px; /* Mobile scrolled */
+  width: 190px; /* Mobile scrolled */
 }
 .scrolled-header .logoImg {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
 }
 .scrolled-header .logoTextTop {
   font-size: 13px;
@@ -457,11 +459,11 @@
 
 @media (min-width: 768px) {
   .scrolled-header .logoWrap {
-    width: 160px; /* Tablet scrolled */
+    width: 220px; /* Tablet scrolled */
   }
   .scrolled-header .logoImg {
-    width: 44px;
-    height: 44px;
+    width: 64px;
+    height: 64px;
   }
   .scrolled-header .logoTextTop {
     font-size: 16px;
@@ -474,11 +476,11 @@
 
 @media (min-width: 1024px) {
   .scrolled-header .logoWrap {
-    width: 200px; /* Desktop scrolled */
+    width: 260px; /* Desktop scrolled */
   }
   .scrolled-header .logoImg {
-    width: 48px;
-    height: 48px;
+    width: 72px;
+    height: 72px;
   }
   .scrolled-header .logoTextTop {
     font-size: 18px;

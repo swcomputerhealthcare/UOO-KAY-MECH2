@@ -217,6 +217,7 @@ body {
 
 html,
 body {
+  width: 100% !important;
   max-width: 100% !important;
   overflow-x: hidden !important;
 }
@@ -225,10 +226,26 @@ body {
   box-sizing: border-box;
 }
 
+img,
+video,
+canvas,
+svg {
+  max-width: 100% !important;
+}
+
 section {
   width: 100% !important;
   max-width: 100vw !important;
   overflow-x: hidden !important;
+  padding-top: clamp(72px, 8vw, 120px) !important;
+  padding-bottom: clamp(72px, 8vw, 120px) !important;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
 }
 
 .container {
@@ -239,21 +256,131 @@ section {
 }
 
 /* Big Section Titles Responsive Clamp */
+.sectionHeroTitle,
+.largeSectionTitle,
 .sectionTitle {
-  font-size: clamp(42px, 13vw, 96px) !important;
+  font-size: clamp(38px, 9vw, 96px) !important;
   line-height: 0.95 !important;
   letter-spacing: -0.04em !important;
   max-width: 100% !important;
   overflow-wrap: break-word !important;
-  word-break: normal !important;
+  word-break: break-word !important;
   white-space: normal !important;
 }
 
 @media (max-width: 768px) {
+  .sectionHeroTitle,
+  .largeSectionTitle,
   .sectionTitle {
     font-size: clamp(32px, 10vw, 56px) !important;
     line-height: 1.0 !important;
     letter-spacing: -0.035em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionHeroTitle,
+  .largeSectionTitle,
+  .sectionTitle {
+    font-size: clamp(30px, 11vw, 52px) !important;
+    line-height: 1 !important;
+  }
+}
+
+/* About Us Styling Fixes */
+.aboutTitle {
+  color: #151515 !important;
+  opacity: 1 !important;
+}
+
+.aboutDescription {
+  color: #5F6673 !important;
+  opacity: 1 !important;
+}
+
+.aboutImage,
+.aboutImage img {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Clients Section Styling Fixes */
+.clientsIntro h2 {
+  color: #151515 !important;
+  opacity: 1 !important;
+}
+
+.clientsIntro p {
+  color: #5F6673 !important;
+  opacity: 1 !important;
+}
+
+.clientLogo,
+.clientLogo img,
+.clientLogo svg {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .clientsTrack {
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .clientCard {
+    width: 100% !important;
+    min-height: 140px !important;
+    padding: 24px !important;
+  }
+
+  .clientLogoBox,
+  .logoBox {
+    min-height: 80px !important;
+  }
+
+  .clientLogoBox img,
+  .logoBox img,
+  .clientLogoImage {
+    max-width: 82% !important;
+    max-height: 72px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+  }
+}
+
+/* Mobile Product Cards Adjustments */
+@media (max-width: 768px) {
+  .productCard {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 14px !important;
+  }
+
+  .productImageWrap {
+    aspect-ratio: 1 / 0.78 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .productTitle {
+    font-size: 20px !important;
+    line-height: 1.1 !important;
+  }
+
+  .productDescription {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .productActions {
+    margin-top: 12px !important;
   }
 }
 
@@ -314,7 +441,7 @@ section {
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 50;
+  z-index: 50 !important;
 }
 
 @media (max-width: 768px) {
@@ -331,8 +458,7 @@ section {
   .premiumGallery {
     background: #09285F !important;
     color: #ffffff !important;
-    padding-top: 56px !important;
-    padding-bottom: 90px !important;
+    padding: 56px 20px !important;
   }
 
   .premiumGallery * {
@@ -348,7 +474,7 @@ section {
 
   .premiumGalleryMeta,
   .premiumGallerySpec {
-    color: rgba(255, 255, 255, 0.82) !important;
+    color: rgba(255, 255, 255, 0.84) !important;
   }
 
   .premiumGalleryImage {
@@ -367,3 +493,16 @@ section {
     object-fit: cover !important;
   }
 }
+
+/* Header Logo Dimensions */
+.logoWrap {
+  width: 320px !important;
+}
+
+@media (max-width: 768px) {
+  .logoWrap {
+    width: 260px !important;
+    max-width: 58vw !important;
+  }
+}
+

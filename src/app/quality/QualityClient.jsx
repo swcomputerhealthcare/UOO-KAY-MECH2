@@ -91,33 +91,49 @@ export default function QualityClient() {
 
   // 2. Load animations (Run once)
   useGSAP(() => {
-    if (!shouldAnimate()) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) {
+      gsap.set(".qual-header-item, .cert-row", {
+        opacity: 1,
+        y: 0,
+        visibility: "visible"
+      });
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      return;
+    }
 
-    gsap.from(".qual-header-item", {
-      opacity: 0,
-      y: 15,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
-
-    gsap.from(".cert-row", {
-      opacity: 0,
-      y: 15,
-      duration: 0.5,
-      stagger: 0.08,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".certs-list",
-        start: "top 90%",
-        toggleActions: "play none none none"
+    gsap.fromTo(".qual-header-item",
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out"
       }
-    });
+    );
+
+    gsap.fromTo(".cert-row",
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".certs-list",
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
   }, { scope: containerRef });
 
   // 3. ScrollTrigger Horizontal scroll (Depends on canScroll)
   useGSAP(() => {
-    if (!shouldAnimate()) return;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) return;
 
     const track = scrollTrackRef.current;
     const container = pinRef.current;
@@ -144,13 +160,13 @@ export default function QualityClient() {
     return () => st.kill(true);
   }, { scope: containerRef, dependencies: [canScroll] });
 
-  const animEnabled = typeof window !== "undefined" ? shouldAnimate() : true;
+  const animEnabled = typeof window !== "undefined" ? (!window.matchMedia("(max-width: 768px)").matches && shouldAnimate()) : true;
 
   return (
     <div ref={containerRef} className="bg-brand-bg min-h-screen">
 
       {/* 1. Header & Certifications (whitespace and thin line borders) */}
-      <div className="py-24 sm:py-32 relative z-10">
+      <div className="pt-24 pb-8 sm:pt-32 sm:pb-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Page Header */}
@@ -158,7 +174,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ TECHNICAL STANDARDS ]
             </span>
-            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide">
+            <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide">
               Quality Assurance
             </h1>
           </div>
@@ -219,7 +235,7 @@ export default function QualityClient() {
         </div>
 
         {/* Horizontal track container */}
-        <div className={`w-full ${animEnabled ? "overflow-hidden" : "overflow-x-auto scroll-smooth pb-6"}`}>
+        <div className={`w-full proc-track-container ${animEnabled ? "overflow-hidden" : "overflow-x-auto scroll-smooth pb-6"}`}>
           <div
             ref={scrollTrackRef}
             className={`flex gap-16 px-8 sm:px-16 ${canScroll && animEnabled ? "" : "md:justify-center"}`}

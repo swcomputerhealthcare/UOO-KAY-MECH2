@@ -44,12 +44,16 @@ export default function AboutClient() {
   ];
 
   useGSAP(() => {
-    if (!shouldAnimate()) {
-      gsap.set(".about-header-item, .about-reveal-section, .timeline-node, .timeline-draw-line", {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) {
+      gsap.set(".about-header-item, .about-reveal-section, .timeline-node, .timeline-draw-line, .about-reveal-item, .about-reveal-image", {
         opacity: 1,
         y: 0,
-        scaleY: 1
+        scaleY: 1,
+        scale: 1,
+        visibility: "visible"
       });
+      ScrollTrigger.getAll().forEach(t => t.kill());
       return;
     }
 
@@ -148,9 +152,9 @@ export default function AboutClient() {
     <div ref={containerRef} className="bg-brand-bg min-h-screen select-none overflow-x-hidden">
       
       {/* Page Header */}
-      <div className="py-24 sm:py-32">
+      <div className="pt-24 pb-8 sm:pt-32 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-l-2 border-[#EC6713] pl-6 about-header-item opacity-0">
+          <div className="border-l-2 border-[#EC6713] pl-6 about-header-item">
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ COMPANY OVERVIEW ]
             </span>
@@ -167,17 +171,17 @@ export default function AboutClient() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Text details */}
-            <div className="lg:col-span-7 space-y-6 about-reveal-item opacity-0">
+            <div className="lg:col-span-7 space-y-6 about-reveal-item">
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">
                 [ ESTABLISHED 2004 ]
               </span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#161616] leading-tight tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#161616] leading-tight tracking-tight aboutTitle">
                 Delivering Industrial Excellence for Over Two Decades
               </h2>
-              <p className="text-[#161616] text-base leading-relaxed font-sans font-semibold">
+              <p className="text-[#161616] text-base leading-relaxed font-sans font-semibold aboutDescription">
                 UK MECH INDUSTRIES has been delivering precision engineering and machining solutions since 2004. With extensive expertise in machining and manufacturing, we serve various reputed organizations across India by providing high-quality industrial components tailored to customer requirements.
               </p>
-              <p className="text-[#5E6673] text-sm leading-relaxed font-sans">
+              <p className="text-[#5E6673] text-sm leading-relaxed font-sans aboutDescription">
                 Headquartered in Maharashtra, India, our facility is equipped with a robust infrastructure of CNC machining centres, lathe machines, grinders, and precise testing instruments. Over the last two decades, our absolute focus on reliability and quality has earned us vendor-approved status with enterprise leaders including Larsen & Toubro, Emerson India, and Parle Elizabeth Tools.
               </p>
               
@@ -203,7 +207,7 @@ export default function AboutClient() {
             </div>
 
             {/* Industrial Photo Frame */}
-            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-[#F6F7F8] about-reveal-image opacity-0 will-change-transform rounded-[24px] overflow-hidden shadow-sm">
+            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-[#F6F7F8] about-reveal-image will-change-transform rounded-[24px] overflow-hidden shadow-sm aboutImage">
               <div className="relative h-96 w-full overflow-hidden">
                 <Image
                   src="/images/products/machines and fabricated components 1.webp"
@@ -227,7 +231,7 @@ export default function AboutClient() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
               
               {/* Technical Profile ID */}
-              <div className="md:col-span-4 space-y-4 about-reveal-item opacity-0">
+              <div className="md:col-span-4 space-y-4 about-reveal-item">
                 <span className="font-mono text-xs text-[#EC6713] uppercase tracking-widest block">
                   [ LEADERSHIP REGISTER ]
                 </span>
@@ -249,7 +253,7 @@ export default function AboutClient() {
               </div>
               
               {/* Letter / Quote */}
-              <div className="md:col-span-8 space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item opacity-0">
+              <div className="md:col-span-8 space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item">
                 <blockquote className="text-[#161616] text-lg sm:text-xl font-semibold italic leading-relaxed font-sans">
                   &ldquo;We take pride in delivering precision, reliability, and quality to every customer. Our commitment since 2004 has been to build long-term relationships through engineering excellence and customer satisfaction.&rdquo;
                 </blockquote>
@@ -269,7 +273,7 @@ export default function AboutClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 font-sans">
             
             {/* Vision Block */}
-            <div className="space-y-6 md:pr-12 about-reveal-item opacity-0">
+            <div className="space-y-6 md:pr-12 about-reveal-item">
               <div className="flex items-center gap-3 text-[#EC6713]">
                 <Eye className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_VISION ]</span>
@@ -283,7 +287,7 @@ export default function AboutClient() {
             </div>
 
             {/* Mission Block */}
-            <div className="space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item opacity-0">
+            <div className="space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item">
               <div className="flex items-center gap-3 text-[#EC6713]">
                 <Compass className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_MISSION ]</span>
@@ -292,7 +296,7 @@ export default function AboutClient() {
                 Our Mission
               </h3>
               <p className="text-[#5E6673] text-sm leading-relaxed font-medium">
-                Deliver high-quality engineering solutions while maintaining reliability, innovation, and customer satisfaction. We strive to maintain zero-tolerance inspection quality, guarantee timely dispatches, and optimize lead times for our valuable B2B procurement partners.
+                Deliver high-quality engineering solutions while maintaining reliability, innovation, and customer satisfaction. We strive to maintain zero-tolerance inspection quality, guarantee timely dispatches, and optimize B2B procurement partners.
               </p>
             </div>
 
@@ -318,7 +322,7 @@ export default function AboutClient() {
             <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[2px] bg-[#EC6713] origin-top timeline-draw-line will-change-transform" style={{ transform: "scaleY(0)" }} />
             
             {milestones.map((milestone, idx) => (
-              <div key={idx} className="relative timeline-node pl-4 md:pl-8 opacity-0">
+              <div key={idx} className="relative timeline-node pl-4 md:pl-8">
                 {/* Burnt copper node joint */}
                 <div className="absolute left-[12px] md:left-[27px] top-2.5 h-[9px] w-[9px] bg-[#EC6713] border border-[#F6F7F8]" />
                 

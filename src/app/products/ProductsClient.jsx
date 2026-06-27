@@ -496,8 +496,10 @@ export default function ProductsClient() {
 
   // GSAP animation for stats counter and featured horizontal scroll
   useGSAP(() => {
-    if (!shouldAnimate()) {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) {
       gsap.set(".stat-number", { textContent: (i) => STATS[i].value });
+      ScrollTrigger.getAll().forEach(t => t.kill());
       return;
     }
 

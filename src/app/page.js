@@ -58,12 +58,20 @@ export default function Home() {
   };
 
   useGSAP(() => {
-    // Check if the user prefers reduced motion
-    if (!shouldAnimate()) {
+    // Check if mobile or prefers reduced motion
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile || !shouldAnimate()) {
       // Set all animated elements to fully visible immediately
-      gsap.set(".hero-title-word, .counter-val", { opacity: 1, y: 0, scale: 1 });
+      gsap.set(".hero-title-word, .counter-val, .hero-established, .hero-company-label, .hero-sub, .hero-desc, .hero-cta-btn, .hero-image-wrap, .step-image-wrap, .step-text-reveal > *, .testimonial-reveal-header, .testimonial-col", {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        scale: 1,
+        visibility: "visible"
+      });
       const stats = document.querySelectorAll(".counter-val");
       stats.forEach(el => el.textContent = el.dataset.target);
+      ScrollTrigger.getAll().forEach(t => t.kill());
       return;
     }
 
@@ -237,29 +245,29 @@ export default function Home() {
             
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-8 text-left">
-              <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block hero-established opacity-0">
+              <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block hero-established">
                 [ ESTABLISHED 2004 — THANE, INDIA ]
               </span>
               
               <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-bold text-[#EC6713] tracking-wider uppercase block hero-company-label opacity-0">
+                <span className="text-xs sm:text-sm font-bold text-[#EC6713] tracking-wider uppercase block hero-company-label">
                   UK MECH
                 </span>
                 <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#09285F]">
                   {"Precision Machining & Industrial Engineering Solutions".split(" ").map((w, idx) => (
                     <span key={idx} className="inline-block overflow-hidden mr-[0.25em] vertical-align-bottom">
-                      <span className="inline-block hero-title-word opacity-0 will-change-transform">
+                      <span className="inline-block hero-title-word will-change-transform">
                         {w}
                       </span>
                     </span>
                   ))}
                 </h1>
-                <p className="text-sm sm:text-base font-bold text-[#5E6673] uppercase tracking-wide hero-sub opacity-0">
+                <p className="text-sm sm:text-base font-bold text-[#5E6673] uppercase tracking-wide hero-sub">
                   Serving Industrial Clients Since 2004
                 </p>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#5E6673] max-w-xl leading-relaxed font-sans font-medium hero-desc opacity-0">
+              <p className="text-xs sm:text-sm text-[#5E6673] max-w-xl leading-relaxed font-sans font-medium hero-desc">
                 Over two decades of expertise manufacturing precision machined components, CNC parts, custom tooling, dies, and assemblies for India&apos;s Tier-1 industrial enterprises.
               </p>
 
@@ -267,13 +275,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
                 <Link
                   href="/contact"
-                  className="w-full sm:w-auto bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn premium-btn-hover opacity-0"
+                  className="w-full sm:w-auto bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn premium-btn-hover"
                 >
                   Request RFQ
                 </Link>
                 <Link
                   href="/products"
-                  className="w-full sm:w-auto border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn premium-btn-hover opacity-0"
+                  className="w-full sm:w-auto border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn premium-btn-hover"
                 >
                   View Services
                 </Link>
@@ -281,7 +289,7 @@ export default function Home() {
             </div>
 
             {/* Right Graphic / Photo */}
-            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap opacity-0 will-change-transform">
+            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap will-change-transform">
               <div className="relative w-full h-[320px] sm:h-[400px]">
                 <Image
                   src="/images/products/highly-precision-1.jpeg"
@@ -357,7 +365,7 @@ export default function Home() {
       <section className="py-24 bg-white border-b border-[#D7DDE5] step-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap opacity-0 will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
                   src="/images/products/highly-precision-1.jpeg"
@@ -411,7 +419,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap opacity-0 will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
                   src="/images/products/weep tubes cup.webp"
@@ -431,7 +439,7 @@ export default function Home() {
       <section className="py-24 bg-white border-b border-[#D7DDE5] step-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap opacity-0 will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
                   src="/images/products/Picture15.webp"
@@ -500,7 +508,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap opacity-0 will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
                   src="/images/products/machine and fabricated component.webp"
