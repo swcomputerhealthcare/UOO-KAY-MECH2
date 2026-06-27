@@ -190,10 +190,8 @@ export default function QualityClient() {
                     </p>
                   </div>
                   <div className="certMeta">
-                    <div className="flex flex-col gap-1 text-[10px] font-mono">
-                      <span className="text-[#5E6673] uppercase font-bold tracking-wider">{cert.label}</span>
-                      <span className="text-[#09285F] font-extrabold tracking-wide uppercase break-all">{cert.id}</span>
-                    </div>
+                    <span className="block text-[#5E6673] uppercase font-bold tracking-wider text-[10px] font-mono">{cert.label}</span>
+                    <strong className="block text-[#09285F] font-extrabold tracking-wide uppercase break-all text-[11px] font-mono mt-0.5">{cert.id}</strong>
                   </div>
                 </article>
               ))}

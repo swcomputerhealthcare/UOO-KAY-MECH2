@@ -401,9 +401,9 @@ export const StaggeredMenu = ({
       </div>
       
       <header className={`staggered-menu-header ${scrolled ? 'scrolled-header' : ''}`} aria-label="Main navigation header">
-        {/* Premium Image logo with tight text at the side */}
-        <Link href="/" className="sm-logo flex items-center gap-3 md:gap-4 shrink-0 select-none" aria-label="Logo" onClick={closeMenu}>
-          <div className={`relative shrink-0 transition-all duration-300 ${scrolled ? 'w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16' : 'w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24'}`}>
+        {/* Premium Image logo with exact responsive width containers */}
+        <Link href="/" className="sm-logo logoWrap select-none" aria-label="Logo" onClick={closeMenu}>
+          <div className="logoImg">
             <Image
               src="/uk-mech-logo-v3.png"
               alt="UK MECH Logo"
@@ -413,10 +413,10 @@ export const StaggeredMenu = ({
             />
           </div>
           <div className="flex flex-col text-left">
-            <span className={`font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#09285F] ${scrolled ? 'text-[14px] md:text-[17px] lg:text-[20px]' : 'text-[17px] md:text-[22px] lg:text-[26px]'}`}>
+            <span className="font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#09285F] logoTextTop">
               UK MECH
             </span>
-            <span className={`text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 group-data-[open]:text-white/85 lg:group-data-[open]:text-[#EC6713] ${scrolled ? 'text-[8px] md:text-[9px] lg:text-[10px] mt-0.5 md:mt-1' : 'text-[9px] md:text-[11px] lg:text-[13px] mt-1 md:mt-1.5'}`}>
+            <span className="text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 group-data-[open]:text-white/85 lg:group-data-[open]:text-[#EC6713] logoTextBottom">
               INDUSTRIES
             </span>
           </div>

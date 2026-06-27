@@ -370,3 +370,121 @@
     width: 42px;
   }
 }
+
+/* Logo Sizing and Layout Constraints */
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 150px; /* Mobile */
+  height: auto;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.logoImg {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.logoTextTop {
+  font-size: 15px;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.logoTextBottom {
+  font-size: 9px;
+  margin-top: 4px;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
+  .logoWrap {
+    width: 190px;
+    gap: 12px;
+  }
+  .logoImg {
+    width: 52px;
+    height: 52px;
+  }
+  .logoTextTop {
+    font-size: 20px;
+  }
+  .logoTextBottom {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .logoWrap {
+    width: 250px;
+    gap: 14px;
+  }
+  .logoImg {
+    width: 60px;
+    height: 60px;
+  }
+  .logoTextTop {
+    font-size: 24px;
+  }
+  .logoTextBottom {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+}
+
+/* Scrolled Header Adjustments */
+.scrolled-header .logoWrap {
+  width: 130px; /* Mobile scrolled */
+}
+.scrolled-header .logoImg {
+  width: 36px;
+  height: 36px;
+}
+.scrolled-header .logoTextTop {
+  font-size: 13px;
+}
+.scrolled-header .logoTextBottom {
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+@media (min-width: 768px) {
+  .scrolled-header .logoWrap {
+    width: 160px; /* Tablet scrolled */
+  }
+  .scrolled-header .logoImg {
+    width: 44px;
+    height: 44px;
+  }
+  .scrolled-header .logoTextTop {
+    font-size: 16px;
+  }
+  .scrolled-header .logoTextBottom {
+    font-size: 9px;
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrolled-header .logoWrap {
+    width: 200px; /* Desktop scrolled */
+  }
+  .scrolled-header .logoImg {
+    width: 48px;
+    height: 48px;
+  }
+  .scrolled-header .logoTextTop {
+    font-size: 18px;
+  }
+  .scrolled-header .logoTextBottom {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+}
