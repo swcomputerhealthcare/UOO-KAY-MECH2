@@ -54,6 +54,59 @@ export const StaggeredMenu = ({
     }
   }, [open, onMenuClose]);
 
+  // Manage focus when menu opens/closes to prevent aria-hidden focus bug
+  useEffect(() => {
+    const panel = panelRef.current;
+    const menuButton = toggleBtnRef.current;
+    if (!panel) return;
+
+    if (open) {
+      panel.removeAttribute('aria-hidden');
+      panel.removeAttribute('inert');
+
+      requestAnimationFrame(() => {
+        const firstFocusable = panel.querySelector(
+          'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+        );
+        firstFocusable?.focus();
+      });
+    } else {
+      const activeElement = document.activeElement;
+      if (activeElement && panel.contains(activeElement)) {
+        activeElement.blur();
+      }
+
+      panel.setAttribute('inert', '');
+      panel.setAttribute('aria-hidden', 'true');
+
+      requestAnimationFrame(() => {
+        menuButton?.focus();
+      });
+    }
+  }, [open]);
+
+  // Escape key support
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && open) {
+        setOpen(false);
+        onMenuClose?.();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [open, onMenuClose]);
+
+  // Handle menu item click: blur active element and return focus to trigger
+  const handleMenuItemClick = useCallback(() => {
+    const activeElement = document.activeElement;
+    if (activeElement && panelRef.current?.contains(activeElement)) {
+      activeElement.blur();
+    }
+    setOpen(false);
+    onMenuClose?.();
+  }, [onMenuClose]);
+
   useEffect(() => {
     if (!closeOnClickAway || !open) return;
 
@@ -130,7 +183,13 @@ export const StaggeredMenu = ({
         </button>
       </header>
 
-      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
+      <aside
+        id="staggered-menu-panel"
+        ref={panelRef}
+        className="staggered-menu-panel"
+        aria-hidden={!open}
+        {...(!open ? { inert: '' } : {})}
+      >
         <div className="sm-panel-inner">
           <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
             {items && items.length ? (
@@ -141,7 +200,7 @@ export const StaggeredMenu = ({
                     href={it.link} 
                     aria-label={it.ariaLabel} 
                     data-index={idx + 1}
-                    onClick={closeMenu}
+                    onClick={handleMenuItemClick}
                   >
                     <span className="sm-panel-itemLabel">{it.label}</span>
                   </Link>

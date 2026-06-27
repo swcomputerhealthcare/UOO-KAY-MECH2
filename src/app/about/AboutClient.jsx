@@ -50,12 +50,12 @@ export default function AboutClient() {
       </div>
 
       {/* 1. Introduction Section */}
-      <section className="bg-white border-y border-[#D7DDE5] py-24 about-reveal-section">
+      <section className="bg-white border-y border-[#D7DDE5] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Text details */}
-            <div className="lg:col-span-7 space-y-6 about-reveal-item">
+            <div className="lg:col-span-7 space-y-6">
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">
                 [ ESTABLISHED 2004 ]
               </span>
@@ -91,7 +91,7 @@ export default function AboutClient() {
             </div>
 
             {/* Industrial Photo Frame */}
-            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-[#F6F7F8] about-reveal-image will-change-transform rounded-[24px] overflow-hidden shadow-sm aboutImage">
+            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-[#F6F7F8] rounded-[24px] overflow-hidden shadow-sm">
               <div className="relative h-96 w-full overflow-hidden">
                 <Image
                   src="/images/products/machines and fabricated components 1.webp"
@@ -109,13 +109,13 @@ export default function AboutClient() {
       </section>
 
       {/* 2. Founder / MD Profile */}
-      <section className="py-24 bg-brand-bg about-reveal-section">
+      <section className="py-24 bg-brand-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-[#D7DDE5] pt-16">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
               
               {/* Technical Profile ID */}
-              <div className="md:col-span-4 space-y-4 about-reveal-item">
+              <div className="md:col-span-4 space-y-4">
                 <span className="font-mono text-xs text-[#EC6713] uppercase tracking-widest block">
                   [ LEADERSHIP REGISTER ]
                 </span>
@@ -137,7 +137,7 @@ export default function AboutClient() {
               </div>
               
               {/* Letter / Quote */}
-              <div className="md:col-span-8 space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item">
+              <div className="md:col-span-8 space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12">
                 <blockquote className="text-[#161616] text-lg sm:text-xl font-semibold italic leading-relaxed font-sans">
                   &ldquo;We take pride in delivering precision, reliability, and quality to every customer. Our commitment since 2004 has been to build long-term relationships through engineering excellence and customer satisfaction.&rdquo;
                 </blockquote>
@@ -152,12 +152,12 @@ export default function AboutClient() {
       </section>
 
       {/* 3. Vision & Mission Section */}
-      <section className="py-24 bg-white border-y border-[#D7DDE5] about-reveal-section">
+      <section className="py-24 bg-white border-y border-[#D7DDE5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 font-sans">
             
             {/* Vision Block */}
-            <div className="space-y-6 md:pr-12 about-reveal-item">
+            <div className="space-y-6 md:pr-12">
               <div className="flex items-center gap-3 text-[#EC6713]">
                 <Eye className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_VISION ]</span>
@@ -171,7 +171,7 @@ export default function AboutClient() {
             </div>
 
             {/* Mission Block */}
-            <div className="space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12 about-reveal-item">
+            <div className="space-y-6 md:border-l md:border-[#D7DDE5] md:pl-12">
               <div className="flex items-center gap-3 text-[#EC6713]">
                 <Compass className="h-6 w-6" strokeWidth={1.5} />
                 <span className="font-mono text-xs font-bold uppercase tracking-widest">[ SYSTEM_MISSION ]</span>

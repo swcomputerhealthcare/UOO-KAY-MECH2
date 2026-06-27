@@ -7,10 +7,10 @@ import { ArrowRight, X, Search, Cpu, Layers, Settings, Wrench, Shield, Compass, 
 
 // 1. STATS DATA
 const STATS = [
-  { value: 100, suffix: "+", label: "Products Manufactured" },
-  { value: 25, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "+", label: "Projects Delivered" },
-  { value: 100, suffix: "%", label: "Quality Inspected" }
+  { value: "12+", label: "Products Manufactured" },
+  { value: "25+", label: "Years Experience" },
+  { value: "500+", label: "Projects Delivered" },
+  { value: "100%", label: "Quality Inspected" }
 ];
 
 // 2. CATEGORIES
@@ -485,8 +485,7 @@ export default function ProductsClient() {
               className="border border-[#D7DDE5] bg-white p-6 rounded-[16px] text-center shadow-sm flex flex-col justify-center h-28 sm:h-32 hover:border-[#09285F]/30 transition-all duration-300"
             >
               <div className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#09285F] uppercase tracking-tight">
-                <span className="stat-number">{stat.value}</span>
-                <span>{stat.suffix}</span>
+                <span>{stat.value}</span>
               </div>
               <p className="text-[10px] sm:text-xs font-mono font-bold text-[#5E6673] uppercase tracking-wider mt-2">
                 {stat.label}

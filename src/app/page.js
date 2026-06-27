@@ -98,7 +98,7 @@ export default function Home() {
             </div>
 
             {/* Right Graphic / Photo */}
-            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap will-change-transform">
+            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap">
               <div className="relative w-full h-[320px] sm:h-[400px]">
                 <Image
                   src="/images/products/highly-precision-1.jpeg"
@@ -129,25 +129,25 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#D7DDE5]/20">
             <div className="space-y-1">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val">12</span>+
+                <span>12</span>+
               </span>
               <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Products Manufactured</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val">25</span>+
+                <span>25</span>+
               </span>
               <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Years Experience</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val">500</span>+
+                <span>500</span>+
               </span>
               <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Projects Delivered</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span className="counter-val">100</span>%
+                <span>100</span>%
               </span>
               <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Quality Inspected</span>
             </div>
@@ -174,7 +174,7 @@ export default function Home() {
       <section className="py-24 bg-white border-b border-[#D7DDE5] step-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
                   src="/images/products/highly-precision-1.jpeg"
@@ -228,7 +228,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
                   src="/images/products/weep tubes cup.webp"
@@ -248,7 +248,7 @@ export default function Home() {
       <section className="py-24 bg-white border-b border-[#D7DDE5] step-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
                   src="/images/products/Picture15.webp"
@@ -317,7 +317,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap will-change-transform rounded-[24px] overflow-hidden">
+            <div className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden">
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
                   src="/images/products/machine and fabricated component.webp"

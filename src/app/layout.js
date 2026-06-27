@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import PageTransition from "@/components/PageTransition";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -131,7 +130,6 @@ const jsonLd = {
   "foundingDate": "2004"
 };
 
-import SmoothScroll from "@/components/SmoothScroll";
 
 export default function RootLayout({ children }) {
   return (
@@ -144,16 +142,12 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SmoothScroll>
-          <Header />
-          <main className="flex-grow pt-16 md:pt-[104px]">
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </main>
-          <Footer />
-          <WhatsAppButton />
-        </SmoothScroll>
+        <Header />
+        <main className="flex-grow pt-16 md:pt-[104px]">
+          {children}
+        </main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

@@ -284,11 +284,6 @@ section {
   opacity: 1 !important;
 }
 
-.aboutImage,
-.aboutImage img {
-  opacity: 1 !important;
-  filter: none !important;
-}
 
 /* Clients Section Styling Fixes */
 .clientsIntro h2 {
@@ -370,52 +365,6 @@ section {
   }
 }
 
-/* Ensure all old animation class targets are always visible (GSAP removed) */
-.fadeIn,
-.reveal,
-.scrollReveal,
-[data-animate],
-[data-reveal],
-.about-reveal-section,
-.about-reveal-item,
-.about-reveal-image,
-.timeline-node,
-.timeline-draw-line,
-.featured-slide,
-.featured-text-block,
-.featured-image-block,
-.cli-logo-row,
-.cli-trust-banner,
-.con-header-item,
-.con-info-row,
-.con-form-wrapper,
-.con-map-section,
-.infra-header-item,
-.infra-content-item,
-.asset-card-item,
-.console-detail-block,
-.console-table-row,
-.cert-row,
-.qual-header-item,
-.hero-established,
-.hero-company-label,
-.hero-title-word,
-.hero-sub,
-.hero-desc,
-.hero-cta-btn,
-.hero-image-wrap,
-.step-image-wrap,
-.step-text-reveal > *,
-.testimonial-reveal-header,
-.testimonial-card-item,
-.stats-grid,
-.stats-grid > *,
-.stat-number {
-  opacity: 1 !important;
-  transform: none !important;
-  visibility: visible !important;
-}
-
 /* WhatsApp Floating Button on Mobile */
 .whatsappButton {
   display: flex;
@@ -487,15 +436,4 @@ section {
   }
 }
 
-/* Sane Default Opacity / Animation Fallbacks */
-.reveal,
-.fadeIn,
-[data-reveal],
-[data-animate],
-.word-item {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  filter: none;
-}
 
