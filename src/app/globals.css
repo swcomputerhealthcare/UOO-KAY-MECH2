@@ -74,6 +74,54 @@ body {
   animation-play-state: paused;
 }
 
+/* Site Header — single sticky container for both bars */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  background: #f6f7f8;
+}
+
+/* Top Utility Bar — slim blue bar */
+.top-utility-bar {
+  height: 32px;
+  background: #09285F;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  font-size: 12px;
+  line-height: 1;
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .top-utility-bar {
+    height: 28px;
+    padding: 0 18px;
+    font-size: 9px;
+    overflow: hidden;
+  }
+}
+
+/* Scroll margin for anchor links */
+main {
+  scroll-margin-top: 110px;
+}
+
+section {
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 96px;
+  }
+}
+
 /* Utility to hide scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -291,7 +339,7 @@ section {
   }
 
   .productImageWrap {
-    aspect-ratio: 1 / 0.78 !important;
+    aspect-ratio: 4 / 3 !important;
     margin-bottom: 14px !important;
   }
 

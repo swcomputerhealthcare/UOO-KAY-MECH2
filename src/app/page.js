@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import LogoMarquee from "@/components/LogoMarquee";
 
 export default function Home() {
@@ -59,65 +60,126 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-8 text-left">
-              <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block hero-established">
+            <motion.div 
+              className="lg:col-span-7 space-y-8 text-left"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <motion.span 
+                className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block hero-established"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
                 [ ESTABLISHED 2004 — THANE, INDIA ]
-              </span>
+              </motion.span>
               
               <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-bold text-[#EC6713] tracking-wider uppercase block hero-company-label">
+                <motion.span 
+                  className="text-xs sm:text-sm font-bold text-[#EC6713] tracking-wider uppercase block hero-company-label"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
                   UK MECH
-                </span>
-                <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#09285F]">
+                </motion.span>
+                <motion.h1 
+                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#09285F]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                >
                   Precision Machining & Industrial Engineering Solutions
-                </h1>
-                <p className="text-sm sm:text-base font-bold text-[#5E6673] uppercase tracking-wide hero-sub">
+                </motion.h1>
+                <motion.p 
+                  className="text-sm sm:text-base font-bold text-[#5E6673] uppercase tracking-wide hero-sub"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                >
                   Serving Industrial Clients Since 2004
-                </p>
+                </motion.p>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#5E6673] max-w-xl leading-relaxed font-sans font-medium hero-desc">
+              <motion.p 
+                className="text-xs sm:text-sm text-[#5E6673] max-w-xl leading-relaxed font-sans font-medium hero-desc"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              >
                 Over two decades of expertise manufacturing precision machined components, CNC parts, custom tooling, dies, and assemblies for India&apos;s Tier-1 industrial enterprises.
-              </p>
+              </motion.p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn premium-btn-hover"
-                >
-                  Request RFQ
-                </Link>
-                <Link
-                  href="/products"
-                  className="w-full sm:w-auto border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn premium-btn-hover"
-                >
-                  View Services
-                </Link>
-              </div>
-            </div>
+              <motion.div 
+                className="flex flex-col sm:flex-row items-center gap-4 pt-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href="/contact"
+                    className="w-full sm:w-auto bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
+                  >
+                    Request RFQ
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href="/products"
+                    className="w-full sm:w-auto border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
+                  >
+                    View Services
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
             {/* Right Graphic / Photo */}
-            <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap">
+            <motion.div 
+              className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+            >
               <div className="relative w-full h-[320px] sm:h-[400px]">
-                <Image
-                  src="/images/products/highly-precision-1.jpeg"
-                  alt="Precision engineered CNC machining workshop of UK Mech Industries"
-                  fill
-                  className="object-cover grayscale opacity-90 transition-all duration-500 hover:grayscale-0"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
-                />
+                <motion.div
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
+                  className="w-full h-full"
+                >
+                  <Image
+                    src="/images/products/highly-precision-1.jpeg"
+                    alt="Precision engineered CNC machining workshop of UK Mech Industries"
+                    fill
+                    className="object-cover grayscale opacity-90"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority
+                  />
+                </motion.div>
                 
                 {/* Technical Overlay Badges */}
-                <div className="absolute bottom-4 left-4 bg-[#09285F] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30">
+                <motion.div 
+                  className="absolute bottom-4 left-4 bg-[#09285F] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
+                >
                   TOLERANCES: TO ±0.01 mm
-                </div>
-                <div className="absolute top-4 right-4 bg-white/95 text-[#161616] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5] shadow-sm">
+                </motion.div>
+                <motion.div 
+                  className="absolute top-4 right-4 bg-white/95 text-[#161616] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5] shadow-sm"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.5 }}
+                >
                   MATERIALS: SS | MS | AL
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -171,10 +233,22 @@ export default function Home() {
       </section>
 
       {/* 4. Section 1: CNC Machining */}
-      <section className="py-24 bg-white border-b border-[#D7DDE5] step-section">
+      <motion.section 
+        className="py-24 bg-white border-b border-[#D7DDE5] step-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden">
+            <motion.div 
+              className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
                   src="/images/products/highly-precision-1.jpeg"
@@ -185,8 +259,14 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-            </div>
-            <div className="lg:col-span-4 space-y-6 step-text-reveal">
+            </motion.div>
+            <motion.div 
+              className="lg:col-span-4 space-y-6 step-text-reveal"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">01 / CNC MACHINING</span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
                 High Precision CNC Machined Components
@@ -195,23 +275,37 @@ export default function Home() {
                 Custom shaft, die, mould, fixture and industrial machining solutions.
               </p>
               <div className="pt-2">
-                <Link
-                  href="/infrastructure"
-                  className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 premium-btn-hover"
-                >
-                  View Facility Tech Spec
-                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href="/infrastructure"
+                    className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
+                  >
+                    View Facility Tech Spec
+                  </Link>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. Section 2: Technical Drawing & CAD */}
-      <section className="py-24 bg-[#F6F7F8] border-b border-[#D7DDE5] step-section">
+      <motion.section 
+        className="py-24 bg-[#F6F7F8] border-b border-[#D7DDE5] step-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-5 space-y-6 step-text-reveal">
+            <motion.div 
+              className="lg:col-span-5 space-y-6 step-text-reveal"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">02 / CAD DRAFTING</span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
                 Engineering Feasibility Analysis
@@ -220,15 +314,23 @@ export default function Home() {
                 Every component is verified against chemical grades, linear tolerances, and process charts. Submit your 2D drawings or 3D files for rapid feasibility review, assuring correct structural tolerances before tooling setup.
               </p>
               <div className="pt-2">
-                <Link
-                  href="/contact"
-                  className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 premium-btn-hover"
-                >
-                  Submit Drawings
-                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href="/contact"
+                    className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
+                  >
+                    Submit Drawings
+                  </Link>
+                </motion.div>
               </div>
-            </div>
-            <div className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden">
+            </motion.div>
+            <motion.div 
+              className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
                   src="/images/products/weep tubes cup.webp"
@@ -239,16 +341,28 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. Section 3: Dimensional Inspection */}
-      <section className="py-24 bg-white border-b border-[#D7DDE5] step-section">
+      <motion.section 
+        className="py-24 bg-white border-b border-[#D7DDE5] step-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden">
+            <motion.div 
+              className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
                   src="/images/products/Picture15.webp"
@@ -259,8 +373,14 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-            </div>
-            <div className="lg:col-span-4 space-y-6 step-text-reveal">
+            </motion.div>
+            <motion.div 
+              className="lg:col-span-4 space-y-6 step-text-reveal"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">03 / METROLOGY</span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
                 Calibrated Quality Inspections
@@ -269,23 +389,37 @@ export default function Home() {
                 We perform thread plug testing, bore gauge inspections, and granite plate flatness measurements. Our facility uses Mitutoyo digital height gauges and Baker calibrated instruments to confirm dimensional compliance for heavy machinery components.
               </p>
               <div className="pt-2">
-                <Link
-                  href="/quality"
-                  className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 premium-btn-hover"
-                >
-                  Review Quality Standards
-                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                  <Link
+                    href="/quality"
+                    className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
+                  >
+                    Review Quality Standards
+                  </Link>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 7. Section 4: Capabilities */}
-      <section className="py-24 bg-[#F6F7F8] border-b border-[#D7DDE5] step-section">
+      <motion.section 
+        className="py-24 bg-[#F6F7F8] border-b border-[#D7DDE5] step-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-6 space-y-8 step-text-reveal">
+            <motion.div 
+              className="lg:col-span-6 space-y-8 step-text-reveal"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <div>
                 <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">04 / CAPABILITIES</span>
                 <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
@@ -298,26 +432,48 @@ export default function Home() {
               
               {/* Technical catalog spec list */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 pt-6 border-t border-[#D7DDE5] font-sans">
-                <div className="premium-card-hover border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40">
+                <motion.div 
+                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Precision Parts</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Crane shafts, pinion shafts, gears, expanders, and weep tube cups.</p>
-                </div>
-                <div className="premium-card-hover border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40">
+                </motion.div>
+                <motion.div 
+                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Safety Guard Systems</h3>
                   <p className="text-xs text-[#5E6673] mt-1">SS and MS machine covers, safety shields, and frame encasings.</p>
-                </div>
-                <div className="premium-card-hover border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40">
+                </motion.div>
+                <motion.div 
+                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Industrial Access</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Heavy-duty industrial ladders and platforms built in MS, SS, and Aluminum.</p>
-                </div>
-                <div className="premium-card-hover border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40">
+                </motion.div>
+                <motion.div 
+                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Structural Assembly</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Welded structural works, base plates, and fixtures per CAD layout.</p>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden">
+            <motion.div 
+              className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
                   src="/images/products/machine and fabricated component.webp"
@@ -328,10 +484,10 @@ export default function Home() {
                   loading="lazy"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 8. Client Logo Marquee Section */}
       <section className="bg-white border-b border-[#D7DDE5] py-12">
@@ -344,22 +500,40 @@ export default function Home() {
       </section>
 
       {/* 9. Testimonials Section */}
-      <section className="py-24 bg-white testimonials-section">
+      <motion.section 
+        className="py-24 bg-white testimonials-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="mb-16 border-b border-[#D7DDE5] pb-6 testimonial-reveal-header">
+          <motion.div 
+            className="mb-16 border-b border-[#D7DDE5] pb-6 testimonial-reveal-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
             <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">
               / PARTNER COMPLIANCE FEEDBACK
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#09285F] uppercase tracking-wide leading-tight">
               Procurement & Engineering Reviews
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 font-sans">
             
             {/* Testimonial 1 */}
-            <div className="space-y-6 md:border-r md:border-[#D7DDE5] md:pr-8 testimonial-col">
+            <motion.div 
+              className="space-y-6 md:border-r md:border-[#D7DDE5] md:pr-8 testimonial-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <blockquote className="text-[#161616] text-sm leading-relaxed font-semibold">
                 &ldquo;UK Mech has been our approved supplier for machined shafts and assemblies since 2010. Their compliance with detailed engineering blueprints is impeccable.&rdquo;
               </blockquote>
@@ -367,10 +541,16 @@ export default function Home() {
                 <div className="text-xs font-bold text-[#09285F] uppercase tracking-wider">Larsen & Toubro Ltd.</div>
                 <span className="text-[10px] text-[#5E6673] font-mono uppercase tracking-wider mt-1 block">Procurement Division</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Testimonial 2 */}
-            <div className="space-y-6 md:border-r md:border-[#D7DDE5] md:px-8 testimonial-col">
+            <motion.div 
+              className="space-y-6 md:border-r md:border-[#D7DDE5] md:px-8 testimonial-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <blockquote className="text-[#161616] text-sm leading-relaxed font-semibold">
                 &ldquo;The quality of sheet metal covers and machine safety guards they manufactured for our automation rigs exceeded our safety audit checklists. On-time delivery.&rdquo;
               </blockquote>
@@ -378,10 +558,16 @@ export default function Home() {
                 <div className="text-xs font-bold text-[#09285F] uppercase tracking-wider">Emerson India Pvt. Ltd.</div>
                 <span className="text-[10px] text-[#5E6673] font-mono uppercase tracking-wider mt-1 block">QA & Safety Team</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Testimonial 3 */}
-            <div className="space-y-6 md:pl-8 testimonial-col">
+            <motion.div 
+              className="space-y-6 md:pl-8 testimonial-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <blockquote className="text-[#161616] text-sm leading-relaxed font-semibold">
                 &ldquo;We have sourced spur gears and custom pinions from UK MECH. The module teeth tolerances are tight, resulting in quiet and smooth power transmission.&rdquo;
               </blockquote>
@@ -389,12 +575,12 @@ export default function Home() {
                 <div className="text-xs font-bold text-[#09285F] uppercase tracking-wider">Godfrey Phillips India</div>
                 <span className="text-[10px] text-[#5E6673] font-mono uppercase tracking-wider mt-1 block">Plant Engineering</span>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );

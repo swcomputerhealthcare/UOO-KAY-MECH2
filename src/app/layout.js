@@ -143,7 +143,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Header />
-        <main className="flex-grow pt-16 md:pt-[104px]">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />

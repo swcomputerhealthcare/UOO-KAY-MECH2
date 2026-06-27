@@ -3,16 +3,14 @@
 import React, { useCallback, useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
-  position = 'right',
   items = [],
   socialItems = [],
   displaySocials = true,
-  displayItemNumbering = true,
   className,
-  accentColor = '#EC6713',
   closeOnClickAway = true,
   onMenuOpen,
   onMenuClose
@@ -20,20 +18,6 @@ export const StaggeredMenu = ({
   const [open, setOpen] = useState(false);
   const panelRef = useRef(null);
   const toggleBtnRef = useRef(null);
-
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const toggleMenu = useCallback(() => {
     setOpen((prev) => {
@@ -89,15 +73,23 @@ export const StaggeredMenu = ({
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape' && open) {
+        const panel = panelRef.current;
+        const activeElement = document.activeElement;
+        if (activeElement && panel?.contains(activeElement)) {
+          activeElement.blur();
+        }
         setOpen(false);
         onMenuClose?.();
+        requestAnimationFrame(() => {
+          toggleBtnRef.current?.focus();
+        });
       }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [open, onMenuClose]);
 
-  // Handle menu item click: blur active element and return focus to trigger
+  // Handle menu item click: blur active element, close menu, return focus to trigger
   const handleMenuItemClick = useCallback(() => {
     const activeElement = document.activeElement;
     if (activeElement && panelRef.current?.contains(activeElement)) {
@@ -105,6 +97,9 @@ export const StaggeredMenu = ({
     }
     setOpen(false);
     onMenuClose?.();
+    requestAnimationFrame(() => {
+      toggleBtnRef.current?.focus();
+    });
   }, [onMenuClose]);
 
   useEffect(() => {
@@ -138,12 +133,10 @@ export const StaggeredMenu = ({
 
   return (
     <div
-      className={`group staggered-menu-wrapper ${className || ''}`}
-      style={accentColor ? { ['--sm-accent']: accentColor } : undefined}
-      data-position={position}
-      data-open={open || undefined}
+      className={`staggered-menu-wrapper ${className || ''}`}
+      data-open={open ? "true" : "false"}
     >
-      <header className={`staggered-menu-header ${scrolled ? 'scrolled-header' : ''}`} aria-label="Main navigation header">
+      <header className="staggered-menu-header" aria-label="Main navigation header">
         <Link href="/" className="sm-logo logoWrap select-none" aria-label="Logo" onClick={closeMenu}>
           <div className="logoImg">
             <Image
@@ -155,10 +148,10 @@ export const StaggeredMenu = ({
             />
           </div>
           <div className="flex flex-col text-left">
-            <span className="font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 group-data-[open]:text-white lg:group-data-[open]:text-[#09285F] logoTextTop">
+            <span className="font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 logoTextTop">
               UK MECH
             </span>
-            <span className="text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 group-data-[open]:text-white/85 lg:group-data-[open]:text-[#EC6713] logoTextBottom">
+            <span className="text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 logoTextBottom">
               INDUSTRIES
             </span>
           </div>
@@ -183,74 +176,93 @@ export const StaggeredMenu = ({
         </button>
       </header>
 
-      <aside
-        id="staggered-menu-panel"
-        ref={panelRef}
-        className="staggered-menu-panel"
-        aria-hidden={!open}
-        {...(!open ? { inert: '' } : {})}
-      >
-        <div className="sm-panel-inner">
-          <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
-            {items && items.length ? (
-              items.map((it, idx) => (
-                <li className="sm-panel-itemWrap" key={it.label + idx}>
-                  <Link 
-                    className="sm-panel-item" 
-                    href={it.link} 
-                    aria-label={it.ariaLabel} 
-                    data-index={idx + 1}
-                    onClick={handleMenuItemClick}
-                  >
-                    <span className="sm-panel-itemLabel">{it.label}</span>
-                  </Link>
-                </li>
-              ))
-            ) : (
-              <li className="sm-panel-itemWrap" aria-hidden="true">
-                <span className="sm-panel-item">
-                  <span className="sm-panel-itemLabel">No items</span>
-                </span>
-              </li>
-            )}
-          </ul>
-          
-          {displaySocials && socialItems && socialItems.length > 0 && (
-            <div className="sm-socials" aria-label="Contact Links">
-              <h3 className="sm-socials-title">Contact & Socials</h3>
-              <ul className="sm-socials-list" role="list">
-                {socialItems.map((s, i) => (
-                  <li key={s.label + i} className="sm-socials-item">
-                    <a href={s.link} target={s.link.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="sm-socials-link">
-                      {s.label}
-                    </a>
+      <AnimatePresence>
+        {open && (
+          <motion.aside
+            id="staggered-menu-panel"
+            ref={panelRef}
+            className="staggered-menu-panel"
+            aria-hidden="false"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          >
+            <div className="sm-panel-inner">
+              <ul className="sm-panel-list" role="list">
+                {items && items.length ? (
+                  items.map((it, idx) => (
+                    <motion.li 
+                      className="sm-panel-itemWrap" 
+                      key={it.label + idx}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
+                    >
+                      <Link 
+                        className="sm-panel-item" 
+                        href={it.link} 
+                        aria-label={it.ariaLabel} 
+                        data-index={idx + 1}
+                        onClick={handleMenuItemClick}
+                      >
+                        <span className="sm-panel-itemLabel">{it.label}</span>
+                      </Link>
+                    </motion.li>
+                  ))
+                ) : (
+                  <li className="sm-panel-itemWrap" aria-hidden="true">
+                    <span className="sm-panel-item">
+                      <span className="sm-panel-itemLabel">No items</span>
+                    </span>
                   </li>
-                ))}
+                )}
               </ul>
+              
+              {displaySocials && socialItems && socialItems.length > 0 && (
+                <motion.div 
+                  className="sm-socials" 
+                  aria-label="Contact Links"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <h3 className="sm-socials-title">Contact & Socials</h3>
+                  <ul className="sm-socials-list" role="list">
+                    {socialItems.map((s, i) => (
+                      <li key={s.label + i} className="sm-socials-item">
+                        <a href={s.link} target={s.link.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="sm-socials-link">
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
 
-              <div className="sm-menu-contact border-t border-white/20 pt-6 mt-6 text-xs text-white/80 font-sans space-y-4">
-                <h4 className="font-heading font-bold text-[9px] uppercase tracking-widest text-white/90">
-                  Office & Workshop
-                </h4>
-                <p className="leading-relaxed text-white/80">
-                  08 Pomal Industrial Estate, Kolshet Road, Thane – 400607, Maharashtra, India.
-                </p>
-                <div className="flex flex-col gap-2 text-white/80">
-                  <a href="tel:+919987849605" className="hover:text-white transition-colors">
-                    Mobile: +91 99878 49605 (Sandeepkumar)
-                  </a>
-                  <a href="tel:+919833053809" className="hover:text-white transition-colors">
-                    Office: +91 98330 53809
-                  </a>
-                  <a href="mailto:uookaymechindustries@gmail.com" className="hover:text-white transition-colors break-all">
-                    Email: uookaymechindustries@gmail.com
-                  </a>
-                </div>
-              </div>
+                  <div className="sm-menu-contact border-t pt-6 mt-6 text-xs font-sans space-y-4">
+                    <h4 className="font-heading font-bold text-[9px] uppercase tracking-widest text-white">
+                      Office & Workshop
+                    </h4>
+                    <p className="leading-relaxed text-white/80">
+                      08 Pomal Industrial Estate, Kolshet Road, Thane – 400607, Maharashtra, India.
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      <a href="tel:+919987849605" className="transition-colors text-white/80 hover:text-white">
+                        Mobile: +91 99878 49605 (Sandeepkumar)
+                      </a>
+                      <a href="tel:+919833053809" className="transition-colors text-white/80 hover:text-white">
+                        Office: +91 98330 53809
+                      </a>
+                      <a href="mailto:uookaymechindustries@gmail.com" className="transition-colors break-all text-white/80 hover:text-white">
+                        Email: uookaymechindustries@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
-          )}
-        </div>
-      </aside>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

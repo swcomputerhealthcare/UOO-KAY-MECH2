@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, X, Search, Cpu, Layers, Settings, Wrench, Shield, Compass, Phone, FileText } from "lucide-react";
 
 // 1. STATS DATA
@@ -348,27 +349,44 @@ const CAPABILITIES_GRID = [
   }
 ];
 
-// 6. CARD SUB-COMPONENT WITH STATIC CSS EFFECTS
+// 6. CARD SUB-COMPONENT WITH FRAMER MOTION EFFECTS
 function ProductCard({ product, onViewDetails }) {
   return (
-    <div
+    <motion.div
       onClick={() => onViewDetails(product)}
-      className="group relative bg-white rounded-[16px] border border-[#D7DDE5] hover:border-[#EC6713]/40 p-4 transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between md:h-[400px] h-auto cursor-pointer overflow-hidden select-none productCard"
+      className="group relative bg-white rounded-[16px] border border-[#D7DDE5] p-4 shadow-sm flex flex-col justify-between md:h-[400px] h-auto cursor-pointer overflow-hidden select-none productCard"
+      whileHover={{ 
+        y: -4,
+        boxShadow: "0 12px 30px -10px rgba(9, 40, 95, 0.08)",
+        borderColor: "rgba(236, 103, 19, 0.4)"
+      }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
       {/* Orange Accent Top Line */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-transparent group-hover:bg-[#EC6713] transition-colors duration-300" />
+      <motion.div 
+        className="absolute top-0 left-0 right-0 h-1 bg-[#EC6713]"
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.3 }}
+      />
       
       <div>
         {/* Product Image */}
         <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            loading="lazy"
-            className="object-cover group-hover:scale-103 transition-transform duration-300"
-          />
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-full"
+          >
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              loading="lazy"
+              className="object-cover"
+            />
+          </motion.div>
         </div>
 
         {/* Category Badge */}
@@ -377,9 +395,13 @@ function ProductCard({ product, onViewDetails }) {
         </span>
 
         {/* Product Title */}
-        <h3 className="font-heading font-bold text-sm sm:text-base text-[#09285F] uppercase tracking-wide group-hover:text-[#EC6713] transition-colors duration-300 md:line-clamp-1 line-clamp-none leading-snug productTitle">
+        <motion.h3 
+          className="font-heading font-bold text-sm sm:text-base text-[#09285F] uppercase tracking-wide md:line-clamp-1 line-clamp-none leading-snug productTitle"
+          whileHover={{ color: "#EC6713" }}
+          transition={{ duration: 0.3 }}
+        >
           {product.name}
-        </h3>
+        </motion.h3>
 
         {/* Product Short Description */}
         <p className="text-[11px] text-[#5E6673] font-medium leading-relaxed mt-1.5 md:line-clamp-2 line-clamp-none productDescription">
@@ -389,24 +411,35 @@ function ProductCard({ product, onViewDetails }) {
 
       {/* Buttons */}
       <div className="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-[#D7DDE5]/30 productActions">
-        <button
+        <motion.button
           onClick={(e) => {
             e.stopPropagation();
             onViewDetails(product);
           }}
-          className="text-[10px] font-mono font-bold tracking-wider text-[#09285F] hover:text-[#EC6713] transition-colors flex items-center justify-center gap-1 py-1.5 uppercase border border-[#09285F]/10 hover:border-[#EC6713]/20 bg-white"
+          className="text-[10px] font-mono font-bold tracking-wider text-[#09285F] flex items-center justify-center gap-1 py-1.5 uppercase border border-[#09285F]/10 bg-white"
+          whileHover={{ 
+            color: "#EC6713",
+            borderColor: "rgba(236, 103, 19, 0.2)"
+          }}
+          transition={{ duration: 0.2 }}
         >
           View Details
-        </button>
-        <Link
-          href={`/contact?interest=${encodeURIComponent(product.name)}#contact-form`}
-          onClick={(e) => e.stopPropagation()}
-          className="text-[10px] font-mono font-bold tracking-wider text-white bg-[#09285F] hover:bg-[#EC6713] transition-all py-1.5 text-center uppercase"
+        </motion.button>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
         >
-          Request RFQ
-        </Link>
+          <Link
+            href={`/contact?interest=${encodeURIComponent(product.name)}#contact-form`}
+            onClick={(e) => e.stopPropagation()}
+            className="text-[10px] font-mono font-bold tracking-wider text-white bg-[#09285F] transition-all py-1.5 text-center uppercase block"
+            style={{ backgroundColor: "#09285F" }}
+          >
+            Request RFQ
+          </Link>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -574,15 +607,15 @@ export default function ProductsClient() {
             {FEATURED_ITEMS.map((item, idx) => (
               <div 
                 key={idx} 
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300 overflow-hidden"
               >
                 {/* Left: Product Image */}
-                <div className="lg:col-span-6 relative h-[300px] sm:h-[400px] rounded-[16px] overflow-hidden bg-[#FAF8F5] border border-[#D7DDE5] productImageWrap bg-[#1F242D]">
+                <div className="lg:col-span-6 relative h-[260px] sm:h-[430px] lg:h-[520px] rounded-[24px] overflow-hidden bg-[#FAF8F5] border border-[#D7DDE5]">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-500 hover:scale-102"
+                    className="object-cover w-full h-full block"
                     sizes="(max-width: 1024px) 100vw, 45vw"
                     loading="lazy"
                   />
