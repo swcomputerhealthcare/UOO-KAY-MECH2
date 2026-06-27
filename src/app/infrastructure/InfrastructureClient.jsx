@@ -307,7 +307,7 @@ export default function InfrastructureClient() {
   const activeAsset = activeCollection[selectedAssetIdx] || activeCollection[0];
 
   return (
-    <div className="bg-brand-bg text-[#161616] min-h-screen pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
+    <div className="bg-brand-bg text-[#161616] pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

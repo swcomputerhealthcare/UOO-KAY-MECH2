@@ -229,18 +229,9 @@ svg {
 }
 
 section {
-  width: 100% !important;
-  max-width: 100vw !important;
-  overflow-x: hidden !important;
-  padding-top: clamp(72px, 8vw, 120px) !important;
-  padding-bottom: clamp(72px, 8vw, 120px) !important;
-}
-
-@media (max-width: 768px) {
-  section {
-    padding-top: 56px !important;
-    padding-bottom: 56px !important;
-  }
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .container {
@@ -379,55 +370,50 @@ section {
   }
 }
 
-/* Force All Animations to be Visible on Mobile (max-width: 768px) */
-@media (max-width: 768px) {
-  .fadeIn,
-  .reveal,
-  .scrollReveal,
-  [data-animate],
-  [data-reveal],
-  .about-reveal-section,
-  .about-reveal-item,
-  .about-reveal-image,
-  .timeline-node,
-  .timeline-draw-line,
-  .featured-slide,
-  .featured-text-block,
-  .featured-image-block,
-  .cli-logo-row,
-  .cli-trust-banner,
-  .con-header-item,
-  .con-info-row,
-  .con-form-wrapper,
-  .con-map-section,
-  .infra-header-item,
-  .infra-content-item,
-  .asset-card-item,
-  .console-detail-block,
-  .console-table-row,
-  .cert-row,
-  .qual-header-item,
-  .hero-established,
-  .hero-company-label,
-  .hero-title-word,
-  .hero-sub,
-  .hero-desc,
-  .hero-cta-btn,
-  .hero-image-wrap,
-  .step-image-wrap,
-  .step-text-reveal > *,
-  .testimonial-reveal-header,
-  .testimonial-card-item,
-  .stats-grid,
-  .stats-grid > *,
-  .stat-number {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-    scale: 1 !important;
-    scaleY: 1 !important;
-    scaleX: 1 !important;
-  }
+/* Ensure all old animation class targets are always visible (GSAP removed) */
+.fadeIn,
+.reveal,
+.scrollReveal,
+[data-animate],
+[data-reveal],
+.about-reveal-section,
+.about-reveal-item,
+.about-reveal-image,
+.timeline-node,
+.timeline-draw-line,
+.featured-slide,
+.featured-text-block,
+.featured-image-block,
+.cli-logo-row,
+.cli-trust-banner,
+.con-header-item,
+.con-info-row,
+.con-form-wrapper,
+.con-map-section,
+.infra-header-item,
+.infra-content-item,
+.asset-card-item,
+.console-detail-block,
+.console-table-row,
+.cert-row,
+.qual-header-item,
+.hero-established,
+.hero-company-label,
+.hero-title-word,
+.hero-sub,
+.hero-desc,
+.hero-cta-btn,
+.hero-image-wrap,
+.step-image-wrap,
+.step-text-reveal > *,
+.testimonial-reveal-header,
+.testimonial-card-item,
+.stats-grid,
+.stats-grid > *,
+.stat-number {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
 }
 
 /* WhatsApp Floating Button on Mobile */

@@ -58,7 +58,7 @@ export default function QualityClient() {
   ];
 
   return (
-    <div className="bg-brand-bg min-h-screen">
+    <div className="bg-brand-bg">
 
       {/* 1. Header & Certifications */}
       <div className="pt-24 pb-8 sm:pt-32 sm:pb-12 relative z-10">

@@ -33,7 +33,7 @@ export default function AboutClient() {
   ];
 
   return (
-    <div className="bg-brand-bg min-h-screen select-none overflow-x-hidden">
+    <div className="bg-brand-bg select-none overflow-x-hidden aboutSection">
       
       {/* Page Header */}
       <div className="pt-24 pb-8 sm:pt-32 sm:pb-12">

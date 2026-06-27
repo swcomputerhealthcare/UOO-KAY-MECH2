@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-brand-bg select-none overflow-x-hidden">
+    <div className="flex flex-col bg-brand-bg select-none overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -131,25 +131,25 @@ export default function Home() {
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
                 <span className="counter-val">12</span>+
               </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Products Manufactured</span>
+              <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Products Manufactured</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
                 <span className="counter-val">25</span>+
               </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Years Experience</span>
+              <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Years Experience</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
                 <span className="counter-val">500</span>+
               </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Projects Delivered</span>
+              <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Projects Delivered</span>
             </div>
             <div className="space-y-1 pt-4 md:pt-0">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
                 <span className="counter-val">100</span>%
               </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider block opacity-75">Quality Inspected</span>
+              <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Quality Inspected</span>
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function Home() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.2em]">
             [ APPROVED SUPPLIER REGISTRY ]
           </span>
-          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-items-center md:justify-end gap-x-8 md:gap-x-12 gap-y-4 opacity-80 w-full md:w-auto text-center font-heading font-bold text-xs tracking-widest text-[#09285F]">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-items-center md:justify-end gap-x-8 md:gap-x-12 gap-y-4 w-full md:w-auto text-center font-heading font-bold text-xs tracking-widest text-[#09285F]">
             <span className="flex items-center justify-center min-h-[32px]">LARSEN & TOUBRO</span>
             <span className="flex items-center justify-center min-h-[32px]">EMERSON INDIA</span>
             <span className="flex items-center justify-center min-h-[32px]">GODFREY PHILLIPS</span>
