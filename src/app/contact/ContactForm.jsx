@@ -22,10 +22,18 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState({});
 
-  // Read query parameters to prefill the interest field
+  // Read query parameters to prefill the interest, material, tolerance, and message fields
   useEffect(() => {
-    const interestParam = searchParams.get("interest");
+    const interestParam = searchParams.get("interest") || searchParams.get("enquiry");
     if (interestParam) {
+      // Clean up "Request for Quote: " prefix if present
+      const cleanInterest = interestParam.replace(/^Request for Quote:\s*/i, "");
+
+      const materialParam = searchParams.get("material") || "";
+      const toleranceParam = searchParams.get("tolerance") || "";
+      const treatmentParam = searchParams.get("treatment") || "";
+
+      // 1. Determine target category for the dropdown
       const categories = [
         "Machine Safety Guards",
         "Precision Components",
@@ -34,20 +42,34 @@ export default function ContactForm() {
         "Machining Solutions",
         "Other",
       ];
-      const matched = categories.find(
-        (c) => c.toLowerCase() === interestParam.toLowerCase() || interestParam.toLowerCase().includes(c.toLowerCase())
+      
+      let targetInterest = categories.find(
+        (c) => c.toLowerCase() === cleanInterest.toLowerCase() || cleanInterest.toLowerCase().includes(c.toLowerCase())
       );
       
-      const targetInterest = matched || (interestParam.includes("Gear") ? "Gears" : null);
-      if (targetInterest) {
-        const handle = requestAnimationFrame(() => {
-          setFormData((prev) => {
-            if (prev.interest === targetInterest) return prev;
-            return { ...prev, interest: targetInterest };
-          });
-        });
-        return () => cancelAnimationFrame(handle);
+      if (!targetInterest) {
+        const lower = cleanInterest.toLowerCase();
+        if (lower.includes("guard") || lower.includes("enclosure") || lower.includes("cage") || lower.includes("cabinet") || lower.includes("racking")) {
+          targetInterest = "Machine Safety Guards";
+        } else if (lower.includes("gear") || lower.includes("roller")) {
+          targetInterest = "Gears";
+        } else if (lower.includes("ladder")) {
+          targetInterest = "Ladders";
+        } else if (lower.includes("tool") || lower.includes("die") || lower.includes("punch") || lower.includes("fixture") || lower.includes("expander") || lower.includes("probe")) {
+          targetInterest = "Machining Solutions";
+        } else {
+          targetInterest = "Precision Components";
+        }
       }
+      
+      // 2. Prefill form state
+      setFormData((prev) => ({
+        ...prev,
+        interest: targetInterest,
+        material: materialParam || prev.material,
+        tolerance: toleranceParam || prev.tolerance,
+        message: prev.message || `Inquiry regarding: ${cleanInterest}.${treatmentParam ? `\nHardness/Treatment: ${treatmentParam}.` : ""}\n\nPlease provide quotation and technical feasibility details for this component.`
+      }));
     }
   }, [searchParams]);
 

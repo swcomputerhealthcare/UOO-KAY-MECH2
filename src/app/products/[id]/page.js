@@ -243,7 +243,7 @@ export default async function ProductDetailPage({ params }) {
             {/* B2B Call-To-Action (RFQ Link) */}
             <div className="pt-4">
               <Link
-                href={`/contact?enquiry=${encodeURIComponent(`Request for Quote: ${product.name}`)}`}
+                href={`/contact?interest=${encodeURIComponent(product.name)}&material=${encodeURIComponent(product.specs.materials)}&tolerance=${encodeURIComponent(product.specs.tolerances)}&treatment=${encodeURIComponent(product.specs.hardness)}#contact-form`}
                 className="connectBtn"
               >
                 Connect With Us

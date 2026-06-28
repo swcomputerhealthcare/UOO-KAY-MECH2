@@ -198,7 +198,7 @@ function ProductCard({ product, onViewDetails }) {
           transition={hoverTransition}
         >
           <Link
-            href={`/contact?interest=${encodeURIComponent(product.name)}#contact-form`}
+            href={`/contact?interest=${encodeURIComponent(product.name)}&material=${encodeURIComponent(product.specs.materials)}&tolerance=${encodeURIComponent(product.specs.tolerances)}&treatment=${encodeURIComponent(product.specs.hardness)}#contact-form`}
             onClick={(e) => e.stopPropagation()}
             className="text-[10px] font-mono font-bold tracking-wider text-white bg-[#09285F] transition-all py-1.5 text-center uppercase block"
             style={{ backgroundColor: "#09285F" }}
@@ -447,7 +447,7 @@ export default function ProductsClient() {
 
                   <div>
                     <Link
-                      href={`/contact?interest=${encodeURIComponent(item.title)}#contact-form`}
+                      href={`/contact?interest=${encodeURIComponent(item.title)}&material=${encodeURIComponent(item.specs.material)}&tolerance=${encodeURIComponent(item.specs.tolerance)}&treatment=${encodeURIComponent(item.specs.treatment)}#contact-form`}
                       className="inline-flex items-center gap-2 bg-[#EC6713] hover:bg-[#09285F] text-white font-heading font-bold text-xs uppercase tracking-wider py-4 px-8 transition-colors duration-200"
                     >
                       Inquire Component <ArrowRight className="h-3.5 w-3.5" />
@@ -621,7 +621,7 @@ export default function ProductsClient() {
               {/* Footer Action */}
               <div className="mt-8 pt-4 border-t border-[#D7DDE5]/30 flex flex-col sm:flex-row gap-3">
                 <Link
-                  href={`/contact?interest=${encodeURIComponent(activeProduct.name)}#contact-form`}
+                  href={`/contact?interest=${encodeURIComponent(activeProduct.name)}&material=${encodeURIComponent(activeProduct.specs.materials)}&tolerance=${encodeURIComponent(activeProduct.specs.tolerances)}&treatment=${encodeURIComponent(activeProduct.specs.hardness)}#contact-form`}
                   onClick={handleCloseModal}
                   className="flex-1 bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold text-xs uppercase tracking-wider py-3.5 text-center transition-colors duration-200"
                 >
