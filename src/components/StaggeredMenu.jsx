@@ -168,7 +168,7 @@ export const StaggeredMenu = ({
           onClick={toggleMenu}
           type="button"
         >
-          <span className="sm-toggle-textWrap font-heading font-extrabold uppercase text-[10px]">
+          <span className="sm-toggle-textWrap font-heading font-extrabold uppercase">
             {open ? 'Close' : 'Menu'}
           </span>
           <span className="sm-icon" aria-hidden="true">

@@ -15,19 +15,19 @@
    ============================================================ */
 .staggered-menu-header {
   position: relative;
-  height: 70px;
+  height: 56px;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 56px;
+  padding: 0 40px;
   pointer-events: auto;
 }
 
 @media (max-width: 768px) {
   .staggered-menu-header {
-    height: 64px;
-    padding: 0 18px;
+    height: 50px;
+    padding: 0 16px;
   }
 }
 
@@ -48,16 +48,16 @@
 .logoWrap {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
   height: 100%;
-  transform: scale(1.18);
+  transform: scale(1.0);
   transform-origin: left center;
 }
 
 .logoImg {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
 }
 
@@ -70,7 +70,7 @@
 
 .logoTextTop {
   font-family: var(--font-heading), sans-serif;
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.1;
   color: #09285F;
@@ -79,57 +79,57 @@
 }
 
 .logoTextBottom {
-  font-size: 13.5px;
+  font-size: 11.5px;
   font-weight: 800;
   line-height: 1;
   color: #EC6713;
   text-transform: uppercase;
   letter-spacing: 0.32em;
-  margin-top: 6px;
+  margin-top: 4px;
   white-space: nowrap;
 }
 
 @media (max-width: 1024px) {
   .sm-logo {
-    gap: 16px;
+    gap: 12px;
   }
   .logoWrap {
-    transform: scale(1.1);
-    gap: 16px;
+    transform: scale(1.0);
+    gap: 10px;
   }
   .logoImg {
-    width: 52px;
-    height: 52px;
-  }
-  .logoTextTop {
-    font-size: 14.5px;
-    margin-bottom: 0;
-  }
-  .logoTextBottom {
-    font-size: 12px;
-    margin-top: 5px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sm-logo {
-    gap: 14px;
-  }
-  .logoWrap {
-    transform: scale(1.05);
-    gap: 14px;
-  }
-  .logoImg {
-    width: 46px;
-    height: 46px;
+    width: 36px;
+    height: 36px;
   }
   .logoTextTop {
     font-size: 12.5px;
     margin-bottom: 0;
   }
   .logoTextBottom {
-    font-size: 10px;
-    margin-top: 4px;
+    font-size: 9.5px;
+    margin-top: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sm-logo {
+    gap: 10px;
+  }
+  .logoWrap {
+    transform: scale(1.0);
+    gap: 8px;
+  }
+  .logoImg {
+    width: 34px;
+    height: 34px;
+  }
+  .logoTextTop {
+    font-size: 11.5px;
+    margin-bottom: 0;
+  }
+  .logoTextBottom {
+    font-size: 8.5px;
+    margin-top: 2px;
   }
 }
 
@@ -141,17 +141,17 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  height: 42px;
-  width: 120px;
-  padding: 0 18px;
+  gap: 8px;
+  height: 36px;
+  width: 105px;
+  padding: 0 14px;
   border-radius: 999px;
   border: 2px solid #EC6713;
   background: #ffffff;
   color: #09285F;
   font-family: var(--font-heading), sans-serif;
   font-weight: 900;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   line-height: 1;
@@ -178,10 +178,10 @@
 
 @media (max-width: 768px) {
   .sm-toggle {
-    height: 40px;
-    width: 100px;
-    padding: 0 14px;
-    font-size: 10px;
+    height: 32px;
+    width: 90px;
+    padding: 0 10px;
+    font-size: 8.5px;
   }
 }
 
@@ -191,7 +191,7 @@
   height: 1em;
   overflow: hidden;
   white-space: nowrap;
-  width: 50px;
+  width: 42px;
 }
 
 /* ============================================================
@@ -232,11 +232,11 @@
    ============================================================ */
 .staggered-menu-panel {
   position: fixed;
-  top: 102px;
+  top: 82px;
   right: 0;
   z-index: 9998;
-  width: min(420px, 100vw);
-  height: calc(100dvh - 102px);
+  width: min(380px, 100vw);
+  height: calc(100dvh - 82px);
   background: #EC6713;
   color: #ffffff;
   border-left: none;
@@ -247,8 +247,8 @@
 
 @media (max-width: 768px) {
   .staggered-menu-panel {
-    top: 92px;
-    height: calc(100dvh - 92px);
+    top: 74px;
+    height: calc(100dvh - 74px);
     width: 100vw;
   }
 }
@@ -259,17 +259,17 @@
    ============================================================ */
 .sm-panel-inner {
   min-height: 100%;
-  padding: 34px 34px 30px;
+  padding: 24px 24px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
 }
 
 @media (max-width: 768px) {
   .sm-panel-inner {
-    padding: 30px 26px 28px;
-    gap: 22px;
+    padding: 20px 18px 18px;
+    gap: 16px;
   }
 }
 
@@ -301,11 +301,11 @@
   color: #ffffff;
   text-decoration: none;
   font-family: var(--font-heading), sans-serif;
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(18px, 2vw, 24px);
   line-height: 1.05;
   font-weight: 800;
   letter-spacing: -0.025em;
-  padding: 12px 0;
+  padding: 8px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
   cursor: pointer;
   transition: color 0.22s ease, padding-left 0.22s ease;

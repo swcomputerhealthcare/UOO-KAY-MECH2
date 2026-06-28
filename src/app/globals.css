@@ -105,14 +105,14 @@ a, button, input, select, textarea {
 
 /* Top Utility Bar — slim brand accent bar */
 .top-utility-bar {
-  height: 32px;
+  height: 26px;
   background: #09285F;
   color: #D7DDE5;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 56px;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1;
   font-family: var(--font-sans), sans-serif;
   font-weight: 500;
@@ -121,32 +121,34 @@ a, button, input, select, textarea {
 
 @media (max-width: 768px) {
   .top-utility-bar {
-    height: 28px;
+    height: 24px;
     padding: 0 18px;
-    font-size: 9px;
+    font-size: 8.5px;
     justify-content: center;
   }
 }
 
 /* Scroll margin for anchor links */
 main {
-  scroll-margin-top: 102px;
-  padding-top: 102px;
+  scroll-margin-top: 82px;
+  padding-top: 82px;
 }
 
 section {
-  scroll-margin-top: 102px;
+  scroll-margin-top: 82px;
 }
 
 @media (max-width: 768px) {
   main {
-    scroll-margin-top: 92px;
-    padding-top: 92px;
+    scroll-margin-top: 74px;
+    padding-top: 74px;
   }
   section {
-    scroll-margin-top: 92px;
+    scroll-margin-top: 74px;
   }
 }
+
+
 
 
 /* Utility to hide scrollbar */
