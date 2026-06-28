@@ -25,12 +25,13 @@ const CATEGORIES = [
 ];
 
 // 3. COMPLETE PRODUCTS CATALOG
+// 3. COMPLETE PRODUCTS CATALOG
 const PRODUCTS = [
   {
     id: "manifold-air-testing",
     name: "Manifold for Air Testing",
     category: "Custom Components",
-    image: "/images/products/Manifold for air testing.jpeg",
+    image: "/images/products/manifold-air-testing.webp",
     fit: "contain",
     isLongPart: true,
     desc: "Precision manifold designed for high-pressure pneumatic air testing and calibration setups.",
@@ -47,7 +48,7 @@ const PRODUCTS = [
     id: "hydro-test-probe",
     name: "Hydro Test Probe",
     category: "Tooling",
-    image: "/images/products/hydro test probe.jpeg",
+    image: "/images/products/hydro-test-probe.webp",
     fit: "contain",
     isLongPart: true,
     desc: "Heavy-duty testing probe engineered for hydrostatic pressure testing and vessel validation.",
@@ -64,7 +65,7 @@ const PRODUCTS = [
     id: "heavy-duty-chain-mounting-bolt",
     name: "Heavy Duty Chain Mounting Bolt",
     category: "Precision Parts",
-    image: "/images/products/heavy duty chain mounting bolt.jpeg",
+    image: "/images/products/heavy-duty-chain-mounting-bolt.webp",
     fit: "contain",
     isLongPart: true,
     desc: "High-tensile mounting bolt designed for secure links in industrial chain conveyance and hoisting systems.",
@@ -81,7 +82,7 @@ const PRODUCTS = [
     id: "water-tank-cover",
     name: "Water Tank Cover",
     category: "Fabrication",
-    image: "/images/products/weep tubes cup.webp",
+    image: "/images/products/water-tank-cover.webp",
     fit: "contain",
     desc: "Precision fabricated corrosion-resistant water tank cover assembly for industrial liquid containment.",
     specs: {
@@ -97,7 +98,7 @@ const PRODUCTS = [
     id: "display-unit",
     name: "Display Unit",
     category: "Custom Components",
-    image: "/images/products/Display unit.jpeg",
+    image: "/images/products/display-unit.webp",
     fit: "contain",
     desc: "Custom engineered display frames and panel structures built for industrial mockups and exhibitions.",
     specs: {
@@ -113,7 +114,7 @@ const PRODUCTS = [
     id: "cabinet",
     name: "Cabinet",
     category: "Fabrication",
-    image: "/images/products/heavy duty rack system.jpeg",
+    image: "/images/products/cabinet.webp",
     fit: "contain",
     desc: "Heavy-duty industrial cabinet enclosure for electrical assemblies, automation hardware, and storage systems.",
     specs: {
@@ -129,7 +130,7 @@ const PRODUCTS = [
     id: "trolley",
     name: "Trolley",
     category: "Fabrication",
-    image: "/images/products/Trolley.jpeg",
+    image: "/images/products/trolley.webp",
     fit: "contain",
     desc: "Heavy-duty workshop utility trolley for efficient material handling and parts logistics across shop floors.",
     specs: {
@@ -145,7 +146,7 @@ const PRODUCTS = [
     id: "expander",
     name: "Expander",
     category: "Tooling",
-    image: "/images/products/expander.jpeg",
+    image: "/images/products/expander.webp",
     fit: "contain",
     isLongPart: true,
     desc: "High-durability expander tool assemblies for tube expansion and cold mechanical jointing systems.",
@@ -162,7 +163,7 @@ const PRODUCTS = [
     id: "heavy-duty-machined-hinge",
     name: "Heavy Duty Machined Hinge",
     category: "Precision Parts",
-    image: "/images/products/Machined Hinge Component.webp",
+    image: "/images/products/hinge.webp",
     fit: "contain",
     desc: "Precision heavy-duty machined hinges for heavy machine gates and security enclosure doors.",
     specs: {
@@ -178,7 +179,7 @@ const PRODUCTS = [
     id: "precision-parts",
     name: "Precision Parts",
     category: "Precision Parts",
-    image: "/images/products/Precision Machined Block.webp",
+    image: "/images/products/precision-parts.webp",
     fit: "contain",
     desc: "High-tolerance sliding block guides with parallel ground surfaces and custom alignment channels.",
     specs: {
@@ -194,7 +195,7 @@ const PRODUCTS = [
     id: "cnc-machined-components",
     name: "CNC Machined Components",
     category: "Precision Parts",
-    image: "/images/products/highly-precision-1.jpeg",
+    image: "/images/products/cnc-machined-components.webp",
     fit: "contain",
     desc: "Multi-axis milled complex housing blocks and custom precision components.",
     specs: {
@@ -210,7 +211,7 @@ const PRODUCTS = [
     id: "threaded-shafts",
     name: "Threaded Shafts",
     category: "Shafts",
-    image: "/images/products/highly-precision-2.jpeg",
+    image: "/images/products/threaded-shaft.webp",
     fit: "contain",
     isLongPart: true,
     desc: "High-concentricity step shafts with ground finish tolerances and precision external threading.",
@@ -227,7 +228,7 @@ const PRODUCTS = [
     id: "stainless-steel-work-table",
     name: "Stainless Steel Work Table",
     category: "Fabrication",
-    image: "/images/products/Stainless Steel Work Table.webp",
+    image: "/images/products/stainless-steel-work-table.webp",
     fit: "contain",
     desc: "Heavy-duty stainless steel work table with lower storage shelves and rigid support structures for assembly lines.",
     specs: {
@@ -243,7 +244,7 @@ const PRODUCTS = [
     id: "structural-support-cage",
     name: "Structural Support Cage",
     category: "Fabrication",
-    image: "/images/products/Tank Cladding.webp",
+    image: "/images/products/structural-support-cage.webp",
     fit: "contain",
     desc: "Welded steel safety framing and reinforcement cages designed to encase and protect massive storage tanks.",
     specs: {
@@ -259,7 +260,7 @@ const PRODUCTS = [
     id: "industrial-machine-enclosure",
     name: "Industrial Machine Enclosure",
     category: "Fabrication",
-    image: "/images/products/Industrial Machine Enclosure.webp",
+    image: "/images/products/industrial-machine-enclosure.webp",
     fit: "contain",
     desc: "Custom sheet metal machine covers, acoustic encasings, and safety guards for automation machinery.",
     specs: {
@@ -275,7 +276,7 @@ const PRODUCTS = [
     id: "fabricated-access-ladder",
     name: "Fabricated Access Ladder",
     category: "Fabrication",
-    image: "/images/products/Fabricated Access Ladder.webp",
+    image: "/images/products/fabricated-access-ladder.webp",
     fit: "contain",
     isLongPart: true,
     desc: "High-safety industrial platform ladders and access systems built with safety railings and non-slip steps.",
@@ -294,7 +295,7 @@ const PRODUCTS = [
 const FEATURED_ITEMS = [
   {
     title: "Concentric Transmission Shaft",
-    image: "/images/products/highly-precision-2.jpeg",
+    image: "/images/products/threaded-shaft.webp",
     isLongPart: true,
     specs: {
       tolerance: "±0.005 mm (5 microns)",
@@ -305,7 +306,7 @@ const FEATURED_ITEMS = [
   },
   {
     title: "Weep Tube Cup Forming Die",
-    image: "/images/products/Cup Forming Die Assembly.webp",
+    image: "/images/products/cup-forming-die-assembly.webp",
     isLongPart: false,
     specs: {
       tolerance: "±0.01 mm (10 microns)",
@@ -316,7 +317,7 @@ const FEATURED_ITEMS = [
   },
   {
     title: "Expander Assembly",
-    image: "/images/products/expander.jpeg",
+    image: "/images/products/expander.webp",
     isLongPart: true,
     specs: {
       tolerance: "±0.01 mm",
@@ -402,7 +403,10 @@ function ProductCard({ product, onViewDetails }) {
       
       <div>
         {/* Product Image */}
-        <div className={`relative w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap ${product.isLongPart ? "longPart" : ""}`}>
+        <div 
+          className={`relative w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap ${product.isLongPart ? "longPart" : ""}`}
+          style={{ position: 'relative' }}
+        >
           <motion.div
             whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
             transition={hoverTransition}
@@ -657,7 +661,10 @@ export default function ProductsClient() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Left: Product Image */}
-                <div className={`featuredImageWrap ${item.isLongPart ? "longPart" : ""}`}>
+                <div 
+                  className={`featuredImageWrap ${item.isLongPart ? "longPart" : ""}`}
+                  style={{ position: "relative" }}
+                >
                   <motion.div
                     whileHover={shouldReduceMotion ? {} : { scale: 1.025 }}
                     transition={hoverTransition}
@@ -818,7 +825,10 @@ export default function ProductsClient() {
             </button>
 
             {/* Left: Large Image */}
-            <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[450px] bg-[#F6F7F8]">
+            <div 
+              className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[450px] bg-[#F6F7F8]"
+              style={{ position: 'relative' }}
+            >
               <Image
                 src={activeProduct.image}
                 alt={activeProduct.name}

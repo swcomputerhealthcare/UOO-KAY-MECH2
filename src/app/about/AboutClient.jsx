@@ -111,7 +111,7 @@ export default function AboutClient() {
             <div className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-[#F6F7F8] rounded-[24px] overflow-hidden shadow-sm">
               <div className="relative h-96 w-full overflow-hidden">
                 <Image
-                  src="/images/products/machines and fabricated components 1.webp"
+                  src="/images/products/machines-and-fabricated-components-1.webp"
                   alt="UK MECH Workshop Facility"
                   fill
                   className="object-cover"

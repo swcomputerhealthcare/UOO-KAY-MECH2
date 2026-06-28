@@ -249,7 +249,7 @@ export default function Home() {
             >
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
-                  src="/images/products/highly-precision-1.jpeg"
+                  src="/images/products/cnc-machined-components.webp"
                   alt="CNC machining center facility for highly precision component manufacturing at UK Mech Industries"
                   fill
                   className="object-contain"
@@ -331,7 +331,7 @@ export default function Home() {
             >
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
-                  src="/images/products/weep tubes cup.webp"
+                  src="/images/products/water-tank-cover.webp"
                   alt="Precision machined turned weep cups by UK Mech Industries"
                   fill
                   className="object-contain"
@@ -474,7 +474,7 @@ export default function Home() {
             >
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
-                  src="/images/products/machine and fabricated component.webp"
+                  src="/images/products/machine-and-fabricated-component.webp"
                   alt="Custom machined base frames and steel structures at UK Mech Industries"
                   fill
                   className="object-contain"
