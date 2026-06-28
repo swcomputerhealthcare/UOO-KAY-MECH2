@@ -7,6 +7,7 @@ const cspHeader = `
   style-src 'self' 'unsafe-inline';
   img-src 'self' blob: data: https://uookaymechindustries.com;
   font-src 'self' data:;
+  frame-src 'self' https://maps.google.com https://www.google.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
