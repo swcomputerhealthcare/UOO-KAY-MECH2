@@ -1,14 +1,14 @@
 import InfrastructureClient from "./InfrastructureClient";
 
 export const metadata = {
-  title: "Manufacturing Infrastructure & CNC Assets | UK Mech Industries",
-  description: "Explore our machining facility in Maharashtra, India equipped with ACE Micromatic CNC machining centres, lathe assets, and Mitutoyo metrology tools.",
+  title: "Advanced CNC Infrastructure & Equipment | UK MECH Industries",
+  description: "Review our facility machinery layout including ACE Micromatic MCV450 CNC centres, heavy-duty lathes, radial drills, surface grinders, and Mitutoyo metrology gear.",
   alternates: {
-    canonical: "/infrastructure",
+    canonical: "https://uookaymechindustries.com/infrastructure",
   },
   openGraph: {
-    title: "Manufacturing Infrastructure & CNC Assets | UK Mech Industries",
-    description: "Explore our machining facility in Maharashtra, India equipped with ACE Micromatic CNC machining centres, lathe assets, and Mitutoyo metrology tools.",
+    title: "Advanced CNC Infrastructure & Equipment | UK MECH Industries",
+    description: "Review our facility machinery layout including ACE Micromatic MCV450 CNC centres, heavy-duty lathes, radial drills, surface grinders, and Mitutoyo metrology gear.",
     url: "https://uookaymechindustries.com/infrastructure",
     type: "website",
   }

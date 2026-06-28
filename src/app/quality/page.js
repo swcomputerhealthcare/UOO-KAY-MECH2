@@ -1,14 +1,14 @@
 import QualityClient from "./QualityClient";
 
 export const metadata = {
-  title: "Quality Inspection Standards & Compliance | UK Mech Industries",
-  description: "We enforce high-tolerance inspection protocols: Mitutoyo height measurements, thread plug verification, and granite plate flatness calibration.",
+  title: "Quality Assurance & Metrology Inspection | UK MECH Industries",
+  description: "Our Thane tool room utilizes NABL calibrated instruments, Grade-0 granite flat plates, and a 4-stage quality control process to guarantee drawing-compliance.",
   alternates: {
-    canonical: "/quality",
+    canonical: "https://uookaymechindustries.com/quality",
   },
   openGraph: {
-    title: "Quality Inspection Standards & Compliance | UK Mech Industries",
-    description: "We enforce high-tolerance inspection protocols: Mitutoyo height measurements, thread plug verification, and granite plate flatness calibration.",
+    title: "Quality Assurance & Metrology Inspection | UK MECH Industries",
+    description: "Our Thane tool room utilizes NABL calibrated instruments, Grade-0 granite flat plates, and a 4-stage quality control process to guarantee drawing-compliance.",
     url: "https://uookaymechindustries.com/quality",
     type: "website",
   }

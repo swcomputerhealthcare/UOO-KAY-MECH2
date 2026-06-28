@@ -130,8 +130,15 @@ a, button, input, select, textarea {
 
 /* Scroll margin for anchor links */
 main {
-  scroll-margin-top: 82px;
-  padding-top: 82px;
+  scroll-margin-top: 76px;
+  padding-top: 76px;
+}
+
+@media (max-width: 768px) {
+  main {
+    scroll-margin-top: 68px;
+    padding-top: 68px;
+  }
 }
 
 section {
@@ -320,9 +327,9 @@ section {
 .sectionHeroTitle,
 .largeSectionTitle,
 .sectionTitle {
-  font-size: clamp(38px, 9vw, 96px) !important;
-  line-height: 0.95 !important;
-  letter-spacing: -0.04em !important;
+  font-size: clamp(28px, 3.5vw, 42px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
   max-width: 100% !important;
   overflow-wrap: break-word !important;
   word-break: break-word !important;
@@ -333,9 +340,9 @@ section {
   .sectionHeroTitle,
   .largeSectionTitle,
   .sectionTitle {
-    font-size: clamp(32px, 10vw, 56px) !important;
-    line-height: 1.0 !important;
-    letter-spacing: -0.035em !important;
+    font-size: clamp(24px, 5.5vw, 32px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.015em !important;
   }
 }
 
@@ -343,8 +350,8 @@ section {
   .sectionHeroTitle,
   .largeSectionTitle,
   .sectionTitle {
-    font-size: clamp(30px, 11vw, 52px) !important;
-    line-height: 1 !important;
+    font-size: clamp(20px, 7vw, 26px) !important;
+    line-height: 1.1 !important;
   }
 }
 

@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/admin",
+      disallow: ["/_next/", "/api/", "/admin/"],
     },
     sitemap: "https://uookaymechindustries.com/sitemap.xml",
   };

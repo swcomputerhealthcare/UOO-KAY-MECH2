@@ -1,14 +1,14 @@
 import ContactClient from "./ContactClient";
 
 export const metadata = {
-  title: "Get in Touch & Request Quotation (RFQ) | UK Mech Industries",
-  description: "Contact our sales engineering team for precision machining, gears, or safety guards RFQs. Visit our engineering workshop at Kolshet Road, Thane, Maharashtra, India.",
+  title: "Contact UK MECH Industries | Request RFQ & Technical Enquiries",
+  description: "Submit blueprints, drawings, or RFQs for custom precision components. Our Thane engineering team responds to B2B enquiries within 24 hours.",
   alternates: {
-    canonical: "/contact",
+    canonical: "https://uookaymechindustries.com/contact",
   },
   openGraph: {
-    title: "Get in Touch & Request Quotation (RFQ) | UK Mech Industries",
-    description: "Contact our sales engineering team for precision machining, gears, or safety guards RFQs. Visit our engineering workshop at Kolshet Road, Thane, Maharashtra, India.",
+    title: "Contact UK MECH Industries | Request RFQ & Technical Enquiries",
+    description: "Submit blueprints, drawings, or RFQs for custom precision components. Our Thane engineering team responds to B2B enquiries within 24 hours.",
     url: "https://uookaymechindustries.com/contact",
     type: "website",
   }

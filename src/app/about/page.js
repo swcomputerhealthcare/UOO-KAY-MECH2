@@ -1,14 +1,14 @@
 import AboutClient from "./AboutClient";
 
 export const metadata = {
-  title: "About Us | UK Mech Industries - Precision Engineering",
-  description: "Established in 2004, UK Mech Industries delivers custom precision machining, safety guards, and tooling solutions. Learn about our legacy of trust.",
+  title: "About UK MECH Industries | Precision Manufacturing Since 2004",
+  description: "Learn about UK MECH Industries, a trusted manufacturer of custom machined components, tooling, and assemblies serving India's tier-1 industrial clients since 2004.",
   alternates: {
-    canonical: "/about",
+    canonical: "https://uookaymechindustries.com/about",
   },
   openGraph: {
-    title: "About Us | UK Mech Industries - Precision Engineering",
-    description: "Established in 2004, UK Mech Industries delivers custom precision machining, safety guards, and tooling solutions. Learn about our legacy of trust.",
+    title: "About UK MECH Industries | Precision Manufacturing Since 2004",
+    description: "Learn about UK MECH Industries, a trusted manufacturer of custom machined components, tooling, and assemblies serving India's tier-1 industrial clients since 2004.",
     url: "https://uookaymechindustries.com/about",
     type: "website",
   }

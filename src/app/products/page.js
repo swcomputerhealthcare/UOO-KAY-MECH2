@@ -1,14 +1,14 @@
 import ProductsClient from "./ProductsClient";
 
 export const metadata = {
-  title: "Precision CNC Machining & Custom Tooling | UK Mech Industries",
-  description: "Browse our precision engineering capabilities: CNC components, custom shafts, spur gears, tooling, dies, and custom machining solutions.",
+  title: "Precision Machined Components | CNC Products | UK MECH Industries",
+  description: "Explore our catalog of 40+ precision machined parts, custom shafts, tooling, fixtures, and structural fabrications made to custom tolerances.",
   alternates: {
-    canonical: "/products",
+    canonical: "https://uookaymechindustries.com/products",
   },
   openGraph: {
-    title: "Precision CNC Machining & Custom Tooling | UK Mech Industries",
-    description: "Browse our precision engineering capabilities: CNC components, custom shafts, spur gears, tooling, dies, and custom machining solutions.",
+    title: "Precision Machined Components | CNC Products | UK MECH Industries",
+    description: "Explore our catalog of 40+ precision machined parts, custom shafts, tooling, fixtures, and structural fabrications made to custom tolerances.",
     url: "https://uookaymechindustries.com/products",
     type: "website",
   }

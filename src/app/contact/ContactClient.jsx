@@ -1,9 +1,36 @@
 "use client";
 
-import { Suspense } from "react";
+import { useState, Suspense } from "react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
+
+const FAQ_ITEMS = [
+  {
+    question: "What industries do you serve?",
+    answer: "UK MECH Industries serves tier-1 industrial clients across multiple sectors including Pharmaceuticals, Food Processing, Oil & Gas, Chemicals, Automation, Packaging, HVAC, Switchgears, and General Engineering Assemblies."
+  },
+  {
+    question: "What materials can you machine?",
+    answer: "We machine a wide variety of materials, including Stainless Steel (SS304, SS316, SS316L), Alloy Steel (En24, AISI 4140), Tool Steel (D2, D3, H13, WPS), Mild Steel (MS), Carbon Steel, Brass Alloys (C360, C3600), Phosphor Bronze, and Aluminum (6082-T6)."
+  },
+  {
+    question: "Do you manufacture custom parts?",
+    answer: "Yes. We specialize in custom precision components, reverse-engineering from physical samples, custom tooling, dies, base frames, custom hinges, and special-purpose engineering assemblies according to client drawing blueprints."
+  },
+  {
+    question: "Where is UK MECH Industries located?",
+    answer: "Our manufacturing facility and tool room are located at 08 Pomal Industrial Estate, Kolshet Road, Thane – 400607, Maharashtra, India. You can view our map location above."
+  },
+  {
+    question: "Can I request an RFQ?",
+    answer: "Absolutely. You can submit your drawing blueprints, material specs, and quantities through our online enquiry form, via email at uookaymechindustries@gmail.com, or via telephone/WhatsApp. We provide detailed B2B quotations within 24 hours."
+  },
+  {
+    question: "What CNC machines are available?",
+    answer: "Our facility is equipped with state-of-the-art machinery including ACE Micromatic VMC (MCV450) centres, precision lathes, radial drilling machines, surface grinding machines, and metrology grade flat plates and height check instruments."
+  }
+];
 
 export default function ContactClient() {
   return (
@@ -203,7 +230,106 @@ export default function ContactClient() {
           </div>
         </div>
 
+        {/* FAQ Accordion Section */}
+        <div className="mt-28 border-t border-[#D7DDE5] pt-20 max-w-4xl mx-auto">
+          <div className="text-center space-y-4 mb-16">
+            <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-[0.25em] uppercase block">
+              [ FAQ ]
+            </span>
+            <h2 className="font-heading text-3xl font-bold text-[#09285F] uppercase tracking-wide">
+              Manufacturing FAQ
+            </h2>
+            <p className="text-xs sm:text-sm text-[#5E6673] leading-relaxed font-sans max-w-lg mx-auto font-medium">
+              Have technical queries about custom engineering tolerances, material capability, machine specs, or B2B RFQs? Browse our details below.
+            </p>
+          </div>
+
+          <FAQAccordion />
+        </div>
+
       </div>
     </motion.div>
+  );
+}
+
+function FAQAccordion() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://uookaymechindustries.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://uookaymechindustries.com/contact"
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
+      />
+      <div className="space-y-4">
+        {FAQ_ITEMS.map((item, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div
+              key={index}
+              className="border border-[#D7DDE5] bg-white rounded-2xl overflow-hidden transition-all duration-200"
+            >
+              <button
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="w-full flex items-center justify-between p-5 text-left font-heading font-bold text-xs sm:text-sm text-[#09285F] uppercase tracking-wide hover:bg-[#F6F7F8] transition-colors"
+                aria-expanded={isOpen}
+              >
+                <span>{item.question}</span>
+                <span className="text-[#EC6713] text-lg font-mono leading-none">
+                  {isOpen ? "–" : "+"}
+                </span>
+              </button>
+
+              <motion.div
+                initial={false}
+                animate={{ height: isOpen ? "auto" : 0 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="p-5 pt-0 border-t border-[#D7DDE5]/30 text-xs sm:text-sm text-[#5E6673] leading-relaxed font-sans font-medium">
+                  {item.answer}
+                </div>
+              </motion.div>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 }

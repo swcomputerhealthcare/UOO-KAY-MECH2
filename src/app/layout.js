@@ -26,9 +26,12 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "UK Mech Industries | Precision Machining & Industrial Engineering Solutions",
-  description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
-  keywords: "UK Mech Industries, precision machining Thane, industrial engineering Thane, CNC components, machined parts, tool room components, punch dies, custom fixtures, machine frames, Thane, Maharashtra",
+  title: {
+    default: "Precision CNC Machining Company in India | UK MECH Industries",
+    template: "%s | UK MECH Industries",
+  },
+  description: "UK MECH Industries is a trusted CNC machining and precision engineering company based in Thane, Maharashtra. Manufacturing custom machined components, hinges, shafts, tooling, fabricated assemblies and industrial solutions since 2004.",
+  keywords: "UK Mech Industries, precision CNC machining India, precision engineering Thane, custom machined components, CNC parts, tool room components, custom fixtures, machine base frames, industrial fabrications, Thane, Maharashtra",
   metadataBase: new URL("https://uookaymechindustries.com"),
   alternates: {
     canonical: "https://uookaymechindustries.com",
@@ -48,16 +51,16 @@ export const metadata = {
     ],
   },
   openGraph: {
-    title: "UK Mech Industries | Precision Machining & Industrial Engineering Solutions",
-    description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
+    title: "Precision CNC Machining Company in India | UK MECH Industries",
+    description: "UK MECH Industries is a trusted CNC machining and precision engineering company based in Thane, Maharashtra. Manufacturing custom machined components, hinges, shafts, tooling, fabricated assemblies and industrial solutions since 2004.",
     url: "https://uookaymechindustries.com",
-    siteName: "UK Mech Industries",
+    siteName: "UK MECH Industries",
     images: [
       {
         url: "/uk-mech-logo-v3.png",
         width: 1200,
         height: 630,
-        alt: "UK Mech Industries Precision Machined Components",
+        alt: "UK MECH Industries Precision Machined Components",
       },
     ],
     locale: "en_US",
@@ -65,8 +68,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UK Mech Industries | Precision Machining & Industrial Engineering Solutions",
-    description: "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
+    title: "Precision CNC Machining Company in India | UK MECH Industries",
+    description: "UK MECH Industries is a trusted CNC machining and precision engineering company based in Thane, Maharashtra. Manufacturing custom machined components, hinges, shafts, tooling, fabricated assemblies and industrial solutions since 2004.",
     images: ["/uk-mech-logo-v3.png"],
   },
 };
