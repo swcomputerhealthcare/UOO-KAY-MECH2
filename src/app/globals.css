@@ -404,8 +404,98 @@ section {
   }
 }
 
+/* Global Image Containment & Fitting Rules */
+.productImageWrap,
+.featuredImageWrap,
+.homeSecondImageWrap,
+.heroImageWrap {
+  position: relative; /* essential for Next.js Image fill */
+  overflow: hidden;
+  border-radius: 22px;
+  background: #f6f7f8;
+  border: 1px solid #d7dde5;
+}
 
+.productImageWrap img,
+.featuredImageWrap img,
+.homeSecondImageWrap img,
+.heroImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+  display: block;
+  padding: 10px;
+}
 
+/* Hero Image Wrap Specifics */
+.heroImageWrap {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+}
 
+/* Product Cards */
+.productImageWrap {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
 
+/* Long Parts */
+.productImageWrap.longPart {
+  aspect-ratio: 16 / 9;
+}
 
+.productImageWrap.longPart img {
+  object-fit: contain !important;
+  padding: 14px;
+}
+
+/* Featured Component Card Grid Layout */
+.featuredComponentCard {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.featuredImageWrap {
+  position: relative; /* essential for Next.js Image fill */
+  width: 100%;
+  height: 520px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #f6f7f8;
+  border: 1px solid #d7dde5;
+}
+
+.featuredImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+  display: block;
+  padding: 8px !important;
+}
+
+.featuredImageWrap.longPart {
+  height: 420px;
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 768px) {
+  .featuredComponentCard {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .featuredImageWrap {
+    height: 300px;
+    width: 100%;
+  }
+
+  .featuredImageWrap.longPart {
+    height: 240px;
+    aspect-ratio: 16 / 9;
+  }
+}

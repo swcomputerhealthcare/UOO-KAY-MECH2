@@ -8,7 +8,7 @@ import { ArrowRight, X, Search, Cpu, Layers, Settings, Wrench, Shield, Compass, 
 
 // 1. STATS DATA
 const STATS = [
-  { value: "12+", label: "Products Manufactured" },
+  { value: "16+", label: "Products Manufactured" },
   { value: "25+", label: "Years Experience" },
   { value: "500+", label: "Projects Delivered" },
   { value: "100%", label: "Quality Inspected" }
@@ -17,256 +17,275 @@ const STATS = [
 // 2. CATEGORIES
 const CATEGORIES = [
   "All",
-  "Hinges",
   "Precision Parts",
   "Shafts",
-  "Bushes",
   "Custom Components",
-  "Tooling",
-  "Fixtures",
-  "Dies"
+  "Fabrication",
+  "Tooling"
 ];
 
 // 3. COMPLETE PRODUCTS CATALOG
 const PRODUCTS = [
   {
-    id: "hinge-1",
-    name: "Heavy Duty Industrial Hinges",
-    category: "Hinges",
-    image: "/images/products/Machined Hinge Component.webp",
-    desc: "Precision engineered heavy-duty machined hinges for industrial enclosures.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "AISI 304 Stainless Steel, Carbon Steel",
-      operations: "CNC Milling, Drilling, Pin Insertion",
-      hardness: "Natural, passivation treated",
-      applications: "Heavy enclosures, security gates, automation access doors",
-      industries: "Industrial Machinery, Packaging, Automation"
-    }
-  },
-  {
-    id: "machined-block",
-    name: "Precision Machined Block",
-    category: "Precision Parts",
-    image: "/images/products/Precision Machined Block.webp",
-    desc: "High-tolerance sliding block guide with flat, parallel ground surfaces.",
-    specs: {
-      tolerances: "±0.005 mm (5 microns)",
-      materials: "AISI 4140 Alloy Steel, hardened",
-      operations: "VMC Milling, Precision surface grinding",
-      hardness: "50-54 HRC (Induction Hardened)",
-      applications: "Actuator guide blocks, linear slide mounts, alignment assemblies",
-      industries: "Automation, Automotive Manufacturing"
-    }
-  },
-  {
-    id: "split-clamp",
-    name: "CNC Machined Split Clamp",
-    category: "Precision Parts",
-    image: "/images/products/Split Clamp.webp",
-    desc: "Durable heavy-duty split clamping ring for secure shaft mounting.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "AISI 1045 Carbon Steel, Black oxide coated",
-      operations: "CNC Turning, radial hole drilling, boring",
-      hardness: "Natural (Black Oxide Coated)",
-      applications: "Locking collars, fixture clamps, shaft positioning",
-      industries: "Mechanical Assemblies, Steel Plants"
-    }
-  },
-  {
-    id: "precision-roller",
-    name: "Threaded Precision Roller",
-    category: "Shafts",
-    image: "/images/products/Threaded Roller Precision Roller.webp",
-    desc: "Heavy-duty threaded roller shafts for guide track assemblies.",
-    specs: {
-      tolerances: "±0.008 mm",
-      materials: "Hardened Steel, SS316",
-      operations: "Precision thread milling, outer diameter grinding",
-      hardness: "45-50 HRC",
-      applications: "Material handling conveyors, guide rollers, automated tracks",
-      industries: "Logistics, Conveyor Systems"
-    }
-  },
-  {
-    id: "precision-shaft",
-    name: "High Precision Machined Shaft",
-    category: "Shafts",
-    image: "/images/products/highly-precision-2.jpeg",
-    desc: "High-concentricity step shafts with ground finish tolerances.",
-    specs: {
-      tolerances: "±0.005 mm (5 microns)",
-      materials: "En24 Hardened Alloy Steel",
-      operations: "CNC Turning, cylindrical grinding, keyway slotting",
-      hardness: "55-58 HRC",
-      applications: "Motor shafts, turbine spindles, power transmission axles",
-      industries: "Power Transmission, Pump Manufacturing"
-    }
-  },
-  {
-    id: "brass-bushes",
-    name: "Brass Machined Bushes",
-    category: "Bushes",
-    image: "/images/products/Brass Machined Bushes.webp",
-    desc: "Self-lubricating precision turned brass bushes for low friction applications.",
-    specs: {
-      tolerances: "±0.015 mm",
-      materials: "Free Cutting Brass (IS 319), CZ121",
-      operations: "Auto lathe turning, internal boring, chamfering",
-      hardness: "Natural Brass Hardness",
-      applications: "Journal bearings, link pivots, guide bushings",
-      industries: "Electrical Equipment, Valve Manufacturing"
-    }
-  },
-  {
-    id: "custom-bushings",
-    name: "Custom Brass Bushings",
-    category: "Bushes",
-    image: "/images/products/Custom Brass Bushings.webp",
-    desc: "Special non-ferrous sleeve bearings with precision internal bore tolerances.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "Phosphor Bronze PB1/PB2, Copper",
-      operations: "Precision turning, sleeve parting, internal groove milling",
-      hardness: "Natural Bronze Hardness",
-      applications: "Wear rings, sleeve bearings, rotational pivot sleeves",
-      industries: "Heavy Earthmovers, Hydraulic Systems"
-    }
-  },
-  {
-    id: "punch-die-components",
-    name: "Precision Punch & Die Components",
-    category: "Dies",
-    image: "/images/products/Precision Punch & Die Components.webp",
-    desc: "Hardened tool steel punch pins and mating dies for clean metal stamping.",
-    specs: {
-      tolerances: "±0.01 mm (10 microns)",
-      materials: "D2, H13 Tool Steel, Tungsten Carbide",
-      operations: "Wire EDM cutting, jig grinding, vacuum hardening",
-      hardness: "58-62 HRC",
-      applications: "Sheet metal punching, forming dies, tablet compression tooling",
-      industries: "Sheet Metal Packaging, Pharma Machinery"
-    }
-  },
-  {
-    id: "flange-punch",
-    name: "Flange Punch Dies",
-    category: "Dies",
-    image: "/images/products/Flange Punch Dies.webp",
-    desc: "Heavy duty tool steel blanking dies for flange punching setups.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "D2 Tool Steel, Hardened",
-      operations: "3-Axis CNC Machining, Jig Boring, Heat Treatment",
-      hardness: "58-60 HRC",
-      applications: "Automotive press tooling, structural metal blanking",
-      industries: "Automotive, Heavy Fabricators"
-    }
-  },
-  {
-    id: "cup-forming-die",
-    name: "Cup Forming Die Assembly",
-    category: "Dies",
-    image: "/images/products/Cup Forming Die Assembly.webp",
-    desc: "Precision matched drawing and forming dies for deep metal drawing.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "Tungsten Carbide, Alloy Steel bases",
-      operations: "EDM, grinding, high polish finishing",
-      hardness: "62-64 HRC",
-      applications: "Can manufacturing, deep drawn weep cups, metal stamping",
-      industries: "Metal Packaging, Domestic Appliances"
-    }
-  },
-  {
-    id: "tooling-fixture",
-    name: "Custom Threaded Tooling Fixture",
-    category: "Fixtures",
-    image: "/images/products/Threaded Tooling Fixture.webp",
-    desc: "High-rigidity threaded locating fixtures for assembly alignment.",
-    specs: {
-      tolerances: "±0.02 mm (alignment and spacing)",
-      materials: "Hardened Alloy Steel, En8, En24",
-      operations: "Precision jig boring, thread milling, black oxide coating",
-      hardness: "Treated surface hardening",
-      applications: "Welding positioning, machining clamps, inspection jigs",
-      industries: "Aerospace, Automotive Assemblies"
-    }
-  },
-  {
-    id: "welding-fixture",
-    name: "Industrial Welding Fixture",
-    category: "Fixtures",
-    image: "/images/products/Industrial Fixtures.webp",
-    desc: "Robust multi-clamp welding holding fixture for structural alignment.",
-    specs: {
-      tolerances: "±0.5 mm on mounting points",
-      materials: "IS 2062 Structural Mild Steel, tooling steel contact points",
-      operations: "MIG welding, face milling, checking point calibration",
-      hardness: "Epoxy primer + PU industrial paint",
-      applications: "Robotic welding cells, manual structural assembly positioning",
-      industries: "Automotive Chassis, Structural Frames"
-    }
-  },
-  {
-    id: "punch-set",
-    name: "Weep Tube Cup Punch Set",
-    category: "Tooling",
-    image: "/images/products/Weep Tube Cup Punch Set.webp",
-    desc: "Multi-punch tool sets for automated weep hole stamping setups.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "O1 Tool Steel, Hardened",
-      operations: "CNC Milling, Wire cut EDM, custom assembly",
-      hardness: "56-58 HRC",
-      applications: "Weep tube slot manufacturing, radiator core stamping",
-      industries: "Heat Exchangers, HVAC Systems"
-    }
-  },
-  {
-    id: "precision-housing",
-    name: "Precision CNC Machined Component",
+    id: "manifold-air-testing",
+    name: "Manifold for Air Testing",
     category: "Custom Components",
-    image: "/images/products/highly-precision-1.jpeg",
-    desc: "Multi-axis milled complex housing block component.",
-    specs: {
-      tolerances: "±0.005 mm (5 microns)",
-      materials: "Aluminum 6082-T6, anodized",
-      operations: "5-Axis CNC Milling, thread tapping, coordinate check",
-      hardness: "Anodized surface treatment",
-      applications: "Gearbox housings, sensor blocks, custom manifold blocks",
-      industries: "Industrial Electronics, Fluid Control"
-    }
-  },
-  {
-    id: "machined-rings",
-    name: "Machined Rings",
-    category: "Custom Components",
-    image: "/images/products/Machined Rings.webp",
-    desc: "Precision turned and bored steel locking and spacer rings.",
+    image: "/images/products/Manifold for air testing.jpeg",
+    fit: "contain",
+    isLongPart: true,
+    desc: "Precision manifold designed for high-pressure pneumatic air testing and calibration setups.",
     specs: {
       tolerances: "±0.02 mm",
-      materials: "SS304, AISI 1045",
-      operations: "CNC Turning, parting, face grinding",
-      hardness: "Natural finish",
-      applications: "Bearing spacers, shaft retainers, piping flanges",
-      industries: "Heavy Industrial Equipment"
+      materials: "Stainless Steel, Brass",
+      operations: "CNC Drilling, Tapping, Deburring",
+      hardness: "Natural Clean Finish",
+      applications: "Pneumatic testing circuits, gas manifolds, pressure calibration rigs",
+      industries: "Oil & Gas, Chemical Process, Defense"
     }
   },
   {
-    id: "turned-spindle",
-    name: "Custom Turned Component",
-    category: "Custom Components",
-    image: "/images/products/Custom Turned Component.webp",
-    desc: "Precision stepped and grooved spindle assembly.",
+    id: "hydro-test-probe",
+    name: "Hydro Test Probe",
+    category: "Tooling",
+    image: "/images/products/hydro test probe.jpeg",
+    fit: "contain",
+    isLongPart: true,
+    desc: "Heavy-duty testing probe engineered for hydrostatic pressure testing and vessel validation.",
     specs: {
       tolerances: "±0.01 mm",
-      materials: "SS316, corrosion resistant",
-      operations: "Precision lathe turning, burnish finishing",
-      hardness: "Natural passivated finish",
-      applications: "Pneumatic value spool, custom linkage connectors",
-      industries: "Process Plants, Marine Valves"
+      materials: "High-Tensile Alloy Steel, SS316",
+      operations: "CNC turning, cylindrical grinding, surface hardening",
+      hardness: "Hardened & Tempered",
+      applications: "Pipeline testing, hydrostatic pressure vessels, valve sealing inspection",
+      industries: "Piping, Valve Manufacturing, Energy Sector"
+    }
+  },
+  {
+    id: "heavy-duty-chain-mounting-bolt",
+    name: "Heavy Duty Chain Mounting Bolt",
+    category: "Precision Parts",
+    image: "/images/products/heavy duty chain mounting bolt.jpeg",
+    fit: "contain",
+    isLongPart: true,
+    desc: "High-tensile mounting bolt designed for secure links in industrial chain conveyance and hoisting systems.",
+    specs: {
+      tolerances: "±0.02 mm",
+      materials: "En24 Hardened Alloy Steel",
+      operations: "Precision thread rolling, step turning",
+      hardness: "32-38 HRC (Grade 10.9)",
+      applications: "Chain tensioners, conveyor link connections, heavy crane hoists",
+      industries: "Material Handling, Cement & Steel Plants, Crane Manufacturing"
+    }
+  },
+  {
+    id: "water-tank-cover",
+    name: "Water Tank Cover",
+    category: "Fabrication",
+    image: "/images/products/weep tubes cup.webp",
+    fit: "contain",
+    desc: "Precision fabricated corrosion-resistant water tank cover assembly for industrial liquid containment.",
+    specs: {
+      tolerances: "±0.5 mm",
+      materials: "Stainless Steel (SS304 / SS316)",
+      operations: "Deep drawing, blanking, TIG welding",
+      hardness: "Satin Polish Finish",
+      applications: "Liquid storage containers, process reactors, chemical tanks",
+      industries: "Food & Beverage, Water Treatment, Pharma"
+    }
+  },
+  {
+    id: "display-unit",
+    name: "Display Unit",
+    category: "Custom Components",
+    image: "/images/products/Display unit.jpeg",
+    fit: "contain",
+    desc: "Custom engineered display frames and panel structures built for industrial mockups and exhibitions.",
+    specs: {
+      tolerances: "±1.0 mm",
+      materials: "Mild Steel, Powder Coated",
+      operations: "Laser cutting, sheet metal folding, powder coating",
+      hardness: "Textured Powder Coating (Rust Protection)",
+      applications: "Control desks, display stands, server consoles",
+      industries: "Retail Displays, Exhibitions, Control Rooms"
+    }
+  },
+  {
+    id: "cabinet",
+    name: "Cabinet",
+    category: "Fabrication",
+    image: "/images/products/heavy duty rack system.jpeg",
+    fit: "contain",
+    desc: "Heavy-duty industrial cabinet enclosure for electrical assemblies, automation hardware, and storage systems.",
+    specs: {
+      tolerances: "±0.5 mm",
+      materials: "Cold Rolled Steel, Powder Coated",
+      operations: "Bending, MIG/TIG welding, hardware installation",
+      hardness: "Structured Powder Coating",
+      applications: "Electrical panels, server enclosures, heavy tool storage cabinets",
+      industries: "Power Distribution, Automation, Factories"
+    }
+  },
+  {
+    id: "trolley",
+    name: "Trolley",
+    category: "Fabrication",
+    image: "/images/products/Trolley.jpeg",
+    fit: "contain",
+    desc: "Heavy-duty workshop utility trolley for efficient material handling and parts logistics across shop floors.",
+    specs: {
+      tolerances: "±1.0 mm",
+      materials: "Structural Mild Steel, PU Castors",
+      operations: "Welding, frame cutting, paint finish",
+      hardness: "Industrial PU Paint coating",
+      applications: "Heavy mold transit, machined parts movement, tooling carts",
+      industries: "Automotive, Aerospace, Heavy Machinery"
+    }
+  },
+  {
+    id: "expander",
+    name: "Expander",
+    category: "Tooling",
+    image: "/images/products/expander.jpeg",
+    fit: "contain",
+    isLongPart: true,
+    desc: "High-durability expander tool assemblies for tube expansion and cold mechanical jointing systems.",
+    specs: {
+      tolerances: "±0.01 mm",
+      materials: "D2 / H13 Tool Steel",
+      operations: "VMC Milling, Cylindrical grinding, vacuum heat treatment",
+      hardness: "58-62 HRC",
+      applications: "Heat exchanger fabrication, condenser maintenance, pipe flaring",
+      industries: "HVAC, Power Plants, Boiler Maintenance"
+    }
+  },
+  {
+    id: "heavy-duty-machined-hinge",
+    name: "Heavy Duty Machined Hinge",
+    category: "Precision Parts",
+    image: "/images/products/Machined Hinge Component.webp",
+    fit: "contain",
+    desc: "Precision heavy-duty machined hinges for heavy machine gates and security enclosure doors.",
+    specs: {
+      tolerances: "±0.01 mm",
+      materials: "Stainless Steel SS304 / SS316",
+      operations: "Milling, precision boring, hinge pin assembly",
+      hardness: "Passivated Finish",
+      applications: "Acoustic enclosure doors, machine guards, heavy gates",
+      industries: "Enclosure Manufacturing, Heavy Engineering"
+    }
+  },
+  {
+    id: "precision-parts",
+    name: "Precision Parts",
+    category: "Precision Parts",
+    image: "/images/products/Precision Machined Block.webp",
+    fit: "contain",
+    desc: "High-tolerance sliding block guides with parallel ground surfaces and custom alignment channels.",
+    specs: {
+      tolerances: "±0.005 mm (5 microns)",
+      materials: "AISI 4140 Alloy Steel",
+      operations: "CNC Milling, surface grinding, induction hardening",
+      hardness: "50-54 HRC",
+      applications: "Actuator mounts, slide guides, inspection fixtures",
+      industries: "Machine Tools, Packaging, Robotics"
+    }
+  },
+  {
+    id: "cnc-machined-components",
+    name: "CNC Machined Components",
+    category: "Precision Parts",
+    image: "/images/products/highly-precision-1.jpeg",
+    fit: "contain",
+    desc: "Multi-axis milled complex housing blocks and custom precision components.",
+    specs: {
+      tolerances: "±0.005 mm (5 microns)",
+      materials: "Aluminum 6082-T6 / Mild Steel",
+      operations: "5-axis milling, coordinate indexing, CNC turning",
+      hardness: "Anodized / Zinc Plated Finish",
+      applications: "Fluid control manifolds, sensor housings, custom actuator blocks",
+      industries: "Automotive, Electronics, Hydraulics"
+    }
+  },
+  {
+    id: "threaded-shafts",
+    name: "Threaded Shafts",
+    category: "Shafts",
+    image: "/images/products/highly-precision-2.jpeg",
+    fit: "contain",
+    isLongPart: true,
+    desc: "High-concentricity step shafts with ground finish tolerances and precision external threading.",
+    specs: {
+      tolerances: "±0.005 mm (5 microns)",
+      materials: "En24 Alloy Steel",
+      operations: "Step turning, cylindrical grinding, thread rolling",
+      hardness: "55-58 HRC",
+      applications: "Pump spindles, motor shafts, linear lead screws",
+      industries: "Pumps, Power Transmission, Actuators"
+    }
+  },
+  {
+    id: "stainless-steel-work-table",
+    name: "Stainless Steel Work Table",
+    category: "Fabrication",
+    image: "/images/products/Stainless Steel Work Table.webp",
+    fit: "contain",
+    desc: "Heavy-duty stainless steel work table with lower storage shelves and rigid support structures for assembly lines.",
+    specs: {
+      tolerances: "±0.5 mm",
+      materials: "SS304 / SS316",
+      operations: "Shearing, bending, TIG welding, satin finishing",
+      hardness: "Polished Finish",
+      applications: "Assembly workstations, packaging tables, cleanroom environments",
+      industries: "Pharma, Food Processing, Electronics"
+    }
+  },
+  {
+    id: "structural-support-cage",
+    name: "Structural Support Cage",
+    category: "Fabrication",
+    image: "/images/products/Tank Cladding.webp",
+    fit: "contain",
+    desc: "Welded steel safety framing and reinforcement cages designed to encase and protect massive storage tanks.",
+    specs: {
+      tolerances: "±1.0 mm",
+      materials: "Structural Mild Steel, Epoxy Primer",
+      operations: "MIG welding, profile cutting, structural bracing",
+      hardness: "Industrial Paint Protection",
+      applications: "Tank reinforcement, safety enclosures, load-bearing frames",
+      industries: "Chemical Process, Oil & Gas, Water Storage"
+    }
+  },
+  {
+    id: "industrial-machine-enclosure",
+    name: "Industrial Machine Enclosure",
+    category: "Fabrication",
+    image: "/images/products/Industrial Machine Enclosure.webp",
+    fit: "contain",
+    desc: "Custom sheet metal machine covers, acoustic encasings, and safety guards for automation machinery.",
+    specs: {
+      tolerances: "±0.2 mm",
+      materials: "Cold Rolled Carbon Steel",
+      operations: "Laser cutting, CNC bending, welding, powder coating",
+      hardness: "Textured Powder Coating",
+      applications: "Machine guarding, electric control cabinet outer frame, safety barriers",
+      industries: "Automation, Packaging, General Engineering"
+    }
+  },
+  {
+    id: "fabricated-access-ladder",
+    name: "Fabricated Access Ladder",
+    category: "Fabrication",
+    image: "/images/products/Fabricated Access Ladder.webp",
+    fit: "contain",
+    isLongPart: true,
+    desc: "High-safety industrial platform ladders and access systems built with safety railings and non-slip steps.",
+    specs: {
+      tolerances: "±1.0 mm",
+      materials: "High-Strength Steel, SS304",
+      operations: "Tube bending, structural welding, hot-dip galvanizing",
+      hardness: "Galvanized / Powder Coated",
+      applications: "Mezzanine access, tank maintenance platforms, warehouse operations",
+      industries: "Logistics, Warehouse, Chemical Process"
     }
   }
 ];
@@ -276,6 +295,7 @@ const FEATURED_ITEMS = [
   {
     title: "Concentric Transmission Shaft",
     image: "/images/products/highly-precision-2.jpeg",
+    isLongPart: true,
     specs: {
       tolerance: "±0.005 mm (5 microns)",
       material: "En24 Hardened Alloy Steel",
@@ -286,6 +306,7 @@ const FEATURED_ITEMS = [
   {
     title: "Weep Tube Cup Forming Die",
     image: "/images/products/Cup Forming Die Assembly.webp",
+    isLongPart: false,
     specs: {
       tolerance: "±0.01 mm (10 microns)",
       material: "D2 Tool Steel / Tungsten Carbide",
@@ -294,13 +315,14 @@ const FEATURED_ITEMS = [
     }
   },
   {
-    title: "Heavy Duty Machined Hinge",
-    image: "/images/products/Machined Hinge Component.webp",
+    title: "Expander Assembly",
+    image: "/images/products/expander.jpeg",
+    isLongPart: true,
     specs: {
       tolerance: "±0.01 mm",
-      material: "SS316 / Brass Hinge Pins",
-      treatment: "Natural Passivated Finish",
-      application: "Heavy machine enclosures, security gates, access doors"
+      material: "High-Grade Alloy Steel / Stainless Steel",
+      treatment: "Hardened & Ground",
+      application: "Expansion assemblies, tube expanders, industrial tooling"
     }
   }
 ];
@@ -380,7 +402,7 @@ function ProductCard({ product, onViewDetails }) {
       
       <div>
         {/* Product Image */}
-        <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap">
+        <div className={`relative w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap ${product.isLongPart ? "longPart" : ""}`}>
           <motion.div
             whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
             transition={hoverTransition}
@@ -392,7 +414,7 @@ function ProductCard({ product, onViewDetails }) {
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               loading="lazy"
-              className="object-cover"
+              className="object-contain"
             />
           </motion.div>
         </div>
@@ -628,14 +650,14 @@ export default function ProductsClient() {
             {FEATURED_ITEMS.map((item, idx) => (
               <motion.div 
                 key={idx} 
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300 overflow-hidden"
+                className="featuredComponentCard border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300 overflow-hidden"
                 initial={{ opacity: 1, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Left: Product Image */}
-                <div className="lg:col-span-6 relative h-[260px] sm:h-[430px] lg:h-[520px] rounded-[24px] overflow-hidden bg-[#FAF8F5] border border-[#D7DDE5]">
+                <div className={`featuredImageWrap ${item.isLongPart ? "longPart" : ""}`}>
                   <motion.div
                     whileHover={shouldReduceMotion ? {} : { scale: 1.025 }}
                     transition={hoverTransition}
@@ -645,7 +667,7 @@ export default function ProductsClient() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover w-full h-full block"
+                      className="object-contain"
                       sizes="(max-width: 1024px) 100vw, 45vw"
                       loading="lazy"
                     />
@@ -653,7 +675,7 @@ export default function ProductsClient() {
                 </div>
 
                 {/* Right: Specifications details */}
-                <div className="lg:col-span-6 space-y-6 text-left">
+                <div className="space-y-6 text-left">
                   <div>
                     <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.2em] block mb-1">
                       FEATURED COMPONENT 0{idx + 1}
@@ -801,7 +823,7 @@ export default function ProductsClient() {
                 src={activeProduct.image}
                 alt={activeProduct.name}
                 fill
-                className="object-cover"
+                className={activeProduct.fit === "contain" ? "object-contain p-4" : "object-cover"}
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
               <div className="absolute top-4 left-4 bg-[#EC6713] text-white font-mono text-[9px] font-bold px-3 py-1 uppercase tracking-wider rounded">

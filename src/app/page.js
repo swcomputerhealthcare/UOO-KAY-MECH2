@@ -14,7 +14,7 @@ export default function Home() {
         "@id": "https://uookaymechindustries.com/#business",
         "name": "UK Mech Industries",
         "description": "UK Mech Industries provides precision machining, CNC components, industrial parts and engineering solutions in Thane, Maharashtra.",
-        "image": "https://uookaymechindustries.com/images/products/highly-precision-1.jpeg",
+        "image": "https://uookaymechindustries.com/images/products/Custom Engineering Assemblies.webp",
         "telephone": ["+91 99878 49605", "+91 98330 53809"],
         "address": {
           "@type": "PostalAddress",
@@ -139,46 +139,44 @@ export default function Home() {
 
             {/* Right Graphic / Photo */}
             <motion.div 
-              className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap"
+              className="lg:col-span-5 heroImageWrap border border-[#D7DDE5]"
               initial={{ opacity: 0.01, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
             >
-              <div className="relative w-full h-[320px] sm:h-[400px]">
-                <motion.div
-                  initial={{ scale: 1.05 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.5, duration: 1.0, ease: "easeOut" }}
-                  className="w-full h-full"
-                >
-                  <Image
-                    src="/images/products/highly-precision-1.jpeg"
-                    alt="Precision engineered CNC machining workshop of UK Mech Industries"
-                    fill
-                    className="object-cover grayscale opacity-90"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    priority
-                  />
-                </motion.div>
-                
-                {/* Technical Overlay Badges */}
-                <motion.div 
-                  className="absolute bottom-4 left-4 bg-[#09285F] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30"
-                  initial={{ opacity: 0.01, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.5 }}
-                >
-                  TOLERANCES: TO ±0.01 mm
-                </motion.div>
-                <motion.div 
-                  className="absolute top-4 right-4 bg-white/95 text-[#161616] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5] shadow-sm"
-                  initial={{ opacity: 0.01, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
-                >
-                  MATERIALS: SS | MS | AL
-                </motion.div>
-              </div>
+              <motion.div
+                initial={{ scale: 1.05 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.5, duration: 1.0, ease: "easeOut" }}
+                className="w-full h-full relative"
+              >
+                <Image
+                  src="/images/products/Custom Engineering Assemblies.webp"
+                  alt="Precision engineered CNC machining workshop of UK Mech Industries"
+                  fill
+                  className="object-cover grayscale opacity-90"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  priority
+                />
+              </motion.div>
+              
+              {/* Technical Overlay Badges */}
+              <motion.div 
+                className="absolute bottom-4 left-4 bg-[#09285F] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30 z-10"
+                initial={{ opacity: 0.01, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+              >
+                TOLERANCES: TO ±0.01 mm
+              </motion.div>
+              <motion.div 
+                className="absolute top-4 right-4 bg-white/95 text-[#161616] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5] shadow-sm z-10"
+                initial={{ opacity: 0.01, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+              >
+                MATERIALS: SS | MS | AL
+              </motion.div>
             </motion.div>
 
           </div>
@@ -243,7 +241,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
-              className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden"
+              className="lg:col-span-8 homeSecondImageWrap"
               initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -254,7 +252,7 @@ export default function Home() {
                   src="/images/products/highly-precision-1.jpeg"
                   alt="CNC machining center facility for highly precision component manufacturing at UK Mech Industries"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   loading="lazy"
                 />
@@ -325,7 +323,7 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div 
-              className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden"
+              className="lg:col-span-7 homeSecondImageWrap"
               initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -336,7 +334,7 @@ export default function Home() {
                   src="/images/products/weep tubes cup.webp"
                   alt="Precision machined turned weep cups by UK Mech Industries"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   loading="lazy"
                 />
@@ -357,7 +355,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
-              className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden"
+              className="lg:col-span-8 homeSecondImageWrap"
               initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -365,10 +363,10 @@ export default function Home() {
             >
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
-                  src="/images/products/Picture15.webp"
+                  src="/images/products/quality-control-flange-inspection.webp"
                   alt="Quality control inspection of machined seal plate flange at UK Mech Industries"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   loading="lazy"
                 />
@@ -423,11 +421,11 @@ export default function Home() {
               <div>
                 <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">04 / CAPABILITIES</span>
                 <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
-                  Component & Custom Machining Range
+                  Component & Custom Fabrication Range
                 </h2>
               </div>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
-                UK Mech Industries manufactures an extensive range of industrial assemblies, machine guards, and custom machined components in Mild Steel (MS), Stainless Steel (SS), and Aluminum.
+                UK Mech Industries manufactures an extensive range of industrial assemblies, machine guards, and custom fabrication parts in Mild Steel (MS), Stainless Steel (SS), and Aluminum.
               </p>
               
               {/* Technical catalog spec list */}
@@ -468,7 +466,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div 
-              className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden"
+              className="lg:col-span-6 homeSecondImageWrap"
               initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -479,7 +477,7 @@ export default function Home() {
                   src="/images/products/machine and fabricated component.webp"
                   alt="Custom machined base frames and steel structures at UK Mech Industries"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   loading="lazy"
                 />

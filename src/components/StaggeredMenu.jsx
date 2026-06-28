@@ -149,11 +149,11 @@ export const StaggeredMenu = ({
               priority
             />
           </div>
-          <div className="flex flex-col text-left">
-            <span className="font-heading text-[#09285F] font-bold tracking-wider leading-none transition-all duration-300 logoTextTop">
-              UK MECH
+          <div className="logo-text">
+            <span className="logoTextTop">
+              UOO KAY MECH
             </span>
-            <span className="text-[#EC6713] font-bold tracking-[0.18em] uppercase transition-all duration-300 logoTextBottom">
+            <span className="logoTextBottom">
               INDUSTRIES
             </span>
           </div>

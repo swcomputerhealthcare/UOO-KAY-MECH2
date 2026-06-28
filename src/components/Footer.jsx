@@ -12,8 +12,8 @@ export default function Footer() {
           
           {/* Column 1: Logo & Certifications */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="relative w-14 h-14 shrink-0">
+            <Link href="/" className="sm-logo logoWrap select-none">
+              <div className="logoImg">
                 <Image
                   src="/uk-mech-logo-v3.png"
                   alt="UK MECH Logo"
@@ -22,15 +22,15 @@ export default function Footer() {
                   loading="lazy"
                 />
               </div>
-              <div className="flex flex-col text-left -space-y-1">
-                <span className="font-heading text-[#09285F] font-bold text-base sm:text-lg tracking-wider leading-none">
-                  UK MECH
+              <div className="logo-text">
+                <span className="logoTextTop">
+                  UOO KAY MECH
                 </span>
-                <span className="text-[10px] text-[#EC6713] font-semibold tracking-widest uppercase mt-0.5">
-                  Industries
+                <span className="logoTextBottom">
+                  INDUSTRIES
                 </span>
               </div>
-            </div>
+            </Link>
             <p className="text-[#5E6673] text-xs leading-relaxed max-w-sm font-medium">
               Precision Machining & Engineering Solutions. Serving Tier-1 industrial enterprises across India with quality engineering solutions since 2004.
             </p>

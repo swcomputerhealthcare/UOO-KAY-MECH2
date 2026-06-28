@@ -37,7 +37,7 @@
 .sm-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   height: 100%;
   text-decoration: none;
   flex-shrink: 0;
@@ -48,51 +48,91 @@
 .logoWrap {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   height: 100%;
+  transform: scale(1.18);
+  transform-origin: left center;
 }
 
 .logoImg {
   position: relative;
-  width: 58px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
 }
 
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
 .logoTextTop {
-  font-size: 22px;
-  line-height: 1;
-  color: #09285F;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 16.5px;
   font-weight: 800;
+  line-height: 1.1;
+  color: #09285F;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .logoTextBottom {
-  font-size: 11px;
+  font-size: 13.5px;
+  font-weight: 800;
   line-height: 1;
   color: #EC6713;
-  letter-spacing: 0.18em;
-  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.32em;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .sm-logo {
+    gap: 16px;
+  }
+  .logoWrap {
+    transform: scale(1.1);
+    gap: 16px;
+  }
+  .logoImg {
+    width: 52px;
+    height: 52px;
+  }
+  .logoTextTop {
+    font-size: 14.5px;
+    margin-bottom: 0;
+  }
+  .logoTextBottom {
+    font-size: 12px;
+    margin-top: 5px;
+  }
 }
 
 @media (max-width: 768px) {
   .sm-logo {
-    gap: 10px;
+    gap: 14px;
   }
   .logoWrap {
-    gap: 10px;
+    transform: scale(1.05);
+    gap: 14px;
   }
   .logoImg {
-    width: 48px;
-    height: 38px;
+    width: 46px;
+    height: 46px;
   }
   .logoTextTop {
-    font-size: 20px;
+    font-size: 12.5px;
+    margin-bottom: 0;
   }
   .logoTextBottom {
     font-size: 10px;
+    margin-top: 4px;
   }
 }
+
 
 /* ============================================================
    Toggle button
@@ -219,17 +259,17 @@
    ============================================================ */
 .sm-panel-inner {
   min-height: 100%;
-  padding: 42px 38px 34px;
+  padding: 34px 34px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 28px;
+  gap: 24px;
 }
 
 @media (max-width: 768px) {
   .sm-panel-inner {
-    padding: 36px 28px 32px;
-    gap: 24px;
+    padding: 30px 26px 28px;
+    gap: 22px;
   }
 }
 
@@ -261,11 +301,11 @@
   color: #ffffff;
   text-decoration: none;
   font-family: var(--font-heading), sans-serif;
-  font-size: clamp(24px, 4vw, 38px);
+  font-size: clamp(24px, 3vw, 36px);
   line-height: 1.05;
   font-weight: 800;
   letter-spacing: -0.025em;
-  padding: 14px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
   cursor: pointer;
   transition: color 0.22s ease, padding-left 0.22s ease;
@@ -274,8 +314,9 @@
 .sm-panel-item::after {
   content: attr(data-index);
   font-family: var(--font-sans), sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   color: rgba(255, 255, 255, 0.55);
+  opacity: 0.65;
   font-weight: 700;
   letter-spacing: 0.08em;
   flex-shrink: 0;
@@ -288,8 +329,9 @@
 
 @media (max-width: 768px) {
   .sm-panel-item {
-    font-size: clamp(24px, 7vw, 34px);
-    padding: 13px 0;
+    font-size: clamp(22px, 6.5vw, 32px);
+    line-height: 1.08;
+    padding: 11px 0;
   }
 }
 
