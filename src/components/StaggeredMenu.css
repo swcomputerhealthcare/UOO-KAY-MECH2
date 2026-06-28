@@ -258,7 +258,17 @@
   border-left: none;
   pointer-events: auto;
   overflow-y: auto;
+  scrollbar-width: none;
   box-shadow: -20px 0 50px rgba(9, 40, 95, 0.16);
+}
+
+.staggered-menu-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.staggered-menu-wrapper[data-open="false"] .staggered-menu-panel {
+  pointer-events: none;
+  visibility: hidden;
 }
 
 @media (max-width: 768px) {

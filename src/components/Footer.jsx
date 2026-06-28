@@ -6,13 +6,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F6F7F8] text-[#161616] border-t-2 border-[#09285F] pt-24 pb-12 z-10 relative font-sans">
+    <footer className="footer bg-[#F6F7F8] text-[#161616] border-t-2 border-[#09285F] pt-16 pb-8 z-10 relative font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="footerGrid mb-16">
           
-          {/* Column 1: Logo & Certifications */}
+          {/* Column 1: Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="sm-logo logoWrap select-none">
+            <Link href="/" className="sm-logo logoWrap select-none" aria-label="Logo">
               <div className="logoImg">
                 <Image
                   src="/uk-mech-logo-v3.png"
@@ -31,10 +31,12 @@ export default function Footer() {
                 </span>
               </div>
             </Link>
-            <p className="text-[#5E6673] text-xs leading-relaxed max-w-sm font-medium">
-              Precision Machining & Engineering Solutions. Serving Tier-1 industrial enterprises across India with quality engineering solutions since 2004.
+            
+            <p className="text-[#5E6673] text-xs leading-relaxed max-w-sm font-medium mt-4">
+              Precision machining and engineering solutions serving Tier-1 industrial enterprises across India since 2004.
             </p>
-            <div className="flex flex-col gap-2 text-xs font-mono font-bold text-[#5E6673]">
+            
+            <div className="flex flex-col gap-2 text-xs font-mono font-bold text-[#5E6673] mt-6">
               <span className="flex items-center gap-2">
                 <Award className="h-4 w-4 text-[#EC6713]" strokeWidth={1.5} /> GSTIN REGISTERED
               </span>
@@ -74,7 +76,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Contact details */}
+          {/* Column 3: Contact Details */}
           <div>
             <h3 className="font-heading font-bold text-xs text-[#161616] mb-6 uppercase tracking-[0.2em] border-b border-[#D7DDE5] pb-3">
               Contact Details
@@ -105,15 +107,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Map */}
+          {/* Column 4: Workshop Location */}
           <div>
             <h3 className="font-heading font-bold text-xs text-[#161616] mb-6 uppercase tracking-[0.2em] border-b border-[#D7DDE5] pb-3">
               Workshop Location
             </h3>
             
-            {/* Symmetrical Outline Map */}
-            <div className="border border-[#D7DDE5] p-1 bg-[#F6F7F8] space-y-2">
-              <div className="w-full h-40 overflow-hidden relative">
+            <div className="space-y-3">
+              <div className="footerMap">
                 <iframe
                   title="UK Mech Industries Location Map"
                   src="https://maps.google.com/maps?q=19.22867202758789,72.98545837402344&z=17&hl=en&output=embed"
@@ -139,13 +140,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#D7DDE5] pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#5E6673] gap-4">
-          <p className="font-medium" suppressHydrationWarning>
+        <div className="footerBottom">
+          <p className="font-medium text-xs text-[#5E6673]" suppressHydrationWarning>
             &copy; {currentYear} UK MECH INDUSTRIES. Serving Industry Since 2004.
           </p>
-          <div className="flex gap-4 font-mono font-bold tracking-wider uppercase text-[10px] text-[#09285F]">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 font-mono font-bold tracking-wider uppercase text-[10px] text-[#09285F]">
             <span>GSTIN: 27BIRPS2093H1ZN</span>
-            <span className="text-[#D7DDE5]">|</span>
+            <span className="hidden sm:inline text-[#D7DDE5]">|</span>
             <span>UDYAM-MH-33-0322159</span>
           </div>
         </div>
@@ -153,5 +154,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-

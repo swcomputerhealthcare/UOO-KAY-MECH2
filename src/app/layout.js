@@ -138,9 +138,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${manrope.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${manrope.variable} ${ibmPlexMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-brand-bg text-text-primary">
+      <body className="min-h-screen flex flex-col bg-brand-bg text-text-primary">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
