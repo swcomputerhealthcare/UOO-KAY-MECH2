@@ -189,7 +189,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#D7DDE5]/20">
             <div className="space-y-1">
               <span className="font-heading text-4xl sm:text-5xl font-bold text-[#EC6713] block">
-                <span>12</span>+
+                <span>40</span>+
               </span>
               <span className="text-[10px] font-mono font-bold text-[#D7DDE5] uppercase tracking-wider block">Products Manufactured</span>
             </div>
