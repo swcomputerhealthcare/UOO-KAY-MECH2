@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FileText, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function InfrastructureClient() {
   const [activeTab, setActiveTab] = useState("machines");
@@ -307,27 +308,47 @@ export default function InfrastructureClient() {
   const activeAsset = activeCollection[selectedAssetIdx] || activeCollection[0];
 
   return (
-    <div className="bg-brand-bg text-[#161616] pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none">
+    <motion.div 
+      className="bg-brand-bg text-[#161616] pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none"
+      initial={{ opacity: 0.01, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#EC6713] pl-6 mb-20 infra-header-item">
+        <motion.div 
+          className="border-l-2 border-[#EC6713] pl-6 mb-20 infra-header-item"
+          initial={{ opacity: 0.01, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+        >
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ FACILITY INDEX ]
           </span>
           <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wide">
             Infrastructure
           </h1>
-        </div>
+        </motion.div>
 
         {/* Introduction */}
-        <p className="text-[#5E6673] text-sm sm:text-base max-w-3xl leading-relaxed mb-16 font-sans font-medium infra-content-item">
+        <motion.p 
+          className="text-[#5E6673] text-sm sm:text-base max-w-3xl leading-relaxed mb-16 font-sans font-medium infra-content-item"
+          initial={{ opacity: 0.01, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
           Our Thane manufacturing facility maintains conventional machining platforms and dedicated inspection instruments. Utilize the catalog register below to review the specifications of our operational assets.
-        </p>
+        </motion.p>
 
         {/* Tab Controls (Flat Sharp Rectangles) */}
-        <div className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex overflow-x-auto gap-8 infra-content-item no-scrollbar">
+        <motion.div 
+          className="border-b border-[#D7DDE5] pb-px w-full mb-16 flex overflow-x-auto gap-8 infra-content-item no-scrollbar"
+          initial={{ opacity: 0.01, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.15 }}
+        >
           <button
             onClick={() => {
               setActiveTab("machines");
@@ -354,54 +375,70 @@ export default function InfrastructureClient() {
           >
             Metrology Instruments
           </button>
-        </div>
+        </motion.div>
 
         {/* Main Content Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start infra-content-item">
           
           {/* Left Panel: Scrollable Technical Row Listing */}
-          <div className="lg:col-span-5 space-y-2 max-h-[70vh] overflow-y-auto pr-4 no-scrollbar border-r border-[#D7DDE5] font-sans">
-            {activeCollection.map((asset, idx) => (
-              <div
-                key={idx}
-                onClick={() => setSelectedAssetIdx(idx)}
-                className={`asset-card-item p-4 cursor-pointer border transition-all duration-200 ${
-                  selectedAssetIdx === idx
-                    ? "bg-[#161616] border-[#161616] text-[#F6F7F8]"
-                    : "bg-transparent border-[#D7DDE5] text-[#161616] hover:bg-[#EAE8E4] hover:border-[#5E6673]"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="space-y-1 truncate pr-4">
-                    <div className="flex items-center gap-3">
-                      <span className={`font-mono text-[9px] ${selectedAssetIdx === idx ? "text-[#EC6713]" : "text-[#5E6673]"}`}>
-                        [{String(idx + 1).padStart(2, "0")}]
-                      </span>
-                      <span className={`text-[9px] font-mono uppercase tracking-wide ${selectedAssetIdx === idx ? "text-[#EC6713]" : "text-[#5E6673]"}`}>
-                        {asset.category}
-                      </span>
+          <motion.div 
+            layout 
+            className="lg:col-span-5 space-y-2 max-h-[70vh] overflow-y-auto pr-4 no-scrollbar border-r border-[#D7DDE5] font-sans"
+          >
+            <AnimatePresence mode="popLayout">
+              {activeCollection.map((asset, idx) => (
+                <motion.div
+                  layout
+                  key={`${activeTab}-${idx}`}
+                  onClick={() => setSelectedAssetIdx(idx)}
+                  className={`asset-card-item p-4 cursor-pointer border transition-all duration-200 ${
+                    selectedAssetIdx === idx
+                      ? "bg-[#161616] border-[#161616] text-[#F6F7F8]"
+                      : "bg-transparent border-[#D7DDE5] text-[#161616] hover:bg-[#EAE8E4] hover:border-[#5E6673]"
+                  }`}
+                  initial={{ opacity: 0.01, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1 truncate pr-4">
+                      <div className="flex items-center gap-3">
+                        <span className={`font-mono text-[9px] ${selectedAssetIdx === idx ? "text-[#EC6713]" : "text-[#5E6673]"}`}>
+                          [{String(idx + 1).padStart(2, "0")}]
+                        </span>
+                        <span className={`text-[9px] font-mono uppercase tracking-wide ${selectedAssetIdx === idx ? "text-[#EC6713]" : "text-[#5E6673]"}`}>
+                          {asset.category}
+                        </span>
+                      </div>
+                      <div className={`font-heading font-bold text-sm uppercase ${selectedAssetIdx === idx ? "text-white" : "text-[#161616]"}`}>
+                        {asset.name}
+                      </div>
+                      <p className={`text-[10px] font-mono ${selectedAssetIdx === idx ? "text-[#5E6673]" : "text-[#5E6673]"}`}>
+                        CAP: {asset.spec}
+                      </p>
                     </div>
-                    <div className={`font-heading font-bold text-sm uppercase ${selectedAssetIdx === idx ? "text-white" : "text-[#161616]"}`}>
-                      {asset.name}
+                    
+                    <div className={`p-1 transition-transform duration-200 ${
+                      selectedAssetIdx === idx ? "text-[#EC6713] translate-x-1" : "text-[#5E6673]"
+                    }`}>
+                      <ChevronRight className="h-4 w-4" />
                     </div>
-                    <p className={`text-[10px] font-mono ${selectedAssetIdx === idx ? "text-[#5E6673]" : "text-[#5E6673]"}`}>
-                      CAP: {asset.spec}
-                    </p>
                   </div>
-                  
-                  <div className={`p-1 transition-transform duration-200 ${
-                    selectedAssetIdx === idx ? "text-[#EC6713] translate-x-1" : "text-[#5E6673]"
-                  }`}>
-                    <ChevronRight className="h-4 w-4" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
 
           {/* Right Panel: Clean Specification Sheet (No floating cards) */}
           <div className="lg:col-span-7 lg:sticky lg:top-28 console-detail-block">
-            <div className="border-t-2 border-[#161616] pt-6 font-sans">
+            <motion.div 
+              key={`${activeTab}-${selectedAssetIdx}`}
+              className="border-t-2 border-[#161616] pt-6 font-sans"
+              initial={{ opacity: 0.01, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            >
               
               {/* Header Information */}
               <div className="pb-6 mb-6 border-b border-[#D7DDE5]">
@@ -449,15 +486,16 @@ export default function InfrastructureClient() {
               {/* Metrology Compliances */}
               <div className="border-t border-[#D7DDE5] pt-6 mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[9px] font-mono font-bold text-[#5E6673] uppercase tracking-widest">
                 <span>Verification: Standard Compliance</span>
-                <span>Registry: UKM_{activeAsset.name.toUpperCase().replace(/\s/g, "_").slice(0, 10)}_2026</span>
+                <span>Registry: UKM_{activeAsset.name.toUpperCase().replace(/\s/g, "_").slice(0, 10).replace(/[^A-Z0-9_]/g, "")}_2026</span>
               </div>
 
-            </div>
+            </motion.div>
           </div>
 
         </div>
 
       </div>
-    </div>
+    </motion.div>
+
   );
 }

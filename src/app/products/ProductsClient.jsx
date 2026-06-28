@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, X, Search, Cpu, Layers, Settings, Wrench, Shield, Compass, Phone, FileText } from "lucide-react";
 
 // 1. STATS DATA
@@ -351,31 +351,39 @@ const CAPABILITIES_GRID = [
 
 // 6. CARD SUB-COMPONENT WITH FRAMER MOTION EFFECTS
 function ProductCard({ product, onViewDetails }) {
+  const shouldReduceMotion = useReducedMotion();
+  
+  const hoverTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.25, ease: [0.22, 1, 0.36, 1] };
+
   return (
-    <motion.div
+    <motion.article
+      layout
       onClick={() => onViewDetails(product)}
       className="group relative bg-white rounded-[16px] border border-[#D7DDE5] p-4 shadow-sm flex flex-col justify-between md:h-[400px] h-auto cursor-pointer overflow-hidden select-none productCard"
-      whileHover={{ 
-        y: -4,
+      whileHover={shouldReduceMotion ? {} : { 
+        y: -6,
+        scale: 1.015,
         boxShadow: "0 12px 30px -10px rgba(9, 40, 95, 0.08)",
         borderColor: "rgba(236, 103, 19, 0.4)"
       }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={hoverTransition}
     >
       {/* Orange Accent Top Line */}
       <motion.div 
         className="absolute top-0 left-0 right-0 h-1 bg-[#EC6713]"
         initial={{ scaleX: 0 }}
-        whileHover={{ scaleX: 1 }}
-        transition={{ duration: 0.3 }}
+        whileHover={shouldReduceMotion ? { scaleX: 0 } : { scaleX: 1 }}
+        transition={hoverTransition}
       />
       
       <div>
         {/* Product Image */}
         <div className="relative aspect-[4/3] w-full rounded-[12px] overflow-hidden bg-[#F6F7F8] mb-4 productImageWrap">
           <motion.div
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.3 }}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+            transition={hoverTransition}
             className="w-full h-full"
           >
             <Image
@@ -397,8 +405,8 @@ function ProductCard({ product, onViewDetails }) {
         {/* Product Title */}
         <motion.h3 
           className="font-heading font-bold text-sm sm:text-base text-[#09285F] uppercase tracking-wide md:line-clamp-1 line-clamp-none leading-snug productTitle"
-          whileHover={{ color: "#EC6713" }}
-          transition={{ duration: 0.3 }}
+          whileHover={shouldReduceMotion ? {} : { color: "#EC6713" }}
+          transition={hoverTransition}
         >
           {product.name}
         </motion.h3>
@@ -417,17 +425,17 @@ function ProductCard({ product, onViewDetails }) {
             onViewDetails(product);
           }}
           className="text-[10px] font-mono font-bold tracking-wider text-[#09285F] flex items-center justify-center gap-1 py-1.5 uppercase border border-[#09285F]/10 bg-white"
-          whileHover={{ 
+          whileHover={shouldReduceMotion ? {} : { 
             color: "#EC6713",
             borderColor: "rgba(236, 103, 19, 0.2)"
           }}
-          transition={{ duration: 0.2 }}
+          transition={hoverTransition}
         >
           View Details
         </motion.button>
         <motion.div
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.2 }}
+          whileHover={shouldReduceMotion ? {} : { y: -2 }}
+          transition={hoverTransition}
         >
           <Link
             href={`/contact?interest=${encodeURIComponent(product.name)}#contact-form`}
@@ -439,11 +447,17 @@ function ProductCard({ product, onViewDetails }) {
           </Link>
         </motion.div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
 export default function ProductsClient() {
+  const shouldReduceMotion = useReducedMotion();
+  
+  const hoverTransition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.25, ease: [0.22, 1, 0.36, 1] };
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   
@@ -568,16 +582,17 @@ export default function ProductsClient() {
       {/* 4. RESPONSIVE PRODUCT GRID */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 min-[390px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <motion.div layout className="grid grid-cols-1 min-[390px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {filteredProducts.map((product) => (
-              <div 
+              <motion.div 
+                layout
                 key={product.id}
                 className="transition-all duration-300 transform scale-100 opacity-100"
               >
                 <ProductCard product={product} onViewDetails={handleOpenModal} />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <div className="text-center py-20 border border-[#D7DDE5] border-dashed rounded-[24px] bg-white space-y-4 max-w-lg mx-auto">
             <div className="text-[#5E6673] font-mono text-[10px] uppercase tracking-widest block">
@@ -594,31 +609,47 @@ export default function ProductsClient() {
       <section className="bg-white border-y border-[#D7DDE5] py-24 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="mb-16 border-b border-[#D7DDE5] pb-6">
+          <motion.div 
+            className="mb-16 border-b border-[#D7DDE5] pb-6"
+            initial={{ opacity: 1, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55 }}
+          >
             <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.25em] block mb-1">
               [ COMPONENT HIGHLIGHTS ]
             </span>
             <h2 className="font-heading text-3xl font-bold text-[#09285F] uppercase tracking-wide">
               Featured Components
             </h2>
-          </div>
+          </motion.div>
 
           <div className="space-y-20">
             {FEATURED_ITEMS.map((item, idx) => (
-              <div 
+              <motion.div 
                 key={idx} 
                 className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 1, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Left: Product Image */}
                 <div className="lg:col-span-6 relative h-[260px] sm:h-[430px] lg:h-[520px] rounded-[24px] overflow-hidden bg-[#FAF8F5] border border-[#D7DDE5]">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover w-full h-full block"
-                    sizes="(max-width: 1024px) 100vw, 45vw"
-                    loading="lazy"
-                  />
+                  <motion.div
+                    whileHover={shouldReduceMotion ? {} : { scale: 1.025 }}
+                    transition={hoverTransition}
+                    className="w-full h-full relative"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover w-full h-full block"
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      loading="lazy"
+                    />
+                  </motion.div>
                 </div>
 
                 {/* Right: Specifications details */}
@@ -661,12 +692,13 @@ export default function ProductsClient() {
                   </div>
                 </div>
 
-              </div>
+              </motion.div>
             ))}
           </div>
 
         </div>
       </section>
+
 
       {/* 6. CAPABILITIES SECTION (4x2 Responsive Grid) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-left">

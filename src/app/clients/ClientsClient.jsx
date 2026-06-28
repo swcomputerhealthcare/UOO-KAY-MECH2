@@ -1,6 +1,7 @@
 "use client";
 
 import { Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 function LTLogo() {
   return (
@@ -107,22 +108,37 @@ export default function ClientsClient() {
   ];
 
   return (
-    <div className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden">
+    <motion.div 
+      className="bg-brand-bg pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden"
+      initial={{ opacity: 0.01, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
-        <div className="border-l-2 border-[#EC6713] pl-6 mb-16">
+        <motion.div 
+          className="border-l-2 border-[#EC6713] pl-6 mb-16"
+          initial={{ opacity: 0.01, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+        >
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ SUPPLIER AUDIT ]
           </span>
           <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide cli-header-item">
             Industrial Clients
           </h1>
-        </div>
+        </motion.div>
 
         {/* 1. Client Trust Banner (Flat Solid Color, No gradients) */}
-        <div className="bg-white text-[#161616] border-t-2 border-[#161616] p-8 sm:p-12 mb-20 cli-trust-banner clientsIntro">
+        <motion.div 
+          className="bg-white text-[#161616] border-t-2 border-[#161616] p-8 sm:p-12 mb-20 cli-trust-banner clientsIntro"
+          initial={{ opacity: 0.01, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
           <div className="max-w-3xl space-y-6">
             <div className="text-[#EC6713]">
               <Users className="h-6 w-6" strokeWidth={1.5} />
@@ -134,38 +150,62 @@ export default function ClientsClient() {
               UK MECH INDUSTRIES is an approved vendor supplier to India&apos;s leading industrial organizations. Our consistent delivery of drawing-compliant, precision-machined parts has established us as a reliable partner in strategic supply chains.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2. Client Logo Grid (Flat Outline layout) */}
         <div className="mb-24">
-          <h3 className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide mb-10 border-b border-[#D7DDE5] pb-3">
+          <motion.h3 
+            className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide mb-10 border-b border-[#D7DDE5] pb-3"
+            initial={{ opacity: 0.01, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55 }}
+          >
             Trusted by Industrial Enterprises
-          </h3>
+          </motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 cli-logos-grid">
             {clients.map((c, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="group clientCard clientLogoCard cli-logo-row transition-all duration-300 hover:-translate-y-1.5 cursor-pointer clientLogo"
+                className="group clientCard clientLogoCard cli-logo-row cursor-pointer clientLogo"
+                initial={{ opacity: 0.01, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 16px 40px rgba(9,40,95,0.10)"
+                }}
               >
-                <div className="logoBox transition-transform duration-300 group-hover:scale-[1.02]">
+                <div className="logoBox transition-transform duration-300 group-hover:scale-[1.02] w-full h-full flex items-center justify-center">
                   {c.logo}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* 3. Detailed Client Directory (Flat Directory List) */}
         <div className="space-y-8">
-          <h3 className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-3">
+          <motion.h3 
+            className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-3"
+            initial={{ opacity: 0.01, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55 }}
+          >
             Client Directory
-          </h3>
+          </motion.h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans">
             {clients.map((c, idx) => (
-              <div
+              <motion.div
                 key={idx}
                 className="border-t border-[#D7DDE5] pt-6 flex flex-col justify-between"
+                initial={{ opacity: 0.01, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
               >
                 <div>
                   <h4 className="font-heading font-bold text-[#161616] text-lg uppercase tracking-wide mb-2">
@@ -180,13 +220,13 @@ export default function ClientsClient() {
                     STATUS: {c.status.toUpperCase()}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import emailjs from "@emailjs/browser";
-import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
@@ -13,12 +13,14 @@ export default function ContactForm() {
     phone: "",
     email: "",
     interest: "Precision Components",
+    material: "",
+    quantity: "",
+    tolerance: "",
+    timeline: "",
     message: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle, loading, success, error
-  const [errorMessage, setErrorMessage] = useState("");
 
   // Read query parameters to prefill the interest field
   useEffect(() => {
@@ -82,92 +84,47 @@ export default function ContactForm() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setStatus("loading");
-    setErrorMessage("");
-
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      console.warn("EmailJS credentials are missing. Simulating form submission.");
-      setTimeout(() => {
-        setStatus("success");
-        setFormData({
-          name: "",
-          company: "",
-          phone: "",
-          email: "",
-          interest: "Precision Components",
-          message: "",
-        });
-      }, 1500);
-      return;
-    }
-
-    try {
-      const templateParams = {
-        from_name: formData.name,
-        company_name: formData.company,
-        phone_number: formData.phone,
-        reply_to: formData.email,
-        interest_category: formData.interest,
-        message: formData.message,
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      setStatus("success");
-      setFormData({
-        name: "",
-        company: "",
-        phone: "",
-        email: "",
-        interest: "Precision Components",
-        message: "",
-      });
-    } catch (err) {
-      console.error("EmailJS Error:", err);
-      setStatus("error");
-      setErrorMessage(err.text || "Failed to send enquiry. Please try again or call us directly.");
-    }
-  };
-
-  if (status === "success") {
-    return (
-      <div className="border-t-2 border-[#09285F] pt-6 font-sans text-center">
-        <div className="bg-white p-8 sm:p-12 border border-[#D7DDE5] space-y-6">
-          <div className="text-[#EC6713] p-3 border border-[#D7DDE5] w-max mx-auto">
-            <CheckCircle2 className="h-8 w-8 text-[#EC6713]" strokeWidth={1.5} />
-          </div>
-          <h3 className="font-heading text-2xl font-bold text-[#09285F] uppercase">Enquiry Sent</h3>
-          <p className="text-[#5E6673] text-xs sm:text-sm max-w-md mx-auto leading-relaxed font-medium">
-            Thank you for reaching out to UK Mech Industries. Our sales engineering team will review your specifications and contact you shortly.
-          </p>
-          <button
-            onClick={() => setStatus("idle")}
-            className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-8 py-3.5 text-xs uppercase tracking-wider transition-colors duration-200 cursor-pointer"
-          >
-            Send Another Message
-          </button>
-        </div>
-      </div>
+    const subject = encodeURIComponent(
+      "RFQ Request - UK MECH INDUSTRIES"
     );
-  }
+
+    const body = encodeURIComponent(`RFQ REQUEST
+
+Name: ${formData.name}
+
+Company: ${formData.company}
+
+Email: ${formData.email}
+
+Phone: ${formData.phone}
+
+Component Required: ${formData.interest}
+
+Material: ${formData.material || "Not Specified"}
+
+Quantity: ${formData.quantity || "Not Specified"}
+
+Tolerance: ${formData.tolerance || "Not Specified"}
+
+Delivery Timeline: ${formData.timeline || "Not Specified"}
+
+Additional Requirements:
+${formData.message}
+
+----------------------------
+Submitted via UK MECH INDUSTRIES Website`);
+
+    window.location.href = `mailto:uookaymechindustries@gmail.com?subject=${subject}&body=${body}`;
+  };
 
   return (
     <div className="border-t-2 border-[#09285F] pt-6 font-sans">
       <form onSubmit={handleSubmit} className="space-y-6">
-        {status === "error" && (
-          <div className="border border-red-500/25 bg-red-500/5 text-[#C62828] p-4 flex items-center gap-3 text-xs font-semibold">
-            <AlertCircle className="h-5 w-5 shrink-0 text-[#C62828]" strokeWidth={1.5} />
-            <span>{errorMessage}</span>
-          </div>
-        )}
-
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Full Name */}
           <div>
@@ -269,6 +226,76 @@ export default function ContactForm() {
           </select>
         </div>
 
+        {/* Material & Quantity Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Material */}
+          <div>
+            <label htmlFor="material" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
+              Material Specification
+            </label>
+            <input
+              type="text"
+              id="material"
+              name="material"
+              value={formData.material}
+              onChange={handleChange}
+              placeholder="e.g. SS316, Mild Steel, Aluminum"
+              className="w-full px-4 py-3 border border-[#D7DDE5] rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#EC6713] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673]"
+            />
+          </div>
+
+          {/* Quantity */}
+          <div>
+            <label htmlFor="quantity" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
+              Quantity Required
+            </label>
+            <input
+              type="text"
+              id="quantity"
+              name="quantity"
+              value={formData.quantity}
+              onChange={handleChange}
+              placeholder="e.g. 50 units, 1000 pcs"
+              className="w-full px-4 py-3 border border-[#D7DDE5] rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#EC6713] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673]"
+            />
+          </div>
+        </div>
+
+        {/* Tolerance & Delivery Timeline Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Tolerance */}
+          <div>
+            <label htmlFor="tolerance" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
+              Tolerances Required
+            </label>
+            <input
+              type="text"
+              id="tolerance"
+              name="tolerance"
+              value={formData.tolerance}
+              onChange={handleChange}
+              placeholder="e.g. ±0.02 mm, Standard"
+              className="w-full px-4 py-3 border border-[#D7DDE5] rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#EC6713] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673]"
+            />
+          </div>
+
+          {/* Delivery Timeline */}
+          <div>
+            <label htmlFor="timeline" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
+              Delivery Timeline
+            </label>
+            <input
+              type="text"
+              id="timeline"
+              name="timeline"
+              value={formData.timeline}
+              onChange={handleChange}
+              placeholder="e.g. 2-3 weeks, Urgent"
+              className="w-full px-4 py-3 border border-[#D7DDE5] rounded-none text-xs bg-white focus:bg-white focus:outline-none focus:border-[#EC6713] transition-all duration-200 font-semibold text-[#161616] placeholder-[#5E6673]"
+            />
+          </div>
+        </div>
+
         {/* Message Requirements */}
         <div>
           <label htmlFor="message" className="block text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#5E6673] mb-2">
@@ -289,18 +316,16 @@ export default function ContactForm() {
         </div>
 
         {/* Submit Button */}
-        <button
+        <motion.button
           type="submit"
-          disabled={status === "loading"}
-          className="w-full bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider transition-colors duration-200 text-center cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-3 premium-btn-hover"
+          className="w-full bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider transition-colors duration-200 text-center cursor-pointer flex items-center justify-center gap-3 premium-btn-hover"
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.2 }}
         >
-          <span>{status === "loading" ? "Sending Request..." : "Submit RFQ Request"}</span>
-          {status === "loading" ? (
-            <Loader2 className="h-4 w-4 animate-spin text-white" />
-          ) : (
-            <Send className="h-4 w-4 text-white" strokeWidth={1.5} />
-          )}
-        </button>
+          <span>Submit RFQ Request</span>
+          <Send className="h-4 w-4 text-white" strokeWidth={1.5} />
+        </motion.button>
 
         {/* Technical Registry Note */}
         <p className="text-[9px] font-mono text-[#5E6673] text-center leading-relaxed">
@@ -310,5 +335,3 @@ export default function ContactForm() {
     </div>
   );
 }
-
-

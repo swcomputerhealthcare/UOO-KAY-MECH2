@@ -4,6 +4,7 @@ import React, { useCallback, useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { menuPanel, staggerContainer, menuItem } from '../lib/motionPresets';
 import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
@@ -13,7 +14,8 @@ export const StaggeredMenu = ({
   className,
   closeOnClickAway = true,
   onMenuOpen,
-  onMenuClose
+  onMenuClose,
+  currentPath = "/"
 }) => {
   const [open, setOpen] = useState(false);
   const panelRef = useRef(null);
@@ -183,27 +185,31 @@ export const StaggeredMenu = ({
             ref={panelRef}
             className="staggered-menu-panel"
             aria-hidden="false"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuPanel}
           >
             <div className="sm-panel-inner">
-              <ul className="sm-panel-list" role="list">
+              <motion.ul 
+                className="sm-panel-list" 
+                role="list"
+                initial="closed"
+                animate="open"
+                variants={staggerContainer}
+              >
                 {items && items.length ? (
                   items.map((it, idx) => (
                     <motion.li 
                       className="sm-panel-itemWrap" 
                       key={it.label + idx}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
+                      variants={menuItem}
                     >
                       <Link 
                         className="sm-panel-item" 
                         href={it.link} 
                         aria-label={it.ariaLabel} 
-                        data-index={idx + 1}
+                        data-index={String(idx + 1).padStart(2, "0")}
                         onClick={handleMenuItemClick}
                       >
                         <span className="sm-panel-itemLabel">{it.label}</span>
@@ -217,15 +223,15 @@ export const StaggeredMenu = ({
                     </span>
                   </li>
                 )}
-              </ul>
+              </motion.ul>
               
               {displaySocials && socialItems && socialItems.length > 0 && (
                 <motion.div 
                   className="sm-socials" 
                   aria-label="Contact Links"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.3, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <h3 className="sm-socials-title">Contact & Socials</h3>
                   <ul className="sm-socials-list" role="list">
@@ -268,3 +274,4 @@ export const StaggeredMenu = ({
 };
 
 export default StaggeredMenu;
+

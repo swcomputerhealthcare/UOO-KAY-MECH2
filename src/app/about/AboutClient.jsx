@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Award, Compass, Eye, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AboutClient() {
   const milestones = [
@@ -33,10 +34,20 @@ export default function AboutClient() {
   ];
 
   return (
-    <div className="bg-brand-bg select-none overflow-x-hidden aboutSection">
+    <motion.div 
+      className="bg-brand-bg select-none overflow-x-hidden aboutSection"
+      initial={{ opacity: 0.01, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
       
       {/* Page Header */}
-      <div className="pt-24 pb-8 sm:pt-32 sm:pb-12">
+      <motion.div 
+        className="pt-24 pb-8 sm:pt-32 sm:pb-12"
+        initial={{ opacity: 0.01, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-l-2 border-[#EC6713] pl-6 about-header-item">
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
@@ -47,10 +58,16 @@ export default function AboutClient() {
             </h1>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* 1. Introduction Section */}
-      <section className="bg-white border-y border-[#D7DDE5] py-24">
+      <motion.section 
+        className="bg-white border-y border-[#D7DDE5] py-24"
+        initial={{ opacity: 0.01, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -106,10 +123,16 @@ export default function AboutClient() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. Founder / MD Profile */}
-      <section className="py-24 bg-brand-bg">
+      <motion.section 
+        className="py-24 bg-brand-bg"
+        initial={{ opacity: 0.01, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-[#D7DDE5] pt-16">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
@@ -149,10 +172,16 @@ export default function AboutClient() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. Vision & Mission Section */}
-      <section className="py-24 bg-white border-y border-[#D7DDE5]">
+      <motion.section 
+        className="py-24 bg-white border-y border-[#D7DDE5]"
+        initial={{ opacity: 0.01, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 font-sans">
             
@@ -186,10 +215,16 @@ export default function AboutClient() {
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. Timeline Section */}
-      <section className="py-24 bg-brand-bg timeline-section-container">
+      <motion.section 
+        className="py-24 bg-brand-bg timeline-section-container"
+        initial={{ opacity: 0.01, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-20 border-b border-[#D7DDE5] pb-6">
@@ -232,8 +267,8 @@ export default function AboutClient() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
-    </div>
+    </motion.div>
   );
 }

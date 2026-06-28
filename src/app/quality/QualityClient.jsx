@@ -1,6 +1,7 @@
 "use client";
 
 import { FileText, Award, BadgeCheck, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function QualityClient() {
   const certifications = [
@@ -58,36 +59,66 @@ export default function QualityClient() {
   ];
 
   return (
-    <div className="bg-brand-bg">
+    <motion.div 
+      className="bg-brand-bg"
+      initial={{ opacity: 0.01, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
 
       {/* 1. Header & Certifications */}
       <div className="pt-24 pb-8 sm:pt-32 sm:pb-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Page Header */}
-          <div className="border-l-2 border-[#EC6713] pl-6 mb-24 qual-header-item">
+          <motion.div 
+            className="border-l-2 border-[#EC6713] pl-6 mb-24 qual-header-item"
+            initial={{ opacity: 0.01, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+          >
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ TECHNICAL STANDARDS ]
             </span>
             <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide">
               Quality Assurance
             </h1>
-          </div>
+          </motion.div>
 
           {/* Certifications Block */}
           <div className="mb-12">
-            <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.2em] uppercase block mb-2">
+            <motion.span 
+              className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.2em] uppercase block mb-2"
+              initial={{ opacity: 0.01, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.1 }}
+            >
               [ COMPLIANCE REGISTRY ]
-            </span>
-            <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight">
+            </motion.span>
+            <motion.h2 
+              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
+              initial={{ opacity: 0.01, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.15 }}
+            >
               Registration & Certifications
-            </h2>
+            </motion.h2>
 
-            <div className="certGrid gap-8 certs-list font-sans">
+            <motion.div 
+              className="certGrid gap-8 certs-list font-sans"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              transition={{ staggerChildren: 0.05 }}
+            >
               {certifications.map((cert, idx) => (
-                <article
+                <motion.article
                   key={idx}
-                  className="certCard cert-row premium-card-hover"
+                  className="certCard cert-row premium-card-hover cursor-pointer"
+                  initial={{ opacity: 0.01, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
+                  whileHover={{ y: -4, borderTopColor: "#EC6713", boxShadow: "0 10px 30px rgba(9, 40, 95, 0.05)" }}
                 >
                   <div className="certTop space-y-4">
                     <div className="text-slate-700">
@@ -104,9 +135,9 @@ export default function QualityClient() {
                     <span className="block text-[#5E6673] uppercase font-bold tracking-wider text-[10px] font-mono">{cert.label}</span>
                     <strong className="block text-[#09285F] font-extrabold tracking-wide uppercase break-all text-[11px] font-mono mt-0.5">{cert.id}</strong>
                   </div>
-                </article>
+                </motion.article>
               ))}
-            </div>
+            </motion.div>
           </div>
 
         </div>
@@ -116,20 +147,31 @@ export default function QualityClient() {
       <div className="bg-white border-y border-[#D7DDE5] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="border-l-2 border-[#EC6713] pl-6 mb-16">
+          <motion.div 
+            className="border-l-2 border-[#EC6713] pl-6 mb-16"
+            initial={{ opacity: 0.01, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55 }}
+          >
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
               Our 4-Stage Quality Process
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processes.map((p, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="border-l-2 border-[#EC6713] pl-6 py-4 font-sans bg-[#F6F7F8] p-6 rounded-[16px] shadow-sm hover:border-[#09285F] transition-colors duration-300"
+                className="border-l-2 border-[#EC6713] pl-6 py-4 font-sans bg-[#F6F7F8] p-6 rounded-[16px] shadow-sm transition-colors duration-300"
+                initial={{ opacity: 0.01, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
+                whileHover={{ borderColor: "#09285F" }}
               >
                 <div className="space-y-4">
                   {/* Step Marker */}
@@ -149,13 +191,14 @@ export default function QualityClient() {
                     {p.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
         </div>
       </div>
 
-    </div>
+    </motion.div>
+
   );
 }

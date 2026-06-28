@@ -15,9 +15,8 @@
    ============================================================ */
 .staggered-menu-header {
   position: relative;
-  height: 68px;
-  background: #f6f7f8;
-  border-bottom: 1px solid #d7dde5;
+  height: 70px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,7 +26,7 @@
 
 @media (max-width: 768px) {
   .staggered-menu-header {
-    height: 62px;
+    height: 64px;
     padding: 0 18px;
   }
 }
@@ -107,9 +106,9 @@
   width: 120px;
   padding: 0 18px;
   border-radius: 999px;
-  border: none;
-  background: #EC6713;
-  color: #ffffff;
+  border: 2px solid #EC6713;
+  background: #ffffff;
+  color: #09285F;
   font-family: var(--font-heading), sans-serif;
   font-weight: 900;
   font-size: 10px;
@@ -117,17 +116,19 @@
   letter-spacing: 0.16em;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(236, 103, 19, 0.25);
-  transition: background 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
 }
 
 .sm-toggle:hover {
-  background: #d85c10;
+  background: #f6f7f8;
+  border-color: #d85c10;
 }
 
 .staggered-menu-wrapper[data-open="true"] .sm-toggle {
-  background: #EC6713;
-  color: #ffffff;
+  background: #ffffff;
+  color: #09285F;
+  border-color: #EC6713;
 }
 
 .sm-toggle:focus-visible {
@@ -191,11 +192,11 @@
    ============================================================ */
 .staggered-menu-panel {
   position: fixed;
-  top: 100px;
+  top: 102px;
   right: 0;
   z-index: 9998;
-  width: min(460px, 100vw);
-  height: calc(100dvh - 100px);
+  width: min(420px, 100vw);
+  height: calc(100dvh - 102px);
   background: #EC6713;
   color: #ffffff;
   border-left: none;
@@ -206,22 +207,30 @@
 
 @media (max-width: 768px) {
   .staggered-menu-panel {
-    top: 90px;
-    height: calc(100dvh - 90px);
+    top: 92px;
+    height: calc(100dvh - 92px);
     width: 100vw;
   }
 }
+
 
 /* ============================================================
    Panel inner layout
    ============================================================ */
 .sm-panel-inner {
   min-height: 100%;
-  padding: 40px;
+  padding: 42px 38px 34px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 22px;
+  gap: 28px;
+}
+
+@media (max-width: 768px) {
+  .sm-panel-inner {
+    padding: 36px 28px 32px;
+    gap: 24px;
+  }
 }
 
 /* ============================================================
@@ -230,7 +239,7 @@
 .sm-panel-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -252,43 +261,35 @@
   color: #ffffff;
   text-decoration: none;
   font-family: var(--font-heading), sans-serif;
-  font-size: clamp(28px, 3.2vw, 42px);
-  line-height: 1;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
+  font-size: clamp(24px, 4vw, 38px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.025em;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
   cursor: pointer;
-  transition: background 0.25s ease;
+  transition: color 0.22s ease, padding-left 0.22s ease;
 }
 
 .sm-panel-item::after {
   content: attr(data-index);
   font-family: var(--font-sans), sans-serif;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 900;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 700;
   letter-spacing: 0.08em;
   flex-shrink: 0;
 }
 
 .sm-panel-item:hover {
-  background: #09285F;
-}
-
-.sm-panel-item:hover::after {
-  color: #ffffff;
-  transition: color 0.25s ease;
+  color: #09285F;
+  padding-left: 8px;
 }
 
 @media (max-width: 768px) {
-  .sm-panel-inner {
-    padding: 36px 26px 30px;
-  }
   .sm-panel-item {
-    font-size: clamp(28px, 8vw, 38px);
-    padding: 12px 0;
+    font-size: clamp(24px, 7vw, 34px);
+    padding: 13px 0;
   }
 }
 
@@ -315,13 +316,14 @@
   gap: 0.5rem;
 }
 
-.sm-socials-title {
+.sm-socials-title,
+.sm-menu-contact h4 {
   margin: 0;
   font-family: var(--font-heading), sans-serif;
   font-size: 9px;
-  font-weight: 800;
+  font-weight: 850;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: #ffffff;
 }
 
@@ -336,10 +338,15 @@
   flex-wrap: wrap;
 }
 
-.sm-socials-link {
-  font-size: 10px;
-  font-weight: 700;
+.sm-socials-link,
+.sm-menu-contact {
+  font-size: 11px;
+  line-height: 1.5;
   color: #ffffff;
+}
+
+.sm-socials-link {
+  font-weight: 750;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -349,3 +356,4 @@
 .sm-socials-link:hover {
   color: #09285F;
 }
+

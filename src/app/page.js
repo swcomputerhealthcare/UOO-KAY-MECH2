@@ -62,15 +62,15 @@ export default function Home() {
             {/* Left Content */}
             <motion.div 
               className="lg:col-span-7 space-y-8 text-left"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0.01, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <motion.span 
                 className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block hero-established"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                initial={{ opacity: 0.01, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.55 }}
               >
                 [ ESTABLISHED 2004 — THANE, INDIA ]
               </motion.span>
@@ -78,25 +78,25 @@ export default function Home() {
               <div className="space-y-4">
                 <motion.span 
                   className="text-xs sm:text-sm font-bold text-[#EC6713] tracking-wider uppercase block hero-company-label"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0.01, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
+                  transition={{ delay: 0.2, duration: 0.55 }}
                 >
                   UK MECH
                 </motion.span>
                 <motion.h1 
                   className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#09285F]"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0.01, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
+                  transition={{ delay: 0.3, duration: 0.55 }}
                 >
                   Precision Machining & Industrial Engineering Solutions
                 </motion.h1>
                 <motion.p 
                   className="text-sm sm:text-base font-bold text-[#5E6673] uppercase tracking-wide hero-sub"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0.01, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
+                  transition={{ delay: 0.4, duration: 0.55 }}
                 >
                   Serving Industrial Clients Since 2004
                 </motion.p>
@@ -104,9 +104,9 @@ export default function Home() {
 
               <motion.p 
                 className="text-xs sm:text-sm text-[#5E6673] max-w-xl leading-relaxed font-sans font-medium hero-desc"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0.01, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
+                transition={{ delay: 0.5, duration: 0.55 }}
               >
                 Over two decades of expertise manufacturing precision machined components, CNC parts, custom tooling, dies, and assemblies for India&apos;s Tier-1 industrial enterprises.
               </motion.p>
@@ -114,11 +114,11 @@ export default function Home() {
               {/* CTAs */}
               <motion.div 
                 className="flex flex-col sm:flex-row items-center gap-4 pt-2"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0.01, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
+                transition={{ delay: 0.6, duration: 0.55 }}
               >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/contact"
                     className="w-full sm:w-auto bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
@@ -126,7 +126,7 @@ export default function Home() {
                     Request RFQ
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/products"
                     className="w-full sm:w-auto border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
@@ -140,15 +140,15 @@ export default function Home() {
             {/* Right Graphic / Photo */}
             <motion.div 
               className="lg:col-span-5 border border-[#D7DDE5] p-1 bg-white hero-image-wrap"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0.01, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
             >
               <div className="relative w-full h-[320px] sm:h-[400px]">
                 <motion.div
-                  initial={{ scale: 1.1 }}
+                  initial={{ scale: 1.05 }}
                   animate={{ scale: 1 }}
-                  transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
+                  transition={{ delay: 0.5, duration: 1.0, ease: "easeOut" }}
                   className="w-full h-full"
                 >
                   <Image
@@ -164,17 +164,17 @@ export default function Home() {
                 {/* Technical Overlay Badges */}
                 <motion.div 
                   className="absolute bottom-4 left-4 bg-[#09285F] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30"
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0.01, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.5 }}
+                  transition={{ delay: 0.7, duration: 0.5 }}
                 >
                   TOLERANCES: TO ±0.01 mm
                 </motion.div>
                 <motion.div 
                   className="absolute top-4 right-4 bg-white/95 text-[#161616] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5] shadow-sm"
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0.01, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9, duration: 0.5 }}
+                  transition={{ delay: 0.8, duration: 0.5 }}
                 >
                   MATERIALS: SS | MS | AL
                 </motion.div>
@@ -235,19 +235,19 @@ export default function Home() {
       {/* 4. Section 1: CNC Machining */}
       <motion.section 
         className="py-24 bg-white border-b border-[#D7DDE5] step-section"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0.01, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
@@ -262,10 +262,10 @@ export default function Home() {
             </motion.div>
             <motion.div 
               className="lg:col-span-4 space-y-6 step-text-reveal"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={{ opacity: 0.01, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">01 / CNC MACHINING</span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
@@ -275,7 +275,7 @@ export default function Home() {
                 Custom shaft, die, mould, fixture and industrial machining solutions.
               </p>
               <div className="pt-2">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/infrastructure"
                     className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
@@ -292,19 +292,19 @@ export default function Home() {
       {/* 5. Section 2: Technical Drawing & CAD */}
       <motion.section 
         className="py-24 bg-[#F6F7F8] border-b border-[#D7DDE5] step-section"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0.01, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               className="lg:col-span-5 space-y-6 step-text-reveal"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0.01, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">02 / CAD DRAFTING</span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
@@ -314,7 +314,7 @@ export default function Home() {
                 Every component is verified against chemical grades, linear tolerances, and process charts. Submit your 2D drawings or 3D files for rapid feasibility review, assuring correct structural tolerances before tooling setup.
               </p>
               <div className="pt-2">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/contact"
                     className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
@@ -326,10 +326,10 @@ export default function Home() {
             </motion.div>
             <motion.div 
               className="lg:col-span-7 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
@@ -349,19 +349,19 @@ export default function Home() {
       {/* 6. Section 3: Dimensional Inspection */}
       <motion.section 
         className="py-24 bg-white border-b border-[#D7DDE5] step-section"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0.01, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               className="lg:col-span-8 border border-[#D7DDE5] p-1 bg-[#F6F7F8] step-image-wrap rounded-[24px] overflow-hidden"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="relative w-full h-[350px] sm:h-[480px]">
                 <Image
@@ -376,10 +376,10 @@ export default function Home() {
             </motion.div>
             <motion.div 
               className="lg:col-span-4 space-y-6 step-text-reveal"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={{ opacity: 0.01, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">03 / METROLOGY</span>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
@@ -389,7 +389,7 @@ export default function Home() {
                 We perform thread plug testing, bore gauge inspections, and granite plate flatness measurements. Our facility uses Mitutoyo digital height gauges and Baker calibrated instruments to confirm dimensional compliance for heavy machinery components.
               </p>
               <div className="pt-2">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
+                <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/quality"
                     className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
@@ -406,19 +406,19 @@ export default function Home() {
       {/* 7. Section 4: Capabilities */}
       <motion.section 
         className="py-24 bg-[#F6F7F8] border-b border-[#D7DDE5] step-section"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0.01, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               className="lg:col-span-6 space-y-8 step-text-reveal"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0.01, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <div>
                 <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">04 / CAPABILITIES</span>
@@ -434,32 +434,32 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 pt-6 border-t border-[#D7DDE5] font-sans">
                 <motion.div 
                   className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
-                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Precision Parts</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Crane shafts, pinion shafts, gears, expanders, and weep tube cups.</p>
                 </motion.div>
                 <motion.div 
                   className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
-                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Safety Guard Systems</h3>
                   <p className="text-xs text-[#5E6673] mt-1">SS and MS machine covers, safety shields, and frame encasings.</p>
                 </motion.div>
                 <motion.div 
                   className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
-                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Industrial Access</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Heavy-duty industrial ladders and platforms built in MS, SS, and Aluminum.</p>
                 </motion.div>
                 <motion.div 
                   className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
-                  whileHover={{ y: -4, borderColor: "rgba(9, 40, 95, 0.12)" }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Structural Assembly</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Welded structural works, base plates, and fixtures per CAD layout.</p>
@@ -469,10 +469,10 @@ export default function Home() {
             
             <motion.div 
               className="lg:col-span-6 border border-[#D7DDE5] p-1 bg-white step-image-wrap rounded-[24px] overflow-hidden"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0.01, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <div className="relative w-full h-[350px] sm:h-[450px]">
                 <Image
@@ -502,19 +502,19 @@ export default function Home() {
       {/* 9. Testimonials Section */}
       <motion.section 
         className="py-24 bg-white testimonials-section"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0.01, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 
             className="mb-16 border-b border-[#D7DDE5] pb-6 testimonial-reveal-header"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.01, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55 }}
           >
             <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">
               / PARTNER COMPLIANCE FEEDBACK
@@ -529,10 +529,10 @@ export default function Home() {
             {/* Testimonial 1 */}
             <motion.div 
               className="space-y-6 md:border-r md:border-[#D7DDE5] md:pr-8 testimonial-col"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.01, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55, delay: 0.05 }}
             >
               <blockquote className="text-[#161616] text-sm leading-relaxed font-semibold">
                 &ldquo;UK Mech has been our approved supplier for machined shafts and assemblies since 2010. Their compliance with detailed engineering blueprints is impeccable.&rdquo;
@@ -546,10 +546,10 @@ export default function Home() {
             {/* Testimonial 2 */}
             <motion.div 
               className="space-y-6 md:border-r md:border-[#D7DDE5] md:px-8 testimonial-col"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.01, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55, delay: 0.1 }}
             >
               <blockquote className="text-[#161616] text-sm leading-relaxed font-semibold">
                 &ldquo;The quality of sheet metal covers and machine safety guards they manufactured for our automation rigs exceeded our safety audit checklists. On-time delivery.&rdquo;
@@ -563,10 +563,10 @@ export default function Home() {
             {/* Testimonial 3 */}
             <motion.div 
               className="space-y-6 md:pl-8 testimonial-col"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.01, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55, delay: 0.15 }}
             >
               <blockquote className="text-[#161616] text-sm leading-relaxed font-semibold">
                 &ldquo;We have sourced spur gears and custom pinions from UK MECH. The module teeth tolerances are tight, resulting in quiet and smooth power transmission.&rdquo;
