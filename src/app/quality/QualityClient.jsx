@@ -67,7 +67,7 @@ export default function QualityClient() {
     >
 
       {/* 1. Header & Certifications */}
-      <div className="pt-24 pb-8 sm:pt-32 sm:pb-12 relative z-10">
+      <div className="pt-12 pb-6 sm:pt-16 sm:pb-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Page Header */}

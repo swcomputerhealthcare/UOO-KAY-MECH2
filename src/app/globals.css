@@ -27,16 +27,37 @@
   --foreground: #161616;
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main {
+  overflow: visible;
+  min-height: auto;
+}
+
+/* Prevent extra vertical scrollbar container scroll on homepage & about section */
+.flex.flex-col.bg-brand-bg.select-none.overflow-x-hidden,
+.bg-brand-bg.select-none.overflow-x-hidden.aboutSection {
+  overflow-y: hidden !important;
+}
+
+.rfq-buttons-row .connectBtn {
+  width: auto !important;
 }
 
 /* Animations */
@@ -143,16 +164,12 @@ main {
 }
 
 section {
-  scroll-margin-top: 82px;
+  scroll-margin-top: 110px !important;
 }
 
 @media (max-width: 768px) {
-  main {
-    scroll-margin-top: 74px;
-    padding-top: 74px;
-  }
   section {
-    scroll-margin-top: 74px;
+    scroll-margin-top: 92px !important;
   }
 }
 
@@ -510,15 +527,6 @@ section {
   }
 }
 
-/* Double Scrollbar Reset */
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
 main {
   overflow: visible;
 }
@@ -601,4 +609,99 @@ main {
   .footerMap {
     height: 220px;
   }
+}
+
+/* ============================================================
+   Device Width & Containment Fixes
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+/* ============================================================
+   Global Section Padding
+   ============================================================ */
+.section,
+section {
+  padding-top: clamp(64px, 7vw, 96px) !important;
+  padding-bottom: clamp(64px, 7vw, 96px) !important;
+}
+
+@media (max-width: 768px) {
+  .section,
+  section {
+    padding-top: 48px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+/* ============================================================
+   Hero Section Spacing
+   ============================================================ */
+.heroSection {
+  min-height: auto !important;
+  padding-top: clamp(48px, 6vw, 86px) !important;
+  padding-bottom: clamp(64px, 8vw, 110px) !important;
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding-top: 36px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+/* ============================================================
+   Connect With Us CTA Button
+   ============================================================ */
+.connectBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #EC6713;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.connectBtn:hover {
+  background: #d2530c;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .connectBtn {
+    width: 100% !important;
+    height: 46px;
+  }
+}
+
+/* ============================================================
+   Product & Featured Image Fitting
+   ============================================================ */
+.productImageWrap img,
+.featuredImageWrap img {
+  object-fit: contain !important;
+  object-position: center !important;
 }

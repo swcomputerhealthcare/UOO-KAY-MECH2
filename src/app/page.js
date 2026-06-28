@@ -55,7 +55,7 @@ export default function Home() {
       />
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#F6F7F8] pt-32 pb-24 border-b border-[#D7DDE5] overflow-hidden">
+      <section className="heroSection relative bg-[#F6F7F8] border-b border-[#D7DDE5] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -121,9 +121,9 @@ export default function Home() {
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/contact"
-                    className="w-full sm:w-auto bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
+                    className="connectBtn"
                   >
-                    Request RFQ
+                    Connect With Us
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
@@ -151,10 +151,10 @@ export default function Home() {
                 className="w-full h-full relative"
               >
                 <Image
-                  src="/images/products/Custom Engineering Assemblies.webp"
+                  src="/images/hero.jpeg"
                   alt="Precision engineered CNC machining workshop of UK Mech Industries"
                   fill
-                  className="object-cover grayscale opacity-90"
+                  className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   priority
                 />

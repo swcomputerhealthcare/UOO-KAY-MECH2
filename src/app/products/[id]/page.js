@@ -244,10 +244,9 @@ export default async function ProductDetailPage({ params }) {
             <div className="pt-4">
               <Link
                 href={`/contact?enquiry=${encodeURIComponent(`Request for Quote: ${product.name}`)}`}
-                className="inline-flex items-center gap-3 bg-[#EC6713] hover:bg-[#c57529] text-white font-heading font-bold px-8 py-4.5 text-xs uppercase tracking-wider shadow-sm transition-all transform hover:-translate-y-0.5"
+                className="connectBtn"
               >
-                Request RFQ for {product.name}
-                <Send className="h-3.5 w-3.5" />
+                Connect With Us
               </Link>
             </div>
           </div>

@@ -43,7 +43,7 @@ export default function AboutClient() {
       
       {/* Page Header */}
       <motion.div 
-        className="pt-24 pb-8 sm:pt-32 sm:pb-12"
+        className="pt-12 pb-6 sm:pt-16 sm:pb-8"
         initial={{ opacity: 0.01, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}

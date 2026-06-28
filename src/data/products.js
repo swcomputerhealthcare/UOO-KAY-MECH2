@@ -52,11 +52,11 @@ export const PRODUCTS = [
   },
   {
     id: "water-tank-cover",
-    name: "Water Tank Cover",
+    name: "Flanges for Control Valve",
     category: "Fabrication",
     image: "/images/products/water-tank-cover.webp",
     fit: "contain",
-    desc: "Precision fabricated corrosion-resistant water tank cover assembly for industrial liquid containment.",
+    desc: "Precision fabricated corrosion-resistant flanges designed for industrial control valve configurations.",
     specs: {
       tolerances: "±0.5 mm",
       materials: "Stainless Steel (SS304 / SS316)",
@@ -67,28 +67,12 @@ export const PRODUCTS = [
     }
   },
   {
-    id: "display-unit",
-    name: "Display Unit",
-    category: "Custom Components",
-    image: "/images/products/display-unit.webp",
-    fit: "contain",
-    desc: "Custom engineered display frames and panel structures built for industrial mockups and exhibitions.",
-    specs: {
-      tolerances: "±1.0 mm",
-      materials: "Mild Steel, Powder Coated",
-      operations: "Laser cutting, sheet metal folding, powder coating",
-      hardness: "Textured Powder Coating (Rust Protection)",
-      applications: "Control desks, display stands, server consoles",
-      industries: "Retail Displays, Exhibitions, Control Rooms"
-    }
-  },
-  {
     id: "cabinet",
-    name: "Cabinet",
+    name: "Heavy Duty Racking System",
     category: "Fabrication",
     image: "/images/products/cabinet.webp",
     fit: "contain",
-    desc: "Heavy-duty industrial cabinet enclosure for electrical assemblies, automation hardware, and storage systems.",
+    desc: "Heavy-duty racking structures built for industrial assemblies, warehouse storage, and raw material support.",
     specs: {
       tolerances: "±0.5 mm",
       materials: "Cold Rolled Steel, Powder Coated",
@@ -181,7 +165,7 @@ export const PRODUCTS = [
   },
   {
     id: "threaded-shafts",
-    name: "Threaded Shafts",
+    name: "Hydro Testing Probe",
     category: "Shafts",
     image: "/images/products/threaded-shaft.webp",
     fit: "contain",
@@ -198,11 +182,11 @@ export const PRODUCTS = [
   },
   {
     id: "stainless-steel-work-table",
-    name: "Stainless Steel Work Table",
+    name: "Trolley",
     category: "Fabrication",
     image: "/images/products/stainless-steel-work-table.webp",
     fit: "contain",
-    desc: "Heavy-duty stainless steel work table with lower storage shelves and rigid support structures for assembly lines.",
+    desc: "Heavy-duty stainless steel mobile trolley with custom supports for dynamic shop floor logistics.",
     specs: {
       tolerances: "±0.5 mm",
       materials: "SS304 / SS316",
@@ -214,11 +198,11 @@ export const PRODUCTS = [
   },
   {
     id: "structural-support-cage",
-    name: "Structural Support Cage",
+    name: "Water Tank Guard",
     category: "Fabrication",
     image: "/images/products/structural-support-cage.webp",
     fit: "contain",
-    desc: "Welded steel safety framing and reinforcement cages designed to encase and protect massive storage tanks.",
+    desc: "Welded carbon steel guard framing designed to surround and protect industrial water tanks.",
     specs: {
       tolerances: "±1.0 mm",
       materials: "Structural Mild Steel, Epoxy Primer",
@@ -406,54 +390,6 @@ export const PRODUCTS = [
     }
   },
   {
-    id: "flange-punch-dies",
-    name: "Flange Punch Dies",
-    category: "Tooling",
-    image: "/images/products/Flange Punch Dies.webp",
-    fit: "contain",
-    desc: "Hardened metal punch dies engineered for blanking bolt holes in heavy pipeline flanges.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "WPS / D3 Tool Steel",
-      operations: "Lathe machining, CNC drilling, heat treatment, profile grinding",
-      hardness: "56-60 HRC",
-      applications: "Flange hole pressing, sheet metal blanking toolsets",
-      industries: "Tool Rooms, Piping Fabricators, Press Shops"
-    }
-  },
-  {
-    id: "heavy-duty-flange-punch-die-set",
-    name: "Heavy Duty Flange Punch Die Set",
-    category: "Tooling",
-    image: "/images/products/Heavy Duty Flange Punch Die Set.webp",
-    fit: "contain",
-    desc: "Punch and die sets for industrial stamping of circular flange plates.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "HCHCr D2 Tool Steel",
-      operations: "VMC profiling, cylindrical grinding, vacuum hardening",
-      hardness: "60-62 HRC",
-      applications: "Heavy sheet pressing, circular slug punching, flange manufacturing",
-      industries: "Press Components, Steel Stamping, Tool Rooms"
-    }
-  },
-  {
-    id: "industrial-fixtures",
-    name: "Industrial Fixtures",
-    category: "Tooling",
-    image: "/images/products/Industrial Fixtures.webp",
-    fit: "contain",
-    desc: "Heavy holding jigs and assembly fixtures to lock plates during high-tolerance welding.",
-    specs: {
-      tolerances: "±0.1 mm",
-      materials: "Structural Mild Steel, Hardened Pins",
-      operations: "Milling, precision drilling, locating pin installation",
-      hardness: "Rust Preventive Oil Finish",
-      applications: "Welding jigs, mechanical inspection fixtures, machining clamps",
-      industries: "Automotive Welding, Heavy Engineering, Quality Rooms"
-    }
-  },
-  {
     id: "industrial-support-frames",
     name: "Industrial Support Frames",
     category: "Fabrication",
@@ -487,11 +423,11 @@ export const PRODUCTS = [
   },
   {
     id: "machined-rings",
-    name: "Machined Rings",
+    name: "Seal Plates",
     category: "Precision Parts",
     image: "/images/products/Machined Rings.webp",
     fit: "contain",
-    desc: "Concentric steel spacer rings and washers ground to parallel flatness.",
+    desc: "Precision concentric steel spacer plates and seals ground to parallel flatness.",
     specs: {
       tolerances: "±0.005 mm (5 microns)",
       materials: "SAE 1020 / EN8 Carbon Steel",
@@ -547,22 +483,6 @@ export const PRODUCTS = [
       hardness: "58-60 HRC",
       applications: "Stamping tools, electrical terminal punches, thin foil shear dies",
       industries: "Press Tools, Electronic Connectors, Tool Rooms"
-    }
-  },
-  {
-    id: "precision-turned-venturi-component",
-    name: "Precision Turned Venturi Component",
-    category: "Precision Parts",
-    image: "/images/products/Precision Turned Venturi Component.webp",
-    fit: "contain",
-    desc: "High-tolerance brass venturi nozzles machined for uniform flow distribution.",
-    specs: {
-      tolerances: "±0.01 mm",
-      materials: "Lead-Free Brass C360",
-      operations: "CNC turning, deep hole drilling, internal taper profiling",
-      hardness: "Natural Brass Finish",
-      applications: "Flow nozzles, sandblasting venturis, injection ejectors",
-      industries: "Fluid Engineering, Agrochemicals, Machining"
     }
   },
   {
@@ -632,11 +552,11 @@ export const PRODUCTS = [
   },
   {
     id: "threaded-tooling-fixture",
-    name: "Threaded Tooling Fixture",
+    name: "Weep Tube for Air Testing",
     category: "Tooling",
     image: "/images/products/Threaded Tooling Fixture.webp",
     fit: "contain",
-    desc: "Locating and clamping block fixture with internal thread inserts.",
+    desc: "Precision locating weep tube block and fixture designed for air flow validation.",
     specs: {
       tolerances: "±0.01 mm",
       materials: "High-Tensile Steel",
@@ -648,11 +568,11 @@ export const PRODUCTS = [
   },
   {
     id: "weep-tube-cup-punch-set",
-    name: "Weep Tube Cup Punch Set",
+    name: "Bus Bar Dies & Punches",
     category: "Tooling",
     image: "/images/products/Weep Tube Cup Punch Set.webp",
     fit: "contain",
-    desc: "Punch set tooling configured to stamp and draw metal weep cups for HVAC drainage.",
+    desc: "Hardened steel press punches and dies engineered to form custom electrical bus bars.",
     specs: {
       tolerances: "±0.005 mm (5 microns)",
       materials: "D3 / WPS Tool Steel",

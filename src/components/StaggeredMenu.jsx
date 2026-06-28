@@ -133,6 +133,24 @@ export const StaggeredMenu = ({
     };
   }, [open]);
 
+  // Close menu and clean up scroll locks when route path changes
+  useEffect(() => {
+    setOpen(false);
+    onMenuClose?.();
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+    document.body.classList.remove("menu-open", "scroll-locked");
+  }, [currentPath, onMenuClose]);
+
+  // Clean up on component unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.classList.remove("menu-open", "scroll-locked");
+    };
+  }, []);
+
   return (
     <div
       className={`staggered-menu-wrapper ${className || ''}`}

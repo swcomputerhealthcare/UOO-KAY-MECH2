@@ -84,7 +84,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "UK Mech Industries",
-  "image": "https://uookaymechindustries.com/images/products/highly-precision-1.jpeg",
+  "image": "https://uookaymechindustries.com/images/products/cnc-machined-components.webp",
   "@id": "https://uookaymechindustries.com/#localbusiness",
   "url": "https://uookaymechindustries.com",
   "telephone": ["+91 99878 49605", "+91 98330 53809"],
@@ -139,6 +139,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${inter.variable} ${manrope.variable} ${ibmPlexMono.variable} antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-screen flex flex-col bg-brand-bg text-text-primary">
         <script

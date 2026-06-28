@@ -309,7 +309,7 @@ export default function InfrastructureClient() {
 
   return (
     <motion.div 
-      className="bg-brand-bg text-[#161616] pt-24 pb-8 sm:pt-32 sm:pb-12 relative overflow-hidden select-none"
+      className="bg-brand-bg text-[#161616] pt-12 pb-6 sm:pt-16 sm:pb-8 relative overflow-x-hidden select-none"
       initial={{ opacity: 0.01, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
