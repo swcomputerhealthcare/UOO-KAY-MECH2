@@ -127,7 +127,7 @@ export default function ClientsClient() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ SUPPLIER AUDIT ]
           </span>
-          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#09285F] uppercase tracking-wide cli-header-item">
+          <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#09285F] uppercase tracking-wide cli-header-item">
             Industrial Clients
           </h1>
         </motion.div>

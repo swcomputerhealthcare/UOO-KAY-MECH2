@@ -940,7 +940,7 @@ export default function ProductsClient() {
           </span>
         </div>
 
-        <h1 className="sectionTitle font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-[#09285F] uppercase tracking-tight mb-4">
+        <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#09285F] uppercase tracking-tight mb-4">
           Our Products
         </h1>
         <div className="w-20 h-1 bg-[#EC6713] mb-6" />
