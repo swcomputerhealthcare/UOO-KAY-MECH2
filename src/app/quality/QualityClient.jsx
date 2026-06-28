@@ -80,7 +80,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ TECHNICAL STANDARDS ]
             </span>
-            <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide">
+            <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#09285F] uppercase tracking-wide">
               Quality Assurance
             </h1>
           </motion.div>
@@ -96,7 +96,7 @@ export default function QualityClient() {
               [ COMPLIANCE REGISTRY ]
             </motion.span>
             <motion.h2 
-              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
+              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#09285F] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
               initial={{ opacity: 0.01, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.15 }}
@@ -124,7 +124,7 @@ export default function QualityClient() {
                     <div className="text-slate-700">
                       {cert.icon}
                     </div>
-                    <h3 className="font-heading font-bold text-[#161616] text-lg uppercase tracking-wide">
+                    <h3 className="font-heading font-bold text-[#09285F] text-lg uppercase tracking-wide">
                       {cert.title}
                     </h3>
                     <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
@@ -157,7 +157,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#161616] uppercase tracking-wide leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#09285F] uppercase tracking-wide leading-tight">
               Our 4-Stage Quality Process
             </h2>
           </motion.div>
@@ -184,7 +184,7 @@ export default function QualityClient() {
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-lg font-bold text-[#161616] uppercase tracking-wide">
+                  <h3 className="font-heading text-lg font-bold text-[#09285F] uppercase tracking-wide">
                     {p.title}
                   </h3>
                   <p className="text-xs text-[#5E6673] leading-relaxed font-medium">

@@ -127,7 +127,7 @@ export default function ClientsClient() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ SUPPLIER AUDIT ]
           </span>
-          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#161616] uppercase tracking-wide cli-header-item">
+          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold text-[#09285F] uppercase tracking-wide cli-header-item">
             Industrial Clients
           </h1>
         </motion.div>
@@ -155,7 +155,7 @@ export default function ClientsClient() {
         {/* 2. Client Logo Grid (Flat Outline layout) */}
         <div className="mb-24">
           <motion.h3 
-            className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide mb-10 border-b border-[#D7DDE5] pb-3"
+            className="font-heading text-xl font-bold text-[#09285F] uppercase tracking-wide mb-10 border-b border-[#D7DDE5] pb-3"
             initial={{ opacity: 0.01, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -188,7 +188,7 @@ export default function ClientsClient() {
         {/* 3. Detailed Client Directory (Flat Directory List) */}
         <div className="space-y-8">
           <motion.h3 
-            className="font-heading text-xl font-bold text-[#161616] uppercase tracking-wide border-b border-[#D7DDE5] pb-3"
+            className="font-heading text-xl font-bold text-[#09285F] uppercase tracking-wide border-b border-[#D7DDE5] pb-3"
             initial={{ opacity: 0.01, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -208,7 +208,7 @@ export default function ClientsClient() {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
               >
                 <div>
-                  <h4 className="font-heading font-bold text-[#161616] text-lg uppercase tracking-wide mb-2">
+                  <h4 className="font-heading font-bold text-[#09285F] text-lg uppercase tracking-wide mb-2">
                     {c.name}
                   </h4>
                   <p className="text-[#5E6673] text-xs font-semibold mb-4">

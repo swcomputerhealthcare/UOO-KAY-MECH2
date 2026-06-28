@@ -327,7 +327,7 @@ export default function InfrastructureClient() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
             [ FACILITY INDEX ]
           </span>
-          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wide">
+          <h1 className="sectionTitle font-heading text-5xl sm:text-6xl font-bold uppercase tracking-wide text-[#09285F]">
             Infrastructure
           </h1>
         </motion.div>
@@ -452,7 +452,7 @@ export default function InfrastructureClient() {
                     </span>
                   )}
                 </div>
-                <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold uppercase text-[#161616] leading-tight">
+                <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold uppercase text-[#09285F] leading-tight">
                   {activeAsset.name}
                 </h2>
               </div>
