@@ -8,6 +8,20 @@ export default function InfrastructureClient() {
   const [activeTab, setActiveTab] = useState("machines");
   const [selectedAssetIdx, setSelectedAssetIdx] = useState(0);
 
+  const handleSelectAsset = (idx) => {
+    setSelectedAssetIdx(idx);
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      setTimeout(() => {
+        const detailBlock = document.querySelector(".console-detail-block");
+        if (detailBlock) {
+          const yOffset = -100;
+          const y = detailBlock.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 50);
+    }
+  };
+
   const machines = [
     { 
       name: "ACE Micromatic AMS MCV450", 
@@ -380,17 +394,17 @@ export default function InfrastructureClient() {
         {/* Main Content Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start infra-content-item">
           
-          {/* Left Panel: Scrollable Technical Row Listing */}
+          {/* Left Panel: Technical Row Listing */}
           <motion.div 
             layout 
-            className="lg:col-span-5 space-y-2 max-h-[70vh] overflow-y-auto pr-4 no-scrollbar border-r border-[#D7DDE5] font-sans"
+            className="lg:col-span-5 space-y-2 lg:max-h-[70vh] lg:overflow-y-auto pr-4 lg:border-r border-[#D7DDE5] font-sans custom-scrollbar"
           >
             <AnimatePresence mode="popLayout">
               {activeCollection.map((asset, idx) => (
                 <motion.div
                   layout
                   key={`${activeTab}-${idx}`}
-                  onClick={() => setSelectedAssetIdx(idx)}
+                  onClick={() => handleSelectAsset(idx)}
                   className={`asset-card-item p-4 cursor-pointer border transition-all duration-200 ${
                     selectedAssetIdx === idx
                       ? "bg-[#161616] border-[#161616] text-[#F6F7F8]"

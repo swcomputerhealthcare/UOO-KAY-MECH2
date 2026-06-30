@@ -15,7 +15,7 @@
    ============================================================ */
 .staggered-menu-header {
   position: relative;
-  height: 84px;
+  height: 88px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -26,13 +26,13 @@
 
 @media (max-width: 1024px) {
   .staggered-menu-header {
-    height: 72px;
+    height: 76px;
   }
 }
 
 @media (max-width: 768px) {
   .staggered-menu-header {
-    height: 60px;
+    height: 64px;
     padding: 0;
   }
 }
@@ -62,7 +62,7 @@
 
 .logoImg {
   position: relative;
-  width: 76px; height: 76px;
+  width: 80px; height: 80px;
   flex-shrink: 0;
 }
 
@@ -108,7 +108,7 @@
     gap: 12px;
   }
   .logoImg {
-    width: 64px; height: 64px;
+    width: 68px; height: 68px;
   }
 
   .logo-text {
@@ -141,7 +141,7 @@
     gap: 10px;
   }
   .logoImg {
-    width: 52px; height: 52px;
+    width: 56px; height: 56px;
   }
 
   .logo-text {
@@ -174,16 +174,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 32px;
-  width: 95px;
-  padding: 0 12px;
+  height: 38px; width: 108px; padding: 0 14px;
   border-radius: 999px;
   border: 2px solid #EC6713;
   background: #ffffff;
   color: #14429E;
   font-family: var(--font-heading), sans-serif;
   font-weight: 900;
-  font-size: 8px;
+  font-size: 9.5px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   line-height: 1;
@@ -210,10 +208,7 @@
 
 @media (max-width: 768px) {
   .sm-toggle {
-    height: 28px;
-    width: 80px;
-    padding: 0 8px;
-    font-size: 7.5px;
+    height: 32px; width: 92px; padding: 0 10px; font-size: 8.5px;
   }
 }
 
@@ -223,7 +218,7 @@
   height: 1em;
   overflow: hidden;
   white-space: nowrap;
-  width: 42px;
+  width: 46px;
 }
 
 /* ============================================================
@@ -264,11 +259,11 @@
    ============================================================ */
 .staggered-menu-panel {
   position: fixed;
-  top: 110px;
+  top: 114px;
   right: 0;
   z-index: 9998;
   width: min(380px, 100vw);
-  height: calc(100dvh - 110px);
+  height: calc(100dvh - 114px);
   background: #EC6713;
   color: #ffffff;
   border-left: none;
@@ -289,15 +284,15 @@
 
 @media (max-width: 1024px) {
   .staggered-menu-panel {
-    top: 98px;
-    height: calc(100dvh - 98px);
+    top: 102px;
+    height: calc(100dvh - 102px);
   }
 }
 
 @media (max-width: 768px) {
   .staggered-menu-panel {
-    top: 84px;
-    height: calc(100dvh - 84px);
+    top: 88px;
+    height: calc(100dvh - 88px);
     width: 100vw;
   }
 }
