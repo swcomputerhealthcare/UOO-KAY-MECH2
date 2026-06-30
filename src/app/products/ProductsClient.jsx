@@ -264,21 +264,27 @@ export default function ProductsClient() {
       
       {/* 1. SECTION HEADER */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 text-left">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em]">
-            [ PRODUCT CATALOGUE ]
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#EC6713]" />
-          <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.25em]">
-            UK MECH INDUSTRIES
-          </span>
-        </div>
+        <motion.div 
+          className="border-l-2 border-[#EC6713] pl-6 mb-8"
+          initial={{ opacity: 0.01, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em]">
+              [ PRODUCT CATALOGUE ]
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EC6713]" />
+            <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.25em]">
+              UK MECH INDUSTRIES
+            </span>
+          </div>
 
-        <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14429E] uppercase tracking-tight mb-4">
-          Our Products
-        </h1>
-        <div className="w-20 h-1 bg-[#EC6713] mb-6" />
-        <p className="text-sm sm:text-base text-[#5E6673] leading-relaxed max-w-3xl font-medium">
+          <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14429E] uppercase tracking-tight">
+            Our Products
+          </h1>
+        </motion.div>
+        <p className="text-sm sm:text-base text-[#5E6673] leading-relaxed max-w-3xl font-medium mt-6">
           Precision Engineered Components manufactured with strict quality control and custom specifications for industrial applications.
         </p>
       </div>

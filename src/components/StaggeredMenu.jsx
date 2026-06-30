@@ -157,6 +157,8 @@ export const StaggeredMenu = ({
       data-open={open ? "true" : "false"}
     >
       <header className="staggered-menu-header" aria-label="Main navigation header">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between h-full">
+          
         <Link href="/" className="sm-logo logoWrap select-none" aria-label="Logo" onClick={closeMenu}>
           <div className="logoImg">
             <Image
@@ -186,6 +188,8 @@ export const StaggeredMenu = ({
             <span className="sm-icon-line sm-icon-line-v" />
           </span>
         </button>
+      
+        </div>
       </header>
 
       <AnimatePresence>
