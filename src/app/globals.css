@@ -152,26 +152,26 @@ a, button, input, select, textarea {
 
 /* Scroll margin for anchor links */
 main {
-  scroll-margin-top: 106px;
-  padding-top: 106px;
+  scroll-margin-top: 116px;
+  padding-top: 116px;
 }
 
 @media (max-width: 1024px) {
   main {
-    scroll-margin-top: 94px;
-    padding-top: 94px;
+    scroll-margin-top: 100px;
+    padding-top: 100px;
   }
 }
 
 @media (max-width: 768px) {
   main {
-    scroll-margin-top: 84px;
-    padding-top: 84px;
+    scroll-margin-top: 88px;
+    padding-top: 88px;
   }
 }
 
 section {
-  scroll-margin-top: 140px !important;
+  scroll-margin-top: 150px !important;
 }
 
 @media (max-width: 1024px) {

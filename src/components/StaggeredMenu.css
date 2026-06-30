@@ -15,7 +15,7 @@
    ============================================================ */
 .staggered-menu-header {
   position: relative;
-  height: 80px;
+  height: 90px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -26,13 +26,13 @@
 
 @media (max-width: 1024px) {
   .staggered-menu-header {
-    height: 68px;
+    height: 76px;
   }
 }
 
 @media (max-width: 768px) {
   .staggered-menu-header {
-    height: 60px;
+    height: 64px;
     padding: 0 16px;
   }
 }
@@ -54,7 +54,7 @@
 .logoWrap {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   height: 100%;
   transform: scale(1.0);
   transform-origin: left center;
@@ -62,8 +62,8 @@
 
 .logoImg {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 72px;
+  height: 72px;
   flex-shrink: 0;
 }
 
@@ -73,14 +73,14 @@
   justify-content: center;
   text-align: left;
   border-bottom: 4px solid #EC6713;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .logoTextTop {
   font-family: var(--font-heading), sans-serif;
   color: #14429E;
   font-weight: 850;
-  font-size: 24px;
+  font-size: 23px;
   line-height: 1;
   letter-spacing: 0.05em;
   word-spacing: 1px;
@@ -91,9 +91,9 @@
   font-family: var(--font-heading), sans-serif;
   color: #14429E;
   font-weight: 850;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1;
-  margin-top: 6px;
+  margin-top: 4px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -106,27 +106,27 @@
   }
   .logoWrap {
     transform: scale(1.0);
-    gap: 10px;
+    gap: 12px;
   }
   .logoImg {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   .logo-text {
     border-bottom-width: 3px;
-    padding-bottom: 6px;
+    padding-bottom: 5px;
   }
 
   .logoTextTop {
-    font-size: 20px;
+    font-size: 19px;
     margin-bottom: 0;
     letter-spacing: 0.05em;
     word-spacing: 0.8px;
   }
   .logoTextBottom {
-    font-size: 11px;
-    margin-top: 5px;
+    font-size: 10.5px;
+    margin-top: 3px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -140,11 +140,11 @@
   }
   .logoWrap {
     transform: scale(1.0);
-    gap: 8px;
+    gap: 10px;
   }
   .logoImg {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
   }
 
   .logo-text {
@@ -153,14 +153,14 @@
   }
 
   .logoTextTop {
-    font-size: 17.5px;
+    font-size: 15.5px;
     margin-bottom: 0;
     letter-spacing: 0.05em;
     word-spacing: 0.6px;
   }
   .logoTextBottom {
-    font-size: 9.5px;
-    margin-top: 4px;
+    font-size: 8.5px;
+    margin-top: 3px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -267,11 +267,11 @@
    ============================================================ */
 .staggered-menu-panel {
   position: fixed;
-  top: 106px;
+  top: 116px;
   right: 0;
   z-index: 9998;
   width: min(380px, 100vw);
-  height: calc(100dvh - 106px);
+  height: calc(100dvh - 116px);
   background: #EC6713;
   color: #ffffff;
   border-left: none;
@@ -292,15 +292,15 @@
 
 @media (max-width: 1024px) {
   .staggered-menu-panel {
-    top: 94px;
-    height: calc(100dvh - 94px);
+    top: 100px;
+    height: calc(100dvh - 100px);
   }
 }
 
 @media (max-width: 768px) {
   .staggered-menu-panel {
-    top: 84px;
-    height: calc(100dvh - 84px);
+    top: 88px;
+    height: calc(100dvh - 88px);
     width: 100vw;
   }
 }
