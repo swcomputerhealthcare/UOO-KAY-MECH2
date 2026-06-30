@@ -172,11 +172,11 @@ export const StaggeredMenu = ({
               UOO KAY MECH
             </span>
             <span className="logoTextBottom">
-              INDUSTRIES
+              <span>I</span><span>N</span><span>D</span><span>U</span><span>S</span><span>T</span><span>R</span><span>I</span><span>E</span><span>S</span>
             </span>
           </div>
         </Link>
-        
+
         <button
           ref={toggleBtnRef}
           className="sm-toggle"
@@ -209,8 +209,8 @@ export const StaggeredMenu = ({
             variants={menuPanel}
           >
             <div className="sm-panel-inner">
-              <motion.ul 
-                className="sm-panel-list" 
+              <motion.ul
+                className="sm-panel-list"
                 role="list"
                 initial="closed"
                 animate="open"
@@ -218,15 +218,15 @@ export const StaggeredMenu = ({
               >
                 {items && items.length ? (
                   items.map((it, idx) => (
-                    <motion.li 
-                      className="sm-panel-itemWrap" 
+                    <motion.li
+                      className="sm-panel-itemWrap"
                       key={it.label + idx}
                       variants={menuItem}
                     >
-                      <Link 
-                        className="sm-panel-item" 
-                        href={it.link} 
-                        aria-label={it.ariaLabel} 
+                      <Link
+                        className="sm-panel-item"
+                        href={it.link}
+                        aria-label={it.ariaLabel}
                         data-index={String(idx + 1).padStart(2, "0")}
                         onClick={handleMenuItemClick}
                       >
@@ -242,10 +242,10 @@ export const StaggeredMenu = ({
                   </li>
                 )}
               </motion.ul>
-              
+
               {displaySocials && socialItems && socialItems.length > 0 && (
-                <motion.div 
-                  className="sm-socials" 
+                <motion.div
+                  className="sm-socials"
                   aria-label="Contact Links"
                   initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

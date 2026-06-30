@@ -56,8 +56,8 @@
 
 .logoImg {
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
 }
 
@@ -66,27 +66,32 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  border-bottom: 3.5px solid #EC6713;
+  padding-bottom: 6px;
 }
 
 .logoTextTop {
   font-family: var(--font-heading), sans-serif;
   color: #09285F;
-  font-weight: 800;
-  font-size: 14.5px;
+  font-weight: 850;
+  font-size: 19.5px;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  word-spacing: 1px;
   white-space: nowrap;
 }
 
 .logoTextBottom {
   font-family: var(--font-heading), sans-serif;
-  color: #EC6713;
-  font-weight: 800;
-  font-size: 8.2px;
+  color: #09285F;
+  font-weight: 850;
+  font-size: 10.5px;
   line-height: 1;
-  letter-spacing: 0.72em;
-  margin-top: 4.5px;
-  white-space: nowrap;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2px;
 }
 
 @media (max-width: 1024px) {
@@ -98,18 +103,28 @@
     gap: 8px;
   }
   .logoImg {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .logo-text {
+    border-bottom-width: 2.5px;
+    padding-bottom: 4px;
   }
 
   .logoTextTop {
-    font-size: 11px;
+    font-size: 15px;
     margin-bottom: 0;
+    letter-spacing: 0.05em;
+    word-spacing: 0.8px;
   }
   .logoTextBottom {
-    font-size: 6.2px;
-    margin-top: 3.5px;
-    letter-spacing: 0.7em;
+    font-size: 8.5px;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1.5px;
   }
 }
 
@@ -122,18 +137,28 @@
     gap: 6px;
   }
   .logoImg {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .logo-text {
+    border-bottom-width: 2px;
+    padding-bottom: 3px;
   }
 
   .logoTextTop {
-    font-size: 10px;
+    font-size: 13.5px;
     margin-bottom: 0;
+    letter-spacing: 0.05em;
+    word-spacing: 0.6px;
   }
   .logoTextBottom {
-    font-size: 5.5px;
-    margin-top: 3px;
-    letter-spacing: 0.68em;
+    font-size: 7.8px;
+    margin-top: 3.5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1px;
   }
 }
 

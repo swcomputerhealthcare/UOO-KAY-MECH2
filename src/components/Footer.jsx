@@ -27,7 +27,7 @@ export default function Footer() {
                   UOO KAY MECH
                 </span>
                 <span className="logoTextBottom">
-                  INDUSTRIES
+                  <span>I</span><span>N</span><span>D</span><span>U</span><span>S</span><span>T</span><span>R</span><span>I</span><span>E</span><span>S</span>
                 </span>
               </div>
             </Link>
