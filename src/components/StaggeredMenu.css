@@ -15,7 +15,7 @@
    ============================================================ */
 .staggered-menu-header {
   position: relative;
-  height: 90px;
+  height: 80px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -26,13 +26,13 @@
 
 @media (max-width: 1024px) {
   .staggered-menu-header {
-    height: 76px;
+    height: 68px;
   }
 }
 
 @media (max-width: 768px) {
   .staggered-menu-header {
-    height: 64px;
+    height: 56px;
     padding: 0 16px;
   }
 }
@@ -62,8 +62,7 @@
 
 .logoImg {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 72px; height: 72px;
   flex-shrink: 0;
 }
 
@@ -109,8 +108,7 @@
     gap: 12px;
   }
   .logoImg {
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
   }
 
   .logo-text {
@@ -143,8 +141,7 @@
     gap: 10px;
   }
   .logoImg {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
   }
 
   .logo-text {
@@ -267,11 +264,11 @@
    ============================================================ */
 .staggered-menu-panel {
   position: fixed;
-  top: 116px;
+  top: 106px;
   right: 0;
   z-index: 9998;
   width: min(380px, 100vw);
-  height: calc(100dvh - 116px);
+  height: calc(100dvh - 106px);
   background: #EC6713;
   color: #ffffff;
   border-left: none;
@@ -292,15 +289,15 @@
 
 @media (max-width: 1024px) {
   .staggered-menu-panel {
-    top: 100px;
-    height: calc(100dvh - 100px);
+    top: 94px;
+    height: calc(100dvh - 94px);
   }
 }
 
 @media (max-width: 768px) {
   .staggered-menu-panel {
-    top: 88px;
-    height: calc(100dvh - 88px);
+    top: 80px;
+    height: calc(100dvh - 80px);
     width: 100vw;
   }
 }

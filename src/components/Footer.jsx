@@ -12,27 +12,19 @@ export default function Footer() {
           
           {/* Column 1: Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="sm-logo logoWrap select-none" aria-label="Logo">
-              <div className="logoImg">
+            <Link href="/" className="select-none block" style={{ marginLeft: "-10px" }} aria-label="Logo">
+              <div className="relative w-[64px] h-[64px] flex-shrink-0">
                 <Image
-                  src="/uk-mech-logo-v3.png"
+                  src="/uk-mech-v3.png"
                   alt="UK MECH Logo"
                   fill
                   className="object-contain"
                   loading="lazy"
                 />
               </div>
-              <div className="logo-text">
-                <span className="logoTextTop">
-                  UOO KAY MECH
-                </span>
-                <span className="logoTextBottom">
-                  <span>I</span><span>N</span><span>D</span><span>U</span><span>S</span><span>T</span><span>R</span><span>I</span><span>E</span><span>S</span>
-                </span>
-              </div>
             </Link>
             
-            <p className="text-[#5E6673] text-xs leading-relaxed max-w-sm font-medium mt-4">
+            <p className="text-[#5E6673] text-xs leading-relaxed max-w-sm font-medium mt-2">
               Precision machining and engineering solutions serving Tier-1 industrial enterprises across India since 2004.
             </p>
             

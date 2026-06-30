@@ -42,12 +42,12 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/uk-mech-logo-v3.png", sizes: "any" },
-      { url: "/uk-mech-logo-v3.png", sizes: "32x32", type: "image/png" },
-      { url: "/uk-mech-logo-v3.png", sizes: "16x16", type: "image/png" },
+      { url: "/uk-mech-v3.png", sizes: "any" },
+      { url: "/uk-mech-v3.png", sizes: "32x32", type: "image/png" },
+      { url: "/uk-mech-v3.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [
-      { url: "/uk-mech-logo-v3.png", sizes: "180x180", type: "image/png" },
+      { url: "/uk-mech-v3.png", sizes: "180x180", type: "image/png" },
     ],
   },
   openGraph: {
@@ -57,7 +57,7 @@ export const metadata = {
     siteName: "UK MECH Industries",
     images: [
       {
-        url: "/uk-mech-logo-v3.png",
+        url: "/uk-mech-v3.png",
         width: 1200,
         height: 630,
         alt: "UK MECH Industries Precision Machined Components",
@@ -70,7 +70,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Precision CNC Machining Company in India | UK MECH Industries",
     description: "UK MECH Industries is a trusted CNC machining and precision engineering company based in Thane, Maharashtra. Manufacturing custom machined components, hinges, shafts, tooling, fabricated assemblies and industrial solutions since 2004.",
-    images: ["/uk-mech-logo-v3.png"],
+    images: ["/uk-mech-v3.png"],
   },
 };
 

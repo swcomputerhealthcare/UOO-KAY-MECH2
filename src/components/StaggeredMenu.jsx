@@ -160,20 +160,12 @@ export const StaggeredMenu = ({
         <Link href="/" className="sm-logo logoWrap select-none" aria-label="Logo" onClick={closeMenu}>
           <div className="logoImg">
             <Image
-              src="/uk-mech-logo-v3.png"
+              src="/uk-mech-v3.png"
               alt="UK MECH Industries Logo"
               fill
               className="object-contain"
               priority
             />
-          </div>
-          <div className="logo-text">
-            <span className="logoTextTop">
-              UOO KAY MECH
-            </span>
-            <span className="logoTextBottom">
-              <span>I</span><span>N</span><span>D</span><span>U</span><span>S</span><span>T</span><span>R</span><span>I</span><span>E</span><span>S</span>
-            </span>
           </div>
         </Link>
 

@@ -9,7 +9,7 @@ export default function manifest() {
     theme_color: "#14429E",
     icons: [
       {
-        src: "/uk-mech-logo-v3.png",
+        src: "/uk-mech-v3.png",
         sizes: "any",
         type: "image/png",
       },
