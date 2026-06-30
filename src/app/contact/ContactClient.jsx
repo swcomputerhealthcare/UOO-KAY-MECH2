@@ -53,7 +53,7 @@ export default function ContactClient() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] tracking-[0.25em] uppercase block mb-1">
             [ RFQ & ENQUIRIES ]
           </span>
-          <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#09285F] uppercase tracking-wide con-header-item">
+          <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14429E] uppercase tracking-wide con-header-item">
             Contact Us
           </h1>
         </motion.div>
@@ -68,7 +68,7 @@ export default function ContactClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
             >
-              <h2 className="font-heading text-2xl font-bold text-[#09285F] uppercase tracking-wide">
+              <h2 className="font-heading text-2xl font-bold text-[#14429E] uppercase tracking-wide">
                 Get In Touch
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -89,7 +89,7 @@ export default function ContactClient() {
                 <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-wider uppercase block">
                   {"// Domestic Operations"}
                 </span>
-                <h3 className="font-heading font-bold text-base text-[#09285F] uppercase">
+                <h3 className="font-heading font-bold text-base text-[#14429E] uppercase">
                   India Contact
                 </h3>
                 <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
@@ -108,7 +108,7 @@ export default function ContactClient() {
                 <div className="flex flex-wrap gap-2 pt-2">
                   <motion.a
                     href="tel:+919987849605"
-                    className="inline-flex items-center gap-1.5 bg-[#09285F] hover:bg-[#0b3070] text-white font-heading font-bold text-[10px] uppercase tracking-wider py-2 px-4 transition-colors duration-200 premium-btn-hover"
+                    className="inline-flex items-center gap-1.5 bg-[#14429E] hover:bg-[#103682] text-white font-heading font-bold text-[10px] uppercase tracking-wider py-2 px-4 transition-colors duration-200 premium-btn-hover"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -137,14 +137,14 @@ export default function ContactClient() {
                 <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-wider uppercase block">
                   {"// Overseas Desk"}
                 </span>
-                <h3 className="font-heading font-bold text-base text-[#09285F] uppercase">
+                <h3 className="font-heading font-bold text-base text-[#14429E] uppercase">
                   International Business
                 </h3>
                 <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
                   Dedicated desk managing custom machining solutions, linear compliance audits, export documentation, and logistics support for overseas clients.
                 </p>
                 <div className="space-y-1">
-                  <h4 className="font-heading font-bold text-[10px] uppercase text-[#09285F]">
+                  <h4 className="font-heading font-bold text-[10px] uppercase text-[#14429E]">
                     Global Enquiries:
                   </h4>
                   <a
@@ -167,7 +167,7 @@ export default function ContactClient() {
             >
               <Clock className="h-4 w-4 text-[#EC6713] shrink-0" strokeWidth={1.5} />
               <div>
-                <span className="font-heading font-bold text-[#09285F] uppercase text-[10px] block mb-1">Business Operations</span>
+                <span className="font-heading font-bold text-[#14429E] uppercase text-[10px] block mb-1">Business Operations</span>
                 Monday – Saturday: 9:00 AM – 6:00 PM (IST) <br />
                 Sunday: Closed
               </div>
@@ -185,7 +185,7 @@ export default function ContactClient() {
           >
             <Suspense
               fallback={
-                <div className="border-t-2 border-[#09285F] pt-6 min-h-[300px] flex items-center justify-center font-sans">
+                <div className="border-t-2 border-[#14429E] pt-6 min-h-[300px] flex items-center justify-center font-sans">
                   <span className="text-xs font-bold text-[#5E6673]">Loading Enquiry Form...</span>
                 </div>
               }
@@ -199,14 +199,14 @@ export default function ContactClient() {
         {/* Full-width Map Section */}
         <div className="mt-24 con-map-section">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#D7DDE5] pb-3 mb-6">
-            <h2 className="font-heading text-xl font-bold text-[#09285F] uppercase tracking-wide">
+            <h2 className="font-heading text-xl font-bold text-[#14429E] uppercase tracking-wide">
               Workshop Location
             </h2>
             <motion.a
               href="https://maps.google.com/maps?q=19.22867202758789%2C72.98545837402344&z=17&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold text-[10px] uppercase tracking-wider py-1.5 px-4 transition-all duration-200 premium-btn-hover"
+              className="inline-flex items-center gap-1.5 border border-[#14429E] text-[#14429E] hover:bg-[#14429E] hover:text-white font-heading font-bold text-[10px] uppercase tracking-wider py-1.5 px-4 transition-all duration-200 premium-btn-hover"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -236,7 +236,7 @@ export default function ContactClient() {
             <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-[0.25em] uppercase block">
               [ FAQ ]
             </span>
-            <h2 className="font-heading text-3xl font-bold text-[#09285F] uppercase tracking-wide">
+            <h2 className="font-heading text-3xl font-bold text-[#14429E] uppercase tracking-wide">
               Manufacturing FAQ
             </h2>
             <p className="text-xs sm:text-sm text-[#5E6673] leading-relaxed font-sans max-w-lg mx-auto font-medium">
@@ -307,7 +307,7 @@ function FAQAccordion() {
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full flex items-center justify-between p-5 text-left font-heading font-bold text-xs sm:text-sm text-[#09285F] uppercase tracking-wide hover:bg-[#F6F7F8] transition-colors"
+                className="w-full flex items-center justify-between p-5 text-left font-heading font-bold text-xs sm:text-sm text-[#14429E] uppercase tracking-wide hover:bg-[#F6F7F8] transition-colors"
                 aria-expanded={isOpen}
               >
                 <span>{item.question}</span>

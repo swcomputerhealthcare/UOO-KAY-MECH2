@@ -122,7 +122,7 @@ function ProductCard({ product, onViewDetails }) {
       whileHover={shouldReduceMotion ? {} : { 
         y: -6,
         scale: 1.015,
-        boxShadow: "0 12px 30px -10px rgba(9, 40, 95, 0.08)",
+        boxShadow: "0 12px 30px -10px rgba(20, 66, 158, 0.08)",
         borderColor: "rgba(236, 103, 19, 0.4)"
       }}
       transition={hoverTransition}
@@ -164,7 +164,7 @@ function ProductCard({ product, onViewDetails }) {
 
         {/* Product Title */}
         <motion.h3 
-          className="font-heading font-bold text-sm sm:text-base text-[#09285F] uppercase tracking-wide md:line-clamp-1 line-clamp-none leading-snug productTitle"
+          className="font-heading font-bold text-sm sm:text-base text-[#14429E] uppercase tracking-wide md:line-clamp-1 line-clamp-none leading-snug productTitle"
           whileHover={shouldReduceMotion ? {} : { color: "#EC6713" }}
           transition={hoverTransition}
         >
@@ -184,7 +184,7 @@ function ProductCard({ product, onViewDetails }) {
             e.stopPropagation();
             onViewDetails(product);
           }}
-          className="text-[10px] font-mono font-bold tracking-wider text-[#09285F] flex items-center justify-center gap-1 py-1.5 uppercase border border-[#09285F]/10 bg-white"
+          className="text-[10px] font-mono font-bold tracking-wider text-[#14429E] flex items-center justify-center gap-1 py-1.5 uppercase border border-[#14429E]/10 bg-white"
           whileHover={shouldReduceMotion ? {} : { 
             color: "#EC6713",
             borderColor: "rgba(236, 103, 19, 0.2)"
@@ -200,8 +200,8 @@ function ProductCard({ product, onViewDetails }) {
           <Link
             href={`/contact?interest=${encodeURIComponent(product.name)}&material=${encodeURIComponent(product.specs.materials)}&tolerance=${encodeURIComponent(product.specs.tolerances)}&treatment=${encodeURIComponent(product.specs.hardness)}#contact-form`}
             onClick={(e) => e.stopPropagation()}
-            className="text-[10px] font-mono font-bold tracking-wider text-white bg-[#09285F] transition-all py-1.5 text-center uppercase block"
-            style={{ backgroundColor: "#09285F" }}
+            className="text-[10px] font-mono font-bold tracking-wider text-white bg-[#14429E] transition-all py-1.5 text-center uppercase block"
+            style={{ backgroundColor: "#14429E" }}
           >
             Request RFQ
           </Link>
@@ -274,7 +274,7 @@ export default function ProductsClient() {
           </span>
         </div>
 
-        <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#09285F] uppercase tracking-tight mb-4">
+        <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14429E] uppercase tracking-tight mb-4">
           Our Products
         </h1>
         <div className="w-20 h-1 bg-[#EC6713] mb-6" />
@@ -289,9 +289,9 @@ export default function ProductsClient() {
           {STATS.map((stat, idx) => (
             <div 
               key={idx} 
-              className="border border-[#D7DDE5] bg-white p-6 rounded-[16px] text-center shadow-sm flex flex-col justify-center h-28 sm:h-32 hover:border-[#09285F]/30 transition-all duration-300"
+              className="border border-[#D7DDE5] bg-white p-6 rounded-[16px] text-center shadow-sm flex flex-col justify-center h-28 sm:h-32 hover:border-[#14429E]/30 transition-all duration-300"
             >
-              <div className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#09285F] uppercase tracking-tight">
+              <div className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#14429E] uppercase tracking-tight">
                 <span>{stat.value}</span>
               </div>
               <p className="text-[10px] sm:text-xs font-mono font-bold text-[#5E6673] uppercase tracking-wider mt-2">
@@ -314,8 +314,8 @@ export default function ProductsClient() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`filterChip px-4 py-2 border rounded-full text-xs font-heading font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shrink-0 ${
                   selectedCategory === cat
-                    ? "bg-[#09285F] border-[#09285F] text-white"
-                    : "bg-white border-[#D7DDE5] text-[#5E6673] hover:border-[#09285F] hover:text-[#09285F]"
+                    ? "bg-[#14429E] border-[#14429E] text-white"
+                    : "bg-white border-[#D7DDE5] text-[#5E6673] hover:border-[#14429E] hover:text-[#14429E]"
                 }`}
               >
                 {cat}
@@ -379,7 +379,7 @@ export default function ProductsClient() {
             <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.25em] block mb-1">
               [ COMPONENT HIGHLIGHTS ]
             </span>
-            <h2 className="font-heading text-3xl font-bold text-[#09285F] uppercase tracking-wide">
+            <h2 className="font-heading text-3xl font-bold text-[#14429E] uppercase tracking-wide">
               Featured Components
             </h2>
           </motion.div>
@@ -388,7 +388,7 @@ export default function ProductsClient() {
             {FEATURED_ITEMS.map((item, idx) => (
               <motion.div 
                 key={idx} 
-                className="featuredComponentCard border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#09285F]/20 transition-all duration-300 overflow-hidden"
+                className="featuredComponentCard border border-[#D7DDE5] p-6 sm:p-10 bg-[#F6F7F8] rounded-[24px] shadow-sm hover:border-[#14429E]/20 transition-all duration-300 overflow-hidden"
                 initial={{ opacity: 1, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -421,7 +421,7 @@ export default function ProductsClient() {
                     <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.2em] block mb-1">
                       FEATURED COMPONENT 0{idx + 1}
                     </span>
-                    <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#09285F] uppercase tracking-tight leading-none">
+                    <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#14429E] uppercase tracking-tight leading-none">
                       {item.title}
                     </h3>
                   </div>
@@ -448,7 +448,7 @@ export default function ProductsClient() {
                   <div>
                     <Link
                       href={`/contact?interest=${encodeURIComponent(item.title)}&material=${encodeURIComponent(item.specs.material)}&tolerance=${encodeURIComponent(item.specs.tolerance)}&treatment=${encodeURIComponent(item.specs.treatment)}#contact-form`}
-                      className="inline-flex items-center gap-2 bg-[#EC6713] hover:bg-[#09285F] text-white font-heading font-bold text-xs uppercase tracking-wider py-4 px-8 transition-colors duration-200"
+                      className="inline-flex items-center gap-2 bg-[#EC6713] hover:bg-[#14429E] text-white font-heading font-bold text-xs uppercase tracking-wider py-4 px-8 transition-colors duration-200"
                     >
                       Inquire Component <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -469,7 +469,7 @@ export default function ProductsClient() {
           <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-wider block">
             [ IN-HOUSE OPERATIONS ]
           </span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#09285F] uppercase tracking-wide mt-2">
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#14429E] uppercase tracking-wide mt-2">
             Manufacturing Capabilities
           </h2>
         </div>
@@ -478,13 +478,13 @@ export default function ProductsClient() {
           {CAPABILITIES_GRID.map((cap, idx) => (
             <div 
               key={idx}
-              className="border border-[#D7DDE5] bg-white p-5 rounded-[16px] shadow-sm flex flex-col justify-between h-44 hover:border-[#09285F]/30 transition-all duration-300"
+              className="border border-[#D7DDE5] bg-white p-5 rounded-[16px] shadow-sm flex flex-col justify-between h-44 hover:border-[#14429E]/30 transition-all duration-300"
             >
               <div className="p-2 border border-[#D7DDE5] rounded-[10px] w-max bg-[#FAF8F5]">
                 {cap.icon}
               </div>
               <div>
-                <h3 className="font-heading font-bold text-sm text-[#09285F] uppercase tracking-wide">
+                <h3 className="font-heading font-bold text-sm text-[#14429E] uppercase tracking-wide">
                   {cap.title}
                 </h3>
                 <p className="text-[11px] text-[#5E6673] font-medium leading-relaxed mt-1">
@@ -582,7 +582,7 @@ export default function ProductsClient() {
                   <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-wider block mb-1">
                     [ TECHNICAL SPECIFICATIONS ]
                   </span>
-                  <h2 className="font-heading text-xl sm:text-2xl font-bold text-[#09285F] uppercase tracking-wide">
+                  <h2 className="font-heading text-xl sm:text-2xl font-bold text-[#14429E] uppercase tracking-wide">
                     {activeProduct.name}
                   </h2>
                   <p className="text-xs text-[#5E6673] font-medium leading-relaxed mt-2">
@@ -593,27 +593,27 @@ export default function ProductsClient() {
                 <div className="space-y-3 font-mono text-[11px] border-t border-[#D7DDE5]/30 pt-4">
                   <div className="grid grid-cols-3 py-1 border-b border-[#D7DDE5]/10">
                     <span className="text-[#5E6673] font-bold">Tolerances</span>
-                    <span className="col-span-2 font-bold text-[#09285F]">{activeProduct.specs.tolerances}</span>
+                    <span className="col-span-2 font-bold text-[#14429E]">{activeProduct.specs.tolerances}</span>
                   </div>
                   <div className="grid grid-cols-3 py-1 border-b border-[#D7DDE5]/10">
                     <span className="text-[#5E6673] font-bold">Materials</span>
-                    <span className="col-span-2 font-bold text-[#09285F]">{activeProduct.specs.materials}</span>
+                    <span className="col-span-2 font-bold text-[#14429E]">{activeProduct.specs.materials}</span>
                   </div>
                   <div className="grid grid-cols-3 py-1 border-b border-[#D7DDE5]/10">
                     <span className="text-[#5E6673] font-bold">Process</span>
-                    <span className="col-span-2 font-bold text-[#09285F]">{activeProduct.specs.operations}</span>
+                    <span className="col-span-2 font-bold text-[#14429E]">{activeProduct.specs.operations}</span>
                   </div>
                   <div className="grid grid-cols-3 py-1 border-b border-[#D7DDE5]/10">
                     <span className="text-[#5E6673] font-bold">Treatment</span>
-                    <span className="col-span-2 font-bold text-[#09285F]">{activeProduct.specs.hardness}</span>
+                    <span className="col-span-2 font-bold text-[#14429E]">{activeProduct.specs.hardness}</span>
                   </div>
                   <div className="grid grid-cols-3 py-1 border-b border-[#D7DDE5]/10">
                     <span className="text-[#5E6673] font-bold">Applications</span>
-                    <span className="col-span-2 font-bold text-[#09285F]">{activeProduct.specs.applications}</span>
+                    <span className="col-span-2 font-bold text-[#14429E]">{activeProduct.specs.applications}</span>
                   </div>
                   <div className="grid grid-cols-3 py-1">
                     <span className="text-[#5E6673] font-bold">Industries</span>
-                    <span className="col-span-2 font-bold text-[#09285F]">{activeProduct.specs.industries}</span>
+                    <span className="col-span-2 font-bold text-[#14429E]">{activeProduct.specs.industries}</span>
                   </div>
                 </div>
               </div>

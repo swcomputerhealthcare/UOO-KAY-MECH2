@@ -141,7 +141,7 @@ export default async function ProductDetailPage({ params }) {
         {/* Back Link */}
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#09285F] hover:text-[#EC6713] transition-colors mb-12 uppercase tracking-wider group"
+          className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#14429E] hover:text-[#EC6713] transition-colors mb-12 uppercase tracking-wider group"
         >
           <ArrowLeft className="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" />
           [ Back to Catalog ]
@@ -169,7 +169,7 @@ export default async function ProductDetailPage({ params }) {
               <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-[0.2em] uppercase block mb-3">
                 [ {product.category} ]
               </span>
-              <h1 className="font-heading text-3xl sm:text-4xl font-bold uppercase text-[#09285F] tracking-tight leading-tight">
+              <h1 className="font-heading text-3xl sm:text-4xl font-bold uppercase text-[#14429E] tracking-tight leading-tight">
                 {product.name}
               </h1>
             </div>
@@ -180,7 +180,7 @@ export default async function ProductDetailPage({ params }) {
 
             {/* Technical Specification Bento Cards */}
             <div className="border-t border-[#D7DDE5] pt-8">
-              <h2 className="font-mono text-xs font-bold text-[#09285F] uppercase tracking-wider mb-6">
+              <h2 className="font-mono text-xs font-bold text-[#14429E] uppercase tracking-wider mb-6">
                 [ Technical Specifications Sheet ]
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
@@ -188,7 +188,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-[9px] font-mono text-[#5E6673] tracking-wider uppercase block">
                     Manufacturing Tolerances
                   </span>
-                  <span className="text-sm font-bold text-[#09285F] block">
+                  <span className="text-sm font-bold text-[#14429E] block">
                     {product.specs.tolerances}
                   </span>
                 </div>
@@ -197,7 +197,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-[9px] font-mono text-[#5E6673] tracking-wider uppercase block">
                     Materials Used
                   </span>
-                  <span className="text-sm font-bold text-[#09285F] block">
+                  <span className="text-sm font-bold text-[#14429E] block">
                     {product.specs.materials}
                   </span>
                 </div>
@@ -206,7 +206,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-[9px] font-mono text-[#5E6673] tracking-wider uppercase block">
                     Machining Operations
                   </span>
-                  <span className="text-sm font-bold text-[#09285F] block">
+                  <span className="text-sm font-bold text-[#14429E] block">
                     {product.specs.operations}
                   </span>
                 </div>
@@ -215,7 +215,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-[9px] font-mono text-[#5E6673] tracking-wider uppercase block">
                     Hardness & Surface Finish
                   </span>
-                  <span className="text-sm font-bold text-[#09285F] block">
+                  <span className="text-sm font-bold text-[#14429E] block">
                     {product.specs.hardness}
                   </span>
                 </div>
@@ -224,7 +224,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-[9px] font-mono text-[#5E6673] tracking-wider uppercase block">
                     Industrial Applications
                   </span>
-                  <span className="text-sm font-bold text-[#09285F] block">
+                  <span className="text-sm font-bold text-[#14429E] block">
                     {product.specs.applications}
                   </span>
                 </div>
@@ -233,7 +233,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-[9px] font-mono text-[#5E6673] tracking-wider uppercase block">
                     Sectors Served
                   </span>
-                  <span className="text-sm font-bold text-[#09285F] block">
+                  <span className="text-sm font-bold text-[#14429E] block">
                     {product.specs.industries}
                   </span>
                 </div>

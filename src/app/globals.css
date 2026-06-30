@@ -7,8 +7,8 @@
   --font-mono: var(--font-mono), monospace;
   
   /* Color Palette */
-  --color-primary: #09285F; /* Primary Blue */
-  --color-primary-hover: #0b3070; 
+  --color-primary: #14429E; /* Primary Blue */
+  --color-primary-hover: #103682; 
   --color-secondary: #5E6673; /* Steel Gray */
   --color-light-steel: #D7DDE5; /* Light Steel */
   --color-accent: #EC6713; /* Light Industrial Orange */
@@ -128,7 +128,7 @@ a, button, input, select, textarea {
 /* Top Utility Bar — slim brand accent bar */
 .top-utility-bar {
   height: 26px;
-  background: #09285F;
+  background: #14429E;
   color: #D7DDE5;
   display: flex;
   align-items: center;
@@ -152,24 +152,37 @@ a, button, input, select, textarea {
 
 /* Scroll margin for anchor links */
 main {
-  scroll-margin-top: 76px;
-  padding-top: 76px;
+  scroll-margin-top: 106px;
+  padding-top: 106px;
+}
+
+@media (max-width: 1024px) {
+  main {
+    scroll-margin-top: 94px;
+    padding-top: 94px;
+  }
 }
 
 @media (max-width: 768px) {
   main {
-    scroll-margin-top: 68px;
-    padding-top: 68px;
+    scroll-margin-top: 84px;
+    padding-top: 84px;
   }
 }
 
 section {
-  scroll-margin-top: 110px !important;
+  scroll-margin-top: 140px !important;
+}
+
+@media (max-width: 1024px) {
+  section {
+    scroll-margin-top: 124px !important;
+  }
 }
 
 @media (max-width: 768px) {
   section {
-    scroll-margin-top: 92px !important;
+    scroll-margin-top: 108px !important;
   }
 }
 
@@ -194,8 +207,8 @@ section {
 
 .premium-card-hover:hover {
   transform: translateY(-4px) scale(1.03);
-  border-color: rgba(9, 40, 95, 0.3) !important;
-  box-shadow: 0 12px 30px -10px rgba(9, 40, 95, 0.08);
+  border-color: rgba(20, 66, 158, 0.3) !important;
+  box-shadow: 0 12px 30px -10px rgba(20, 66, 158, 0.08);
 }
 
 .premium-btn-hover {
@@ -250,7 +263,7 @@ section {
 .certCard:hover {
   transform: translateY(-4px);
   border-top-color: #EC6713;
-  box-shadow: 0 10px 30px rgba(9, 40, 95, 0.05);
+  box-shadow: 0 10px 30px rgba(20, 66, 158, 0.05);
 }
 
 .certTop {
@@ -261,7 +274,7 @@ section {
 .certMeta {
   margin-top: auto;
   padding-top: 24px;
-  border-top: 1px solid rgba(9, 40, 95, 0.12);
+  border-top: 1px solid rgba(20, 66, 158, 0.12);
 }
 
 /* Client Logos Grid Layout & Contrast */
@@ -272,8 +285,8 @@ section {
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  border: 1px solid rgba(9, 40, 95, 0.14);
-  box-shadow: 0 10px 30px rgba(9, 40, 95, 0.08);
+  border: 1px solid rgba(20, 66, 158, 0.14);
+  box-shadow: 0 10px 30px rgba(20, 66, 158, 0.08);
 }
 
 .logoBox {
@@ -283,7 +296,7 @@ section {
   align-items: center;
   justify-content: center;
   background: #f8fafc;
-  border: 1px solid rgba(9, 40, 95, 0.08);
+  border: 1px solid rgba(20, 66, 158, 0.08);
 }
 
 .clientLogoImage {

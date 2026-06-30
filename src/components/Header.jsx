@@ -40,7 +40,7 @@ export default function Header() {
       aria-label="Main navigation"
       animate={{
         boxShadow: scrolled
-          ? "0 8px 24px rgba(9, 40, 95, 0.10)"
+          ? "0 8px 24px rgba(20, 66, 158, 0.10)"
           : "0 0 0 rgba(0, 0, 0, 0)"
       }}
       transition={{ duration: 0.25 }}

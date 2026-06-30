@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer bg-[#F6F7F8] text-[#161616] border-t-2 border-[#09285F] pt-16 pb-8 z-10 relative font-sans">
+    <footer className="footer bg-[#F6F7F8] text-[#161616] border-t-2 border-[#14429E] pt-16 pb-8 z-10 relative font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="footerGrid mb-16">
           
@@ -131,7 +131,7 @@ export default function Footer() {
                 href="https://maps.google.com/maps?q=19.22867202758789%2C72.98545837402344&z=17&hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full block text-center border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold text-[10px] uppercase tracking-wider py-1.5 transition-all duration-200"
+                className="w-full block text-center border border-[#14429E] text-[#14429E] hover:bg-[#14429E] hover:text-white font-heading font-bold text-[10px] uppercase tracking-wider py-1.5 transition-all duration-200"
               >
                 Open in Google Maps
               </a>
@@ -144,7 +144,7 @@ export default function Footer() {
           <p className="font-medium text-xs text-[#5E6673]" suppressHydrationWarning>
             &copy; {currentYear} UK MECH INDUSTRIES. Serving Industry Since 2004.
           </p>
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 font-mono font-bold tracking-wider uppercase text-[10px] text-[#09285F]">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 font-mono font-bold tracking-wider uppercase text-[10px] text-[#14429E]">
             <span>GSTIN: 27BIRPS2093H1ZN</span>
             <span className="hidden sm:inline text-[#D7DDE5]">|</span>
             <span>UDYAM-MH-33-0322159</span>

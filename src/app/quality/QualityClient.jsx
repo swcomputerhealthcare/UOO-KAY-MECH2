@@ -80,7 +80,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ TECHNICAL STANDARDS ]
             </span>
-            <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#09285F] uppercase tracking-wide">
+            <h1 className="sectionTitle font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#14429E] uppercase tracking-wide">
               Quality Assurance
             </h1>
           </motion.div>
@@ -96,7 +96,7 @@ export default function QualityClient() {
               [ COMPLIANCE REGISTRY ]
             </motion.span>
             <motion.h2 
-              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#09285F] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
+              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#14429E] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
               initial={{ opacity: 0.01, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.15 }}
@@ -118,13 +118,13 @@ export default function QualityClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
-                  whileHover={{ y: -4, borderTopColor: "#EC6713", boxShadow: "0 10px 30px rgba(9, 40, 95, 0.05)" }}
+                  whileHover={{ y: -4, borderTopColor: "#EC6713", boxShadow: "0 10px 30px rgba(20, 66, 158, 0.05)" }}
                 >
                   <div className="certTop space-y-4">
                     <div className="text-slate-700">
                       {cert.icon}
                     </div>
-                    <h3 className="font-heading font-bold text-[#09285F] text-lg uppercase tracking-wide">
+                    <h3 className="font-heading font-bold text-[#14429E] text-lg uppercase tracking-wide">
                       {cert.title}
                     </h3>
                     <p className="text-[#5E6673] text-xs leading-relaxed font-medium">
@@ -133,7 +133,7 @@ export default function QualityClient() {
                   </div>
                   <div className="certMeta">
                     <span className="block text-[#5E6673] uppercase font-bold tracking-wider text-[10px] font-mono">{cert.label}</span>
-                    <strong className="block text-[#09285F] font-extrabold tracking-wide uppercase break-all text-[11px] font-mono mt-0.5">{cert.id}</strong>
+                    <strong className="block text-[#14429E] font-extrabold tracking-wide uppercase break-all text-[11px] font-mono mt-0.5">{cert.id}</strong>
                   </div>
                 </motion.article>
               ))}
@@ -157,7 +157,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#09285F] uppercase tracking-wide leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#14429E] uppercase tracking-wide leading-tight">
               Our 4-Stage Quality Process
             </h2>
           </motion.div>
@@ -171,7 +171,7 @@ export default function QualityClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: idx * 0.05 }}
-                whileHover={{ borderColor: "#09285F" }}
+                whileHover={{ borderColor: "#14429E" }}
               >
                 <div className="space-y-4">
                   {/* Step Marker */}
@@ -184,7 +184,7 @@ export default function QualityClient() {
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-lg font-bold text-[#09285F] uppercase tracking-wide">
+                  <h3 className="font-heading text-lg font-bold text-[#14429E] uppercase tracking-wide">
                     {p.title}
                   </h3>
                   <p className="text-xs text-[#5E6673] leading-relaxed font-medium">

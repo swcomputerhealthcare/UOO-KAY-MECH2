@@ -144,7 +144,7 @@ Submitted via UK MECH INDUSTRIES Website`);
   };
 
   return (
-    <div className="border-t-2 border-[#09285F] pt-6 font-sans">
+    <div className="border-t-2 border-[#14429E] pt-6 font-sans">
       <form onSubmit={handleSubmit} className="space-y-6">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -6,7 +6,7 @@ export default function manifest() {
     start_url: "/",
     display: "standalone",
     background_color: "#F6F7F8",
-    theme_color: "#09285F",
+    theme_color: "#14429E",
     icons: [
       {
         src: "/uk-mech-logo-v3.png",

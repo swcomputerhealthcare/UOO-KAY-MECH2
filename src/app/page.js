@@ -85,7 +85,7 @@ export default function Home() {
                   UK MECH
                 </motion.span>
                 <motion.h1 
-                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#09285F]"
+                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#14429E]"
                   initial={{ opacity: 0.01, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.55 }}
@@ -129,7 +129,7 @@ export default function Home() {
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/products"
-                    className="w-full sm:w-auto border border-[#09285F] text-[#09285F] hover:bg-[#09285F] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
+                    className="w-full sm:w-auto border border-[#14429E] text-[#14429E] hover:bg-[#14429E] hover:text-white font-heading font-bold px-8 py-4 text-xs uppercase tracking-wider text-center hero-cta-btn block"
                   >
                     View Services
                   </Link>
@@ -162,7 +162,7 @@ export default function Home() {
               
               {/* Technical Overlay Badges */}
               <motion.div 
-                className="absolute bottom-4 left-4 bg-[#09285F] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30 z-10"
+                className="absolute bottom-4 left-4 bg-[#14429E] text-[#D7DDE5] text-[9px] font-mono py-1.5 px-3 uppercase tracking-wider border border-[#D7DDE5]/30 z-10"
                 initial={{ opacity: 0.01, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* 2. Company Experience Strip */}
-      <section className="bg-[#09285F] text-[#D7DDE5] border-b border-[#D7DDE5]/20 py-10 stats-strip-container">
+      <section className="bg-[#14429E] text-[#D7DDE5] border-b border-[#D7DDE5]/20 py-10 stats-strip-container">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#D7DDE5]/20">
             <div className="space-y-1">
@@ -221,7 +221,7 @@ export default function Home() {
           <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.2em]">
             [ APPROVED SUPPLIER REGISTRY ]
           </span>
-          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-items-center md:justify-end gap-x-8 md:gap-x-12 gap-y-4 w-full md:w-auto text-center font-heading font-bold text-xs tracking-widest text-[#09285F]">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-items-center md:justify-end gap-x-8 md:gap-x-12 gap-y-4 w-full md:w-auto text-center font-heading font-bold text-xs tracking-widest text-[#14429E]">
             <span className="flex items-center justify-center min-h-[32px]">LARSEN & TOUBRO</span>
             <span className="flex items-center justify-center min-h-[32px]">EMERSON INDIA</span>
             <span className="flex items-center justify-center min-h-[32px]">GODFREY PHILLIPS</span>
@@ -266,7 +266,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">01 / CNC MACHINING</span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                 High Precision CNC Machined Components
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -276,7 +276,7 @@ export default function Home() {
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/infrastructure"
-                    className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
+                    className="inline-block bg-[#14429E] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
                   >
                     View Facility Tech Spec
                   </Link>
@@ -305,7 +305,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">02 / CAD DRAFTING</span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                 Engineering Feasibility Analysis
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -315,7 +315,7 @@ export default function Home() {
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/contact"
-                    className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
+                    className="inline-block bg-[#14429E] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
                   >
                     Submit Drawings
                   </Link>
@@ -380,7 +380,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">03 / METROLOGY</span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                 Calibrated Quality Inspections
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -390,7 +390,7 @@ export default function Home() {
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.2 }}>
                   <Link
                     href="/quality"
-                    className="inline-block bg-[#09285F] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
+                    className="inline-block bg-[#14429E] hover:bg-[#EC6713] text-white font-heading font-bold px-6 py-3.5 text-xs uppercase tracking-wider block"
                   >
                     Review Quality Standards
                   </Link>
@@ -420,7 +420,7 @@ export default function Home() {
             >
               <div>
                 <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">04 / CAPABILITIES</span>
-                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#09285F] leading-tight tracking-tight">
+                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                   Component & Custom Fabrication Range
                 </h2>
               </div>
@@ -431,35 +431,35 @@ export default function Home() {
               {/* Technical catalog spec list */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 pt-6 border-t border-[#D7DDE5] font-sans">
                 <motion.div 
-                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  className="border border-transparent hover:border-[#14429E]/12 p-3 rounded-[16px] bg-white/40"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25 }}
                 >
-                  <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Precision Parts</h3>
+                  <h3 className="font-heading font-bold text-base text-[#14429E] uppercase tracking-wide">Precision Parts</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Crane shafts, pinion shafts, gears, expanders, and weep tube cups.</p>
                 </motion.div>
                 <motion.div 
-                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  className="border border-transparent hover:border-[#14429E]/12 p-3 rounded-[16px] bg-white/40"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25 }}
                 >
-                  <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Safety Guard Systems</h3>
+                  <h3 className="font-heading font-bold text-base text-[#14429E] uppercase tracking-wide">Safety Guard Systems</h3>
                   <p className="text-xs text-[#5E6673] mt-1">SS and MS machine covers, safety shields, and frame encasings.</p>
                 </motion.div>
                 <motion.div 
-                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  className="border border-transparent hover:border-[#14429E]/12 p-3 rounded-[16px] bg-white/40"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25 }}
                 >
-                  <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Industrial Access</h3>
+                  <h3 className="font-heading font-bold text-base text-[#14429E] uppercase tracking-wide">Industrial Access</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Heavy-duty industrial ladders and platforms built in MS, SS, and Aluminum.</p>
                 </motion.div>
                 <motion.div 
-                  className="border border-transparent hover:border-[#09285F]/12 p-3 rounded-[16px] bg-white/40"
+                  className="border border-transparent hover:border-[#14429E]/12 p-3 rounded-[16px] bg-white/40"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25 }}
                 >
-                  <h3 className="font-heading font-bold text-base text-[#09285F] uppercase tracking-wide">Structural Assembly</h3>
+                  <h3 className="font-heading font-bold text-base text-[#14429E] uppercase tracking-wide">Structural Assembly</h3>
                   <p className="text-xs text-[#5E6673] mt-1">Welded structural works, base plates, and fixtures per CAD layout.</p>
                 </motion.div>
               </div>
@@ -517,7 +517,7 @@ export default function Home() {
             <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">
               / PARTNER COMPLIANCE FEEDBACK
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#09285F] uppercase tracking-wide leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#14429E] uppercase tracking-wide leading-tight">
               Procurement & Engineering Reviews
             </h2>
           </motion.div>
@@ -536,7 +536,7 @@ export default function Home() {
                 &ldquo;UK Mech has been our approved supplier for machined shafts and assemblies since 2010. Their compliance with detailed engineering blueprints is impeccable.&rdquo;
               </blockquote>
               <div className="pt-2 border-t border-[#D7DDE5] max-w-xs">
-                <div className="text-xs font-bold text-[#09285F] uppercase tracking-wider">Larsen & Toubro Ltd.</div>
+                <div className="text-xs font-bold text-[#14429E] uppercase tracking-wider">Larsen & Toubro Ltd.</div>
                 <span className="text-[10px] text-[#5E6673] font-mono uppercase tracking-wider mt-1 block">Procurement Division</span>
               </div>
             </motion.div>
@@ -553,7 +553,7 @@ export default function Home() {
                 &ldquo;The quality of sheet metal covers and machine safety guards they manufactured for our automation rigs exceeded our safety audit checklists. On-time delivery.&rdquo;
               </blockquote>
               <div className="pt-2 border-t border-[#D7DDE5] max-w-xs">
-                <div className="text-xs font-bold text-[#09285F] uppercase tracking-wider">Emerson India Pvt. Ltd.</div>
+                <div className="text-xs font-bold text-[#14429E] uppercase tracking-wider">Emerson India Pvt. Ltd.</div>
                 <span className="text-[10px] text-[#5E6673] font-mono uppercase tracking-wider mt-1 block">QA & Safety Team</span>
               </div>
             </motion.div>
@@ -570,7 +570,7 @@ export default function Home() {
                 &ldquo;We have sourced spur gears and custom pinions from UK MECH. The module teeth tolerances are tight, resulting in quiet and smooth power transmission.&rdquo;
               </blockquote>
               <div className="pt-2 border-t border-[#D7DDE5] max-w-xs">
-                <div className="text-xs font-bold text-[#09285F] uppercase tracking-wider">Godfrey Phillips India</div>
+                <div className="text-xs font-bold text-[#14429E] uppercase tracking-wider">Godfrey Phillips India</div>
                 <span className="text-[10px] text-[#5E6673] font-mono uppercase tracking-wider mt-1 block">Plant Engineering</span>
               </div>
             </motion.div>
