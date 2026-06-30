@@ -358,9 +358,7 @@ section {
 .sectionHeroTitle,
 .largeSectionTitle,
 .sectionTitle {
-  font-size: clamp(28px, 3.5vw, 42px) !important;
-  line-height: 1.15 !important;
-  letter-spacing: -0.02em !important;
+  font-size: clamp(24px, 2.5vw, 34px) !important; line-height: 1.25 !important; letter-spacing: -0.01em !important;
   max-width: 100% !important;
   overflow-wrap: break-word !important;
   word-break: break-word !important;
@@ -371,9 +369,7 @@ section {
   .sectionHeroTitle,
   .largeSectionTitle,
   .sectionTitle {
-    font-size: clamp(24px, 5.5vw, 32px) !important;
-    line-height: 1.1 !important;
-    letter-spacing: -0.015em !important;
+    font-size: clamp(20px, 4vw, 26px) !important; line-height: 1.2 !important; letter-spacing: -0.01em !important;
   }
 }
 
@@ -381,8 +377,7 @@ section {
   .sectionHeroTitle,
   .largeSectionTitle,
   .sectionTitle {
-    font-size: clamp(20px, 7vw, 26px) !important;
-    line-height: 1.1 !important;
+    font-size: clamp(18px, 6vw, 22px) !important; line-height: 1.2 !important;
   }
 }
 

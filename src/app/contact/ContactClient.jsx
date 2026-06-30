@@ -236,7 +236,7 @@ export default function ContactClient() {
             <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-[0.25em] uppercase block">
               [ FAQ ]
             </span>
-            <h2 className="font-heading text-3xl font-bold text-[#14429E] uppercase tracking-wide">
+            <h2 className="font-heading text-2xl font-bold text-[#14429E] uppercase tracking-wide">
               Manufacturing FAQ
             </h2>
             <p className="text-xs sm:text-sm text-[#5E6673] leading-relaxed font-sans max-w-lg mx-auto font-medium">

@@ -134,7 +134,7 @@ export default function ClientsClient() {
 
         {/* 1. Client Trust Banner (Flat Solid Color, No gradients) */}
         <motion.div 
-          className="bg-white text-[#161616] border-t-2 border-[#161616] p-8 sm:p-12 mb-20 cli-trust-banner clientsIntro"
+          className="bg-white text-[#14429E] border-t-2 border-[#EC6713] p-8 sm:p-12 mb-20 cli-trust-banner clientsIntro"
           initial={{ opacity: 0.01, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.1 }}
@@ -143,10 +143,10 @@ export default function ClientsClient() {
             <div className="text-[#EC6713]">
               <Users className="h-6 w-6" strokeWidth={1.5} />
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-wide uppercase">
+            <h2 className="font-heading text-xl sm:text-2xl font-bold tracking-wide uppercase">
               Partnerships Built on <span className="text-[#EC6713]">Engineering Trust</span>
             </h2>
-            <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
+            <p className="text-[#14429E] text-sm leading-relaxed font-sans font-medium">
               UK MECH INDUSTRIES is an approved vendor supplier to India&apos;s leading industrial organizations. Our consistent delivery of drawing-compliant, precision-machined parts has established us as a reliable partner in strategic supply chains.
             </p>
           </div>

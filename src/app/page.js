@@ -82,10 +82,10 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.55 }}
                 >
-                  UK MECH
+                  UK MECH INDUSTRIES
                 </motion.span>
                 <motion.h1 
-                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-[1.1] text-[#14429E]"
+                  className="font-heading text-[28px] sm:text-[40px] lg:text-[56px] font-bold uppercase tracking-tight leading-[1.15] text-[#14429E]"
                   initial={{ opacity: 0.01, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.55 }}
@@ -266,7 +266,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">01 / CNC MACHINING</span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
+              <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                 High Precision CNC Machined Components
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -305,7 +305,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">02 / CAD DRAFTING</span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
+              <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                 Engineering Feasibility Analysis
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -380,7 +380,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             >
               <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block">03 / METROLOGY</span>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
+              <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                 Calibrated Quality Inspections
               </h2>
               <p className="text-[#5E6673] text-sm leading-relaxed font-sans font-medium">
@@ -420,7 +420,7 @@ export default function Home() {
             >
               <div>
                 <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">04 / CAPABILITIES</span>
-                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
+                <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold uppercase text-[#14429E] leading-tight tracking-tight">
                   Component & Custom Fabrication Range
                 </h2>
               </div>
@@ -517,7 +517,7 @@ export default function Home() {
             <span className="font-mono text-xs font-bold text-[#EC6713] uppercase tracking-wider block mb-2">
               / PARTNER COMPLIANCE FEEDBACK
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#14429E] uppercase tracking-wide leading-tight">
+            <h2 className="font-heading text-xl sm:text-2xl md:text-2xl font-bold text-[#14429E] uppercase tracking-wide leading-tight">
               Procurement & Engineering Reviews
             </h2>
           </motion.div>

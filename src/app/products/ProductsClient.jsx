@@ -291,7 +291,7 @@ export default function ProductsClient() {
               key={idx} 
               className="border border-[#D7DDE5] bg-white p-6 rounded-[16px] text-center shadow-sm flex flex-col justify-center h-28 sm:h-32 hover:border-[#14429E]/30 transition-all duration-300"
             >
-              <div className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#14429E] uppercase tracking-tight">
+              <div className="font-heading font-extrabold text-xl sm:text-2xl md:text-3xl text-[#14429E] uppercase tracking-tight">
                 <span>{stat.value}</span>
               </div>
               <p className="text-[10px] sm:text-xs font-mono font-bold text-[#5E6673] uppercase tracking-wider mt-2">
@@ -379,7 +379,7 @@ export default function ProductsClient() {
             <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.25em] block mb-1">
               [ COMPONENT HIGHLIGHTS ]
             </span>
-            <h2 className="font-heading text-3xl font-bold text-[#14429E] uppercase tracking-wide">
+            <h2 className="font-heading text-2xl font-bold text-[#14429E] uppercase tracking-wide">
               Featured Components
             </h2>
           </motion.div>
@@ -421,7 +421,7 @@ export default function ProductsClient() {
                     <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-[0.2em] block mb-1">
                       FEATURED COMPONENT 0{idx + 1}
                     </span>
-                    <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#14429E] uppercase tracking-tight leading-none">
+                    <h3 className="font-heading text-2xl sm:text-2xl font-bold text-[#14429E] uppercase tracking-tight leading-none">
                       {item.title}
                     </h3>
                   </div>
@@ -469,7 +469,7 @@ export default function ProductsClient() {
           <span className="text-[10px] font-mono font-bold text-[#EC6713] uppercase tracking-wider block">
             [ IN-HOUSE OPERATIONS ]
           </span>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#14429E] uppercase tracking-wide mt-2">
+          <h2 className="font-heading text-2xl sm:text-2xl font-bold text-[#14429E] uppercase tracking-wide mt-2">
             Manufacturing Capabilities
           </h2>
         </div>
@@ -500,7 +500,7 @@ export default function ProductsClient() {
       <div className="bg-[#EC6713] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <div className="space-y-4 max-w-2xl mx-auto">
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white">
               Need a Custom Component?
             </h2>
             <p className="text-sm sm:text-base text-white/95 font-medium leading-relaxed">

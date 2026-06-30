@@ -96,7 +96,7 @@ export default function QualityClient() {
               [ COMPLIANCE REGISTRY ]
             </motion.span>
             <motion.h2 
-              className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#14429E] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
+              className="font-heading text-xl sm:text-2xl md:text-2xl font-bold text-[#14429E] uppercase tracking-wide border-b border-[#D7DDE5] pb-4 mb-8 leading-tight"
               initial={{ opacity: 0.01, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.15 }}
@@ -157,7 +157,7 @@ export default function QualityClient() {
             <span className="text-[10px] font-mono font-bold text-[#5E6673] uppercase tracking-[0.25em] block mb-1">
               [ OPERATIONAL PROCESS ]
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#14429E] uppercase tracking-wide leading-tight">
+            <h2 className="font-heading text-xl sm:text-2xl md:text-2xl font-bold text-[#14429E] uppercase tracking-wide leading-tight">
               Our 4-Stage Quality Process
             </h2>
           </motion.div>

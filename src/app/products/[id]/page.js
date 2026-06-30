@@ -169,7 +169,7 @@ export default async function ProductDetailPage({ params }) {
               <span className="text-[10px] font-mono font-bold text-[#EC6713] tracking-[0.2em] uppercase block mb-3">
                 [ {product.category} ]
               </span>
-              <h1 className="font-heading text-3xl sm:text-4xl font-bold uppercase text-[#14429E] tracking-tight leading-tight">
+              <h1 className="font-heading text-2xl sm:text-3xl font-bold uppercase text-[#14429E] tracking-tight leading-tight">
                 {product.name}
               </h1>
             </div>
